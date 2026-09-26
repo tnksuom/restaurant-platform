@@ -77,6 +77,7 @@ class PermissionMatrixTests(TestCase):
         ]
         for url in urls:
             self.assertEqual(self.client.get(url).status_code, 403, url)
+        self.assertContains(self.client.get(urls[0]), "have access to this page", status_code=403)
         resp = self.client.post(
             reverse("staff:create"), {"display_name": "X", "login_identifier": "x", "role": "OWNER"}
         )

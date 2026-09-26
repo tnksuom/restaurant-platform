@@ -43,6 +43,9 @@ python manage.py create_owner --login owner@example.com --name "Owner Name" --re
 python manage.py runserver          # http://127.0.0.1:8000
 ```
 
+**Demo data instead of step 3.** On an *empty* development database (`DJANGO_DEBUG=true`), run
+`python manage.py seed_demo --password 'Choose-A-Password'`. It creates a demo restaurant with an owner (`owner`), a manager (`mia`), employees (`linh`, `eero`, `sara`), stock, a week of checklists and shifts, open issues with a photo, and a corrected shift. All accounts use the password you give. It refuses to run on a database that already has staff.
+
 For production, run behind HTTPS with a WSGI server (for example `gunicorn config.wsgi`). Set `DJANGO_DEBUG=false` and run `python manage.py collectstatic`. Serve `staticfiles/` as static files. **Never** expose `PRIVATE_UPLOAD_ROOT` through the web server; photos are served only by the permission-checked view.
 
 ### Environment variables

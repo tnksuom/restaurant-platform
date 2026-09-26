@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% translate "Not allowed" %}{% endblock %}
+{% block content %}
+<div class="card stack" style="max-width:520px;margin:32px auto">
+  <h1>{% translate "You don't have access to this page" %}</h1>
+  <p>{% translate "This page is for managers or owners. If you think you should have access, ask your manager." %}</p>
+  <a class="btn" href="{% url 'today' %}">{% translate "Go to Today" %}</a>
+</div>
+{% endblock %}

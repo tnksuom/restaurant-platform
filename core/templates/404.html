@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% translate "Not found" %}{% endblock %}
+{% block content %}
+<div class="card stack" style="max-width:520px;margin:32px auto">
+  <h1>{% translate "Page not found" %}</h1>
+  <p>{% translate "This page doesn't exist, or it isn't available to your account." %}</p>
+  <a class="btn" href="{% if user.is_authenticated %}{% url 'today' %}{% else %}{% url 'login' %}{% endif %}">{% if user.is_authenticated %}{% translate "Go to Today" %}{% else %}{% translate "Go to sign in" %}{% endif %}</a>
+</div>
+{% endblock %}

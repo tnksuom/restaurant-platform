@@ -139,7 +139,9 @@ STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Private uploads (checklist issue photos). Never served as public static/media.
-PRIVATE_UPLOAD_ROOT = Path(env("PRIVATE_UPLOAD_ROOT", str(BASE_DIR / "private_uploads")))
+PRIVATE_UPLOAD_ROOT = Path(env("PRIVATE_UPLOAD_ROOT", "private_uploads"))
+if not PRIVATE_UPLOAD_ROOT.is_absolute():  # relative paths are relative to the project, not the shell
+    PRIVATE_UPLOAD_ROOT = BASE_DIR / PRIVATE_UPLOAD_ROOT
 ISSUE_PHOTO_MAX_BYTES = int(env("ISSUE_PHOTO_MAX_BYTES", 10 * 1024 * 1024))
 DATA_UPLOAD_MAX_MEMORY_SIZE = ISSUE_PHOTO_MAX_BYTES + 1024 * 1024
 

@@ -1,4 +1,4 @@
-{% extends "base.html" %}{% load i18n %}
+{% extends "base.html" %}{% load i18n ops %}
 {% block title %}{% translate "Issue" %}{% endblock %}
 {% block content %}
 <p><a href="{% if is_manager %}{% url 'checklists:issues' %}{% else %}{% url 'checklists:run' issue.run_id %}{% endif %}">← {% translate "Back" %}</a></p>
@@ -9,7 +9,7 @@
   <dl class="kv">
     <dt>{% translate "Checklist" %}</dt><dd><a href="{% url 'checklists:run' issue.run_id %}#task-{{ issue.response_id }}">{{ issue.run.title }}{% if issue.run.run_label %} · {{ issue.run.run_label }}{% endif %}</a> · {{ issue.run.business_date|date:"j.n.Y" }}</dd>
     <dt>{% translate "Task" %}</dt><dd>{{ issue.response.task.text }}{% if issue.response.task.equipment_or_location %} ({{ issue.response.task.equipment_or_location }}){% endif %}</dd>
-    {% if issue.response.temperature_c is not None %}<dt>{% translate "Reading" %}</dt><dd>{{ issue.response.temperature_c|floatformat:"-2" }} °C</dd>{% endif %}
+    {% if issue.response.temperature_c is not None %}<dt>{% translate "Reading" %}</dt><dd>{{ issue.response.temperature_c|qty }} °C</dd>{% endif %}
     <dt>{% translate "Source" %}</dt><dd>{{ issue.get_source_display }}</dd>
     <dt>{% translate "Reported" %}</dt><dd>{{ issue.reported_by.display_name }} · {{ issue.reported_at|date:"j.n.Y H:i" }}</dd>
     <dt>{% translate "Description" %}</dt><dd>{{ issue.description|linebreaksbr }}</dd>

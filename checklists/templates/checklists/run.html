@@ -1,4 +1,4 @@
-{% extends "base.html" %}{% load i18n %}
+{% extends "base.html" %}{% load i18n ops %}
 {% block title %}{{ run.title }}{% endblock %}
 {% block content %}
 <p><a href="{% if is_manager %}{% url 'checklists:review' %}?date={{ run.business_date|date:'Y-m-d' }}{% else %}{% url 'checklists:today' %}{% endif %}">← {% translate "Back" %}</a></p>
@@ -27,13 +27,13 @@
   </div>
   {% if task.equipment_or_location %}<p class="small muted">{{ task.equipment_or_location }}</p>{% endif %}
   {% if task.response_type == "TEMPERATURE" %}
-    <p class="small muted">{% if task.has_thresholds %}{% translate "Acceptable range set by manager:" %} {% if task.min_temperature is not None %}{{ task.min_temperature|floatformat:"-2" }} °C{% else %}—{% endif %} … {% if task.max_temperature is not None %}{{ task.max_temperature|floatformat:"-2" }} °C{% else %}—{% endif %}{% else %}{% translate "No acceptable range is configured. The reading is recorded only." %}{% endif %}</p>
+    <p class="small muted">{% if task.has_thresholds %}{% translate "Acceptable range set by manager:" %} {% if task.min_temperature is not None %}{{ task.min_temperature|qty }} °C{% else %}—{% endif %} … {% if task.max_temperature is not None %}{{ task.max_temperature|qty }} °C{% else %}—{% endif %}{% else %}{% translate "No acceptable range is configured. The reading is recorded only." %}{% endif %}</p>
   {% endif %}
 
   {% if r.status != "PENDING" %}
   <p>
     <strong>{{ t.answer_label }}</strong>
-    {% if r.temperature_c is not None %} · <strong>{{ r.temperature_c|floatformat:"-2" }} °C</strong>
+    {% if r.temperature_c is not None %} · <strong>{{ r.temperature_c|qty }} °C</strong>
       {% if r.temperature_out_of_range %} <span class="badge badge-bad">{% translate "Outside range" %}</span>{% elif r.temperature_out_of_range is False %} <span class="badge badge-ok">{% translate "Within range" %}</span>{% endif %}
     {% endif %}
     <br><span class="small muted">{{ r.answered_by.display_name }} · {{ r.answered_at|date:"j.n. H:i" }}</span>

@@ -1,4 +1,4 @@
-{% extends "base.html" %}{% load i18n %}
+{% extends "base.html" %}{% load i18n ops %}
 {% block title %}{% translate "Checklist review" %}{% endblock %}
 {% block content %}
 <h1>{% translate "Checklist review" %}</h1>
@@ -46,9 +46,9 @@
   <tr>
     <td>{{ r.answered_at|date:"H:i" }}</td>
     <td>{{ r.task.text }}{% if r.task.equipment_or_location %}<br><span class="small muted">{{ r.task.equipment_or_location }}</span>{% endif %}</td>
-    <td class="num">{% if r.temperature_c is not None %}{{ r.temperature_c|floatformat:"-2" }} °C{% else %}{% translate "N/A" %}{% endif %}
+    <td class="num">{% if r.temperature_c is not None %}{{ r.temperature_c|qty }} °C{% else %}{% translate "N/A" %}{% endif %}
       {% if r.temperature_out_of_range %}<br><span class="badge badge-bad">{% translate "Outside range" %}</span>{% endif %}</td>
-    <td class="small">{% if r.task.has_thresholds %}{% if r.task.min_temperature is not None %}{{ r.task.min_temperature|floatformat:"-2" }}{% else %}—{% endif %} … {% if r.task.max_temperature is not None %}{{ r.task.max_temperature|floatformat:"-2" }}{% else %}—{% endif %} °C{% else %}<span class="muted">{% translate "Not configured" %}</span>{% endif %}</td>
+    <td class="small">{% if r.task.has_thresholds %}{% if r.task.min_temperature is not None %}{{ r.task.min_temperature|qty }}{% else %}—{% endif %} … {% if r.task.max_temperature is not None %}{{ r.task.max_temperature|qty }}{% else %}—{% endif %} °C{% else %}<span class="muted">{% translate "Not configured" %}</span>{% endif %}</td>
     <td>{{ r.answered_by.display_name }}</td>
   </tr>
   {% empty %}
