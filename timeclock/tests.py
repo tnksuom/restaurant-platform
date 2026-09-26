@@ -277,3 +277,27 @@ class ConcurrentClockInTests(TransactionTestCase):
             t.join()
         self.assertEqual(sorted(results), ["ok", "rejected"])
         self.assertEqual(Shift.objects.filter(employee=anna).count(), 1)
+
+
+class SubSecondCorrectionTests(TestCase):
+    def test_unchanged_fields_keep_exact_instants(self):
+        r, owner, manager, anna, ben = make_staff()
+        base = local(2026, 9, 10, 9, 0, 0)
+        shift = work_shift(
+            anna, base, base + timedelta(seconds=1, microseconds=900_000),
+            breaks=[(base + timedelta(microseconds=300_000), base + timedelta(microseconds=600_000))],
+        )
+        self.client.force_login(manager)
+        url = reverse("timeclock:correct", args=[shift.pk])
+        form = self.client.get(url).content.decode()
+        import re
+
+        values = dict(re.findall(r'name="([\w-]+)" value="([^"]*)"', form))
+        data = {k: values.get(k, "") for k in ("clock_in", "clock_out", "break-0-start", "break-0-end")}
+        data.update({"break_rows": "3", "reason": "Test", "clock_out": "2026-09-10T09:05:00"})
+        resp = self.client.post(url, data, follow=True)
+        self.assertContains(resp, "Shift corrected")
+        shift.refresh_from_db()
+        b = shift.breaks.get()
+        self.assertEqual(b.start_at, base + timedelta(microseconds=300_000))
+        self.assertEqual(shift.clock_in_at, base)

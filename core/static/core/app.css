@@ -73,8 +73,8 @@ h3 { font-size: 1.05rem; margin: 0 0 .4rem; }
 .badge-muted { background: transparent; border: 1px solid var(--border); color: var(--muted); }
 
 .btn, button.btn, input[type=submit] { display: inline-flex; align-items: center; justify-content: center; min-height: var(--tap); padding: 0 18px; border-radius: var(--radius); border: 1px solid var(--accent); background: var(--accent); color: var(--accent-text); font: inherit; font-weight: 600; text-decoration: none; cursor: pointer; }
-.btn-secondary { background: var(--surface); color: var(--accent); }
-.btn-danger { background: var(--bad); border-color: var(--bad); color: #fff; }
+.btn.btn-secondary { background: var(--surface); color: var(--accent); }
+.btn.btn-danger { background: var(--bad); border-color: var(--bad); color: #fff; }
 .btn-block { width: 100%; }
 .btn-huge { min-height: 72px; font-size: 1.2rem; width: 100%; }
 .btn[disabled], button[disabled] { opacity: .55; cursor: progress; }
@@ -93,7 +93,7 @@ textarea { min-height: 88px; }
 .checkbox input { width: 22px; height: 22px; }
 
 /* Large choice buttons for checklist answers */
-.choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 8px; margin: 8px 0; border: 0; padding: 0; }
+.choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); gap: 8px; margin: 8px 0; border: 0; padding: 0; min-width: 0; }
 .choices legend { font-weight: 600; margin-bottom: 4px; }
 .choice { position: relative; }
 .choice input { position: absolute; opacity: 0; inset: 0; }
@@ -130,3 +130,5 @@ dl.kv dd { margin: 0; }
 }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 tfoot th { color: var(--text); }
+
+.stats { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }

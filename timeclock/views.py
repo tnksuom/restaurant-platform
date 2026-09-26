@@ -161,19 +161,32 @@ def correct(request, pk):
             for i in range(min(rows, 50))
         ]
         form = {"clock_in": data.get("clock_in", ""), "clock_out": data.get("clock_out", ""), "reason": data.get("reason", "")}
+        # The form shows whole seconds; recorded instants can be finer. A value the manager
+        # left unchanged keeps its exact stored instant instead of being truncated.
+        originals = {
+            "in": {to_local_input(shift.clock_in_at, tz): shift.clock_in_at},
+            "out": {to_local_input(shift.clock_out_at, tz): shift.clock_out_at} if shift.clock_out_at else {},
+            "start": {to_local_input(b.start_at, tz): b.start_at for b in existing},
+            "end": {to_local_input(b.end_at, tz): b.end_at for b in existing if b.end_at},
+        }
+
+        def parse(value, kind):
+            value = (value or "").strip()
+            return originals[kind].get(value) or parse_local_datetime(value, tz)
+
         try:
-            clock_in_at = parse_local_datetime(form["clock_in"], tz)
+            clock_in_at = parse(form["clock_in"], "in")
             if clock_in_at is None:
                 raise ValidationError(_("Enter the clock-in time."))
-            clock_out_at = parse_local_datetime(form["clock_out"], tz)
+            clock_out_at = parse(form["clock_out"], "out")
             breaks = []
             for b in break_values:
                 if b["remove"] or (not b["start"].strip() and not b["end"].strip()):
                     continue
-                start = parse_local_datetime(b["start"], tz)
+                start = parse(b["start"], "start")
                 if start is None:
                     raise ValidationError(_("Each break needs a start time."))
-                breaks.append((start, parse_local_datetime(b["end"], tz)))
+                breaks.append((start, parse(b["end"], "end")))
             services.correct_shift(
                 request.user, shift, clock_in_at=clock_in_at, clock_out_at=clock_out_at,
                 breaks=breaks, reason=form["reason"],

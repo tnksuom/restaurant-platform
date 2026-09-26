@@ -233,7 +233,7 @@ class ChecklistViewTests(TestCase):
         # employee can still see their submitted run, and it is read-only
         resp = self.client.get(reverse("checklists:run", args=[run.pk]))
         self.assertNotContains(resp, "Save answer")
-        self.assertContains(resp, "9.00 °C")
+        self.assertContains(resp, "9 °C")
 
     def test_employee_history_shows_only_own_submissions(self):
         run, _ = services.start_run(self.anna, self.template.pk)

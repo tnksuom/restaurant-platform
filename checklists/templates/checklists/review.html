@@ -7,7 +7,7 @@
   <div class="field"><button class="btn btn-secondary btn-block" type="submit">{% translate "Show" %}</button></div>
 </form>
 
-<div class="cards">
+<div class="cards stats">
   <div class="card"><div class="small muted">{% translate "Submitted" %}</div><div class="big">{{ totals.submitted }}{% if expected %} / {{ expected }}{% endif %}</div></div>
   <div class="card"><div class="small muted">{% translate "In progress" %}</div><div class="big">{{ totals.in_progress }}</div></div>
   <div class="card"><div class="small muted">{% translate "Not started" %}</div><div class="big">{{ totals.not_started }}</div></div>
@@ -46,9 +46,9 @@
   <tr>
     <td>{{ r.answered_at|date:"H:i" }}</td>
     <td>{{ r.task.text }}{% if r.task.equipment_or_location %}<br><span class="small muted">{{ r.task.equipment_or_location }}</span>{% endif %}</td>
-    <td class="num">{% if r.temperature_c is not None %}{{ r.temperature_c }} °C{% else %}{% translate "N/A" %}{% endif %}
+    <td class="num">{% if r.temperature_c is not None %}{{ r.temperature_c|floatformat:"-2" }} °C{% else %}{% translate "N/A" %}{% endif %}
       {% if r.temperature_out_of_range %}<br><span class="badge badge-bad">{% translate "Outside range" %}</span>{% endif %}</td>
-    <td class="small">{% if r.task.has_thresholds %}{% if r.task.min_temperature is not None %}{{ r.task.min_temperature }}{% else %}—{% endif %} … {% if r.task.max_temperature is not None %}{{ r.task.max_temperature }}{% else %}—{% endif %} °C{% else %}<span class="muted">{% translate "Not configured" %}</span>{% endif %}</td>
+    <td class="small">{% if r.task.has_thresholds %}{% if r.task.min_temperature is not None %}{{ r.task.min_temperature|floatformat:"-2" }}{% else %}—{% endif %} … {% if r.task.max_temperature is not None %}{{ r.task.max_temperature|floatformat:"-2" }}{% else %}—{% endif %} °C{% else %}<span class="muted">{% translate "Not configured" %}</span>{% endif %}</td>
     <td>{{ r.answered_by.display_name }}</td>
   </tr>
   {% empty %}

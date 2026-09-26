@@ -201,9 +201,13 @@ def out_of_range(task, reading):
     return too_low or too_high
 
 
+def _num(value):
+    return format(value.normalize(), "f")
+
+
 def _range_text(task):
-    lo = f"{task.min_temperature} °C" if task.min_temperature is not None else "—"
-    hi = f"{task.max_temperature} °C" if task.max_temperature is not None else "—"
+    lo = f"{_num(task.min_temperature)} °C" if task.min_temperature is not None else "—"
+    hi = f"{_num(task.max_temperature)} °C" if task.max_temperature is not None else "—"
     return f"{lo} … {hi}"
 
 
@@ -248,7 +252,7 @@ def save_response(actor, response_id, status, *, temperature=None, note=""):
     if response.temperature_out_of_range:
         where = f" ({task.equipment_or_location})" if task.equipment_or_location else ""
         desc = _("Reading %(reading)s °C%(where)s is outside the configured range %(range)s.") % {
-            "reading": reading, "where": where, "range": _range_text(task),
+            "reading": _num(reading), "where": where, "range": _range_text(task),
         }
         if note:
             desc += " " + note
