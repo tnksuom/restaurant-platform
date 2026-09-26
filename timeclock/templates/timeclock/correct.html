@@ -1,0 +1,37 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% translate "Correct shift" %}{% endblock %}
+{% block content %}
+<p><a href="{% url 'timeclock:shift' shift.pk %}">← {% translate "Back to shift" %}</a></p>
+<h1>{% blocktranslate with name=shift.employee.display_name %}Correct shift for {{ name }}{% endblocktranslate %}</h1>
+<p class="small muted">{% blocktranslate with tz=tz_name %}Times are local restaurant time ({{ tz }}). The original times, your changes, your name and the reason are kept and shown to the employee.{% endblocktranslate %}</p>
+<form method="post" novalidate>{% csrf_token %}
+  {% if errors %}<ul class="errorlist">{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+  <div class="card">
+    <div class="field"><label for="clock_in">{% translate "Clock-in" %}</label>
+      <input id="clock_in" type="datetime-local" step="1" name="clock_in" value="{{ form.clock_in }}" required></div>
+    <div class="field"><label for="clock_out">{% translate "Clock-out" %}</label>
+      <input id="clock_out" type="datetime-local" step="1" name="clock_out" value="{{ form.clock_out }}">
+      <span class="help">{% if shift.is_open %}{% translate "Leave empty to keep the shift open, or enter a time to close it." %}{% else %}{% translate "Required for a closed shift." %}{% endif %}</span></div>
+  </div>
+  <h2>{% translate "Breaks" %}</h2>
+  <input type="hidden" name="break_rows" value="{{ break_values|length }}">
+  {% for b in break_values %}
+  <fieldset class="card">
+    <legend class="small muted">{% blocktranslate with n=forloop.counter %}Break {{ n }}{% endblocktranslate %}</legend>
+    <div class="field"><label for="b{{ forloop.counter0 }}s">{% translate "Start" %}</label>
+      <input id="b{{ forloop.counter0 }}s" type="datetime-local" step="1" name="break-{{ forloop.counter0 }}-start" value="{{ b.start }}"></div>
+    <div class="field"><label for="b{{ forloop.counter0 }}e">{% translate "End" %}</label>
+      <input id="b{{ forloop.counter0 }}e" type="datetime-local" step="1" name="break-{{ forloop.counter0 }}-end" value="{{ b.end }}"></div>
+    <div class="field checkbox"><input id="b{{ forloop.counter0 }}r" type="checkbox" name="break-{{ forloop.counter0 }}-remove"{% if b.remove %} checked{% endif %}><label for="b{{ forloop.counter0 }}r">{% translate "Remove this break" %}</label></div>
+  </fieldset>
+  {% endfor %}
+  <div class="card">
+    <div class="field"><label for="reason">{% translate "Reason for the correction" %}</label>
+      <textarea id="reason" name="reason" rows="3" required>{{ form.reason }}</textarea></div>
+    <div class="row">
+      <button class="btn" type="submit">{% translate "Save correction" %}</button>
+      <a class="btn btn-secondary" href="{% url 'timeclock:shift' shift.pk %}">{% translate "Cancel" %}</a>
+    </div>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% load i18n ops %}
+<div class="table-wrap"><table>
+  <thead><tr>
+    {% if show_employee %}<th>{% translate "Staff" %}</th>{% endif %}
+    <th>{% translate "Start" %}</th><th>{% translate "End" %}</th><th class="num">{% translate "Breaks" %}</th><th class="num">{% translate "Worked" %}</th><th>{% translate "Status" %}</th>
+  </tr></thead>
+  <tbody>
+  {% for row in rows %}{% with s=row.shift %}
+  <tr>
+    {% if show_employee %}<td>{{ s.employee.display_name }}{% if not s.employee.is_active %} <span class="small muted">({% translate "deactivated" %})</span>{% endif %}</td>{% endif %}
+    <td><a href="{% url 'timeclock:shift' s.pk %}">{{ s.clock_in_at|date:"D j.n. H:i" }}</a></td>
+    <td>{% if s.clock_out_at %}{{ s.clock_out_at|date:"D j.n. H:i" }}{% else %}—{% endif %}</td>
+    <td class="num">{{ row.break_seconds|hm }}</td>
+    <td class="num">{% if row.worked is not None %}{{ row.worked|hours }} h{% else %}<span class="muted" title="{% translate 'Provisional, shift still open' %}">({{ row.provisional|hours }} h)</span>{% endif %}</td>
+    <td>
+      {% if s.is_open %}<span class="badge badge-warn">{% if row.on_break %}{% translate "Open · on break" %}{% else %}{% translate "Open" %}{% endif %}</span>{% else %}<span class="badge badge-ok">{% translate "Closed" %}</span>{% endif %}
+      {% if s.is_corrected %}<span class="badge">{% translate "Corrected" %}</span>{% endif %}
+    </td>
+  </tr>
+  {% endwith %}{% empty %}
+  <tr><td colspan="{% if show_employee %}6{% else %}5{% endif %}" class="muted">{% translate "No shifts in this period." %}</td></tr>
+  {% endfor %}
+  </tbody>
+</table></div>

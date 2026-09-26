@@ -1,0 +1,64 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{{ target.display_name }}{% endblock %}
+{% block content %}
+<h1>{{ target.display_name }}{% if is_self %} <span class="badge">{% translate "You" %}</span>{% endif %}</h1>
+<div class="card">
+  <dl class="kv">
+    <dt>{% translate "Login" %}</dt><dd>{{ target.login_identifier }}</dd>
+    <dt>{% translate "Role" %}</dt><dd>{{ target.get_role_display }}</dd>
+    <dt>{% translate "Contact number" %}</dt><dd>{{ target.phone|default:"—" }}</dd>
+    <dt>{% translate "Status" %}</dt><dd>
+      {% if target.is_active %}{% translate "Active" %}{% if not target.has_usable_password %} · <span class="badge badge-warn">{% translate "Password not set yet" %}</span>{% endif %}
+      {% else %}<span class="badge badge-muted">{% translate "Deactivated" %}</span> {{ target.deactivated_at|date:"j.n.Y H:i" }}{% endif %}
+      {% if open_shift %} · <span class="badge badge-ok">{% translate "On shift" %}</span>{% endif %}
+    </dd>
+  </dl>
+</div>
+
+{% if is_self %}
+<div class="row">
+  <a class="btn btn-secondary" href="{% url 'staff:change_password' %}">{% translate "Change my password" %}</a>
+  <a class="btn btn-secondary" href="{% url 'timeclock:mine' %}">{% translate "My hours" %}</a>
+</div>
+<p class="muted small">{% translate "To change your name or contact number, ask a manager." %}</p>
+{% endif %}
+
+{% if is_manager %}
+<h2>{% translate "Records" %}</h2>
+<div class="row">
+  <a class="btn btn-secondary" href="{% url 'timeclock:timesheets' %}?employee={{ target.pk }}">{% translate "Timesheet" %}</a>
+  <a class="btn btn-secondary" href="{% url 'checklists:history' %}?employee={{ target.pk }}">{% translate "Checklists" %}</a>
+  <a class="btn btn-secondary" href="{% url 'inventory:history' %}?actor={{ target.pk }}">{% translate "Stock movements" %}</a>
+</div>
+{% endif %}
+
+{% if can_edit_details %}
+<h2>{% translate "Manage" %}</h2>
+<div class="row">
+  <a class="btn btn-secondary" href="{% url 'staff:edit' target.pk %}">{% translate "Edit details" %}</a>
+  {% if can_manage %}
+    <a class="btn btn-secondary" href="{% url 'staff:role' target.pk %}">{% translate "Change role" %}</a>
+    {% if target.is_active %}
+      <form method="post" action="{% url 'staff:setup_link' target.pk %}">{% csrf_token %}
+        <button class="btn btn-secondary" type="submit">{% if target.has_usable_password %}{% translate "Create password reset link" %}{% else %}{% translate "Create password setup link" %}{% endif %}</button>
+      </form>
+      <a class="btn btn-danger" href="{% url 'staff:deactivate' target.pk %}">{% translate "Deactivate" %}</a>
+    {% else %}
+      <form method="post" action="{% url 'staff:reactivate' target.pk %}" data-confirm="{% translate 'Reactivate this account?' %}">{% csrf_token %}
+        <button class="btn" type="submit">{% translate "Reactivate" %}</button>
+      </form>
+    {% endif %}
+  {% endif %}
+</div>
+{% endif %}
+
+{% if history %}
+<h2>{% translate "Account history" %}</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>{% translate "When" %}</th><th>{% translate "Change" %}</th><th>{% translate "By" %}</th></tr></thead>
+  <tbody>{% for ev in history %}
+  <tr><td>{{ ev.created_at|date:"j.n.Y H:i" }}</td><td>{{ ev.action }}{% if ev.changes.before %}: {{ ev.changes.before }} → {{ ev.changes.after }}{% endif %}</td><td>{{ ev.actor.display_name|default:_("System setup") }}</td></tr>
+  {% endfor %}</tbody>
+</table></div>
+{% endif %}
+{% endblock %}

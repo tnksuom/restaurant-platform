@@ -1,0 +1,53 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% translate "Issue" %}{% endblock %}
+{% block content %}
+<p><a href="{% if is_manager %}{% url 'checklists:issues' %}{% else %}{% url 'checklists:run' issue.run_id %}{% endif %}">← {% translate "Back" %}</a></p>
+<h1>{% translate "Checklist issue" %}
+  {% if issue.status == "OPEN" %}<span class="badge badge-warn">{% translate "Open" %}</span>{% else %}<span class="badge badge-ok">{% translate "Resolved" %}</span>{% endif %}
+</h1>
+<div class="card">
+  <dl class="kv">
+    <dt>{% translate "Checklist" %}</dt><dd><a href="{% url 'checklists:run' issue.run_id %}#task-{{ issue.response_id }}">{{ issue.run.title }}{% if issue.run.run_label %} · {{ issue.run.run_label }}{% endif %}</a> · {{ issue.run.business_date|date:"j.n.Y" }}</dd>
+    <dt>{% translate "Task" %}</dt><dd>{{ issue.response.task.text }}{% if issue.response.task.equipment_or_location %} ({{ issue.response.task.equipment_or_location }}){% endif %}</dd>
+    {% if issue.response.temperature_c is not None %}<dt>{% translate "Reading" %}</dt><dd>{{ issue.response.temperature_c }} °C</dd>{% endif %}
+    <dt>{% translate "Source" %}</dt><dd>{{ issue.get_source_display }}</dd>
+    <dt>{% translate "Reported" %}</dt><dd>{{ issue.reported_by.display_name }} · {{ issue.reported_at|date:"j.n.Y H:i" }}</dd>
+    <dt>{% translate "Description" %}</dt><dd>{{ issue.description|linebreaksbr }}</dd>
+    {% if issue.status == "RESOLVED" %}
+    <dt>{% translate "Resolved" %}</dt><dd>{{ issue.resolved_by.display_name }} · {{ issue.resolved_at|date:"j.n.Y H:i" }}</dd>
+    <dt>{% translate "Resolution" %}</dt><dd>{{ issue.resolution_note|linebreaksbr }}</dd>
+    {% endif %}
+  </dl>
+</div>
+
+<h2>{% translate "Photos" %}</h2>
+{% for a in issue.attachments.all %}
+<figure class="card">
+  <img class="photo" src="{% url 'checklists:photo' a.pk %}" alt="{% blocktranslate with name=a.original_filename %}Photo {{ name }}{% endblocktranslate %}" loading="lazy">
+  <figcaption class="small muted">{{ a.uploaded_by.display_name }} · {{ a.uploaded_at|date:"j.n.Y H:i" }} · {{ a.byte_size|filesizeformat }}</figcaption>
+</figure>
+{% empty %}
+<p class="muted">{% translate "No photos." %}</p>
+{% endfor %}
+
+{% if can_add_photo %}
+<div class="card">
+  <form method="post" enctype="multipart/form-data" class="stacked" novalidate>{% csrf_token %}
+    <input type="hidden" name="action" value="photo">
+    {% with form=photo_form %}{% include "core/form_fields.html" %}{% endwith %}
+    <button class="btn btn-secondary" type="submit">{% translate "Upload photo" %}</button>
+  </form>
+</div>
+{% endif %}
+
+{% if can_resolve %}
+<h2>{% translate "Resolve" %}</h2>
+<div class="card">
+  <form method="post" class="stacked" novalidate>{% csrf_token %}
+    <input type="hidden" name="action" value="resolve">
+    {% with form=resolve_form %}{% include "core/form_fields.html" %}{% endwith %}
+    <button class="btn" type="submit">{% translate "Mark resolved" %}</button>
+  </form>
+</div>
+{% endif %}
+{% endblock %}

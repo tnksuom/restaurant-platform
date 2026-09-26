@@ -1,0 +1,21 @@
+{% extends "base.html" %}{% load i18n %}
+{% block content %}
+<p><a href="{% url 'checklists:run' run.pk %}">← {% translate "Back to checklist" %}</a></p>
+<h1>{% translate "Submit checklist?" %}</h1>
+<div class="card stack">
+  <p><strong>{{ run.title }}{% if run.run_label %} · {{ run.run_label }}{% endif %}</strong> · {{ run.business_date|date:"j.n.Y" }}</p>
+  {% if missing %}
+    <p class="msg msg-error">{% blocktranslate count n=missing|length %}{{ n }} required task still needs an answer:{% plural %}{{ n }} required tasks still need an answer:{% endblocktranslate %}</p>
+    <ul>{% for task in missing %}<li><a href="{% url 'checklists:run' run.pk %}#task-{{ task.response.pk }}">{{ task.text }}</a></li>{% endfor %}</ul>
+    <a class="btn btn-secondary" href="{% url 'checklists:run' run.pk %}">{% translate "Go back and finish" %}</a>
+  {% else %}
+    <p>{% blocktranslate with a=counts.answered t=counts.total %}{{ a }} of {{ t }} tasks answered.{% endblocktranslate %}
+      {% if counts.pending %}{% blocktranslate count n=counts.pending %}{{ n }} optional task is unanswered.{% plural %}{{ n }} optional tasks are unanswered.{% endblocktranslate %}{% endif %}</p>
+    {% if open_issues %}<p class="msg msg-warning">{% blocktranslate count n=open_issues %}{{ n }} open issue stays open for a manager after you submit.{% plural %}{{ n }} open issues stay open for a manager after you submit.{% endblocktranslate %}</p>{% endif %}
+    <p class="muted small">{% translate "After submitting, answers can no longer be changed." %}</p>
+    <form method="post">{% csrf_token %}
+      <button class="btn btn-huge" type="submit">{% translate "Submit checklist" %}</button>
+    </form>
+  {% endif %}
+</div>
+{% endblock %}

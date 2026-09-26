@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% load i18n %}
+{% block content %}
+<h1>{{ title }}</h1>
+<div class="card">
+  <form method="post" class="stacked" novalidate>{% csrf_token %}
+    {% include "core/form_fields.html" %}
+    <div class="row">
+      <button class="btn" type="submit">{% translate "Save" %}</button>
+      <a class="btn btn-secondary" href="{% if item %}{% url 'inventory:detail' item.pk %}{% else %}{% url 'inventory:list' %}{% endif %}">{% translate "Cancel" %}</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

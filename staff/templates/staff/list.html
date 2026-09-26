@@ -1,0 +1,35 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% translate "Staff" %}{% endblock %}
+{% block content %}
+<div class="spread"><h1>{% translate "Staff" %}</h1><a class="btn" href="{% url 'staff:create' %}">{% translate "Add staff member" %}</a></div>
+<form method="get" class="filters" role="search">
+  <div class="field"><label for="q">{% translate "Search" %}</label><input id="q" type="search" name="q" value="{{ q }}"></div>
+  <div class="field"><label for="role">{% translate "Role" %}</label>
+    <select id="role" name="role"><option value="">{% translate "All roles" %}</option>
+      {% for value, label in roles %}<option value="{{ value }}"{% if value == role %} selected{% endif %}>{{ label }}</option>{% endfor %}
+    </select></div>
+  <div class="field"><label for="status">{% translate "Status" %}</label>
+    <select id="status" name="status">
+      <option value="active"{% if status == "active" %} selected{% endif %}>{% translate "Active" %}</option>
+      <option value="inactive"{% if status == "inactive" %} selected{% endif %}>{% translate "Deactivated" %}</option>
+      <option value="all"{% if status == "all" %} selected{% endif %}>{% translate "All" %}</option>
+    </select></div>
+  <div class="field"><button class="btn btn-secondary btn-block" type="submit">{% translate "Filter" %}</button></div>
+</form>
+<div class="table-wrap"><table>
+  <thead><tr><th>{% translate "Name" %}</th><th>{% translate "Login" %}</th><th>{% translate "Role" %}</th><th>{% translate "Status" %}</th></tr></thead>
+  <tbody>
+  {% for e in page %}
+  <tr>
+    <td><a href="{% url 'staff:detail' e.pk %}">{{ e.display_name }}</a>{% if e.on_shift %} <span class="badge badge-ok">{% translate "On shift" %}</span>{% endif %}</td>
+    <td>{{ e.login_identifier }}</td>
+    <td>{{ e.get_role_display }}</td>
+    <td>{% if e.is_active %}{% if e.has_usable_password %}<span class="badge badge-ok">{% translate "Active" %}</span>{% else %}<span class="badge badge-warn">{% translate "Awaiting password" %}</span>{% endif %}{% else %}<span class="badge badge-muted">{% translate "Deactivated" %}</span>{% endif %}</td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="4" class="muted">{% translate "No staff match these filters." %}</td></tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+{% include "core/pagination.html" %}
+{% endblock %}

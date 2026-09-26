@@ -1,0 +1,26 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% if template %}{{ template.title }}{% else %}{% translate "New checklist" %}{% endif %}{% endblock %}
+{% block content %}
+<p><a href="{% url 'checklists:templates' %}">← {% translate "Checklist templates" %}</a></p>
+<h1>{% if template %}{% blocktranslate with t=template.title %}Edit {{ t }}{% endblocktranslate %}{% else %}{% translate "New checklist" %}{% endif %}</h1>
+{% if template %}<p class="muted small">{% translate "Saving creates a new version. Checklists already started or submitted keep the tasks and thresholds they started with." %}</p>{% endif %}
+<form method="post" novalidate>{% csrf_token %}
+  {% if error %}<p class="msg msg-error">{{ error }}</p>{% endif %}
+  <div class="card">{% include "core/form_fields.html" %}</div>
+  {{ formset.management_form }}
+  {% if formset.non_form_errors %}<ul class="errorlist">{% for e in formset.non_form_errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+  <h2>{% translate "Tasks" %}</h2>
+  <p class="small muted">{% translate "Empty rows are ignored. Temperature limits are optional: set them only if you want a warning, and only for temperature tasks." %}</p>
+  {% for tf in formset %}
+  <fieldset class="card">
+    <legend class="small muted">{% if tf.initial.id %}{% blocktranslate with n=forloop.counter %}Task {{ n }}{% endblocktranslate %}{% else %}{% translate "New task" %}{% endif %}</legend>
+    {% with form=tf %}{% include "core/form_fields.html" %}{% endwith %}
+  </fieldset>
+  {% endfor %}
+  <p class="small muted">{% translate "Need more rows? Save, then edit again to get three more empty rows." %}</p>
+  <div class="row">
+    <button class="btn" type="submit">{% translate "Save checklist" %}</button>
+    <a class="btn btn-secondary" href="{% url 'checklists:templates' %}">{% translate "Cancel" %}</a>
+  </div>
+</form>
+{% endblock %}

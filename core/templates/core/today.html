@@ -1,0 +1,42 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% translate "Today" %}{% endblock %}
+{% block content %}
+<h1>{% blocktranslate with name=user.display_name %}Hello, {{ name }}{% endblocktranslate %}</h1>
+<p class="muted">{{ day|date:"l j.n.Y" }}</p>
+<div class="cards">
+  <a class="card card-link" href="{% url 'timeclock:clock' %}">
+    <h3>{% translate "My shift" %}</h3>
+    {% if shift %}
+      <p><span class="badge badge-ok">{% if on_break %}{% translate "On break" %}{% else %}{% translate "Clocked in" %}{% endif %}</span></p>
+      <p class="small">{% blocktranslate with t=shift.clock_in_at|date:"H:i" %}Since {{ t }}{% endblocktranslate %}</p>
+    {% else %}
+      <p><span class="badge badge-muted">{% translate "Not clocked in" %}</span></p>
+      <p class="small">{% translate "Tap to clock in" %}</p>
+    {% endif %}
+  </a>
+  <a class="card card-link" href="{% url 'checklists:today' %}">
+    <h3>{% translate "Checklists" %}</h3>
+    {% if checklists_expected %}
+      <p class="big">{{ checklists_submitted }} / {{ checklists_expected }}</p>
+      <p class="small">{% translate "submitted today" %}{% if checklists_in_progress %} · {% blocktranslate count n=checklists_in_progress %}{{ n }} in progress{% plural %}{{ n }} in progress{% endblocktranslate %}{% endif %}</p>
+    {% else %}
+      <p class="small muted">{% translate "No checklists set up." %}</p>
+    {% endif %}
+  </a>
+  <a class="card card-link" href="{% url 'inventory:list' %}{% if low_stock %}?low=1{% endif %}">
+    <h3>{% translate "Inventory" %}</h3>
+    {% if low_stock %}<p><span class="badge badge-warn">{% blocktranslate count n=low_stock %}{{ n }} item low{% plural %}{{ n }} items low{% endblocktranslate %}</span></p>{% else %}<p><span class="badge badge-ok">{% translate "Nothing low" %}</span></p>{% endif %}
+    <p class="small">{% translate "Record deliveries, use and waste" %}</p>
+  </a>
+  {% if is_manager %}
+  <a class="card card-link" href="{% url 'checklists:issues' %}">
+    <h3>{% translate "Open issues" %}</h3>
+    <p class="big{% if open_issues %} neg{% endif %}">{{ open_issues }}</p>
+  </a>
+  <a class="card card-link" href="{% url 'timeclock:timesheets' %}">
+    <h3>{% translate "Staff on shift" %}</h3>
+    <p class="big">{{ on_shift }}</p>
+  </a>
+  {% endif %}
+</div>
+{% endblock %}

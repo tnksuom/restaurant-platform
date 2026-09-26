@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% load i18n %}
+{% block content %}
+<h1>{{ title }}</h1>
+<div class="card">
+  <form method="post" class="stacked" novalidate>
+    {% csrf_token %}
+    {% include "core/form_fields.html" %}
+    <div class="row">
+      <button type="submit" class="btn">{% translate "Save" %}</button>
+      <a class="btn btn-secondary" href="javascript:history.back()">{% translate "Cancel" %}</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}{% load i18n ops %}
+{% block title %}{% translate "Clock in/out" %}{% endblock %}
+{% block content %}
+<h1>{% translate "Clock in/out" %}</h1>
+<div class="card status-panel stack">
+  {% now "l j.n.Y H:i" as nowtext %}
+  <p class="muted">{% blocktranslate with now=nowtext %}Now: {{ now }}{% endblocktranslate %}</p>
+  {% if not shift %}
+    <p class="big">{% translate "Not clocked in" %}</p>
+    <form method="post" action="{% url 'timeclock:action' %}">{% csrf_token %}
+      <input type="hidden" name="action" value="clock_in">
+      <button class="btn btn-huge" type="submit">{% translate "Clock in" %}</button>
+    </form>
+  {% else %}
+    {% if current_break %}
+      <p class="big">{% translate "On break" %}</p>
+      <p>{% blocktranslate with t=current_break.start_at|date:"H:i" %}Break started at {{ t }}{% endblocktranslate %}</p>
+    {% else %}
+      <p class="big">{% translate "On shift" %}</p>
+    {% endif %}
+    <p>{% blocktranslate with t=shift.clock_in_at|date:"l j.n. H:i" %}Clocked in {{ t }}{% endblocktranslate %}</p>
+    <p class="small">
+      {% translate "Worked so far (provisional):" %}
+      <strong {% if not current_break %}data-live-since="{{ shift.clock_in_at|date:'c' }}" data-live-offset="{{ break_seconds }}"{% endif %}>{{ provisional|hm }}</strong>
+      · {% translate "breaks" %} {{ break_seconds|hm }}
+    </p>
+    {% if current_break %}
+      <form method="post" action="{% url 'timeclock:action' %}">{% csrf_token %}
+        <input type="hidden" name="action" value="end_break">
+        <button class="btn btn-huge" type="submit">{% translate "End break" %}</button>
+      </form>
+      <p class="small muted">{% translate "End your break before clocking out." %}</p>
+    {% else %}
+      <form method="post" action="{% url 'timeclock:action' %}">{% csrf_token %}
+        <input type="hidden" name="action" value="start_break">
+        <button class="btn btn-huge btn-secondary" type="submit">{% translate "Start break" %}</button>
+      </form>
+      <form method="post" action="{% url 'timeclock:action' %}" data-confirm="{% translate 'Clock out now?' %}">{% csrf_token %}
+        <input type="hidden" name="action" value="clock_out">
+        <button class="btn btn-huge" type="submit">{% translate "Clock out" %}</button>
+      </form>
+    {% endif %}
+  {% endif %}
+</div>
+
+{% if last %}
+<h2>{% translate "Last completed shift" %}</h2>
+<a class="card card-link" href="{% url 'timeclock:shift' last.shift.pk %}">
+  <dl class="kv">
+    <dt>{% translate "Clock-in" %}</dt><dd>{{ last.shift.clock_in_at|date:"l j.n.Y H:i" }}</dd>
+    <dt>{% translate "Clock-out" %}</dt><dd>{{ last.shift.clock_out_at|date:"l j.n.Y H:i" }}</dd>
+    <dt>{% translate "Breaks" %}</dt><dd>{{ last.break_seconds|hm }}</dd>
+    <dt>{% translate "Worked" %}</dt><dd><strong>{{ last.worked|hm }}</strong> ({{ last.worked|hours }} h){% if last.shift.is_corrected %} <span class="badge badge-warn">{% translate "Corrected" %}</span>{% endif %}</dd>
+  </dl>
+</a>
+{% endif %}
+<p><a href="{% url 'timeclock:mine' %}">{% translate "See all my hours" %}</a></p>
+{% endblock %}

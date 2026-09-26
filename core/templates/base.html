@@ -1,0 +1,56 @@
+{% load i18n static %}<!doctype html>
+<html lang="{{ LANGUAGE_CODE|default:'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% translate "Restaurant operations" %}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'core/app.css' %}">
+  <script src="{% static 'core/app.js' %}" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">{% translate "Skip to content" %}</a>
+{% if user.is_authenticated %}
+<header class="topbar">
+  <a class="brand" href="{% url 'today' %}">{{ restaurant.name }}</a>
+  <details class="menu">
+    <summary aria-label="{% translate 'Menu' %}">{% translate "Menu" %}</summary>
+    <nav aria-label="{% translate 'Main' %}">
+      <ul>
+        <li><a href="{% url 'today' %}">{% translate "Today" %}</a></li>
+        <li><a href="{% url 'timeclock:clock' %}">{% translate "Clock in/out" %}</a></li>
+        <li><a href="{% url 'timeclock:mine' %}">{% translate "My hours" %}</a></li>
+        <li><a href="{% url 'checklists:today' %}">{% translate "Checklists" %}</a></li>
+        <li><a href="{% url 'inventory:list' %}">{% translate "Inventory" %}</a></li>
+        {% if is_manager %}
+        <li class="sep" aria-hidden="true"></li>
+        <li><a href="{% url 'checklists:review' %}">{% translate "Checklist review" %}</a></li>
+        <li><a href="{% url 'checklists:issues' %}">{% translate "Issues" %}</a></li>
+        <li><a href="{% url 'checklists:templates' %}">{% translate "Checklist templates" %}</a></li>
+        <li><a href="{% url 'inventory:history' %}">{% translate "Stock history" %}</a></li>
+        <li><a href="{% url 'timeclock:timesheets' %}">{% translate "Timesheets" %}</a></li>
+        <li><a href="{% url 'staff:list' %}">{% translate "Staff" %}</a></li>
+        {% else %}
+        <li><a href="{% url 'checklists:history' %}">{% translate "My submitted checklists" %}</a></li>
+        {% endif %}
+        <li class="sep" aria-hidden="true"></li>
+        <li><a href="{% url 'staff:me' %}">{% translate "My profile" %} ({{ user.display_name }})</a></li>
+        <li>
+          <form method="post" action="{% url 'logout' %}">{% csrf_token %}
+            <button type="submit" class="linklike">{% translate "Sign out" %}</button>
+          </form>
+        </li>
+      </ul>
+    </nav>
+  </details>
+</header>
+{% endif %}
+<main id="main" class="page">
+  {% if messages %}
+  <div class="messages" role="status" aria-live="polite">
+    {% for message in messages %}<p class="msg msg-{{ message.tags }}">{{ message }}</p>{% endfor %}
+  </div>
+  {% endif %}
+  {% block content %}{% endblock %}
+</main>
+</body>
+</html>

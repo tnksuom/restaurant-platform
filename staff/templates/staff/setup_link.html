@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% load i18n %}
+{% block content %}
+<h1>{% if new %}{% translate "Staff member added" %}{% else %}{% translate "Password link" %}{% endif %}</h1>
+<div class="card stack">
+  <p>{% blocktranslate with name=employee.display_name login=employee.login_identifier %}Give this one-time link to <strong>{{ name }}</strong>. They open it, choose their own password, then sign in as <strong>{{ login }}</strong>.{% endblocktranslate %}</p>
+  <label for="link" class="small muted">{% translate "One-time link" %}</label>
+  <input id="link" type="text" readonly value="{{ link }}" onclick="this.select()">
+  <p class="muted small">{% translate "The link stops working once it has been used or after it expires. It is not stored, so copy it now. You can create a new link from the staff member's page at any time." %}</p>
+  <a class="btn btn-secondary" href="{% url 'staff:detail' employee.pk %}">{% translate "Done" %}</a>
+</div>
+{% endblock %}

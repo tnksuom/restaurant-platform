@@ -1,0 +1,44 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% translate "Checklists" %}{% endblock %}
+{% block content %}
+<h1>{% translate "Today's checklists" %}</h1>
+<p class="muted">{{ day|date:"l j.n.Y" }}</p>
+<div class="cards">
+{% for c in cards %}
+  <div class="card stack">
+    <div class="spread">
+      <h3>{{ c.template.title }}{% if c.run.run_label %} · {{ c.run.run_label }}{% endif %}</h3>
+      {% if not c.run %}<span class="badge badge-muted">{% translate "Not started" %}</span>
+      {% elif c.run.is_submitted %}<span class="badge badge-ok">{% translate "Submitted" %}</span>
+      {% else %}<span class="badge badge-warn">{% translate "In progress" %}</span>{% endif %}
+    </div>
+    <div class="small muted">{{ c.template.get_kind_display }}</div>
+    {% if c.run %}
+      <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ c.counts.percent|default:0 }}" aria-label="{% translate 'Progress' %}"><span style="width:{{ c.counts.percent|default:0 }}%"></span></div>
+      <div class="small">{% blocktranslate with a=c.counts.answered t=c.counts.total %}{{ a }} of {{ t }} tasks answered{% endblocktranslate %}{% if c.counts.failed %} · <span class="neg">{% blocktranslate count n=c.counts.failed %}{{ n }} failed{% plural %}{{ n }} failed{% endblocktranslate %}</span>{% endif %}</div>
+      <a class="btn btn-block{% if c.run.is_submitted %} btn-secondary{% endif %}" href="{% url 'checklists:run' c.run.pk %}">{% if c.run.is_submitted %}{% translate "View" %}{% else %}{% translate "Continue" %}{% endif %}</a>
+    {% else %}
+      <form method="post" action="{% url 'checklists:start' %}">{% csrf_token %}
+        <input type="hidden" name="template" value="{{ c.template.pk }}">
+        <button class="btn btn-block" type="submit">{% translate "Start" %}</button>
+      </form>
+    {% endif %}
+  </div>
+{% empty %}
+  <div class="card"><p class="muted">{% translate "There are no checklists set up yet." %}{% if is_manager %} <a href="{% url 'checklists:template_create' %}">{% translate "Create one" %}</a>{% endif %}</p></div>
+{% endfor %}
+</div>
+
+{% if templates %}
+<details class="card">
+  <summary><strong>{% translate "Start an extra run (for example a second shift)" %}</strong></summary>
+  <form method="post" action="{% url 'checklists:start' %}" class="stacked" style="margin-top:10px">{% csrf_token %}
+    <div class="field"><label for="tpl">{% translate "Checklist" %}</label>
+      <select id="tpl" name="template">{% for t in templates %}<option value="{{ t.pk }}">{{ t.title }}</option>{% endfor %}</select></div>
+    <div class="field"><label for="lbl">{% translate "Run label" %}</label>
+      <input id="lbl" type="text" name="run_label" required maxlength="60" placeholder="{% translate 'e.g. Evening shift' %}"></div>
+    <button class="btn btn-secondary" type="submit">{% translate "Start extra run" %}</button>
+  </form>
+</details>
+{% endif %}
+{% endblock %}

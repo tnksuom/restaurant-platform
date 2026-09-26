@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% load i18n %}
+{% block content %}
+<p><a href="{% url 'checklists:run' run.pk %}#task-{{ response.pk }}">← {% translate "Back to checklist" %}</a></p>
+<h1>{% translate "Report a problem" %}</h1>
+<div class="card">
+  <p class="muted">{{ run.title }} · {{ response.task.text }}</p>
+  <form method="post" enctype="multipart/form-data" class="stacked" novalidate>{% csrf_token %}
+    {% include "core/form_fields.html" %}
+    <p class="small muted">{% translate "If the photo cannot be accepted, nothing is saved and you will see why, so you can try again." %}</p>
+    <button class="btn btn-block" type="submit">{% translate "Send report" %}</button>
+  </form>
+</div>
+{% endblock %}

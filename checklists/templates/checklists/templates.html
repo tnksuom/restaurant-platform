@@ -1,0 +1,24 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% translate "Checklist templates" %}{% endblock %}
+{% block content %}
+<div class="spread"><h1>{% translate "Checklist templates" %}</h1><a class="btn" href="{% url 'checklists:template_create' %}">{% translate "New checklist" %}</a></div>
+{% for t in templates %}
+<div class="card">
+  <div class="spread">
+    <div>
+      <h3><a href="{% url 'checklists:template_edit' t.pk %}">{{ t.title }}</a></h3>
+      <div class="small muted">{{ t.get_kind_display }} · {% blocktranslate count n=t.active_tasks.count %}{{ n }} task{% plural %}{{ n }} tasks{% endblocktranslate %} · {% blocktranslate with v=t.version %}version {{ v }}{% endblocktranslate %}</div>
+    </div>
+    <div class="row">
+      {% if t.is_active %}<span class="badge badge-ok">{% translate "Active" %}</span>{% else %}<span class="badge badge-muted">{% translate "Deactivated" %}</span>{% endif %}
+      <form method="post" action="{% url 'checklists:template_set_active' t.pk %}"{% if t.is_active %} data-confirm="{% translate 'Deactivate this checklist? No new runs can be started. History is kept.' %}"{% endif %}>{% csrf_token %}
+        <input type="hidden" name="active" value="{% if t.is_active %}0{% else %}1{% endif %}">
+        <button class="btn btn-secondary" type="submit">{% if t.is_active %}{% translate "Deactivate" %}{% else %}{% translate "Activate" %}{% endif %}</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% empty %}
+<div class="card"><p class="muted">{% translate "No checklists yet." %}</p></div>
+{% endfor %}
+{% endblock %}

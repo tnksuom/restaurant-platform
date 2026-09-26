@@ -1,0 +1,87 @@
+{% extends "base.html" %}{% load i18n ops %}
+{% block title %}{{ item.name }}{% endblock %}
+{% block content %}
+<p><a href="{% url 'inventory:list' %}">← {% translate "Inventory" %}</a></p>
+<h1>{{ item.name }}</h1>
+<div class="card">
+  <div class="spread">
+    <div>
+      <div class="muted small">{% translate "In stock" %}</div>
+      <div class="big">{{ item.current_quantity|qty }} {{ item.unit }}</div>
+    </div>
+    <div>
+      {% if not item.is_active %}<span class="badge badge-muted">{% translate "Deactivated" %}</span>
+      {% elif item.is_low %}<span class="badge badge-warn">{% translate "Low stock" %}</span>
+      {% else %}<span class="badge badge-ok">{% translate "OK" %}</span>{% endif %}
+    </div>
+  </div>
+  <dl class="kv small" style="margin-top:10px">
+    <dt>{% translate "Minimum" %}</dt><dd>{{ item.minimum_quantity|qty }} {{ item.unit }}</dd>
+    <dt>{% translate "Category" %}</dt><dd>{{ item.get_category_display }}</dd>
+    <dt>{% translate "Supplier" %}</dt><dd>{{ item.supplier_name|default:"—" }}</dd>
+  </dl>
+  {% if is_manager %}
+  <div class="row" style="margin-top:12px">
+    <a class="btn btn-secondary" href="{% url 'inventory:edit' item.pk %}">{% translate "Edit item" %}</a>
+    <form method="post" action="{% url 'inventory:set_active' item.pk %}"{% if item.is_active %} data-confirm="{% translate 'Deactivate this item? It will be hidden from stock entry but its history is kept.' %}"{% endif %}>{% csrf_token %}
+      <input type="hidden" name="active" value="{% if item.is_active %}0{% else %}1{% endif %}">
+      <button class="btn btn-secondary" type="submit">{% if item.is_active %}{% translate "Deactivate" %}{% else %}{% translate "Reactivate" %}{% endif %}</button>
+    </form>
+  </div>
+  {% endif %}
+</div>
+
+{% if item.is_active %}
+<h2 id="record">{% translate "Record stock" %}</h2>
+<div class="card">
+  <form method="post" novalidate>{% csrf_token %}
+    {{ form.idempotency_key }}
+    {% if form.non_field_errors %}<ul class="errorlist">{% for e in form.non_field_errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+    <fieldset class="choices">
+      <legend>{{ form.type.label }}</legend>
+      {% for radio in form.type %}<label class="choice">{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}
+    </fieldset>
+    {% if form.type.errors %}<ul class="errorlist">{% for e in form.type.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+    <div class="field">
+      <label for="{{ form.quantity.id_for_label }}">{{ form.quantity.label }} ({{ item.unit }})</label>
+      {{ form.quantity }}
+      {% if form.quantity.errors %}<ul class="errorlist">{% for e in form.quantity.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+      {% if form.quantity.help_text %}<span class="help">{{ form.quantity.help_text }}</span>{% endif %}
+    </div>
+    <div class="field">
+      {{ form.waste_reason.label_tag }} {{ form.waste_reason }}
+      {% if form.waste_reason.errors %}<ul class="errorlist">{% for e in form.waste_reason.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+      <span class="help">{{ form.waste_reason.help_text }}</span>
+    </div>
+    <div class="field">
+      {{ form.note.label_tag }} {{ form.note }}
+      {% if form.note.errors %}<ul class="errorlist">{% for e in form.note.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+      <span class="help">{{ form.note.help_text }}</span>
+    </div>
+    <button class="btn btn-block" type="submit">{% translate "Save" %}</button>
+  </form>
+</div>
+{% else %}
+<p class="msg msg-warning">{% translate "This item is deactivated, so no new stock can be recorded." %}</p>
+{% endif %}
+
+<h2>{% translate "History" %}</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>{% translate "When" %}</th><th>{% translate "Type" %}</th><th class="num">{% translate "Change" %}</th><th class="num">{% translate "Balance after" %}</th><th>{% translate "By" %}</th><th>{% translate "Reason / note" %}</th></tr></thead>
+  <tbody>
+  {% for m in page %}
+  <tr>
+    <td>{{ m.recorded_at|date:"j.n.Y H:i" }}</td>
+    <td>{{ m.get_type_display }}</td>
+    <td class="num {% if m.signed_quantity > 0 %}pos{% else %}neg{% endif %}">{{ m.signed_quantity|signed_qty }} {{ item.unit }}</td>
+    <td class="num">{{ m.balance_after|qty }} {{ item.unit }}</td>
+    <td>{{ m.actor.display_name }}{% if not m.actor.is_active %} <span class="small muted">({% translate "deactivated" %})</span>{% endif %}</td>
+    <td>{% if m.waste_reason %}<strong>{{ m.get_waste_reason_display }}</strong>{% if m.note %}: {% endif %}{% endif %}{{ m.note }}</td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="6" class="muted">{% translate "No stock has been recorded for this item yet." %}</td></tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+{% include "core/pagination.html" %}
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}{% load i18n ops %}
+{% block title %}{% translate "Inventory" %}{% endblock %}
+{% block content %}
+<div class="spread">
+  <h1>{% translate "Inventory" %}</h1>
+  {% if is_manager %}<a class="btn" href="{% url 'inventory:create' %}">{% translate "Add item" %}</a>{% endif %}
+</div>
+<p>
+  {% if low_count %}
+    <a class="badge badge-warn" href="?low=1">{% blocktranslate count n=low_count %}{{ n }} item low on stock{% plural %}{{ n }} items low on stock{% endblocktranslate %}</a>
+  {% else %}
+    <span class="badge badge-ok">{% translate "No items low on stock" %}</span>
+  {% endif %}
+</p>
+<form method="get" class="filters" role="search">
+  <div class="field"><label for="q">{% translate "Search" %}</label><input id="q" type="search" name="q" value="{{ q }}"></div>
+  <div class="field"><label for="category">{% translate "Category" %}</label>
+    <select id="category" name="category"><option value="">{% translate "All" %}</option>
+      {% for v, l in categories %}<option value="{{ v }}"{% if v == category %} selected{% endif %}>{{ l }}</option>{% endfor %}
+    </select></div>
+  {% if is_manager %}
+  <div class="field"><label for="status">{% translate "Status" %}</label>
+    <select id="status" name="status">
+      <option value="active"{% if status == "active" %} selected{% endif %}>{% translate "Active" %}</option>
+      <option value="inactive"{% if status == "inactive" %} selected{% endif %}>{% translate "Deactivated" %}</option>
+      <option value="all"{% if status == "all" %} selected{% endif %}>{% translate "All" %}</option>
+    </select></div>
+  {% endif %}
+  <div class="field checkbox"><input id="low" type="checkbox" name="low" value="1"{% if low_only %} checked{% endif %}><label for="low">{% translate "Low stock only" %}</label></div>
+  <div class="field"><button class="btn btn-secondary btn-block" type="submit">{% translate "Filter" %}</button></div>
+</form>
+<div class="table-wrap"><table>
+  <thead><tr><th>{% translate "Item" %}</th><th class="num">{% translate "In stock" %}</th><th class="num">{% translate "Minimum" %}</th><th>{% translate "Status" %}</th></tr></thead>
+  <tbody>
+  {% for item in page %}
+  <tr>
+    <td><a href="{% url 'inventory:detail' item.pk %}">{{ item.name }}</a><br><span class="small muted">{{ item.get_category_display }}{% if item.supplier_name %} · {{ item.supplier_name }}{% endif %}</span></td>
+    <td class="num"><strong>{{ item.current_quantity|qty }}</strong> {{ item.unit }}</td>
+    <td class="num">{{ item.minimum_quantity|qty }} {{ item.unit }}</td>
+    <td>{% if not item.is_active %}<span class="badge badge-muted">{% translate "Deactivated" %}</span>{% elif item.is_low %}<span class="badge badge-warn">{% translate "Low stock" %}</span>{% else %}<span class="badge badge-ok">{% translate "OK" %}</span>{% endif %}</td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="4" class="muted">{% if is_manager %}{% translate "No items yet. Add your first inventory item." %}{% else %}{% translate "No items match." %}{% endif %}</td></tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+{% include "core/pagination.html" %}
+{% endblock %}

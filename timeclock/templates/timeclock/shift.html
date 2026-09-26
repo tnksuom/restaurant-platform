@@ -1,0 +1,42 @@
+{% extends "base.html" %}{% load i18n ops %}
+{% block title %}{% translate "Shift" %}{% endblock %}
+{% block content %}
+<p><a href="{% if is_manager %}{% url 'timeclock:timesheets' %}?employee={{ shift.employee_id }}{% else %}{% url 'timeclock:mine' %}{% endif %}">← {% translate "Back" %}</a></p>
+<h1>{% blocktranslate with name=shift.employee.display_name d=shift.clock_in_at|date:"j.n.Y" %}{{ name }} · shift {{ d }}{% endblocktranslate %}</h1>
+<div class="card">
+  <dl class="kv">
+    <dt>{% translate "Clock-in" %}</dt><dd>{{ shift.clock_in_at|date:"l j.n.Y H:i:s" }}</dd>
+    <dt>{% translate "Clock-out" %}</dt><dd>{% if shift.clock_out_at %}{{ shift.clock_out_at|date:"l j.n.Y H:i:s" }}{% else %}<span class="badge badge-warn">{% translate "Still open" %}</span>{% endif %}</dd>
+    <dt>{% translate "Breaks" %}</dt><dd>{% for b in breaks %}{{ b.start_at|date:"H:i" }}–{% if b.end_at %}{{ b.end_at|date:"H:i" }}{% else %}…{% endif %}{% if not forloop.last %}, {% endif %}{% empty %}—{% endfor %} ({{ break_seconds|hm }})</dd>
+    <dt>{% translate "Worked" %}</dt><dd>{% if worked is not None %}<strong>{{ worked|hm }}</strong> ({{ worked|hours }} h){% else %}{{ provisional|hm }} <span class="muted">({% translate "provisional, shift still open" %})</span>{% endif %}</dd>
+  </dl>
+  {% if shift.is_corrected %}<p><span class="badge badge-warn">{% translate "This shift has been corrected" %}</span></p>{% endif %}
+  {% if is_manager %}<a class="btn btn-secondary" href="{% url 'timeclock:correct' shift.pk %}">{% translate "Correct this shift" %}</a>{% endif %}
+</div>
+
+{% if corrections %}
+<h2>{% translate "Correction history" %}</h2>
+{% for item in corrections %}
+<div class="card">
+  <p><strong>{{ item.c.changed_by.display_name }}</strong> · {{ item.c.changed_at|date:"j.n.Y H:i" }}</p>
+  <p><strong>{% translate "Reason" %}:</strong> {{ item.c.reason|linebreaksbr }}</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th></th><th>{% translate "Before" %}</th><th>{% translate "After" %}</th></tr></thead>
+    <tbody>
+      <tr><th>{% translate "Clock-in" %}</th><td>{{ item.before.clock_in_at|date:"j.n.Y H:i:s" }}</td><td>{{ item.after.clock_in_at|date:"j.n.Y H:i:s" }}</td></tr>
+      <tr><th>{% translate "Clock-out" %}</th><td>{{ item.before.clock_out_at|date:"j.n.Y H:i:s"|default:"—" }}</td><td>{{ item.after.clock_out_at|date:"j.n.Y H:i:s"|default:"—" }}</td></tr>
+      <tr><th>{% translate "Breaks" %}</th>
+        <td>{% for s, e in item.before.breaks %}{{ s|date:"H:i" }}–{{ e|date:"H:i"|default:"…" }}{% if not forloop.last %}, {% endif %}{% empty %}—{% endfor %}</td>
+        <td>{% for s, e in item.after.breaks %}{{ s|date:"H:i" }}–{{ e|date:"H:i"|default:"…" }}{% if not forloop.last %}, {% endif %}{% empty %}—{% endfor %}</td></tr>
+    </tbody>
+  </table></div>
+</div>
+{% endfor %}
+{% endif %}
+
+<h2>{% translate "Original clock actions" %}</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>{% translate "When" %}</th><th>{% translate "Action" %}</th><th>{% translate "By" %}</th></tr></thead>
+  <tbody>{% for ev in events %}<tr><td>{{ ev.at|date:"j.n.Y H:i:s" }}</td><td>{{ ev.get_type_display }}</td><td>{{ ev.actor.display_name }}</td></tr>{% empty %}<tr><td colspan="3" class="muted">—</td></tr>{% endfor %}</tbody>
+</table></div>
+{% endblock %}

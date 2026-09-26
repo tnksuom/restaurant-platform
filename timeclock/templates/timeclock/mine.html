@@ -1,0 +1,17 @@
+{% extends "base.html" %}{% load i18n ops %}
+{% block title %}{% translate "My hours" %}{% endblock %}
+{% block content %}
+<h1>{% translate "My hours" %}</h1>
+<form method="get" class="filters">
+  <div class="field"><label for="from">{% translate "From" %}</label><input id="from" type="date" name="from" value="{{ date_from|date:'Y-m-d' }}"></div>
+  <div class="field"><label for="to">{% translate "To" %}</label><input id="to" type="date" name="to" value="{{ date_to|date:'Y-m-d' }}"></div>
+  <div class="field"><button class="btn btn-secondary btn-block" type="submit">{% translate "Show" %}</button></div>
+</form>
+<div class="card">
+  <div class="small muted">{% translate "Total of closed shifts" %}</div>
+  <div class="big">{{ total|hours }} h</div>
+  <div class="small">{{ total|hm }}{% if open_count %} · {% blocktranslate count n=open_count %}{{ n }} open shift not included{% plural %}{{ n }} open shifts not included{% endblocktranslate %}{% endif %}</div>
+</div>
+<p class="small muted">{% translate "A shift is counted on the date it started (restaurant local time), even if it ends after midnight. Hours are rounded only for display." %}</p>
+{% include "timeclock/_shift_table.html" with show_employee=False %}
+{% endblock %}

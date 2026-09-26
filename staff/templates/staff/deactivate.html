@@ -1,0 +1,19 @@
+{% extends "base.html" %}{% load i18n %}
+{% block content %}
+<h1>{% blocktranslate with name=target.display_name %}Deactivate {{ name }}?{% endblocktranslate %}</h1>
+<div class="card stack">
+  {% if error %}<p class="msg msg-error">{{ error }}</p>{% endif %}
+  {% if open_shift %}
+    <p class="msg msg-warning">{% blocktranslate with t=open_shift.clock_in_at|date:"j.n.Y H:i" %}This person is still clocked in (since {{ t }}). Close the shift with a time correction first.{% endblocktranslate %}</p>
+    <a class="btn btn-secondary" href="{% url 'timeclock:correct' open_shift.pk %}">{% translate "Correct this shift" %}</a>
+  {% else %}
+    <p>{% translate "They will be signed out and will not be able to sign in. Their timesheets, checklists and stock records stay in the history under their name. You can reactivate the account later." %}</p>
+    <form method="post">{% csrf_token %}
+      <div class="row">
+        <button class="btn btn-danger" type="submit">{% translate "Deactivate account" %}</button>
+        <a class="btn btn-secondary" href="{% url 'staff:detail' target.pk %}">{% translate "Cancel" %}</a>
+      </div>
+    </form>
+  {% endif %}
+</div>
+{% endblock %}
