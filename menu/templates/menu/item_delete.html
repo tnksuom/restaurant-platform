@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% load i18n %}
+{% block content %}
+<h1>{% blocktranslate with n=item.name %}Delete {{ n }}?{% endblocktranslate %}</h1>
+<div class="card stack">
+  <p>{% translate "The dish and its photo are removed from the menu for good. To take it off the menu for now, unpublish it or mark it unavailable instead." %}</p>
+  <form method="post">{% csrf_token %}
+    <div class="row">
+      <button class="btn btn-danger" type="submit">{% translate "Delete dish" %}</button>
+      <a class="btn btn-secondary" href="{% url 'menu:item_edit' item.pk %}">{% translate "Cancel" %}</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

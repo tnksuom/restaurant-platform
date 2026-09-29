@@ -248,3 +248,123 @@ class Command(BaseCommand):
         if not ts.open_shift(sara):
             with at(start_eve - timedelta(hours=1)):
                 ts.clock_in(sara)
+
+        self.build_public(r, mia, today)
+
+    # ---------------------------------------------------------------- public website and menu
+
+    def build_public(self, r, manager, today):
+        """Example public content. Everything is clearly placeholder, to be replaced with the real restaurant's."""
+        from datetime import time as dtime
+
+        from menu import services as ms
+        from website import services as ws
+        from website.models import OpeningHours, PublicProfile
+
+        store = ms.public_store()
+        profile = PublicProfile.objects.create(
+            restaurant=r,
+            tagline="Vietnamese street food and family recipes (example text)",
+            introduction=(
+                "This is example text for the demo restaurant. Replace it with a few sentences about your "
+                "restaurant: who cooks, what you are known for, and why guests come back."
+            ),
+            street_address="Kauppakatu 12", postal_code="40100", city="Jyväskylä", country="Finland",
+            phone="+358 40 000 0000", email="hello@example.com",
+            logo_key=store.write(placeholder_logo(), "png"),
+            hero_key=store.write(placeholder_photo("Bistro Demo", (1600, 1200), (46, 94, 74), bowls=3), "jpg"),
+            hero_alt="Example photo: bowls of noodle soup on a wooden table",
+        )
+        for weekday in range(5):
+            OpeningHours.objects.create(restaurant=r, weekday=weekday, opens=dtime(10, 30), closes=dtime(21, 0))
+        OpeningHours.objects.create(restaurant=r, weekday=5, opens=dtime(12, 0), closes=dtime(2, 0))
+        OpeningHours.objects.create(restaurant=r, weekday=6, opens=dtime(12, 0), closes=dtime(18, 0))
+
+        ws.save_promotion(manager, None, title="Lunch deal: phở + iced coffee 15 €",
+                          body="Weekdays 10:30–14:00. Example promotion.", starts_on=today - timedelta(days=5),
+                          ends_on=today + timedelta(days=25), is_published=True)
+        ws.save_promotion(manager, None, title="Summer terrace", body="This one has ended, so it no longer shows.",
+                          starts_on=today - timedelta(days=90), ends_on=today - timedelta(days=10), is_published=True)
+        ws.save_promotion(manager, None, title="Christmas menu", body="Starts later, so it is not shown yet.",
+                          starts_on=today + timedelta(days=60), ends_on=None, is_published=True)
+
+        menu = [
+            ("Starters", [
+                ("Gỏi cuốn", "Fresh rice paper rolls with shrimp, herbs and peanut sauce.", "8.50",
+                 ["CRUSTACEANS", "PEANUTS", "SOY"], ["G", "M"], True, (212, 140, 90)),
+                ("Chả giò", "Crispy fried spring rolls with pork and glass noodles.", "8.90",
+                 ["GLUTEN", "EGGS", "FISH"], ["M"], True, None),
+                ("Edamame", "Steamed soybeans with sea salt.", "5.50", ["SOY"], ["VE", "G"], True, None),
+            ]),
+            ("Noodle soups", [
+                ("Phở bò", "Slow-cooked beef broth, rice noodles, sliced beef, herbs and lime.", "14.50",
+                 ["FISH", "SOY"], ["G", "M"], True, (150, 82, 44)),
+                ("Phở gà", "Chicken broth with rice noodles, chicken and herbs.", "13.90",
+                 ["FISH"], ["G", "M"], True, None),
+                ("Phở chay", "Vegetable broth with tofu, mushrooms and herbs.", "13.50",
+                 ["SOY"], ["VE", "G"], False, None),  # sold out today
+            ]),
+            ("Rice and noodles", [
+                ("Bún chả", "Grilled pork patties, rice vermicelli, herbs and nước chấm.", "15.90",
+                 ["FISH", "SOY", "SESAME"], ["M"], True, (120, 70, 40)),
+                ("Cơm tấm", "Broken rice with grilled pork chop and fried egg.", "15.50",
+                 ["EGGS", "FISH", "SOY"], ["M", "G"], True, None),
+            ]),
+            ("Drinks", [
+                ("Cà phê sữa đá", "Vietnamese iced coffee with condensed milk.", "4.90", ["MILK"], ["V", "G"], True, None),
+                ("Lime soda", "Fresh lime, soda and a little sugar.", "3.90", [], ["VE", "G"], True, None),
+            ]),
+        ]
+        for cat_name, dishes in menu:
+            category = ms.create_category(manager, cat_name)
+            for name, desc, price, allergens, diet, available, colour in dishes:
+                photo = None
+                if colour:
+                    photo = SimpleUploadedFile(f"{name}.jpg", placeholder_photo(name, (1200, 900), colour), "image/jpeg")
+                ms.save_item(manager, None, {
+                    "name": name, "category": category.pk, "description": desc, "price": price,
+                    "allergens": allergens, "diet_labels": diet, "status": "PUBLISHED",
+                    "is_available": available, "when_unavailable": "MARK",
+                }, photo=photo)
+        drafts = ms.create_category(manager, "Desserts")
+        ms.save_item(manager, None, {
+            "name": "Chè ba màu", "category": drafts.pk, "description": "Three-colour dessert. Draft: not public yet.",
+            "price": "6.50", "status": "DRAFT", "is_available": True, "when_unavailable": "MARK",
+        })
+
+
+def placeholder_photo(label, size, colour, bowls=1):
+    """A plain illustration with 'EXAMPLE PHOTO' on it, so nobody mistakes it for the real food."""
+    w, h = size
+    img = Image.new("RGB", size, colour)
+    d = ImageDraw.Draw(img)
+    for y in range(h):  # soft vertical shading
+        f = 0.75 + 0.35 * y / h
+        d.line((0, y, w, y), fill=tuple(min(255, int(c * f)) for c in colour))
+    d.rectangle((0, int(h * 0.62), w, h), fill=(110, 78, 52))  # table
+    spots = [0.5] if bowls == 1 else [0.25, 0.55, 0.8][:bowls]
+    for i, cx in enumerate(spots):
+        r = int(min(w, h) * (0.24 if bowls == 1 else 0.16))
+        x, y = int(w * cx), int(h * (0.6 if i % 2 == 0 else 0.66))
+        d.ellipse((x - r, y - r // 2, x + r, y + r // 2 + r // 3), fill=(245, 242, 235), outline=(210, 205, 195), width=6)
+        d.ellipse((x - int(r * .8), y - int(r * .38), x + int(r * .8), y + int(r * .3)), fill=(205, 150, 80))
+        for k in range(5):
+            d.arc((x - int(r * .6) + k * 9, y - int(r * .25), x + int(r * .3) + k * 9, y + int(r * .2)), 200, 340,
+                  fill=(250, 238, 205), width=5)
+    d.rectangle((24, 24, 330, 84), fill=(255, 255, 255))
+    d.text((40, 36), "EXAMPLE PHOTO", fill=(30, 30, 30), font_size=26)
+    d.text((40, 64), label[:28], fill=(90, 90, 90), font_size=14)
+    buf = io.BytesIO()
+    img.save(buf, "JPEG", quality=85)
+    return buf.getvalue()
+
+
+def placeholder_logo():
+    img = Image.new("RGBA", (256, 256), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    d.ellipse((0, 0, 255, 255), fill=(46, 94, 74))
+    d.ellipse((18, 18, 237, 237), outline=(250, 247, 241), width=6)
+    d.text((128, 128), "BD", fill=(250, 247, 241), font_size=96, anchor="mm")
+    buf = io.BytesIO()
+    img.save(buf, "PNG")
+    return buf.getvalue()

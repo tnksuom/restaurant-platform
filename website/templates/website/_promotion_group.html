@@ -1,0 +1,9 @@
+{% load i18n %}{% if items %}
+<h2>{{ heading }}</h2>
+{% for p in items %}
+<a class="card card-link" href="{% url 'website:promotion_edit' p.pk %}">
+  <div class="spread"><strong>{{ p.title }}</strong><span class="badge badge-{{ badge }}">{{ p.starts_on|date:"j.n.Y" }} – {% if p.ends_on %}{{ p.ends_on|date:"j.n.Y" }}{% else %}{% translate "no end date" %}{% endif %}</span></div>
+  {% if p.body %}<p class="small" style="margin:.3rem 0 0">{{ p.body|truncatechars:160 }}</p>{% endif %}
+</a>
+{% endfor %}
+{% endif %}

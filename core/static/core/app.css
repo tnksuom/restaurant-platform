@@ -132,3 +132,15 @@ dl.kv dd { margin: 0; }
 tfoot th { color: var(--text); }
 
 .stats { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+/* Menu editor */
+.menu-row { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-top: 1px solid var(--border); scroll-margin-top: 72px; }
+.menu-row:first-of-type { margin-top: 10px; }
+.menu-row-main { flex: 1; min-width: 0; display: grid; gap: 4px; }
+.thumb { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; flex: none; background: var(--info-bg); display: block; }
+.thumb-empty { border: 1px dashed var(--border); background: transparent; }
+.price { font-variant-numeric: tabular-nums; white-space: nowrap; }
+fieldset.checks { border: 0; padding: 0; margin: 0 0 14px; min-width: 0; }
+fieldset.checks legend { font-weight: 600; margin-bottom: 4px; padding: 0; }
+.check-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0 12px; }
+.check-grid .checkbox, fieldset.checks .checkbox { min-height: 44px; }
+.check-grid ul, fieldset.checks ul { list-style: none; padding: 0; margin: 0; }

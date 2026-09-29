@@ -1,0 +1,50 @@
+{% load i18n static %}<!doctype html>
+<html lang="{{ LANGUAGE_CODE|default:'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ site_restaurant.name }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ profile.tagline|default:site_restaurant.name }}{% endblock %}">
+  <meta property="og:title" content="{{ site_restaurant.name }}">
+  <meta property="og:type" content="restaurant">
+  {% if profile.hero_key %}<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% url 'website:image' profile.hero_key %}">{% endif %}
+  <link rel="stylesheet" href="{% static 'website/site.css' %}">
+  {% if structured_data %}<script type="application/ld+json">{{ structured_data }}</script>{% endif %}
+</head>
+<body>
+<a class="skip" href="#main">{% translate "Skip to content" %}</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="{% url 'website:home' %}">
+      {% if profile.logo_key %}<img src="{% url 'website:image' profile.logo_key %}" alt="" width="44" height="44">{% endif %}
+      <span>{{ site_restaurant.name }}</span>
+    </a>
+    <nav class="site-nav" aria-label="{% translate 'Main' %}">
+      <a href="{% url 'website:home' %}"{% if page == "home" %} aria-current="page"{% endif %}>{% translate "Home" %}</a>
+      <a href="{% url 'website:menu' %}"{% if page == "menu" %} aria-current="page"{% endif %}>{% translate "Menu" %}</a>
+      <a href="{% url 'website:contact' %}"{% if page == "contact" %} aria-current="page"{% endif %}>{% translate "Contact" %}</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+{% block content %}{% endblock %}
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <strong>{{ site_restaurant.name }}</strong>
+      {% if profile.has_address %}<p>{{ profile.street_address }}<br>{{ profile.postal_code }} {{ profile.city }}</p>{% endif %}
+    </div>
+    <div>
+      {% if profile.phone %}<p><a href="tel:{{ profile.phone|cut:' ' }}">{{ profile.phone }}</a></p>{% endif %}
+      {% if profile.email %}<p><a href="mailto:{{ profile.email }}">{{ profile.email }}</a></p>{% endif %}
+    </div>
+    <div>
+      <p>{% include "website/_open_status.html" %}</p>
+      <p><a href="{% url 'website:contact' %}#hours">{% translate "Opening hours" %}</a></p>
+    </div>
+  </div>
+  <div class="wrap footer-small"><a href="{% url 'login' %}">{% translate "Staff sign-in" %}</a></div>
+</footer>
+</body>
+</html>

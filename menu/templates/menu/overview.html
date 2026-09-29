@@ -1,0 +1,69 @@
+{% extends "base.html" %}{% load i18n ops %}
+{% block title %}{% translate "Menu" %}{% endblock %}
+{% block content %}
+<div class="spread">
+  <h1>{% translate "Menu" %}</h1>
+  <div class="row">
+    <a class="btn btn-secondary" href="{% url 'website:menu' %}" target="_blank" rel="noopener">{% translate "View public menu" %}</a>
+    {% if sections %}<a class="btn" href="{% url 'menu:item_create' %}">{% translate "Add dish" %}</a>{% endif %}
+  </div>
+</div>
+<p class="small muted">
+  {% blocktranslate count n=counts.published %}{{ n }} published dish{% plural %}{{ n }} published dishes{% endblocktranslate %}
+  · {% blocktranslate count n=counts.draft %}{{ n }} draft{% plural %}{{ n }} drafts{% endblocktranslate %}
+  {% if counts.unavailable %} · <span class="neg">{% blocktranslate count n=counts.unavailable %}{{ n }} unavailable{% plural %}{{ n }} unavailable{% endblocktranslate %}</span>{% endif %}
+</p>
+
+{% for section in sections %}
+<section class="card" id="category-{{ section.category.pk }}">
+  <div class="spread">
+    <h2 style="margin:0">{{ section.category.name }}</h2>
+    <div class="row">
+      <form method="post" action="{% url 'menu:category_move' section.category.pk 'up' %}">{% csrf_token %}<button class="btn btn-secondary" type="submit" aria-label="{% blocktranslate with c=section.category.name %}Move {{ c }} up{% endblocktranslate %}"{% if forloop.first %} disabled{% endif %}>↑</button></form>
+      <form method="post" action="{% url 'menu:category_move' section.category.pk 'down' %}">{% csrf_token %}<button class="btn btn-secondary" type="submit" aria-label="{% blocktranslate with c=section.category.name %}Move {{ c }} down{% endblocktranslate %}"{% if forloop.last %} disabled{% endif %}>↓</button></form>
+      <a class="btn btn-secondary" href="{% url 'menu:category_edit' section.category.pk %}">{% translate "Rename" %}</a>
+    </div>
+  </div>
+
+  {% for item in section.items %}
+  <div class="menu-row" id="item-{{ item.pk }}">
+    {% if item.photo_key %}<img class="thumb" src="{% url 'website:image' item.photo_key %}" alt="" width="64" height="64" loading="lazy">{% else %}<span class="thumb thumb-empty" aria-hidden="true"></span>{% endif %}
+    <div class="menu-row-main">
+      <div class="spread">
+        <a href="{% url 'menu:item_edit' item.pk %}"><strong>{{ item.name }}</strong></a>
+        <strong class="price">{{ item.price|euro }}</strong>
+      </div>
+      <div class="row small">
+        {% if item.is_published %}<span class="badge badge-ok">{% translate "Published" %}</span>{% else %}<span class="badge badge-muted">{% translate "Draft" %}</span>{% endif %}
+        {% if not item.is_available %}<span class="badge badge-warn">{% if item.when_unavailable == "HIDE" %}{% translate "Unavailable · hidden" %}{% else %}{% translate "Unavailable · shown as sold out" %}{% endif %}</span>{% endif %}
+        {% for code, label in item.get_diet_labels_display %}<span class="badge" title="{{ label }}">{{ code }}</span>{% endfor %}
+      </div>
+      <div class="row" style="margin-top:6px">
+        <form method="post" action="{% url 'menu:item_availability' item.pk %}">{% csrf_token %}
+          <input type="hidden" name="available" value="{% if item.is_available %}0{% else %}1{% endif %}">
+          <button class="btn btn-secondary" type="submit">{% if item.is_available %}{% translate "Mark unavailable" %}{% else %}{% translate "Mark available" %}{% endif %}</button>
+        </form>
+        <form method="post" action="{% url 'menu:item_status' item.pk %}">{% csrf_token %}
+          <input type="hidden" name="status" value="{% if item.is_published %}DRAFT{% else %}PUBLISHED{% endif %}">
+          <button class="btn btn-secondary" type="submit">{% if item.is_published %}{% translate "Unpublish" %}{% else %}{% translate "Publish" %}{% endif %}</button>
+        </form>
+        <form method="post" action="{% url 'menu:item_move' item.pk 'up' %}">{% csrf_token %}<button class="btn btn-secondary" type="submit" aria-label="{% blocktranslate with d=item.name %}Move {{ d }} up{% endblocktranslate %}"{% if forloop.first %} disabled{% endif %}>↑</button></form>
+        <form method="post" action="{% url 'menu:item_move' item.pk 'down' %}">{% csrf_token %}<button class="btn btn-secondary" type="submit" aria-label="{% blocktranslate with d=item.name %}Move {{ d }} down{% endblocktranslate %}"{% if forloop.last %} disabled{% endif %}>↓</button></form>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <p class="muted">{% translate "No dishes in this category yet." %} <a href="{% url 'menu:item_create' %}?category={{ section.category.pk }}">{% translate "Add one" %}</a></p>
+  {% endfor %}
+</section>
+{% empty %}
+<div class="card"><p>{% translate "The menu is empty. Start by adding a category, such as Starters or Drinks." %}</p></div>
+{% endfor %}
+
+<div class="card">
+  <form method="post" action="{% url 'menu:category_create' %}" class="row" style="align-items:flex-end">{% csrf_token %}
+    <div class="field" style="flex:1 1 220px;margin:0"><label for="id_name">{% translate "New category" %}</label>{{ category_form.name }}</div>
+    <button class="btn" type="submit">{% translate "Add category" %}</button>
+  </form>
+</div>
+{% endblock %}

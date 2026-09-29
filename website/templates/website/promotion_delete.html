@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% load i18n %}
+{% block content %}
+<h1>{% blocktranslate with t=promotion.title %}Delete “{{ t }}”?{% endblocktranslate %}</h1>
+<div class="card stack">
+  <p>{% translate "It disappears from the website and from this list. To hide it for now, edit it and untick “Show on the website” instead." %}</p>
+  <form method="post">{% csrf_token %}
+    <div class="row">
+      <button class="btn btn-danger" type="submit">{% translate "Delete promotion" %}</button>
+      <a class="btn btn-secondary" href="{% url 'website:promotion_edit' promotion.pk %}">{% translate "Cancel" %}</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

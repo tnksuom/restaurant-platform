@@ -54,7 +54,10 @@ class SmokeTests(TestCase):
                 reverse("timeclock:timesheets") + "?from=2026-08-01&to=2030-01-01",
                 reverse("timeclock:correct", args=[self.shift.pk]),
                 reverse("dashboard:home"), reverse("dashboard:home") + "?date=2026-09-01",
+                reverse("menu:overview"), reverse("menu:item_create"), reverse("website:promotions"),
+                reverse("website:promotion_create"),
             ]
+        common += [reverse("website:home"), reverse("website:menu"), reverse("website:contact")]
         return common
 
     def test_every_page_renders_for_every_role(self):
