@@ -53,6 +53,7 @@ class SmokeTests(TestCase):
                 reverse("checklists:issues"), reverse("checklists:issues") + "?status=all",
                 reverse("timeclock:timesheets") + "?from=2026-08-01&to=2030-01-01",
                 reverse("timeclock:correct", args=[self.shift.pk]),
+                reverse("dashboard:home"), reverse("dashboard:home") + "?date=2026-09-01",
             ]
         return common
 

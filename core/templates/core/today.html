@@ -29,6 +29,10 @@
     <p class="small">{% translate "Record deliveries, use and waste" %}</p>
   </a>
   {% if is_manager %}
+  <a class="card card-link" href="{% url 'dashboard:home' %}">
+    <h3>{% translate "Dashboard" %}</h3>
+    <p class="small">{% translate "Staff, hours, checklists, issues, stock and temperatures in one place" %}</p>
+  </a>
   <a class="card card-link" href="{% url 'checklists:issues' %}">
     <h3>{% translate "Open issues" %}</h3>
     <p class="big{% if open_issues %} neg{% endif %}">{{ open_issues }}</p>

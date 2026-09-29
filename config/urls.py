@@ -12,4 +12,5 @@ urlpatterns = [
     path("inventory/", include("inventory.urls")),
     path("checklists/", include("checklists.urls")),
     path("time/", include("timeclock.urls")),
+    path("dashboard/", include("dashboard.urls")),
 ]
