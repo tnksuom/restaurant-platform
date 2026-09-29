@@ -1,0 +1,51 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: restaurant
+          POSTGRES_PASSWORD: restaurant
+          POSTGRES_DB: restaurant
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U restaurant"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgres://restaurant:restaurant@localhost:5432/restaurant
+      DJANGO_SECRET_KEY: ci-only-not-secret
+      DJANGO_DEBUG: "false"
+      RESTAURANT_TIME_ZONE: Europe/Helsinki
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Migrations are complete
+        run: python manage.py makemigrations --check --dry-run
+      - name: Deployment checks
+        run: python manage.py check --deploy --fail-level ERROR
+        env:
+          DJANGO_ALLOWED_HOSTS: example.com
+      - name: Apply migrations to a clean database
+        run: python manage.py migrate --noinput
+      - name: Run tests
+        run: python manage.py test --noinput --verbosity 2
