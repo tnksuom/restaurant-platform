@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "inventory",
     "checklists",
     "timeclock",
+    "dashboard",
 ]
 
 MIDDLEWARE = [

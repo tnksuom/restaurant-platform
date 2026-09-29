@@ -23,6 +23,7 @@
         <li><a href="{% url 'inventory:list' %}">{% translate "Inventory" %}</a></li>
         {% if is_manager %}
         <li class="sep" aria-hidden="true"></li>
+        <li><a href="{% url 'dashboard:home' %}">{% translate "Dashboard" %}</a></li>
         <li><a href="{% url 'checklists:review' %}">{% translate "Checklist review" %}</a></li>
         <li><a href="{% url 'checklists:issues' %}">{% translate "Issues" %}</a></li>
         <li><a href="{% url 'checklists:templates' %}">{% translate "Checklist templates" %}</a></li>

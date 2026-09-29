@@ -1,0 +1,188 @@
+{% extends "base.html" %}{% load i18n ops %}
+{% block title %}{% translate "Dashboard" %}{% endblock %}
+{% block content %}
+{% with b=board %}
+<div class="spread">
+  <h1>{% if b.is_today %}{% translate "Today's operation" %}{% else %}{% blocktranslate with d=b.day|date:"l j.n.Y" %}Operation on {{ d }}{% endblocktranslate %}{% endif %}</h1>
+</div>
+<form method="get" class="filters" aria-label="{% translate 'Choose a date' %}">
+  <div class="field"><label for="date">{% translate "Business date" %}</label><input id="date" type="date" name="date" value="{{ b.day|date:'Y-m-d' }}"></div>
+  <div class="field"><button class="btn btn-secondary btn-block" type="submit">{% translate "Show" %}</button></div>
+  {% if not b.is_today %}<div class="field"><a class="btn btn-secondary btn-block" href="{% url 'dashboard:home' %}">{% translate "Back to today" %}</a></div>{% endif %}
+</form>
+<p class="small muted">{% blocktranslate with t=b.generated_at|date:"H:i" %}Updated {{ t }}{% endblocktranslate %} · <a href="{{ request.get_full_path }}">{% translate "Refresh" %}</a></p>
+
+{# ---------- headline tiles (US-07.01) ---------- #}
+<div class="cards stats">
+  <a class="card card-link" href="#staff">
+    <div class="small muted">{% translate "On shift now" %}</div>
+    <div class="big">{{ b.staff_on_shift|length }}</div>
+    <div class="small">{% if b.on_break_count %}{% blocktranslate count n=b.on_break_count %}{{ n }} on break{% plural %}{{ n }} on break{% endblocktranslate %}{% else %}{% translate "clocked in" %}{% endif %}</div>
+  </a>
+  <a class="card card-link" href="#hours">
+    <div class="small muted">{% translate "Hours worked" %}</div>
+    <div class="big">{{ b.hours.closed_seconds|hours }} h</div>
+    <div class="small">{% if b.hours.open_shifts %}+ {{ b.hours.provisional_seconds|hours }} h {% translate "in progress" %}{% else %}{% translate "closed shifts" %}{% endif %}</div>
+  </a>
+  <a class="card card-link" href="#checklists">
+    <div class="small muted">{% translate "Checklists submitted" %}</div>
+    <div class="big">{{ b.checklists.submitted }} / {{ b.checklists.expected }}</div>
+    <div class="small">{% if b.checklists.pending_required %}<span class="neg">{% blocktranslate count n=b.checklists.pending_required %}{{ n }} required task open{% plural %}{{ n }} required tasks open{% endblocktranslate %}</span>{% elif b.checklists.expected %}{% translate "no required tasks open" %}{% else %}{% translate "none expected" %}{% endif %}</div>
+  </a>
+  <a class="card card-link" href="#issues">
+    <div class="small muted">{% translate "Open issues" %}</div>
+    <div class="big{% if b.open_issues %} neg{% endif %}">{{ b.open_issues|length }}</div>
+    <div class="small">{% blocktranslate count n=b.resolved_issues|length %}{{ n }} resolved this day{% plural %}{{ n }} resolved this day{% endblocktranslate %}</div>
+  </a>
+  <a class="card card-link" href="#stock">
+    <div class="small muted">{% translate "Low stock" %}</div>
+    <div class="big{% if b.low_stock %} neg{% endif %}">{{ b.low_stock|length }}</div>
+    <div class="small">{% translate "items at or below minimum" %}</div>
+  </a>
+  <a class="card card-link" href="#temps">
+    <div class="small muted">{% translate "Flagged temperatures" %}</div>
+    <div class="big{% if b.flagged_temperatures %} neg{% endif %}">{{ b.flagged_temperatures|length }}</div>
+    <div class="small">{% translate "outside the set range" %}</div>
+  </a>
+</div>
+
+{# ---------- staff status (US-07.05) ---------- #}
+<h2 id="staff">{% translate "Staff on shift now" %}</h2>
+{% if b.staff_on_shift %}
+<div class="table-wrap"><table>
+  <thead><tr><th>{% translate "Staff" %}</th><th>{% translate "Status" %}</th><th>{% translate "Since" %}</th><th class="num">{% translate "Worked so far" %}</th></tr></thead>
+  <tbody>
+  {% for s in b.staff_on_shift %}
+  <tr>
+    <td><a href="{% url 'timeclock:shift' s.shift.pk %}">{{ s.employee.display_name }}</a></td>
+    <td>{% if s.on_break %}<span class="badge badge-warn">{% blocktranslate with t=s.break_started_at|date:"H:i" %}On break since {{ t }}{% endblocktranslate %}</span>{% else %}<span class="badge badge-ok">{% translate "Working" %}</span>{% endif %}</td>
+    <td>{% if s.started_before_today %}{{ s.shift.clock_in_at|date:"D j.n. H:i" }}{% else %}{{ s.shift.clock_in_at|date:"H:i" }}{% endif %}</td>
+    <td class="num">{{ s.provisional|hm }}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+<p class="small muted">{% translate "Worked so far is provisional until the person clocks out. Breaks are not counted." %}</p>
+{% else %}
+<p class="muted">{% translate "Nobody is clocked in right now." %}</p>
+{% endif %}
+
+<h2 id="hours">{% translate "Hours" %}</h2>
+<div class="card">
+  <dl class="kv">
+    <dt>{% translate "Closed shifts" %}</dt><dd>{{ b.hours.closed_shifts }} · <strong>{{ b.hours.closed_seconds|hours }} h</strong> ({{ b.hours.closed_seconds|hm }})</dd>
+    <dt>{% translate "Still open" %}</dt><dd>{{ b.hours.open_shifts }}{% if b.hours.open_shifts %} · {{ b.hours.provisional_seconds|hours }} h {% translate "so far (provisional)" %}{% endif %}</dd>
+    <dt>{% translate "People" %}</dt><dd>{{ b.hours.people }}</dd>
+  </dl>
+  <p class="small muted">{% translate "Counts shifts that started on this date, restaurant local time." %} <a href="{% url 'timeclock:timesheets' %}?from={{ b.day|date:'Y-m-d' }}&to={{ b.day|date:'Y-m-d' }}">{% translate "Open timesheets" %}</a></p>
+</div>
+
+{# ---------- checklist status (US-07.02) ---------- #}
+<h2 id="checklists">{% translate "Checklists" %}</h2>
+{% if b.checklists.expected %}
+<div class="table-wrap"><table>
+  <thead><tr><th>{% translate "Checklist" %}</th><th>{% translate "Status" %}</th><th class="num">{% translate "Answered" %}</th><th class="num">{% translate "Required left" %}</th><th>{% translate "Started by" %}</th></tr></thead>
+  <tbody>
+  {% for row in b.checklists.runs %}
+  <tr>
+    <td><a href="{% url 'checklists:run' row.run.pk %}">{{ row.run.title }}{% if row.run.run_label %} · {{ row.run.run_label }}{% endif %}</a></td>
+    <td>{% if row.run.is_submitted %}<span class="badge badge-ok">{% translate "Submitted" %}</span>{% else %}<span class="badge badge-warn">{% translate "In progress" %}</span>{% endif %}</td>
+    <td class="num">{{ row.counts.answered }} / {{ row.counts.total }}</td>
+    <td class="num{% if row.counts.pending_required %} neg{% endif %}">{{ row.counts.pending_required }}</td>
+    <td>{{ row.run.started_by.display_name }}</td>
+  </tr>
+  {% endfor %}
+  {% for t in b.not_started %}
+  <tr><td>{{ t.title }}</td><td><span class="badge badge-bad">{% translate "Not started" %}</span></td><td class="num">—</td><td class="num">—</td><td class="muted">—</td></tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+
+<h3>{% translate "Incomplete tasks" %}</h3>
+{% if b.incomplete_tasks %}
+<div class="table-wrap"><table>
+  <thead><tr><th>{% translate "Task" %}</th><th>{% translate "Checklist" %}</th><th>{% translate "Responsible" %}</th></tr></thead>
+  <tbody>
+  {% for r in b.incomplete_tasks %}
+  <tr>
+    <td><a href="{% url 'checklists:run' r.run_id %}#task-{{ r.pk }}">{{ r.task.text }}</a>{% if r.task.required %} <span class="badge">{% translate "Required" %}</span>{% else %} <span class="badge badge-muted">{% translate "Optional" %}</span>{% endif %}</td>
+    <td>{{ r.run.title }}{% if r.run.run_label %} · {{ r.run.run_label }}{% endif %}{% if r.run.is_submitted %} <span class="small muted">({% translate "submitted" %})</span>{% endif %}</td>
+    <td>{{ r.run.started_by.display_name }}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+<p class="small muted">{% translate "Tasks are not assigned to people yet, so the person who started the checklist is shown as responsible." %}</p>
+{% else %}
+<p class="muted">{% if b.checklists.runs %}{% translate "Every task in the started checklists has an answer." %}{% else %}{% translate "No checklist has been started yet." %}{% endif %}</p>
+{% endif %}
+{% else %}
+<p class="muted">{% translate "No checklists were expected or started on this date." %}</p>
+{% endif %}
+
+{# ---------- flagged temperatures ---------- #}
+<h2 id="temps">{% translate "Flagged temperatures" %}</h2>
+{% if b.flagged_temperatures %}
+<div class="table-wrap"><table>
+  <thead><tr><th>{% translate "Time" %}</th><th>{% translate "Equipment" %}</th><th class="num">{% translate "Reading" %}</th><th>{% translate "Set range" %}</th><th>{% translate "By" %}</th></tr></thead>
+  <tbody>
+  {% for r in b.flagged_temperatures %}
+  <tr>
+    <td>{{ r.answered_at|date:"H:i" }}</td>
+    <td><a href="{% url 'checklists:run' r.run_id %}#task-{{ r.pk }}">{{ r.task.equipment_or_location|default:r.task.text }}</a><br><span class="small muted">{{ r.run.title }}</span></td>
+    <td class="num neg"><strong>{{ r.temperature_c|qty }} °C</strong></td>
+    <td class="small">{% if r.task.min_temperature is not None %}{{ r.task.min_temperature|qty }}{% else %}—{% endif %} … {% if r.task.max_temperature is not None %}{{ r.task.max_temperature|qty }}{% else %}—{% endif %} °C</td>
+    <td>{{ r.answered_by.display_name }}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+{% else %}
+<p class="muted">{% translate "No readings outside a set range on this date." %}</p>
+{% endif %}
+
+{# ---------- issues (US-07.04) ---------- #}
+<h2 id="issues">{% translate "Reported issues" %}</h2>
+{% for issue in b.open_issues %}
+<a class="card card-link" href="{% url 'checklists:issue' issue.pk %}">
+  <div class="spread"><strong>{{ issue.response.task.text }}</strong><span class="badge badge-warn">{% translate "Open" %}</span></div>
+  <div class="small muted">{{ issue.run.title }} · {{ issue.reported_at|date:"j.n. H:i" }} · {{ issue.reported_by.display_name }} · {{ issue.get_source_display }}</div>
+  <p style="margin:.3rem 0 0">{{ issue.description|truncatechars:180 }}</p>
+</a>
+{% empty %}
+<p class="muted">{% translate "No open issues." %}</p>
+{% endfor %}
+{% if b.resolved_issues %}
+<h3>{% translate "Resolved on this date" %}</h3>
+{% for issue in b.resolved_issues %}
+<a class="card card-link" href="{% url 'checklists:issue' issue.pk %}">
+  <div class="spread"><strong>{{ issue.response.task.text }}</strong><span class="badge badge-ok">{% translate "Resolved" %}</span></div>
+  <div class="small muted">{% blocktranslate with who=issue.resolved_by.display_name t=issue.resolved_at|date:"H:i" %}Resolved by {{ who }} at {{ t }}{% endblocktranslate %}</div>
+  <p style="margin:.3rem 0 0">{{ issue.resolution_note|truncatechars:160 }}</p>
+</a>
+{% endfor %}
+{% endif %}
+<p class="small muted">{% translate "Open issues are listed whatever day they were reported, until someone resolves them." %}</p>
+
+{# ---------- low stock (US-07.03) ---------- #}
+<h2 id="stock">{% translate "Low stock" %}</h2>
+{% if b.low_stock %}
+<div class="table-wrap"><table>
+  <thead><tr><th>{% translate "Item" %}</th><th class="num">{% translate "In stock" %}</th><th class="num">{% translate "Minimum" %}</th><th>{% translate "Supplier" %}</th></tr></thead>
+  <tbody>
+  {% for item in b.low_stock %}
+  <tr>
+    <td><a href="{% url 'inventory:detail' item.pk %}">{{ item.name }}</a></td>
+    <td class="num neg"><strong>{{ item.current_quantity|qty }} {{ item.unit }}</strong></td>
+    <td class="num">{{ item.minimum_quantity|qty }} {{ item.unit }}</td>
+    <td>{{ item.supplier_name|default:"—" }}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+<p class="small muted">{% translate "Current stock, whatever date is selected." %}</p>
+{% else %}
+<p class="muted">{% translate "No items are at or below their minimum." %}</p>
+{% endif %}
+{% endwith %}
+{% endblock %}

@@ -1,6 +1,6 @@
 # restaurant-ops
 
-Django 5.2 + PostgreSQL app for restaurant operations (EP03–EP06 done). See README.md for setup, story status and design decisions.
+Django 5.2 + PostgreSQL app for restaurant operations (EP03–EP07 done). See README.md for setup, story status and design decisions.
 
 ## Working rules
 - Business rules live in each app's `services.py`; views only parse input and call services. Every permission check happens on the server.

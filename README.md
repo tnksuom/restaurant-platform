@@ -19,7 +19,7 @@ Everything is stored in PostgreSQL. Uploaded photos go to a private directory on
 
 ### Out of scope
 
-The app does **not** integrate with payroll, point of sale, purchasing, the public website/menu (EP01–EP02), the owner dashboard (EP07) or restaurant administration (EP08). The "Today" page is simple navigation only.
+The app does **not** integrate with payroll, point of sale, purchasing, the public website/menu (EP01–EP02) or restaurant administration (EP08). The EP07 management dashboard is at `/dashboard/` for managers and owners; the "Today" page stays simple navigation.
 
 ## Setup from a clean machine
 
@@ -106,7 +106,7 @@ This follows the spec's walkthrough.
 
 ## Story status
 
-All 26 stories are implemented.
+All 26 EP03–EP06 stories and the 5 EP07 stories are implemented.
 
 | Story | Status | Notes |
 |---|---|---|
@@ -136,6 +136,11 @@ All 26 stories are implemented.
 | US-06.05 View my working hours | Done | Filter by local start date. Shifts show open/closed and corrected state. Other people's shifts return 404. |
 | US-06.06 Review employee hours | Done | Per-employee totals of closed shifts. Open shifts are flagged and shown as provisional. |
 | US-06.07 Correct time record | Done | Manager/owner only, reason required. Validates order, break containment, overlap and conflicts with other shifts. Before/after snapshots and original clock events are kept and visible to the employee. |
+| US-07.01 View today's operation | Done | `/dashboard/` (managers and owners only): staff on shift, hours worked, checklist progress, open issues, low stock and flagged temperatures, with a date picker. Hours for closed shifts and provisional hours for open shifts are shown separately. |
+| US-07.02 View checklist status | Done | Every run with answered and required-left counts, templates not started, and each unanswered task with its checklist. Tasks can't be assigned yet, so the person who started the run is shown as responsible. |
+| US-07.03 View low-stock items | Done | Active items at or below minimum with quantity, unit and supplier, emptiest first; each links to the item page. |
+| US-07.04 View reported issues | Done | Open issues from any date, with time, description, source task and who reported it; issues resolved on the selected date are listed separately. |
+| US-07.05 View staff status | Done | Who is clocked in right now, whether they are on a break and since when, and provisional worked time. |
 
 ## Design decisions and assumptions
 
@@ -176,6 +181,7 @@ staff/        EP03 – Employee (auth user), login, one-time password links, sta
 inventory/    EP04 – items, immutable stock ledger, verify_stock_ledger command
 checklists/   EP05 – versioned templates, snapshotted runs, responses, issues, private photos
 timeclock/    EP06 – shifts, breaks, immutable clock events, corrections
+dashboard/    EP07 – read-only management dashboard (no tables of its own)
 ```
 
 Business rules live in each app's `services.py`. Views only parse input and call services, so every rule is enforced on the server and tested directly.
