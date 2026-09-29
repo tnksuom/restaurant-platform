@@ -1,0 +1,16 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% if promotion %}{{ promotion.title }}{% else %}{% translate "New promotion" %}{% endif %}{% endblock %}
+{% block content %}
+<p><a href="{% url 'website:promotions' %}">← {% translate "Promotions" %}</a></p>
+<h1>{% if promotion %}{% translate "Edit promotion" %}{% else %}{% translate "New promotion" %}{% endif %}</h1>
+<div class="card">
+  <form method="post" class="stacked" novalidate>{% csrf_token %}
+    {% include "core/form_fields.html" %}
+    <div class="row">
+      <button class="btn" type="submit">{% translate "Save" %}</button>
+      <a class="btn btn-secondary" href="{% url 'website:promotions' %}">{% translate "Cancel" %}</a>
+      {% if promotion %}<a class="btn btn-danger" href="{% url 'website:promotion_delete' promotion.pk %}">{% translate "Delete" %}</a>{% endif %}
+    </div>
+  </form>
+</div>
+{% endblock %}

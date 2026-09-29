@@ -37,3 +37,16 @@ def hm(seconds):
 def local(dt, tz):
     """Render an instant in the restaurant's zone: {{ dt|local:restaurant.tz|date:'...' }}"""
     return dt.astimezone(tz) if dt else dt
+
+
+@register.filter
+def euro(value):
+    """Price in euros for the active language: '€14.50' in English, '14,50 €' in Finnish/Vietnamese."""
+    if value is None or value == "":
+        return ""
+    from django.utils.translation import get_language
+
+    amount = f"{Decimal(value):.2f}"
+    if (get_language() or "en").startswith("en"):
+        return f"€{amount}"
+    return f"{amount.replace('.', ',')} €"

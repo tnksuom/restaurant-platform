@@ -1,0 +1,44 @@
+{% extends "website/base.html" %}{% load i18n ops %}
+{% block title %}{% translate "Menu" %} · {{ site_restaurant.name }}{% endblock %}
+{% block content %}
+<div class="wrap page-head">
+  <h1>{% translate "Menu" %}</h1>
+  {% if sections %}
+  <nav class="category-nav" aria-label="{% translate 'Menu sections' %}">
+    {% for s in sections %}<a href="#cat-{{ s.category.pk }}">{{ s.category.name }}</a>{% endfor %}
+  </nav>
+  {% endif %}
+</div>
+<div class="wrap">
+  {% for s in sections %}
+  <section class="menu-section" id="cat-{{ s.category.pk }}" aria-labelledby="cat-title-{{ s.category.pk }}">
+    <h2 id="cat-title-{{ s.category.pk }}">{{ s.category.name }}</h2>
+    <ul class="dishes">
+      {% for item in s.items %}
+      <li class="dish{% if not item.is_available %} is-unavailable{% endif %}" id="dish-{{ item.pk }}">
+        {% if item.photo_key %}<img class="dish-photo" src="{% url 'website:image' item.photo_key %}" alt="{{ item.name }}" loading="lazy" width="{{ item.photo_width }}" height="{{ item.photo_height }}">{% endif %}
+        <div class="dish-body">
+          <div class="dish-top">
+            <h3>{{ item.name }}{% for code, label in item.get_diet_labels_display %} <abbr class="diet" title="{{ label }}">{{ code }}</abbr>{% endfor %}</h3>
+            <span class="price">{{ item.price|euro }}</span>
+          </div>
+          {% if not item.is_available %}<p class="unavailable">{% translate "Not available today" %}</p>{% endif %}
+          {% if item.description %}<p class="desc">{{ item.description }}</p>{% endif %}
+          {% if item.allergens %}<p class="allergens"><span>{% translate "Allergens:" %}</span> {{ item.get_allergens_display|join:", " }}</p>{% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% empty %}
+  <p class="empty">{% translate "The menu is being updated. Please check back soon." %}</p>
+  {% endfor %}
+
+  {% if sections %}
+  <aside class="menu-notes">
+    {% if legend %}<p>{% for code, label in legend %}<abbr class="diet">{{ code }}</abbr> {{ label }}{% if not forloop.last %} · {% endif %}{% endfor %}</p>{% endif %}
+    <p>{% translate "Allergen information is provided by our kitchen. If you have an allergy, please tell your server when you order." %}</p>
+  </aside>
+  {% endif %}
+</div>
+{% endblock %}

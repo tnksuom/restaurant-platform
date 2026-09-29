@@ -1,0 +1,66 @@
+{% extends "website/base.html" %}{% load i18n ops %}
+{% block content %}
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <h1>{{ site_restaurant.name }}</h1>
+      {% if profile.tagline %}<p class="tagline">{{ profile.tagline }}</p>{% endif %}
+      {% if status.has_hours %}<p class="status-line">{% include "website/_open_status.html" %}</p>{% endif %}
+      <div class="actions">
+        <a class="button" href="{% url 'website:menu' %}">{% translate "See the menu" %}</a>
+        {% if map_url %}<a class="button button-quiet" href="{{ map_url }}" target="_blank" rel="noopener">{% translate "Find us" %}</a>{% endif %}
+      </div>
+    </div>
+    {% if profile.hero_key %}
+    <img class="hero-image" src="{% url 'website:image' profile.hero_key %}" alt="{{ profile.hero_alt }}">
+    {% endif %}
+  </div>
+</section>
+
+{% if promotions %}
+<section class="wrap section" aria-labelledby="promo-title">
+  <h2 id="promo-title">{% translate "Right now" %}</h2>
+  <div class="promo-list">
+    {% for p in promotions %}
+    <article class="promo">
+      <h3>{{ p.title }}</h3>
+      {% if p.body %}<p>{{ p.body|linebreaksbr }}</p>{% endif %}
+      {% if p.ends_on %}<p class="small">{% blocktranslate with d=p.ends_on|date:"j.n." %}Until {{ d }}{% endblocktranslate %}</p>{% endif %}
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if profile.introduction %}
+<section class="wrap section intro">
+  <h2>{% translate "About us" %}</h2>
+  <p>{{ profile.introduction|linebreaksbr }}</p>
+</section>
+{% endif %}
+
+{% if featured %}
+<section class="wrap section" aria-labelledby="feat-title">
+  <div class="section-head"><h2 id="feat-title">{% translate "From the menu" %}</h2><a href="{% url 'website:menu' %}">{% translate "Full menu" %} →</a></div>
+  <div class="featured">
+    {% for item in featured %}
+    <a class="dish-card" href="{% url 'website:menu' %}#dish-{{ item.pk }}">
+      <img src="{% url 'website:image' item.photo_key %}" alt="{{ item.name }}" loading="lazy" width="{{ item.photo_width }}" height="{{ item.photo_height }}">
+      <span class="dish-card-text"><strong>{{ item.name }}</strong><span class="price">{{ item.price|euro }}</span></span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<section class="wrap section visit">
+  <div>
+    <h2>{% translate "Visit us" %}</h2>
+    {% if profile.has_address %}<p>{{ profile.street_address }}<br>{{ profile.postal_code }} {{ profile.city }}</p>{% endif %}
+    {% if profile.phone %}<p><a href="tel:{{ profile.phone|cut:' ' }}">{{ profile.phone }}</a></p>{% endif %}
+  </div>
+  <div class="actions">
+    <a class="button button-quiet" href="{% url 'website:contact' %}">{% translate "Opening hours and contact" %}</a>
+  </div>
+</section>
+{% endblock %}

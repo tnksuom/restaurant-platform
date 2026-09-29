@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     "checklists",
     "timeclock",
     "dashboard",
+    "menu",
+    "website",
 ]
 
 MIDDLEWARE = [
@@ -144,7 +146,14 @@ PRIVATE_UPLOAD_ROOT = Path(env("PRIVATE_UPLOAD_ROOT", "private_uploads"))
 if not PRIVATE_UPLOAD_ROOT.is_absolute():  # relative paths are relative to the project, not the shell
     PRIVATE_UPLOAD_ROOT = BASE_DIR / PRIVATE_UPLOAD_ROOT
 ISSUE_PHOTO_MAX_BYTES = int(env("ISSUE_PHOTO_MAX_BYTES", 10 * 1024 * 1024))
-DATA_UPLOAD_MAX_MEMORY_SIZE = ISSUE_PHOTO_MAX_BYTES + 1024 * 1024
+# Public images (dish photos, logo, hero). Served by the app, not directly by the web server,
+# so unpublished dishes' photos stay hidden.
+PUBLIC_UPLOAD_ROOT = Path(env("PUBLIC_UPLOAD_ROOT", "public_uploads"))
+if not PUBLIC_UPLOAD_ROOT.is_absolute():
+    PUBLIC_UPLOAD_ROOT = BASE_DIR / PUBLIC_UPLOAD_ROOT
+MENU_PHOTO_MAX_BYTES = int(env("MENU_PHOTO_MAX_BYTES", 10 * 1024 * 1024))
+MENU_PHOTO_MAX_SIDE = 1600  # pixels; larger photos are scaled down on upload
+DATA_UPLOAD_MAX_MEMORY_SIZE = max(ISSUE_PHOTO_MAX_BYTES, MENU_PHOTO_MAX_BYTES) + 1024 * 1024
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
@@ -164,3 +173,4 @@ if len(sys.argv) > 1 and sys.argv[1] == "test":
     PASSWORD_HASHERS = ["django.contrib.auth.hashers.MD5PasswordHasher"]
     LOGGING["loggers"]["django.request"]["level"] = "CRITICAL"
     PRIVATE_UPLOAD_ROOT = BASE_DIR / ".test_private_uploads"
+    PUBLIC_UPLOAD_ROOT = BASE_DIR / ".test_public_uploads"

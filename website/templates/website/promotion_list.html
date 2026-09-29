@@ -1,0 +1,18 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% translate "Promotions" %}{% endblock %}
+{% block content %}
+<div class="spread">
+  <h1>{% translate "Promotions" %}</h1>
+  <a class="btn" href="{% url 'website:promotion_create' %}">{% translate "New promotion" %}</a>
+</div>
+<p class="small muted">{% translate "Promotions appear on the public homepage from their first day to their last day, then disappear by themselves." %}</p>
+{% with g=groups %}
+{% include "website/_promotion_group.html" with items=g.active heading=_("On the website now") badge="ok" %}
+{% include "website/_promotion_group.html" with items=g.upcoming heading=_("Starting later") badge="warn" %}
+{% include "website/_promotion_group.html" with items=g.unpublished heading=_("Not shown (unpublished)") badge="muted" %}
+{% include "website/_promotion_group.html" with items=g.expired heading=_("Ended") badge="muted" %}
+{% if not g.active and not g.upcoming and not g.unpublished and not g.expired %}
+<div class="card"><p class="muted">{% translate "No promotions yet." %}</p></div>
+{% endif %}
+{% endwith %}
+{% endblock %}

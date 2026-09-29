@@ -5,3 +5,5 @@ private_uploads/
 staticfiles/
 .venv/
 .test_private_uploads/
+public_uploads/
+.test_public_uploads/

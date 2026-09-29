@@ -19,7 +19,9 @@ Everything is stored in PostgreSQL. Uploaded photos go to a private directory on
 
 ### Out of scope
 
-The app does **not** integrate with payroll, point of sale, purchasing, the public website/menu (EP01–EP02) or restaurant administration (EP08). The EP07 management dashboard is at `/dashboard/` for managers and owners; the "Today" page stays simple navigation.
+The app does **not** integrate with payroll, point of sale or purchasing, and restaurant administration (EP08: editing the public details, hours and images) is not built yet.
+
+**Addresses.** The public website is at `/` (home), `/menu/` and `/contact/`. The staff app starts at `/app/` after signing in at `/login/`. The EP07 management dashboard is at `/dashboard/`, the menu editor at `/menu-admin/` and promotions at `/manage/promotions/`.
 
 ## Setup from a clean machine
 
@@ -40,13 +42,13 @@ python manage.py create_owner --login owner@example.com --name "Owner Name" --re
 #   OWNER_PASSWORD='…' python manage.py create_owner … --password-from-env
 
 # 4. Run (development)
-python manage.py runserver          # http://127.0.0.1:8000
+python manage.py runserver          # public site http://127.0.0.1:8000 · staff app http://127.0.0.1:8000/app/
 ```
 
 **Demo data instead of step 3.** On an *empty* development database (`DJANGO_DEBUG=true`), run
 `python manage.py seed_demo --password 'Choose-A-Password'`. It creates a demo restaurant with an owner (`owner`), a manager (`mia`), employees (`linh`, `eero`, `sara`), stock, a week of checklists and shifts, open issues with a photo, and a corrected shift. All accounts use the password you give. It refuses to run on a database that already has staff.
 
-For production, run behind HTTPS with a WSGI server (for example `gunicorn config.wsgi`). Set `DJANGO_DEBUG=false` and run `python manage.py collectstatic`. Serve `staticfiles/` as static files. **Never** expose `PRIVATE_UPLOAD_ROOT` through the web server; photos are served only by the permission-checked view.
+For production, run behind HTTPS with a WSGI server (for example `gunicorn config.wsgi`). Set `DJANGO_DEBUG=false` and run `python manage.py collectstatic`. Serve `staticfiles/` as static files. **Never** expose `PRIVATE_UPLOAD_ROOT` or `PUBLIC_UPLOAD_ROOT` directly through the web server: issue photos are served only by a permission-checked view, and dish photos go through the app so that photos of draft dishes stay hidden.
 
 ### Environment variables
 
@@ -61,13 +63,15 @@ For production, run behind HTTPS with a WSGI server (for example `gunicorn confi
 | `RESTAURANT_TIME_ZONE` | no | `Europe/Helsinki` | Time zone for a newly created restaurant |
 | `PRIVATE_UPLOAD_ROOT` | no | `./private_uploads` | Issue photo storage, outside any web root |
 | `ISSUE_PHOTO_MAX_BYTES` | no | `10485760` | Photo size limit (10 MB) |
+| `PUBLIC_UPLOAD_ROOT` | no | `./public_uploads` | Dish photos, logo and hero image |
+| `MENU_PHOTO_MAX_BYTES` | no | `10485760` | Dish photo size limit (10 MB); photos are scaled to at most 1600 px |
 | `PASSWORD_SETUP_LINK_TIMEOUT` | no | `259200` | Lifetime of one-time password links, in seconds (3 days) |
 | `LOG_LEVEL` | no | `INFO` | |
 
 ## Tests
 
 ```bash
-python manage.py test                      # 81 tests, about 5 seconds; needs the database user to have CREATEDB
+python manage.py test                      # 112 tests, about 10 seconds; needs the database user to have CREATEDB
 python manage.py verify_stock_ledger       # checks cached balances against the movement ledger
 ```
 
@@ -106,7 +110,7 @@ This follows the spec's walkthrough.
 
 ## Story status
 
-All 26 EP03–EP06 stories and the 5 EP07 stories are implemented.
+All stories of the MVP release are implemented: EP01–EP07, 42 stories.
 
 | Story | Status | Notes |
 |---|---|---|
@@ -141,6 +145,17 @@ All 26 EP03–EP06 stories and the 5 EP07 stories are implemented.
 | US-07.03 View low-stock items | Done | Active items at or below minimum with quantity, unit and supplier, emptiest first; each links to the item page. |
 | US-07.04 View reported issues | Done | Open issues from any date, with time, description, source task and who reported it; issues resolved on the selected date are listed separately. |
 | US-07.05 View staff status | Done | Who is clocked in right now, whether they are on a break and since when, and provisional worked time. |
+| US-01.01 View homepage | Done | Name, logo, hero image, tagline, introduction, open-now status, active promotions and a few dishes with photos. Navigation (Home, Menu, Contact) works on phone and desktop. |
+| US-01.02 View restaurant information | Done | `/contact/`: address, phone, email and the weekly opening hours with today highlighted and "Open now · until 21:00" or "Closed now · opens …". Periods past midnight (e.g. 12:00–02:00) are handled. |
+| US-01.03 View restaurant location | Done | "Open in maps" uses a universal Google Maps link, which opens the maps app on phones and the website on computers. |
+| US-01.04 View promotions | Done | Only published promotions whose dates include today (restaurant local date) appear; expired ones disappear by themselves. Managers create and edit them at `/manage/promotions/`. |
+| US-01.05 Mobile-friendly website | Done | Home, menu and contact fit a 390 px phone without sideways scrolling (checked in a browser); the menu's category list scrolls within itself. |
+| US-02.01 View menu | Done | `/menu/`: published dishes by category with name, description, price in euros, allergens (the 14 EU allergens), diet labels (VE, V, G, M, L) and availability. |
+| US-02.02 Create menu item | Done | Name, category and price are required; the price must be 0 or more with at most two decimals ("12,50" and "12.50" both work). Saved as draft or published. |
+| US-02.03 Edit menu item | Done | Changes to name, category, description, price and allergens appear on the public menu straight away when published. Changes are audited. |
+| US-02.04 Disable menu item | Done | "Mark unavailable" / "Mark available" on each dish. Each dish chooses whether it is then shown as "Not available today" or hidden. |
+| US-02.05 Manage menu categories | Done | Add, rename, reorder (up/down) and delete when empty. Dishes appear under their category and can be reordered too. |
+| US-02.06 Upload dish photo | Done | JPEG, PNG or WebP up to 10 MB, with a preview before saving. Replace or remove later; the old file is deleted. Photos are re-encoded (metadata stripped) and scaled down. Photos of draft dishes are not public. |
 
 ## Design decisions and assumptions
 
@@ -165,6 +180,9 @@ All 26 EP03–EP06 stories and the 5 EP07 stories are implemented.
 
 ## Known limitations
 
+- **Public details can't be edited in the app yet.** The restaurant name, introduction, address, phone, opening hours, logo and hero image are set up by `seed_demo` (example content) or by an administrator. Editing screens are EP08 ("Later" in the backlog).
+- Dish names and descriptions are stored in one language; translated menus are not built yet.
+
 - There is no email, so password resets are manager-issued one-time links.
 - The template editor shows three empty task rows at a time; save and edit again to add more. Task order is a number field, not drag-and-drop.
 - No offline mode: an action needs a connection, and a failed save shows an error.
@@ -182,6 +200,8 @@ inventory/    EP04 – items, immutable stock ledger, verify_stock_ledger comman
 checklists/   EP05 – versioned templates, snapshotted runs, responses, issues, private photos
 timeclock/    EP06 – shifts, breaks, immutable clock events, corrections
 dashboard/    EP07 – read-only management dashboard (no tables of its own)
+menu/         EP02 – menu categories and dishes, menu editor
+website/      EP01 – public pages, public profile, opening hours, promotions
 ```
 
 Business rules live in each app's `services.py`. Views only parse input and call services, so every rule is enforced on the server and tested directly.

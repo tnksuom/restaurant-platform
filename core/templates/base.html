@@ -30,6 +30,9 @@
         <li><a href="{% url 'inventory:history' %}">{% translate "Stock history" %}</a></li>
         <li><a href="{% url 'timeclock:timesheets' %}">{% translate "Timesheets" %}</a></li>
         <li><a href="{% url 'staff:list' %}">{% translate "Staff" %}</a></li>
+        <li><a href="{% url 'menu:overview' %}">{% translate "Menu" %}</a></li>
+        <li><a href="{% url 'website:promotions' %}">{% translate "Promotions" %}</a></li>
+        <li><a href="{% url 'website:home' %}">{% translate "Public website" %}</a></li>
         {% else %}
         <li><a href="{% url 'checklists:history' %}">{% translate "My submitted checklists" %}</a></li>
         {% endif %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% if item %}{{ item.name }}{% else %}{% translate "Add dish" %}{% endif %}{% endblock %}
+{% block content %}
+<p><a href="{% url 'menu:overview' %}">← {% translate "Menu" %}</a></p>
+<h1>{% if item %}{% blocktranslate with n=item.name %}Edit {{ n }}{% endblocktranslate %}{% else %}{% translate "Add dish" %}{% endif %}</h1>
+<form method="post" enctype="multipart/form-data" novalidate>{% csrf_token %}
+  {% if form.non_field_errors %}<ul class="errorlist">{% for e in form.non_field_errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+  <div class="card">
+    {% include "menu/_field.html" with field=form.name %}
+    {% include "menu/_field.html" with field=form.category %}
+    {% include "menu/_field.html" with field=form.price %}
+    {% include "menu/_field.html" with field=form.description %}
+  </div>
+  <div class="card">
+    <fieldset class="checks"><legend>{{ form.allergens.label }}</legend>
+      <span class="help">{{ form.allergens.help_text }}</span>
+      <div class="check-grid">{% for c in form.allergens %}<label class="checkbox">{{ c.tag }} {{ c.choice_label }}</label>{% endfor %}</div>
+    </fieldset>
+    <fieldset class="checks"><legend>{{ form.diet_labels.label }}</legend>
+      <div class="check-grid">{% for c in form.diet_labels %}<label class="checkbox">{{ c.tag }} {{ c.choice_label }}</label>{% endfor %}</div>
+    </fieldset>
+  </div>
+  <div class="card">
+    <fieldset class="checks"><legend>{{ form.status.label }}</legend>
+      <div class="row">{% for r in form.status %}<label class="checkbox">{{ r.tag }} {{ r.choice_label }}</label>{% endfor %}</div>
+      <span class="help">{{ form.status.help_text }}</span>
+    </fieldset>
+    <div class="field checkbox">{{ form.is_available }} <label for="{{ form.is_available.id_for_label }}">{{ form.is_available.label }}</label></div>
+    <fieldset class="checks"><legend>{{ form.when_unavailable.label }}</legend>
+      {% for r in form.when_unavailable %}<label class="checkbox">{{ r.tag }} {{ r.choice_label }}</label>{% endfor %}
+    </fieldset>
+  </div>
+  <div class="card">
+    <h2 style="margin-top:0">{% translate "Photo" %}</h2>
+    {% if item.photo_key %}
+      <img class="photo" src="{% url 'website:image' item.photo_key %}" alt="{% blocktranslate with n=item.name %}Current photo of {{ n }}{% endblocktranslate %}" style="max-width:320px">
+      <div class="field checkbox">{{ form.remove_photo }} <label for="{{ form.remove_photo.id_for_label }}">{{ form.remove_photo.label }}</label></div>
+      <label for="{{ form.photo.id_for_label }}"><strong>{% translate "Replace with a new photo" %}</strong></label>
+    {% else %}
+      <label for="{{ form.photo.id_for_label }}"><strong>{% translate "Add a photo (optional)" %}</strong></label>
+    {% endif %}
+    {{ form.photo }}
+    {% if form.photo.errors %}<ul class="errorlist">{% for e in form.photo.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+    <span class="help">{{ form.photo.help_text }}</span>
+    <img id="photo-preview" class="photo" alt="{% translate 'Preview of the new photo' %}" style="max-width:320px;margin-top:10px" hidden>
+  </div>
+  <div class="row">
+    <button class="btn" type="submit">{% translate "Save dish" %}</button>
+    <a class="btn btn-secondary" href="{% url 'menu:overview' %}">{% translate "Cancel" %}</a>
+    {% if item %}<a class="btn btn-danger" href="{% url 'menu:item_delete' item.pk %}">{% translate "Delete dish" %}</a>{% endif %}
+  </div>
+</form>
+<script>
+(function () {
+  var input = document.getElementById("{{ form.photo.id_for_label }}");
+  var preview = document.getElementById("photo-preview");
+  if (!input || !window.URL) return;
+  input.addEventListener("change", function () {
+    var file = input.files && input.files[0];
+    if (!file) { preview.hidden = true; return; }
+    preview.src = URL.createObjectURL(file);
+    preview.hidden = false;
+  });
+})();
+</script>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "website/base.html" %}{% load i18n %}
+{% block title %}{% translate "Contact" %} · {{ site_restaurant.name }}{% endblock %}
+{% block content %}
+<div class="wrap page-head"><h1>{% translate "Contact and opening hours" %}</h1></div>
+<div class="wrap contact-grid">
+  <section aria-labelledby="where">
+    <h2 id="where">{% translate "Where to find us" %}</h2>
+    {% if profile.has_address %}
+      <address>{{ site_restaurant.name }}<br>{{ profile.street_address }}<br>{{ profile.postal_code }} {{ profile.city }}{% if profile.country %}<br>{{ profile.country }}{% endif %}</address>
+      <p><a class="button" href="{{ map_url }}" target="_blank" rel="noopener">{% translate "Open in maps" %}</a></p>
+    {% else %}
+      <p class="empty">{% translate "Address coming soon." %}</p>
+    {% endif %}
+    <h2>{% translate "Get in touch" %}</h2>
+    <dl class="contact-list">
+      {% if profile.phone %}<dt>{% translate "Phone" %}</dt><dd><a href="tel:{{ profile.phone|cut:' ' }}">{{ profile.phone }}</a></dd>{% endif %}
+      {% if profile.email %}<dt>{% translate "Email" %}</dt><dd><a href="mailto:{{ profile.email }}">{{ profile.email }}</a></dd>{% endif %}
+    </dl>
+    {% if not profile.phone and not profile.email %}<p class="empty">{% translate "Contact details coming soon." %}</p>{% endif %}
+  </section>
+  <section aria-labelledby="hours" id="hours">
+    <h2 id="hours-title">{% translate "Opening hours" %}</h2>
+    {% if status.has_hours %}<p class="status-line">{% include "website/_open_status.html" %}</p>{% endif %}
+    <table class="hours">
+      <tbody>
+      {% for day in week %}
+      <tr{% if day.weekday == status.today.weekday %} class="today" aria-current="date"{% endif %}>
+        <th scope="row">{{ day.label }}</th>
+        <td>{% for p in day.periods %}{{ p.opens|time:"H:i" }}–{{ p.closes|time:"H:i" }}{% if not forloop.last %}<br>{% endif %}{% empty %}{% translate "Closed" %}{% endfor %}</td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</div>
+{% endblock %}
