@@ -1,0 +1,2549 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-30 13:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Claude\n"
+"Language-Team: Finnish\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Title"
+msgstr "Otsikko"
+
+msgid "Type"
+msgstr "Tyyppi"
+
+msgid "Add many tasks at once"
+msgstr "Lisää monta tehtävää kerralla"
+
+msgid ""
+"Paste from a spreadsheet: select the Group and Task columns in Google Sheets"
+" or Excel (without the header row), copy, and paste here. Or type one task "
+"per line, and start a group with “# Group name”."
+msgstr ""
+"Liitä taulukosta: valitse Google Sheetsistä tai Excelistä Ryhmä- ja Tehtävä-"
+"sarakkeet (ilman otsikkoriviä), kopioi ja liitä tähän. Voit myös kirjoittaa "
+"yhden tehtävän riville ja aloittaa ryhmän rivillä “# Ryhmän nimi”."
+
+msgid "Answer type for pasted tasks"
+msgstr "Vastaustyyppi liitetyille tehtäville"
+
+msgid "You can change individual tasks afterwards."
+msgstr "Voit muuttaa yksittäisiä tehtäviä myöhemmin."
+
+msgid "Order"
+msgstr "Järjestys"
+
+msgid "Group"
+msgstr "Ryhmä"
+
+msgid "Task"
+msgstr "Tehtävä"
+
+msgid "Answer type"
+msgstr "Vastaustyyppi"
+
+msgid "Required"
+msgstr "Pakollinen"
+
+msgid "Equipment or location"
+msgstr "Laite tai paikka"
+
+msgid "Lowest acceptable °C"
+msgstr "Alin sallittu °C"
+
+msgid "Highest acceptable °C"
+msgstr "Ylin sallittu °C"
+
+msgid "Remove task"
+msgstr "Poista tehtävä"
+
+msgid "What is the problem?"
+msgstr "Mikä on ongelma?"
+
+msgid "Photo (optional)"
+msgstr "Kuva (vapaaehtoinen)"
+
+msgid "JPEG, PNG or WebP, up to 10 MB."
+msgstr "JPEG, PNG tai WebP, enintään 10 Mt."
+
+msgid "Describe the problem."
+msgstr "Kuvaile ongelma."
+
+msgid "Add a photo"
+msgstr "Lisää kuva"
+
+msgid "How was it resolved?"
+msgstr "Miten asia ratkaistiin?"
+
+msgid "Opening"
+msgstr "Avaus"
+
+msgid "Closing"
+msgstr "Sulkeminen"
+
+msgid "Cleaning"
+msgstr "Siivous"
+
+msgid "Food safety"
+msgstr "Elintarviketurvallisuus"
+
+msgid "Stock check"
+msgstr "Varastotarkistus"
+
+msgid "Other"
+msgstr "Muu"
+
+msgid "Pass / fail"
+msgstr "Kunnossa / ei kunnossa"
+
+msgid "Temperature reading (°C)"
+msgstr "Lämpötilalukema (°C)"
+
+msgid "Done / not done"
+msgstr "Tehty / ei tehty"
+
+msgid "Stock level (enough / low)"
+msgstr "Varastotaso (riittää / vähissä)"
+
+msgid "title"
+msgstr "otsikko"
+
+msgid "type"
+msgstr "tyyppi"
+
+msgid "active"
+msgstr "käytössä"
+
+msgid "order"
+msgstr "järjestys"
+
+msgid "group"
+msgstr "ryhmä"
+
+msgid "Tasks with the same group are shown together."
+msgstr "Saman ryhmän tehtävät näytetään yhdessä."
+
+msgid "task"
+msgstr "tehtävä"
+
+msgid "answer type"
+msgstr "vastaustyyppi"
+
+msgid "required"
+msgstr "pakollinen"
+
+msgid "equipment or location"
+msgstr "laite tai paikka"
+
+msgid "lowest acceptable °C"
+msgstr "alin sallittu °C"
+
+msgid "highest acceptable °C"
+msgstr "ylin sallittu °C"
+
+msgid "In progress"
+msgstr "Kesken"
+
+msgid "Submitted"
+msgstr "Lähetetty"
+
+msgid "run label"
+msgstr "kierroksen nimi"
+
+msgid "Not answered"
+msgstr "Ei vastattu"
+
+msgid "Pass"
+msgstr "Kunnossa"
+
+msgid "Fail"
+msgstr "Ei kunnossa"
+
+msgid "Not applicable"
+msgstr "Ei koske"
+
+msgid "Open"
+msgstr "Avoin"
+
+msgid "Resolved"
+msgstr "Ratkaistu"
+
+msgid "Reported by staff"
+msgstr "Henkilökunnan ilmoittama"
+
+msgid "Failed task"
+msgstr "Ei kunnossa oleva tehtävä"
+
+msgid "Temperature outside range"
+msgstr "Lämpötila rajojen ulkopuolella"
+
+msgid "Enter a title."
+msgstr "Anna otsikko."
+
+msgid "A task does not belong to this checklist. Reload and try again."
+msgstr ""
+"Tehtävä ei kuulu tähän tarkistuslistaan. Lataa sivu uudelleen ja yritä "
+"uudestaan."
+
+#, python-format
+msgid "Task %(n)s needs a description."
+msgstr "Tehtävä %(n)s tarvitsee kuvauksen."
+
+#, python-format
+msgid "Task %(n)s: the lowest temperature must not be above the highest."
+msgstr "Tehtävä %(n)s: alin lämpötila ei voi olla ylintä korkeampi."
+
+msgid "A checklist needs at least one task."
+msgstr "Tarkistuslistassa on oltava vähintään yksi tehtävä."
+
+msgid "Checklist not found."
+msgstr "Tarkistuslistaa ei löytynyt."
+
+msgid "A run with this label already exists today."
+msgstr "Tällä nimellä on jo kierros tänään."
+
+msgid "This checklist is deactivated."
+msgstr "Tämä tarkistuslista on poistettu käytöstä."
+
+msgid "This checklist has no tasks."
+msgstr "Tässä tarkistuslistassa ei ole tehtäviä."
+
+msgid "This checklist was already submitted and can no longer be changed."
+msgstr "Tämä tarkistuslista on jo lähetetty, eikä sitä voi enää muuttaa."
+
+msgid "Enter the reading as a number, for example 3.5 or -18"
+msgstr "Anna lukema numerona, esimerkiksi 3,5 tai -18"
+
+msgid "That reading looks wrong. Enter degrees Celsius."
+msgstr "Lukema näyttää väärältä. Anna asteina (°C)."
+
+msgid "Use at most two decimal places."
+msgstr "Käytä enintään kahta desimaalia."
+
+msgid "Task not found."
+msgstr "Tehtävää ei löytynyt."
+
+msgid "Choose an answer."
+msgstr "Valitse vastaus."
+
+msgid "Write how much is left, for example “2 boxes”."
+msgstr "Kirjoita, paljonko on jäljellä, esimerkiksi “2 laatikkoa”."
+
+msgid "Add a note explaining this answer."
+msgstr "Lisää vastaukselle selittävä huomautus."
+
+msgid "Enter the temperature reading."
+msgstr "Anna lämpötilalukema."
+
+#, python-format
+msgid "Low: %(item)s. Left: %(note)s"
+msgstr "Vähissä: %(item)s. Jäljellä: %(note)s"
+
+#, python-format
+msgid ""
+"Reading %(reading)s °C%(where)s is outside the configured range %(range)s."
+msgstr ""
+"Lukema %(reading)s °C%(where)s on asetettujen rajojen %(range)s "
+"ulkopuolella."
+
+msgid "This checklist was already submitted. Ask a manager to follow up."
+msgstr ""
+"Tämä tarkistuslista on jo lähetetty. Pyydä esihenkilöä hoitamaan asia."
+
+msgid "Describe how the issue was resolved."
+msgstr "Kuvaile, miten poikkeama ratkaistiin."
+
+msgid "Issue not found."
+msgstr "Poikkeamaa ei löytynyt."
+
+msgid "This issue is already resolved."
+msgstr "Tämä poikkeama on jo ratkaistu."
+
+#, python-format
+msgid "%(n)s required task(s) still need an answer."
+msgstr "%(n)s pakollista tehtävää odottaa vielä vastausta."
+
+msgid "Checklist history"
+msgstr "Tarkistuslistojen historia"
+
+msgid "My submitted checklists"
+msgstr "Lähettämäni tarkistuslistat"
+
+msgid "From"
+msgstr "Alkaen"
+
+msgid "To"
+msgstr "Asti"
+
+msgid "Checklist"
+msgstr "Tarkistuslista"
+
+msgid "All"
+msgstr "Kaikki"
+
+msgid "deactivated"
+msgstr "poistettu käytöstä"
+
+msgid "Status"
+msgstr "Tila"
+
+msgid "Staff"
+msgstr "Henkilökunta"
+
+msgid "Everyone"
+msgstr "Kaikki"
+
+msgid "Filter"
+msgstr "Suodata"
+
+msgid "Date"
+msgstr "Päivä"
+
+msgid "Answered"
+msgstr "Vastattu"
+
+msgid "Failed"
+msgstr "Ei kunnossa"
+
+msgid "Submitted by"
+msgstr "Lähettäjä"
+
+msgid "No checklists match these filters."
+msgstr "Yksikään tarkistuslista ei vastaa näitä suodattimia."
+
+msgid "Issue"
+msgstr "Poikkeama"
+
+msgid "Back"
+msgstr "Takaisin"
+
+msgid "Checklist issue"
+msgstr "Tarkistuslistan poikkeama"
+
+msgid "Reading"
+msgstr "Lukema"
+
+msgid "Source"
+msgstr "Lähde"
+
+msgid "Reported"
+msgstr "Ilmoitettu"
+
+msgid "Description"
+msgstr "Kuvaus"
+
+msgid "Resolution"
+msgstr "Ratkaisu"
+
+msgid "Photos"
+msgstr "Kuvat"
+
+#, python-format
+msgid "Photo %(name)s"
+msgstr "Kuva %(name)s"
+
+msgid "No photos."
+msgstr "Ei kuvia."
+
+msgid "Upload photo"
+msgstr "Lähetä kuva"
+
+msgid "Resolve"
+msgstr "Ratkaise"
+
+msgid "Mark resolved"
+msgstr "Merkitse ratkaistuksi"
+
+msgid "Issues"
+msgstr "Poikkeamat"
+
+msgid "Checklist issues"
+msgstr "Tarkistuslistojen poikkeamat"
+
+msgid "Filter issues"
+msgstr "Suodata poikkeamia"
+
+msgid "No issues here."
+msgstr "Ei poikkeamia."
+
+msgid "Back to checklist"
+msgstr "Takaisin tarkistuslistaan"
+
+msgid "Report a problem"
+msgstr "Ilmoita ongelmasta"
+
+msgid ""
+"If the photo cannot be accepted, nothing is saved and you will see why, so "
+"you can try again."
+msgstr ""
+"Jos kuvaa ei voida hyväksyä, mitään ei tallenneta ja näet syyn, joten voit "
+"yrittää uudelleen."
+
+msgid "Send report"
+msgstr "Lähetä ilmoitus"
+
+msgid "Checklist review"
+msgstr "Tarkistuslistojen seuranta"
+
+msgid "Business date"
+msgstr "Päivä"
+
+msgid "Show"
+msgstr "Näytä"
+
+msgid "Not started"
+msgstr "Ei aloitettu"
+
+msgid "Failed tasks"
+msgstr "Ei kunnossa -tehtävät"
+
+msgid "Temperature warnings"
+msgstr "Lämpötilavaroitukset"
+
+msgid "No checklists were expected or started on this date."
+msgstr "Tälle päivälle ei ollut tarkistuslistoja, eikä yhtään aloitettu."
+
+msgid "Checklists"
+msgstr "Tarkistuslistat"
+
+msgid "Required left"
+msgstr "Pakollisia jäljellä"
+
+msgid "Temperature readings"
+msgstr "Lämpötilalukemat"
+
+msgid "Time"
+msgstr "Aika"
+
+msgid "Range"
+msgstr "Rajat"
+
+msgid "By"
+msgstr "Tekijä"
+
+msgid "N/A"
+msgstr "Ei koske"
+
+msgid "Outside range"
+msgstr "Rajojen ulkopuolella"
+
+msgid "Not configured"
+msgstr "Ei asetettu"
+
+msgid "No readings recorded."
+msgstr "Ei kirjattuja lukemia."
+
+msgid "Open issues"
+msgstr "Avoimet poikkeamat"
+
+msgid "No open issues for this date."
+msgstr "Tälle päivälle ei ole avoimia poikkeamia."
+
+msgid "Progress"
+msgstr "Edistyminen"
+
+#, python-format
+msgid "%(a)s of %(t)s answered"
+msgstr "%(a)s / %(t)s vastattu"
+
+#, python-format
+msgid "%(n)s required task left"
+msgid_plural "%(n)s required tasks left"
+msgstr[0] "%(n)s pakollinen tehtävä jäljellä"
+msgstr[1] "%(n)s pakollista tehtävää jäljellä"
+
+#, python-format
+msgid "%(n)s failed or low"
+msgid_plural "%(n)s failed or low"
+msgstr[0] "%(n)s ei kunnossa tai vähissä"
+msgstr[1] "%(n)s ei kunnossa tai vähissä"
+
+#, python-format
+msgid "%(n)s temperature warning"
+msgid_plural "%(n)s temperature warnings"
+msgstr[0] "%(n)s lämpötilavaroitus"
+msgstr[1] "%(n)s lämpötilavaroitusta"
+
+#, python-format
+msgid "Started by %(who)s at %(when)s"
+msgstr "Aloittanut %(who)s klo %(when)s"
+
+#, python-format
+msgid "submitted by %(who)s at %(when)s"
+msgstr "lähettänyt %(who)s klo %(when)s"
+
+#, python-format
+msgid "checklist version %(v)s"
+msgstr "tarkistuslistan versio %(v)s"
+
+msgid "Groups"
+msgstr "Ryhmät"
+
+msgid "Tap an answer to save it. The page moves on to the next task."
+msgstr "Tallenna vastaus napauttamalla. Sivu siirtyy seuraavaan tehtävään."
+
+msgid "Optional"
+msgstr "Vapaaehtoinen"
+
+msgid "Acceptable range set by manager:"
+msgstr "Esihenkilön asettamat rajat:"
+
+msgid "No acceptable range is configured. The reading is recorded only."
+msgstr "Rajoja ei ole asetettu. Lukema vain kirjataan."
+
+msgid "Reading (°C)"
+msgstr "Lukema (°C)"
+
+msgid "Reading °C"
+msgstr "Lukema °C"
+
+msgid "Quantity or note"
+msgstr "Määrä tai huomautus"
+
+msgid "Note"
+msgstr "Huomautus"
+
+msgid "Quantity / note (needed for Low)"
+msgstr "Määrä / huomautus (pakollinen, jos vähissä)"
+
+msgid "Note (needed for Fail, Not done, N/A)"
+msgstr "Huomautus (pakollinen, jos ei kunnossa, ei tehty tai ei koske)"
+
+#, python-format
+msgid "Answer for %(t)s"
+msgstr "Vastaus: %(t)s"
+
+msgid "Report a problem with a photo"
+msgstr "Ilmoita ongelmasta ja lisää kuva"
+
+msgid "Flag an issue on this task"
+msgstr "Merkitse tähän tehtävään poikkeama"
+
+msgid "Open issue"
+msgstr "Avoin poikkeama"
+
+msgid "Resolved issue"
+msgstr "Ratkaistu poikkeama"
+
+#, python-format
+msgid "%(n)s photo"
+msgid_plural "%(n)s photos"
+msgstr[0] "%(n)s kuva"
+msgstr[1] "%(n)s kuvaa"
+
+msgid "Review and submit"
+msgstr "Tarkista ja lähetä"
+
+msgid "Submit checklist?"
+msgstr "Lähetetäänkö tarkistuslista?"
+
+#, python-format
+msgid "%(n)s required task still needs an answer:"
+msgid_plural "%(n)s required tasks still need an answer:"
+msgstr[0] "%(n)s pakollinen tehtävä odottaa vielä vastausta:"
+msgstr[1] "%(n)s pakollista tehtävää odottaa vielä vastausta:"
+
+msgid "Go back and finish"
+msgstr "Palaa viimeistelemään"
+
+#, python-format
+msgid "%(a)s of %(t)s tasks answered."
+msgstr "%(a)s / %(t)s tehtävää vastattu."
+
+#, python-format
+msgid "%(n)s optional task is unanswered."
+msgid_plural "%(n)s optional tasks are unanswered."
+msgstr[0] "%(n)s vapaaehtoinen tehtävä on vastaamatta."
+msgstr[1] "%(n)s vapaaehtoista tehtävää on vastaamatta."
+
+#, python-format
+msgid "%(n)s open issue stays open for a manager after you submit."
+msgid_plural "%(n)s open issues stay open for a manager after you submit."
+msgstr[0] ""
+"%(n)s avoin poikkeama jää esihenkilön hoidettavaksi lähettämisen jälkeen."
+msgstr[1] ""
+"%(n)s avointa poikkeamaa jää esihenkilön hoidettavaksi lähettämisen jälkeen."
+
+msgid "After submitting, answers can no longer be changed."
+msgstr "Lähettämisen jälkeen vastauksia ei voi enää muuttaa."
+
+msgid "Submit checklist"
+msgstr "Lähetä tarkistuslista"
+
+msgid "New checklist"
+msgstr "Uusi tarkistuslista"
+
+msgid "Checklist templates"
+msgstr "Tarkistuslistapohjat"
+
+#, python-format
+msgid "Edit %(t)s"
+msgstr "Muokkaa: %(t)s"
+
+msgid ""
+"Saving creates a new version. Checklists already started or submitted keep "
+"the tasks and thresholds they started with."
+msgstr ""
+"Tallentaminen luo uuden version. Jo aloitetut tai lähetetyt tarkistuslistat "
+"säilyttävät alkuperäiset tehtävänsä ja rajansa."
+
+msgid "Tasks"
+msgstr "Tehtävät"
+
+msgid ""
+"Empty rows are ignored. Temperature limits are optional: set them only if "
+"you want a warning, and only for temperature tasks."
+msgstr ""
+"Tyhjät rivit ohitetaan. Lämpötilarajat ovat vapaaehtoisia: aseta ne vain, "
+"jos haluat varoituksen, ja vain lämpötilatehtäville."
+
+#, python-format
+msgid "Task %(n)s"
+msgstr "Tehtävä %(n)s"
+
+msgid "New task"
+msgstr "Uusi tehtävä"
+
+msgid ""
+"Pasted tasks are added after the tasks above and are required. Rows with the"
+" same group are shown together on the checklist."
+msgstr ""
+"Liitetyt tehtävät lisätään yllä olevien jälkeen, ja ne ovat pakollisia. "
+"Saman ryhmän rivit näytetään tarkistuslistalla yhdessä."
+
+msgid "Save checklist"
+msgstr "Tallenna tarkistuslista"
+
+msgid "Cancel"
+msgstr "Peruuta"
+
+#, python-format
+msgid "%(n)s task"
+msgid_plural "%(n)s tasks"
+msgstr[0] "%(n)s tehtävä"
+msgstr[1] "%(n)s tehtävää"
+
+#, python-format
+msgid "version %(v)s"
+msgstr "versio %(v)s"
+
+msgid "Active"
+msgstr "Käytössä"
+
+msgid "Deactivated"
+msgstr "Poistettu käytöstä"
+
+msgid ""
+"Deactivate this checklist? No new runs can be started. History is kept."
+msgstr ""
+"Poistetaanko tarkistuslista käytöstä? Uusia kierroksia ei voi aloittaa. "
+"Historia säilyy."
+
+msgid "Deactivate"
+msgstr "Poista käytöstä"
+
+msgid "Activate"
+msgstr "Ota käyttöön"
+
+msgid "No checklists yet."
+msgstr "Ei vielä tarkistuslistoja."
+
+msgid "Today's checklists"
+msgstr "Päivän tarkistuslistat"
+
+#, python-format
+msgid "%(a)s of %(t)s tasks answered"
+msgstr "%(a)s / %(t)s tehtävää vastattu"
+
+#, python-format
+msgid "%(n)s failed"
+msgid_plural "%(n)s failed"
+msgstr[0] "%(n)s ei kunnossa"
+msgstr[1] "%(n)s ei kunnossa"
+
+msgid "View"
+msgstr "Näytä"
+
+msgid "Continue"
+msgstr "Jatka"
+
+msgid "Start"
+msgstr "Aloita"
+
+msgid "There are no checklists set up yet."
+msgstr "Tarkistuslistoja ei ole vielä luotu."
+
+msgid "Create one"
+msgstr "Luo sellainen"
+
+msgid "Start an extra run (for example a second shift)"
+msgstr "Aloita ylimääräinen kierros (esimerkiksi toinen vuoro)"
+
+msgid "Run label"
+msgstr "Kierroksen nimi"
+
+msgid "e.g. Evening shift"
+msgstr "esim. Iltavuoro"
+
+msgid "Start extra run"
+msgstr "Aloita ylimääräinen kierros"
+
+msgid "Done"
+msgstr "Tehty"
+
+msgid "Not done"
+msgstr "Ei tehty"
+
+msgid "Record reading"
+msgstr "Kirjaa lukema"
+
+msgid "Enough"
+msgstr "Riittää"
+
+msgid "Low"
+msgstr "Vähissä"
+
+msgid "Reading recorded"
+msgstr "Lukema kirjattu"
+
+msgid "This checklist was already started today. Continue below."
+msgstr "Tämä tarkistuslista on jo aloitettu tänään. Jatka alla."
+
+#, python-format
+msgid "Saved “%(task)s”: %(answer)s."
+msgstr "Tallennettu “%(task)s”: %(answer)s."
+
+msgid ""
+"The reading is outside the configured range, so an issue was opened for a "
+"manager."
+msgstr ""
+"Lukema on rajojen ulkopuolella, joten esihenkilölle avattiin poikkeama."
+
+msgid "A manager can see it in the issue list."
+msgstr "Esihenkilö näkee sen poikkeamalistassa."
+
+msgid "Checklist submitted. Thank you."
+msgstr "Tarkistuslista lähetetty. Kiitos!"
+
+msgid "Issue reported with photo."
+msgstr "Poikkeama ilmoitettu kuvan kanssa."
+
+msgid "Issue reported."
+msgstr "Poikkeama ilmoitettu."
+
+msgid "Photo uploaded."
+msgstr "Kuva lähetetty."
+
+msgid "Issue marked resolved."
+msgstr "Poikkeama merkitty ratkaistuksi."
+
+#, python-format
+msgid "%(n)s task(s) added from the pasted list."
+msgstr "Liitetystä listasta lisättiin %(n)s tehtävää."
+
+#, python-format
+msgid ""
+"Checklist saved (version %(v)s). Runs already started keep their original "
+"tasks."
+msgstr ""
+"Tarkistuslista tallennettu (versio %(v)s). Jo aloitetut kierrokset "
+"säilyttävät alkuperäiset tehtävänsä."
+
+msgid "Checklist activated."
+msgstr "Tarkistuslista otettu käyttöön."
+
+msgid "Checklist deactivated. Its history is kept."
+msgstr "Tarkistuslista poistettu käytöstä. Sen historia säilyy."
+
+#, python-format
+msgid "The photo is too large. The limit is %(mb)s MB."
+msgstr "Kuva on liian suuri. Enimmäiskoko on %(mb)s Mt."
+
+msgid "The photo is too large."
+msgstr "Kuva on liian suuri."
+
+msgid "Use a JPEG, PNG or WebP image."
+msgstr "Käytä JPEG-, PNG- tai WebP-kuvaa."
+
+msgid "That file is not a readable JPEG, PNG or WebP image."
+msgstr "Tiedosto ei ole luettava JPEG-, PNG- tai WebP-kuva."
+
+#, python-format
+msgid "Unknown time zone: %(tz)s"
+msgstr "Tuntematon aikavyöhyke: %(tz)s"
+
+msgid "Not allowed"
+msgstr "Ei sallittu"
+
+msgid "You don't have access to this page"
+msgstr "Sinulla ei ole pääsyä tälle sivulle"
+
+msgid ""
+"This page is for managers or owners. If you think you should have access, "
+"ask your manager."
+msgstr ""
+"Tämä sivu on esihenkilöille ja omistajille. Jos sinun pitäisi mielestäsi "
+"päästä sille, kysy esihenkilöltäsi."
+
+msgid "Go to Today"
+msgstr "Siirry Tänään-sivulle"
+
+msgid "Not found"
+msgstr "Ei löytynyt"
+
+msgid "Page not found"
+msgstr "Sivua ei löytynyt"
+
+msgid "This page doesn't exist, or it isn't available to your account."
+msgstr "Sivua ei ole olemassa, tai se ei ole käytettävissä tunnuksellasi."
+
+msgid "Go to sign in"
+msgstr "Siirry kirjautumaan"
+
+msgid "Restaurant operations"
+msgstr "Ravintolan arki"
+
+msgid "Skip to content"
+msgstr "Siirry sisältöön"
+
+msgid ""
+"Demo with example data. Anything you change is reset when the demo restarts."
+msgstr ""
+"Esittelyversio esimerkkitiedoilla. Kaikki muutokset nollautuvat, kun "
+"esittely käynnistyy uudelleen."
+
+msgctxt "navigation"
+msgid "Menu"
+msgstr "Valikko"
+
+msgid "Main"
+msgstr "Päävalikko"
+
+msgid "Today"
+msgstr "Tänään"
+
+msgid "Clock in/out"
+msgstr "Leimaus"
+
+msgid "My hours"
+msgstr "Omat tunnit"
+
+msgid "Inventory"
+msgstr "Varasto"
+
+msgid "Dashboard"
+msgstr "Yleisnäkymä"
+
+msgid "Stock history"
+msgstr "Varastotapahtumat"
+
+msgid "Timesheets"
+msgstr "Tuntilistat"
+
+msgid "Menu"
+msgstr "Ruokalista"
+
+msgid "Promotions"
+msgstr "Tarjoukset"
+
+msgid "Public website"
+msgstr "Julkinen verkkosivu"
+
+msgid "My profile"
+msgstr "Oma profiili"
+
+msgid "Sign out"
+msgstr "Kirjaudu ulos"
+
+msgid "Language"
+msgstr "Kieli"
+
+msgid "Pages"
+msgstr "Sivut"
+
+msgid "Previous"
+msgstr "Edellinen"
+
+#, python-format
+msgid "Page %(n)s of %(total)s"
+msgstr "Sivu %(n)s / %(total)s"
+
+msgid "Next"
+msgstr "Seuraava"
+
+#, python-format
+msgid "Hello, %(name)s"
+msgstr "Hei, %(name)s"
+
+msgid "My shift"
+msgstr "Oma vuoro"
+
+msgid "On break"
+msgstr "Tauolla"
+
+msgid "Clocked in"
+msgstr "Leimattu sisään"
+
+#, python-format
+msgid "Since %(t)s"
+msgstr "Klo %(t)s alkaen"
+
+msgid "Not clocked in"
+msgstr "Ei leimattu sisään"
+
+msgid "Tap to clock in"
+msgstr "Leimaa sisään napauttamalla"
+
+msgid "submitted today"
+msgstr "lähetetty tänään"
+
+#, python-format
+msgid "%(n)s in progress"
+msgid_plural "%(n)s in progress"
+msgstr[0] "%(n)s kesken"
+msgstr[1] "%(n)s kesken"
+
+msgid "No checklists set up."
+msgstr "Tarkistuslistoja ei ole luotu."
+
+#, python-format
+msgid "%(n)s item low"
+msgid_plural "%(n)s items low"
+msgstr[0] "%(n)s tuote vähissä"
+msgstr[1] "%(n)s tuotetta vähissä"
+
+msgid "Nothing low"
+msgstr "Mikään ei ole vähissä"
+
+msgid "Record deliveries, use and waste"
+msgstr "Kirjaa toimitukset, käyttö ja hävikki"
+
+msgid "Staff, hours, checklists, issues, stock and temperatures in one place"
+msgstr ""
+"Henkilökunta, tunnit, tarkistuslistat, poikkeamat, varasto ja lämpötilat "
+"yhdessä paikassa"
+
+msgid "Staff on shift"
+msgstr "Vuorossa"
+
+msgid "Sign in"
+msgstr "Kirjaudu sisään"
+
+msgid "Forgot your password? Ask your manager for a new password link."
+msgstr "Unohditko salasanasi? Pyydä esihenkilöltäsi uusi salasanalinkki."
+
+msgid "Demo accounts"
+msgstr "Esittelytunnukset"
+
+#, python-format
+msgid ""
+"Tap a person to sign in as them. Every demo account uses the password "
+"<strong>%(pw)s</strong>."
+msgstr ""
+"Napauta henkilöä kirjautuaksesi hänenä. Kaikkien esittelytunnusten salasana "
+"on <strong>%(pw)s</strong>."
+
+msgid "Set your password"
+msgstr "Aseta salasanasi"
+
+#, python-format
+msgid "Hi %(name)s. You will sign in as <strong>%(login)s</strong>."
+msgstr ""
+"Hei %(name)s. Kirjaudut sisään tunnuksella <strong>%(login)s</strong>."
+
+msgid "Save password"
+msgstr "Tallenna salasana"
+
+msgid "This link does not work"
+msgstr "Tämä linkki ei toimi"
+
+msgid ""
+"The password link has expired or has already been used. Ask your manager for"
+" a new one."
+msgstr ""
+"Salasanalinkki on vanhentunut tai jo käytetty. Pyydä esihenkilöltäsi uusi."
+
+msgid "Enter a valid date and time."
+msgstr "Anna kelvollinen päivämäärä ja kellonaika."
+
+#, python-format
+msgid ""
+"%(value)s does not exist in the restaurant's time zone (daylight-saving "
+"change)."
+msgstr ""
+"%(value)s ei ole olemassa ravintolan aikavyöhykkeellä (kesäajan vaihdos)."
+
+msgid "Today's operation"
+msgstr "Päivän toiminta"
+
+#, python-format
+msgid "Operation on %(d)s"
+msgstr "Toiminta %(d)s"
+
+msgid "Choose a date"
+msgstr "Valitse päivä"
+
+msgid "Back to today"
+msgstr "Takaisin tähän päivään"
+
+#, python-format
+msgid "Updated %(t)s"
+msgstr "Päivitetty %(t)s"
+
+msgid "Refresh"
+msgstr "Päivitä"
+
+msgid "On shift now"
+msgstr "Vuorossa nyt"
+
+#, python-format
+msgid "%(n)s on break"
+msgid_plural "%(n)s on break"
+msgstr[0] "%(n)s tauolla"
+msgstr[1] "%(n)s tauolla"
+
+msgid "clocked in"
+msgstr "leimattu sisään"
+
+msgid "Hours worked"
+msgstr "Tehdyt tunnit"
+
+msgid "in progress"
+msgstr "kesken"
+
+msgid "closed shifts"
+msgstr "päättyneet vuorot"
+
+msgid "Checklists submitted"
+msgstr "Lähetetyt tarkistuslistat"
+
+#, python-format
+msgid "%(n)s required task open"
+msgid_plural "%(n)s required tasks open"
+msgstr[0] "%(n)s pakollinen tehtävä auki"
+msgstr[1] "%(n)s pakollista tehtävää auki"
+
+msgid "no required tasks open"
+msgstr "ei avoimia pakollisia tehtäviä"
+
+msgid "none expected"
+msgstr "ei odotettuja"
+
+#, python-format
+msgid "%(n)s resolved this day"
+msgid_plural "%(n)s resolved this day"
+msgstr[0] "%(n)s ratkaistu tänä päivänä"
+msgstr[1] "%(n)s ratkaistu tänä päivänä"
+
+msgid "Low stock"
+msgstr "Vähissä"
+
+msgid "items at or below minimum"
+msgstr "tuotetta minimissä tai alle"
+
+msgid "Flagged temperatures"
+msgstr "Poikkeavat lämpötilat"
+
+msgid "outside the set range"
+msgstr "rajojen ulkopuolella"
+
+msgid "Staff on shift now"
+msgstr "Vuorossa nyt"
+
+msgid "Since"
+msgstr "Alkaen"
+
+msgid "Worked so far"
+msgstr "Tehty tähän mennessä"
+
+#, python-format
+msgid "On break since %(t)s"
+msgstr "Tauolla klo %(t)s alkaen"
+
+msgid "Working"
+msgstr "Töissä"
+
+msgid ""
+"Worked so far is provisional until the person clocks out. Breaks are not "
+"counted."
+msgstr ""
+"Tähän mennessä tehty aika on alustava, kunnes henkilö leimaa ulos. Taukoja "
+"ei lasketa."
+
+msgid "Nobody is clocked in right now."
+msgstr "Kukaan ei ole juuri nyt leimannut sisään."
+
+msgid "Hours"
+msgstr "Tunnit"
+
+msgid "Closed shifts"
+msgstr "Päättyneet vuorot"
+
+msgid "Still open"
+msgstr "Vielä auki"
+
+msgid "so far (provisional)"
+msgstr "tähän mennessä (alustava)"
+
+msgid "People"
+msgstr "Henkilöitä"
+
+msgid "Counts shifts that started on this date, restaurant local time."
+msgstr ""
+"Laskee vuorot, jotka alkoivat tänä päivänä ravintolan paikallista aikaa."
+
+msgid "Open timesheets"
+msgstr "Avaa tuntilistat"
+
+msgid "Started by"
+msgstr "Aloittaja"
+
+msgid "Incomplete tasks"
+msgstr "Keskeneräiset tehtävät"
+
+msgid "Responsible"
+msgstr "Vastuuhenkilö"
+
+msgid "submitted"
+msgstr "lähetetty"
+
+msgid ""
+"Tasks are not assigned to people yet, so the person who started the "
+"checklist is shown as responsible."
+msgstr ""
+"Tehtäviä ei vielä osoiteta henkilöille, joten tarkistuslistan aloittaja "
+"näytetään vastuuhenkilönä."
+
+msgid "Every task in the started checklists has an answer."
+msgstr "Kaikkiin aloitettujen tarkistuslistojen tehtäviin on vastattu."
+
+msgid "No checklist has been started yet."
+msgstr "Yhtään tarkistuslistaa ei ole vielä aloitettu."
+
+msgid "Equipment"
+msgstr "Laite"
+
+msgid "Set range"
+msgstr "Asetetut rajat"
+
+msgid "No readings outside a set range on this date."
+msgstr "Tänä päivänä ei ole lukemia rajojen ulkopuolella."
+
+msgid "Reported issues"
+msgstr "Ilmoitetut poikkeamat"
+
+msgid "No open issues."
+msgstr "Ei avoimia poikkeamia."
+
+msgid "Resolved on this date"
+msgstr "Ratkaistu tänä päivänä"
+
+#, python-format
+msgid "Resolved by %(who)s at %(t)s"
+msgstr "Ratkaissut %(who)s klo %(t)s"
+
+msgid ""
+"Open issues are listed whatever day they were reported, until someone "
+"resolves them."
+msgstr ""
+"Avoimet poikkeamat näytetään ilmoituspäivästä riippumatta, kunnes joku "
+"ratkaisee ne."
+
+msgid "Item"
+msgstr "Tuote"
+
+msgid "In stock"
+msgstr "Varastossa"
+
+msgid "Minimum"
+msgstr "Minimi"
+
+msgid "Supplier"
+msgstr "Toimittaja"
+
+msgid "Current stock, whatever date is selected."
+msgstr "Nykyinen varasto valitusta päivästä riippumatta."
+
+msgid "No items are at or below their minimum."
+msgstr "Mikään tuote ei ole minimissä tai sen alle."
+
+msgid "Name"
+msgstr "Nimi"
+
+msgid "Category"
+msgstr "Luokka"
+
+msgid "Unit"
+msgstr "Yksikkö"
+
+msgid "For example kg, L or pcs. Cannot change after stock is recorded."
+msgstr "Esimerkiksi kg, l tai kpl. Ei voi muuttaa, kun varastoa on kirjattu."
+
+msgid "Opening quantity"
+msgstr "Alkusaldo"
+
+msgid "Minimum quantity"
+msgstr "Minimimäärä"
+
+msgid "The item shows as low stock at or below this amount."
+msgstr "Tuote näytetään vähissä olevana, kun määrä on tämä tai vähemmän."
+
+msgid "Supplier (optional)"
+msgstr "Toimittaja (vapaaehtoinen)"
+
+msgid "Locked because stock has been recorded for this item."
+msgstr "Lukittu, koska tälle tuotteelle on kirjattu varastotapahtumia."
+
+msgid "What happened?"
+msgstr "Mitä tapahtui?"
+
+msgid "Quantity"
+msgstr "Määrä"
+
+msgid "Waste reason"
+msgstr "Hävikin syy"
+
+msgid "Choose a reason"
+msgstr "Valitse syy"
+
+msgid "Required for waste."
+msgstr "Pakollinen hävikille."
+
+msgid ""
+"Optional, for example a delivery note number. Required for adjustments."
+msgstr "Vapaaehtoinen, esimerkiksi lähetteen numero. Pakollinen korjauksille."
+
+msgid "For an adjustment, use a minus sign to reduce stock, e.g. -1.5"
+msgstr "Korjauksessa vähennä varastoa miinusmerkillä, esim. -1,5"
+
+msgid "Ingredient"
+msgstr "Raaka-aine"
+
+msgid "Drink"
+msgstr "Juoma"
+
+msgid "Packaging"
+msgstr "Pakkaus"
+
+msgid "Cleaning supply"
+msgstr "Puhdistustarvike"
+
+msgid "name"
+msgstr "nimi"
+
+msgid "category"
+msgstr "luokka"
+
+msgid "unit"
+msgstr "yksikkö"
+
+msgid "For example kg, L or pcs. Fixed once stock is recorded."
+msgstr "Esimerkiksi kg, l tai kpl. Lukittuu, kun varastoa on kirjattu."
+
+msgid "minimum quantity"
+msgstr "minimimäärä"
+
+msgid "supplier"
+msgstr "toimittaja"
+
+msgid "Opening balance"
+msgstr "Alkusaldo"
+
+msgid "Received"
+msgstr "Vastaanotettu"
+
+msgid "Used"
+msgstr "Käytetty"
+
+msgid "Waste"
+msgstr "Hävikki"
+
+msgid "Adjustment"
+msgstr "Korjaus"
+
+msgid "Expired"
+msgstr "Vanhentunut"
+
+msgid "Damaged"
+msgstr "Vaurioitunut"
+
+msgid "Spilled"
+msgstr "Läikkynyt"
+
+msgid "Enter a number, for example 2.5"
+msgstr "Anna numero, esimerkiksi 2,5"
+
+msgid "Use at most three decimal places."
+msgstr "Käytä enintään kolmea desimaalia."
+
+msgid "That quantity is too large."
+msgstr "Määrä on liian suuri."
+
+msgid "Quantity cannot be negative."
+msgstr "Määrä ei voi olla negatiivinen."
+
+msgid "Quantity must be more than zero."
+msgstr "Määrän on oltava suurempi kuin nolla."
+
+msgid "Enter a name."
+msgstr "Anna nimi."
+
+msgid "Enter a unit, for example kg."
+msgstr "Anna yksikkö, esimerkiksi kg."
+
+msgid "An item with this name already exists in this category."
+msgstr "Tässä luokassa on jo tämänniminen tuote."
+
+msgid ""
+"The unit cannot change after stock has been recorded. Create a new item "
+"instead."
+msgstr ""
+"Yksikköä ei voi muuttaa, kun varastoa on kirjattu. Luo sen sijaan uusi "
+"tuote."
+
+msgid "An adjustment needs a reason."
+msgstr "Korjaukselle tarvitaan syy."
+
+msgid "Choose why the stock was wasted."
+msgstr "Valitse hävikin syy."
+
+msgid "Describe the reason when choosing Other."
+msgstr "Kuvaile syy, kun valitset Muu."
+
+msgid "Choose an item."
+msgstr "Valitse tuote."
+
+msgid "This item is deactivated."
+msgstr "Tämä tuote on poistettu käytöstä."
+
+msgid ""
+"This form was already used for a different entry. Reload the page and try "
+"again."
+msgstr ""
+"Tätä lomaketta on jo käytetty toiseen kirjaukseen. Lataa sivu uudelleen ja "
+"yritä uudestaan."
+
+#, python-format
+msgid "Not enough stock: %(have)s %(unit)s available."
+msgstr "Varasto ei riitä: saatavilla %(have)s %(unit)s."
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Edit item"
+msgstr "Muokkaa tuotetta"
+
+msgid ""
+"Deactivate this item? It will be hidden from stock entry but its history is "
+"kept."
+msgstr ""
+"Poistetaanko tuote käytöstä? Se piilotetaan varastokirjauksista, mutta sen "
+"historia säilyy."
+
+msgid "Reactivate"
+msgstr "Ota uudelleen käyttöön"
+
+msgid "Record stock"
+msgstr "Kirjaa varasto"
+
+msgid "Save"
+msgstr "Tallenna"
+
+msgid "This item is deactivated, so no new stock can be recorded."
+msgstr ""
+"Tuote on poistettu käytöstä, joten uusia varastotapahtumia ei voi kirjata."
+
+msgid "History"
+msgstr "Historia"
+
+msgid "When"
+msgstr "Milloin"
+
+msgid "Change"
+msgstr "Muutos"
+
+msgid "Balance after"
+msgstr "Saldo jälkeen"
+
+msgid "Reason / note"
+msgstr "Syy / huomautus"
+
+msgid "No stock has been recorded for this item yet."
+msgstr "Tälle tuotteelle ei ole vielä kirjattu varastotapahtumia."
+
+msgid "All items"
+msgstr "Kaikki tuotteet"
+
+msgid "All types"
+msgstr "Kaikki tyypit"
+
+msgid "No stock movements match these filters."
+msgstr "Yksikään varastotapahtuma ei vastaa näitä suodattimia."
+
+msgid ""
+"Dates use the restaurant's local time. Each row shows the item's balance "
+"right after that movement."
+msgstr ""
+"Ajat ovat ravintolan paikallista aikaa. Jokainen rivi näyttää tuotteen "
+"saldon heti tapahtuman jälkeen."
+
+msgid "Add item"
+msgstr "Lisää tuote"
+
+#, python-format
+msgid "%(n)s item low on stock"
+msgid_plural "%(n)s items low on stock"
+msgstr[0] "%(n)s tuote vähissä"
+msgstr[1] "%(n)s tuotetta vähissä"
+
+msgid "No items low on stock"
+msgstr "Mikään tuote ei ole vähissä"
+
+msgid "Search"
+msgstr "Hae"
+
+msgid "Low stock only"
+msgstr "Vain vähissä olevat"
+
+msgid "No items yet. Add your first inventory item."
+msgstr "Ei vielä tuotteita. Lisää ensimmäinen varastotuote."
+
+msgid "No items match."
+msgstr "Ei osumia."
+
+#, python-format
+msgid "%(name)s was added."
+msgstr "%(name)s lisättiin."
+
+msgid "Add inventory item"
+msgstr "Lisää varastotuote"
+
+msgid "Item saved. Past stock records are unchanged."
+msgstr "Tuote tallennettu. Aiemmat varastotapahtumat eivät muuttuneet."
+
+#, python-format
+msgid "Edit %(name)s"
+msgstr "Muokkaa: %(name)s"
+
+msgid "Item reactivated."
+msgstr "Tuote otettu uudelleen käyttöön."
+
+msgid "Item deactivated. Its history is kept."
+msgstr "Tuote poistettu käytöstä. Sen historia säilyy."
+
+#, python-format
+msgid "Saved: %(type)s %(qty)s %(unit)s. Stock is now %(bal)s %(unit)s."
+msgstr ""
+"Tallennettu: %(type)s %(qty)s %(unit)s. Varastossa nyt %(bal)s %(unit)s."
+
+msgid "This entry was already saved. It was not recorded twice."
+msgstr "Tämä kirjaus oli jo tallennettu. Sitä ei kirjattu kahdesti."
+
+msgid "Category name"
+msgstr "Luokan nimi"
+
+msgid "Dish name"
+msgstr "Annoksen nimi"
+
+msgid "Enter the dish name."
+msgstr "Anna annoksen nimi."
+
+msgid "Choose a category."
+msgstr "Valitse luokka."
+
+msgid "Shown on the public menu. Up to 600 characters."
+msgstr "Näytetään julkisella ruokalistalla. Enintään 600 merkkiä."
+
+msgid "Price (€)"
+msgstr "Hinta (€)"
+
+msgid "For example 14.50"
+msgstr "Esimerkiksi 14,50"
+
+msgid "Enter a price."
+msgstr "Anna hinta."
+
+msgid "Allergens"
+msgstr "Allergeenit"
+
+msgid "Tick every allergen the dish contains."
+msgstr "Rastita kaikki annoksen sisältämät allergeenit."
+
+msgid "Diet labels"
+msgstr "Ruokavaliomerkinnät"
+
+msgid "Menu status"
+msgstr "Tila ruokalistalla"
+
+msgid ""
+"Drafts are only visible here. Published dishes appear on the public menu."
+msgstr ""
+"Luonnokset näkyvät vain täällä. Julkaistut annokset näkyvät julkisella "
+"ruokalistalla."
+
+msgid "Available now"
+msgstr "Saatavilla nyt"
+
+msgid "When it is unavailable"
+msgstr "Kun annos ei ole saatavilla"
+
+msgid "Photo"
+msgstr "Kuva"
+
+msgid "JPEG, PNG or WebP, up to 10 MB. Large photos are scaled down."
+msgstr "JPEG, PNG tai WebP, enintään 10 Mt. Suuret kuvat pienennetään."
+
+msgid "Remove the current photo"
+msgstr "Poista nykyinen kuva"
+
+msgid "Choose a category"
+msgstr "Valitse luokka"
+
+msgid "Cereals containing gluten"
+msgstr "Gluteenia sisältävät viljat"
+
+msgid "Crustaceans"
+msgstr "Äyriäiset"
+
+msgid "Eggs"
+msgstr "Kananmuna"
+
+msgid "Fish"
+msgstr "Kala"
+
+msgid "Peanuts"
+msgstr "Maapähkinä"
+
+msgid "Soy"
+msgstr "Soija"
+
+msgid "Milk"
+msgstr "Maito"
+
+msgid "Tree nuts"
+msgstr "Pähkinät"
+
+msgid "Celery"
+msgstr "Selleri"
+
+msgid "Mustard"
+msgstr "Sinappi"
+
+msgid "Sesame"
+msgstr "Seesami"
+
+msgid "Sulphites"
+msgstr "Sulfiitit"
+
+msgid "Lupin"
+msgstr "Lupiini"
+
+msgid "Molluscs"
+msgstr "Nilviäiset"
+
+msgid "Vegan"
+msgstr "Vegaaninen"
+
+msgid "Vegetarian"
+msgstr "Kasvis"
+
+msgid "Gluten-free"
+msgstr "Gluteeniton"
+
+msgid "Milk-free"
+msgstr "Maidoton"
+
+msgid "Lactose-free"
+msgstr "Laktoositon"
+
+msgid "Draft"
+msgstr "Luonnos"
+
+msgid "Published"
+msgstr "Julkaistu"
+
+msgid "Show it marked as unavailable"
+msgstr "Näytä merkittynä loppuneeksi"
+
+msgid "Hide it from the menu"
+msgstr "Piilota ruokalistalta"
+
+msgid "description"
+msgstr "kuvaus"
+
+msgid "price (€)"
+msgstr "hinta (€)"
+
+msgid "available now"
+msgstr "saatavilla nyt"
+
+msgid "when unavailable"
+msgstr "kun ei saatavilla"
+
+msgid "Enter the price as a number, for example 12.50"
+msgstr "Anna hinta numerona, esimerkiksi 12,50"
+
+msgid "The price cannot be negative."
+msgstr "Hinta ei voi olla negatiivinen."
+
+msgid "Use at most two decimals (cents)."
+msgstr "Käytä enintään kahta desimaalia (sentit)."
+
+msgid "That price is too large."
+msgstr "Hinta on liian suuri."
+
+msgid "Enter a category name."
+msgstr "Anna luokan nimi."
+
+msgid "A category with this name already exists."
+msgstr "Tämänniminen luokka on jo olemassa."
+
+msgid "Move or delete the dishes in this category first."
+msgstr "Siirrä tai poista luokan annokset ensin."
+
+msgid "Choose draft or published."
+msgstr "Valitse luonnos tai julkaistu."
+
+msgid "Choose what to show when the dish is unavailable."
+msgstr "Valitse, mitä näytetään, kun annos ei ole saatavilla."
+
+#, python-format
+msgid "Category: %(n)s"
+msgstr "Luokka: %(n)s"
+
+msgid "Save name"
+msgstr "Tallenna nimi"
+
+#, python-format
+msgid ""
+"This category has %(n)s dish. Move or delete it before deleting the "
+"category."
+msgid_plural ""
+"This category has %(n)s dishes. Move or delete them before deleting the "
+"category."
+msgstr[0] ""
+"Luokassa on %(n)s annos. Siirrä tai poista se ennen luokan poistamista."
+msgstr[1] ""
+"Luokassa on %(n)s annosta. Siirrä tai poista ne ennen luokan poistamista."
+
+msgid "Delete this empty category?"
+msgstr "Poistetaanko tämä tyhjä luokka?"
+
+msgid "Delete category"
+msgstr "Poista luokka"
+
+#, python-format
+msgid "Delete %(n)s?"
+msgstr "Poistetaanko %(n)s?"
+
+msgid ""
+"The dish and its photo are removed from the menu for good. To take it off "
+"the menu for now, unpublish it or mark it unavailable instead."
+msgstr ""
+"Annos ja sen kuva poistetaan ruokalistalta pysyvästi. Jos haluat poistaa sen"
+" vain toistaiseksi, peru julkaisu tai merkitse se loppuneeksi."
+
+msgid "Delete dish"
+msgstr "Poista annos"
+
+msgid "Add dish"
+msgstr "Lisää annos"
+
+#, python-format
+msgid "Edit %(n)s"
+msgstr "Muokkaa: %(n)s"
+
+#, python-format
+msgid "Current photo of %(n)s"
+msgstr "Nykyinen kuva: %(n)s"
+
+msgid "Replace with a new photo"
+msgstr "Vaihda uuteen kuvaan"
+
+msgid "Add a photo (optional)"
+msgstr "Lisää kuva (vapaaehtoinen)"
+
+msgid "Preview of the new photo"
+msgstr "Uuden kuvan esikatselu"
+
+msgid "Save dish"
+msgstr "Tallenna annos"
+
+msgid "View public menu"
+msgstr "Näytä julkinen ruokalista"
+
+#, python-format
+msgid "%(n)s published dish"
+msgid_plural "%(n)s published dishes"
+msgstr[0] "%(n)s julkaistu annos"
+msgstr[1] "%(n)s julkaistua annosta"
+
+#, python-format
+msgid "%(n)s draft"
+msgid_plural "%(n)s drafts"
+msgstr[0] "%(n)s luonnos"
+msgstr[1] "%(n)s luonnosta"
+
+#, python-format
+msgid "%(n)s unavailable"
+msgid_plural "%(n)s unavailable"
+msgstr[0] "%(n)s ei saatavilla"
+msgstr[1] "%(n)s ei saatavilla"
+
+#, python-format
+msgid "Move %(c)s up"
+msgstr "Siirrä ylös: %(c)s"
+
+#, python-format
+msgid "Move %(c)s down"
+msgstr "Siirrä alas: %(c)s"
+
+msgid "Rename"
+msgstr "Nimeä uudelleen"
+
+msgid "Unavailable · hidden"
+msgstr "Ei saatavilla · piilotettu"
+
+msgid "Unavailable · shown as sold out"
+msgstr "Ei saatavilla · näytetään loppuneena"
+
+msgid "Mark unavailable"
+msgstr "Merkitse loppuneeksi"
+
+msgid "Mark available"
+msgstr "Merkitse saatavilla olevaksi"
+
+msgid "Unpublish"
+msgstr "Peru julkaisu"
+
+msgid "Publish"
+msgstr "Julkaise"
+
+#, python-format
+msgid "Move %(d)s up"
+msgstr "Siirrä ylös: %(d)s"
+
+#, python-format
+msgid "Move %(d)s down"
+msgstr "Siirrä alas: %(d)s"
+
+msgid "No dishes in this category yet."
+msgstr "Tässä luokassa ei ole vielä annoksia."
+
+msgid "Add one"
+msgstr "Lisää annos"
+
+msgid ""
+"The menu is empty. Start by adding a category, such as Starters or Drinks."
+msgstr ""
+"Ruokalista on tyhjä. Aloita lisäämällä luokka, kuten Alkuruoat tai Juomat."
+
+msgid "New category"
+msgstr "Uusi luokka"
+
+msgid "Add category"
+msgstr "Lisää luokka"
+
+#, python-format
+msgid "Category “%(name)s” added."
+msgstr "Luokka “%(name)s” lisätty."
+
+msgid "Category renamed."
+msgstr "Luokka nimetty uudelleen."
+
+msgid "Category deleted."
+msgstr "Luokka poistettu."
+
+msgid "Add a category first, then add dishes to it."
+msgstr "Lisää ensin luokka ja sitten siihen annoksia."
+
+#, python-format
+msgid "“%(name)s” is saved and on the public menu."
+msgstr "“%(name)s” on tallennettu ja näkyy julkisella ruokalistalla."
+
+#, python-format
+msgid "“%(name)s” is saved as a draft."
+msgstr "“%(name)s” on tallennettu luonnoksena."
+
+#, python-format
+msgid "“%(name)s” is available again."
+msgstr "“%(name)s” on taas saatavilla."
+
+#, python-format
+msgid "“%(name)s” is marked unavailable."
+msgstr "“%(name)s” on merkitty loppuneeksi."
+
+#, python-format
+msgid "“%(name)s” is published."
+msgstr "“%(name)s” on julkaistu."
+
+#, python-format
+msgid "“%(name)s” is back to draft."
+msgstr "“%(name)s” on palautettu luonnokseksi."
+
+#, python-format
+msgid "“%(name)s” was deleted."
+msgstr "“%(name)s” poistettiin."
+
+msgid "Those login details did not work. Check them and try again."
+msgstr "Kirjautumistiedot eivät kelvanneet. Tarkista ne ja yritä uudelleen."
+
+msgid "Login name or email"
+msgstr "Käyttäjätunnus tai sähköposti"
+
+msgid "Not case-sensitive. Must be unique."
+msgstr "Kirjainkoolla ei ole väliä. Oltava yksilöllinen."
+
+msgid "Contact number (optional)"
+msgstr "Puhelinnumero (vapaaehtoinen)"
+
+msgid "Role"
+msgstr "Rooli"
+
+msgid "Owner"
+msgstr "Omistaja"
+
+msgid "Manager"
+msgstr "Esihenkilö"
+
+msgid "Employee"
+msgstr "Työntekijä"
+
+msgid "display name"
+msgstr "näyttönimi"
+
+msgid "login name or email"
+msgstr "käyttäjätunnus tai sähköposti"
+
+msgid "Used to sign in. Not case-sensitive."
+msgstr "Käytetään kirjautumiseen. Kirjainkoolla ei ole väliä."
+
+msgid "contact number"
+msgstr "puhelinnumero"
+
+msgid "This login name is already in use."
+msgstr "Tämä käyttäjätunnus on jo käytössä."
+
+msgid "Enter a login name."
+msgstr "Anna käyttäjätunnus."
+
+msgid "Choose a valid role."
+msgstr "Valitse kelvollinen rooli."
+
+msgid ""
+"The last active owner cannot be demoted. Make someone else owner first."
+msgstr ""
+"Viimeisen aktiivisen omistajan roolia ei voi laskea. Tee ensin joku muu "
+"omistajaksi."
+
+msgid "You cannot deactivate your own account."
+msgstr "Et voi poistaa omaa tunnustasi käytöstä."
+
+msgid "The last active owner cannot be deactivated."
+msgstr "Viimeistä aktiivista omistajaa ei voi poistaa käytöstä."
+
+#, python-format
+msgid ""
+"%(name)s has an open shift. Close it with a time correction (with a reason) "
+"before deactivating the account."
+msgstr ""
+"Henkilöllä %(name)s on avoin vuoro. Sulje se aikakorjauksella (syyn kanssa) "
+"ennen tunnuksen poistamista käytöstä."
+
+#, python-format
+msgid "Deactivate %(name)s?"
+msgstr "Poistetaanko %(name)s käytöstä?"
+
+#, python-format
+msgid ""
+"This person is still clocked in (since %(t)s). Close the shift with a time "
+"correction first."
+msgstr ""
+"Henkilö on yhä leimattuna sisään (klo %(t)s alkaen). Sulje vuoro ensin "
+"aikakorjauksella."
+
+msgid "Correct this shift"
+msgstr "Korjaa tämä vuoro"
+
+msgid ""
+"They will be signed out and will not be able to sign in. Their timesheets, "
+"checklists and stock records stay in the history under their name. You can "
+"reactivate the account later."
+msgstr ""
+"Hänet kirjataan ulos, eikä hän voi enää kirjautua sisään. Hänen "
+"tuntilistansa, tarkistuslistansa ja varastokirjauksensa säilyvät historiassa"
+" hänen nimellään. Voit ottaa tunnuksen myöhemmin uudelleen käyttöön."
+
+msgid "Deactivate account"
+msgstr "Poista tunnus käytöstä"
+
+msgid "You"
+msgstr "Sinä"
+
+msgid "Login"
+msgstr "Käyttäjätunnus"
+
+msgid "Contact number"
+msgstr "Puhelinnumero"
+
+msgid "Password not set yet"
+msgstr "Salasanaa ei ole vielä asetettu"
+
+msgid "On shift"
+msgstr "Vuorossa"
+
+msgid "Change my password"
+msgstr "Vaihda salasana"
+
+msgid "To change your name or contact number, ask a manager."
+msgstr "Pyydä esihenkilöä muuttamaan nimesi tai puhelinnumerosi."
+
+msgid "Records"
+msgstr "Kirjaukset"
+
+msgid "Timesheet"
+msgstr "Tuntilista"
+
+msgid "Stock movements"
+msgstr "Varastotapahtumat"
+
+msgid "Manage"
+msgstr "Hallinta"
+
+msgid "Edit details"
+msgstr "Muokkaa tietoja"
+
+msgid "Change role"
+msgstr "Vaihda rooli"
+
+msgid "Create password reset link"
+msgstr "Luo salasanan vaihtolinkki"
+
+msgid "Create password setup link"
+msgstr "Luo salasanan asetuslinkki"
+
+msgid "Reactivate this account?"
+msgstr "Otetaanko tunnus uudelleen käyttöön?"
+
+msgid "Account history"
+msgstr "Tunnuksen historia"
+
+msgid "System setup"
+msgstr "Järjestelmän käyttöönotto"
+
+msgid "Add staff member"
+msgstr "Lisää työntekijä"
+
+msgid "All roles"
+msgstr "Kaikki roolit"
+
+msgid "Awaiting password"
+msgstr "Odottaa salasanaa"
+
+msgid "No staff match these filters."
+msgstr "Kukaan ei vastaa näitä suodattimia."
+
+msgid "Staff member added"
+msgstr "Työntekijä lisätty"
+
+msgid "Password link"
+msgstr "Salasanalinkki"
+
+#, python-format
+msgid ""
+"Give this one-time link to <strong>%(name)s</strong>. They open it, choose "
+"their own password, then sign in as <strong>%(login)s</strong>."
+msgstr ""
+"Anna tämä kertakäyttöinen linkki henkilölle <strong>%(name)s</strong>. Hän "
+"avaa sen, valitsee oman salasanan ja kirjautuu sitten tunnuksella "
+"<strong>%(login)s</strong>."
+
+msgid "One-time link"
+msgstr "Kertakäyttöinen linkki"
+
+msgid ""
+"The link stops working once it has been used or after it expires. It is not "
+"stored, so copy it now. You can create a new link from the staff member's "
+"page at any time."
+msgstr ""
+"Linkki lakkaa toimimasta, kun sitä on käytetty tai se vanhenee. Sitä ei "
+"tallenneta, joten kopioi se nyt. Voit luoda uuden linkin työntekijän sivulta"
+" milloin tahansa."
+
+msgid "Employee · on a break"
+msgstr "Työntekijä · tauolla"
+
+msgid "You have signed out."
+msgstr "Olet kirjautunut ulos."
+
+msgid "Your password is set. You can now sign in."
+msgstr "Salasanasi on asetettu. Voit nyt kirjautua sisään."
+
+msgid "Details saved."
+msgstr "Tiedot tallennettu."
+
+msgid "Role updated."
+msgstr "Rooli päivitetty."
+
+#, python-format
+msgid "Change role for %(name)s"
+msgstr "Vaihda rooli: %(name)s"
+
+#, python-format
+msgid "%(name)s can no longer sign in."
+msgstr "%(name)s ei voi enää kirjautua sisään."
+
+#, python-format
+msgid "%(name)s is active again."
+msgstr "%(name)s on taas käytössä."
+
+msgid "Your password was changed."
+msgstr "Salasanasi vaihdettiin."
+
+msgid "Closed"
+msgstr "Suljettu"
+
+msgid "Break started"
+msgstr "Tauko alkoi"
+
+msgid "Break ended"
+msgstr "Tauko päättyi"
+
+msgid "Clocked out"
+msgstr "Leimattu ulos"
+
+msgid "You are already clocked in."
+msgstr "Olet jo leimannut sisään."
+
+msgid "You are not clocked in."
+msgstr "Et ole leimannut sisään."
+
+msgid "You are not on a break."
+msgstr "Et ole tauolla."
+
+msgid "The break has not lasted any time yet. Try again in a moment."
+msgstr "Tauko ei ole vielä kestänyt yhtään. Yritä hetken päästä uudelleen."
+
+msgid "You are on a break. End your break first, then clock out."
+msgstr "Olet tauolla. Lopeta tauko ensin ja leimaa sitten ulos."
+
+msgid "You clocked in just now. Try again in a moment."
+msgstr "Leimasit juuri sisään. Yritä hetken päästä uudelleen."
+
+msgid "Clock-in cannot be in the future."
+msgstr "Sisäänleimaus ei voi olla tulevaisuudessa."
+
+msgid "Clock-out must be after clock-in."
+msgstr "Ulosleimauksen on oltava sisäänleimauksen jälkeen."
+
+msgid "Clock-out cannot be in the future."
+msgstr "Ulosleimaus ei voi olla tulevaisuudessa."
+
+msgid "Every break needs an end time when the shift has a clock-out."
+msgstr "Jokaisella tauolla on oltava loppuaika, kun vuorolla on ulosleimaus."
+
+msgid "Only one break can be still running."
+msgstr "Vain yksi tauko voi olla käynnissä."
+
+msgid "Each break must start during the shift."
+msgstr "Jokaisen tauon on alettava vuoron aikana."
+
+msgid "A break must end after it starts."
+msgstr "Tauon on päätyttävä alkamisensa jälkeen."
+
+msgid "Each break must end within the shift."
+msgstr "Jokaisen tauon on päätyttävä vuoron aikana."
+
+msgid "Breaks must not overlap."
+msgstr "Tauot eivät saa mennä päällekkäin."
+
+msgid "Give a reason for the correction."
+msgstr "Anna korjaukselle syy."
+
+msgid "A closed shift cannot be reopened. Enter a clock-out time."
+msgstr "Suljettua vuoroa ei voi avata uudelleen. Anna ulosleimausaika."
+
+#, python-format
+msgid ""
+"These times overlap another shift of this person (%(start)s). Correct that "
+"shift first."
+msgstr ""
+"Ajat menevät päällekkäin henkilön toisen vuoron kanssa (%(start)s). Korjaa "
+"se vuoro ensin."
+
+msgid "Nothing was changed."
+msgstr "Mitään ei muutettu."
+
+msgid "End"
+msgstr "Loppu"
+
+msgid "Breaks"
+msgstr "Tauot"
+
+msgid "Worked"
+msgstr "Työaika"
+
+msgid "Provisional, shift still open"
+msgstr "Alustava, vuoro yhä auki"
+
+msgid "Open · on break"
+msgstr "Auki · tauolla"
+
+msgid "Corrected"
+msgstr "Korjattu"
+
+msgid "No shifts in this period."
+msgstr "Tällä jaksolla ei ole vuoroja."
+
+#, python-format
+msgid "Now: %(now)s"
+msgstr "Nyt: %(now)s"
+
+msgid "Clock in"
+msgstr "Leimaa sisään"
+
+#, python-format
+msgid "Break started at %(t)s"
+msgstr "Tauko alkoi klo %(t)s"
+
+#, python-format
+msgid "Clocked in %(t)s"
+msgstr "Leimattu sisään klo %(t)s"
+
+msgid "Worked so far (provisional):"
+msgstr "Tehty tähän mennessä (alustava):"
+
+msgid "breaks"
+msgstr "tauot"
+
+msgid "End break"
+msgstr "Lopeta tauko"
+
+msgid "End your break before clocking out."
+msgstr "Lopeta tauko ennen ulosleimausta."
+
+msgid "Start break"
+msgstr "Aloita tauko"
+
+msgid "Clock out now?"
+msgstr "Leimataanko ulos nyt?"
+
+msgid "Clock out"
+msgstr "Leimaa ulos"
+
+msgid "Last completed shift"
+msgstr "Viimeisin päättynyt vuoro"
+
+msgid "Clock-in"
+msgstr "Sisäänleimaus"
+
+msgid "Clock-out"
+msgstr "Ulosleimaus"
+
+msgid "See all my hours"
+msgstr "Näytä kaikki tuntini"
+
+msgid "Correct shift"
+msgstr "Korjaa vuoro"
+
+msgid "Back to shift"
+msgstr "Takaisin vuoroon"
+
+#, python-format
+msgid "Correct shift for %(name)s"
+msgstr "Korjaa vuoro: %(name)s"
+
+#, python-format
+msgid ""
+"Times are local restaurant time (%(tz)s). The original times, your changes, "
+"your name and the reason are kept and shown to the employee."
+msgstr ""
+"Ajat ovat ravintolan paikallista aikaa (%(tz)s). Alkuperäiset ajat, "
+"muutoksesi, nimesi ja syy tallennetaan ja näytetään työntekijälle."
+
+msgid "Leave empty to keep the shift open, or enter a time to close it."
+msgstr "Jätä tyhjäksi, jos vuoro jää auki, tai anna aika sen sulkemiseksi."
+
+msgid "Required for a closed shift."
+msgstr "Pakollinen suljetulle vuorolle."
+
+#, python-format
+msgid "Break %(n)s"
+msgstr "Tauko %(n)s"
+
+msgid "Remove this break"
+msgstr "Poista tämä tauko"
+
+msgid "Reason for the correction"
+msgstr "Korjauksen syy"
+
+msgid "Save correction"
+msgstr "Tallenna korjaus"
+
+msgid "Total of closed shifts"
+msgstr "Päättyneet vuorot yhteensä"
+
+#, python-format
+msgid "%(n)s open shift not included"
+msgid_plural "%(n)s open shifts not included"
+msgstr[0] "%(n)s avoin vuoro ei mukana"
+msgstr[1] "%(n)s avointa vuoroa ei mukana"
+
+msgid ""
+"A shift is counted on the date it started (restaurant local time), even if "
+"it ends after midnight. Hours are rounded only for display."
+msgstr ""
+"Vuoro lasketaan alkamispäivälleen (ravintolan paikallista aikaa), vaikka se "
+"päättyisi keskiyön jälkeen. Tunnit pyöristetään vain näyttöä varten."
+
+msgid "Shift"
+msgstr "Vuoro"
+
+#, python-format
+msgid "%(name)s · shift %(d)s"
+msgstr "%(name)s · vuoro %(d)s"
+
+msgid "provisional, shift still open"
+msgstr "alustava, vuoro yhä auki"
+
+msgid "This shift has been corrected"
+msgstr "Tätä vuoroa on korjattu"
+
+msgid "Correction history"
+msgstr "Korjaushistoria"
+
+msgid "Reason"
+msgstr "Syy"
+
+msgid "Before"
+msgstr "Ennen"
+
+msgid "After"
+msgstr "Jälkeen"
+
+msgid "Original clock actions"
+msgstr "Alkuperäiset leimaukset"
+
+msgid "Action"
+msgstr "Toiminto"
+
+msgid ""
+"Shifts are included by the local date they started, even if they end after "
+"midnight. Totals include closed shifts only; open shifts are shown "
+"separately as provisional. Not payroll-approved."
+msgstr ""
+"Vuorot lasketaan paikallisen alkamispäivänsä mukaan, vaikka ne päättyisivät "
+"keskiyön jälkeen. Yhteismäärissä ovat vain päättyneet vuorot; avoimet vuorot"
+" näytetään erikseen alustavina. Ei palkanlaskennan hyväksymä."
+
+msgid "Totals"
+msgstr "Yhteensä"
+
+msgid "Shifts"
+msgstr "Vuorot"
+
+msgid "Closed-shift hours"
+msgstr "Päättyneiden vuorojen tunnit"
+
+#, python-format
+msgid "%(n)s open"
+msgid_plural "%(n)s open"
+msgstr[0] "%(n)s auki"
+msgstr[1] "%(n)s auki"
+
+msgid "open"
+msgstr "auki"
+
+msgid "Clocked in."
+msgstr "Leimattu sisään."
+
+msgid "Break started."
+msgstr "Tauko alkoi."
+
+msgid "Break ended."
+msgstr "Tauko päättyi."
+
+msgid "Clocked out. Have a good rest of your day."
+msgstr "Leimattu ulos. Mukavaa päivän jatkoa!"
+
+msgid "Your break was already running."
+msgstr "Taukosi oli jo käynnissä."
+
+msgid "Enter the clock-in time."
+msgstr "Anna sisäänleimauksen aika."
+
+msgid "Each break needs a start time."
+msgstr "Jokaisella tauolla on oltava alkuaika."
+
+msgid "Shift corrected. The previous times are kept in the history."
+msgstr "Vuoro korjattu. Aiemmat ajat säilyvät historiassa."
+
+msgid "For example: Lunch deal – soup and bánh mì 12 €"
+msgstr "Esimerkiksi: Lounastarjous – keitto ja bánh mì 12 €"
+
+msgid "Text"
+msgstr "Teksti"
+
+msgid "First day"
+msgstr "Ensimmäinen päivä"
+
+msgid "Last day"
+msgstr "Viimeinen päivä"
+
+msgid ""
+"The promotion disappears from the website after this day. Leave empty to "
+"keep it running."
+msgstr ""
+"Tarjous poistuu verkkosivulta tämän päivän jälkeen. Jätä tyhjäksi, jos "
+"tarjous on voimassa toistaiseksi."
+
+msgid "Show on the website"
+msgstr "Näytä verkkosivulla"
+
+msgid "tagline"
+msgstr "iskulause"
+
+msgid "introduction"
+msgstr "esittely"
+
+msgid "street address"
+msgstr "katuosoite"
+
+msgid "postal code"
+msgstr "postinumero"
+
+msgid "city"
+msgstr "kaupunki"
+
+msgid "country"
+msgstr "maa"
+
+msgid "phone"
+msgstr "puhelin"
+
+msgid "email"
+msgstr "sähköposti"
+
+msgid "hero image description"
+msgstr "pääkuvan kuvaus"
+
+msgid "Monday"
+msgstr "Maanantai"
+
+msgid "Tuesday"
+msgstr "Tiistai"
+
+msgid "Wednesday"
+msgstr "Keskiviikko"
+
+msgid "Thursday"
+msgstr "Torstai"
+
+msgid "Friday"
+msgstr "Perjantai"
+
+msgid "Saturday"
+msgstr "Lauantai"
+
+msgid "Sunday"
+msgstr "Sunnuntai"
+
+msgid "text"
+msgstr "teksti"
+
+msgid "first day"
+msgstr "ensimmäinen päivä"
+
+msgid "last day"
+msgstr "viimeinen päivä"
+
+msgid "Leave empty to keep it running."
+msgstr "Jätä tyhjäksi, jos voimassa toistaiseksi."
+
+msgid "published"
+msgstr "julkaistu"
+
+msgid "Choose the first day."
+msgstr "Valitse ensimmäinen päivä."
+
+msgid "The last day cannot be before the first day."
+msgstr "Viimeinen päivä ei voi olla ennen ensimmäistä päivää."
+
+msgid "Open now"
+msgstr "Avoinna nyt"
+
+#, python-format
+msgid "until %(t)s"
+msgstr "klo %(t)s asti"
+
+msgid "Closed now"
+msgstr "Suljettu nyt"
+
+#, python-format
+msgid "opens at %(t)s"
+msgstr "avautuu klo %(t)s"
+
+#, python-format
+msgid "opens %(d)s at %(t)s"
+msgstr "avautuu %(d)s klo %(t)s"
+
+msgid "no end date"
+msgstr "ei päättymispäivää"
+
+msgid "Demo restaurant with example content."
+msgstr "Esittelyravintola esimerkkisisällöllä."
+
+msgid "Try the staff app"
+msgstr "Kokeile henkilökunnan sovellusta"
+
+msgid "Home"
+msgstr "Etusivu"
+
+msgid "Contact"
+msgstr "Yhteystiedot"
+
+msgid "Opening hours"
+msgstr "Aukioloajat"
+
+msgid "Staff sign-in"
+msgstr "Henkilökunnan kirjautuminen"
+
+msgid "Coming soon"
+msgstr "Tulossa pian"
+
+msgid "Our website is coming soon"
+msgstr "Verkkosivumme avautuu pian"
+
+msgid "Contact and opening hours"
+msgstr "Yhteystiedot ja aukioloajat"
+
+msgid "Where to find us"
+msgstr "Mistä meidät löytää"
+
+msgid "Open in maps"
+msgstr "Avaa kartalla"
+
+msgid "Address coming soon."
+msgstr "Osoite tulossa pian."
+
+msgid "Get in touch"
+msgstr "Ota yhteyttä"
+
+msgid "Phone"
+msgstr "Puhelin"
+
+msgid "Email"
+msgstr "Sähköposti"
+
+msgid "Contact details coming soon."
+msgstr "Yhteystiedot tulossa pian."
+
+msgid "See the menu"
+msgstr "Katso ruokalista"
+
+msgid "Find us"
+msgstr "Löydä meidät"
+
+msgid "Right now"
+msgstr "Juuri nyt"
+
+#, python-format
+msgid "Until %(d)s"
+msgstr "%(d)s asti"
+
+msgid "About us"
+msgstr "Meistä"
+
+msgid "From the menu"
+msgstr "Ruokalistalta"
+
+msgid "Full menu"
+msgstr "Koko ruokalista"
+
+msgid "Visit us"
+msgstr "Tervetuloa"
+
+msgid "Opening hours and contact"
+msgstr "Aukioloajat ja yhteystiedot"
+
+msgid "Menu sections"
+msgstr "Ruokalistan osiot"
+
+msgid "Not available today"
+msgstr "Ei saatavilla tänään"
+
+msgid "Allergens:"
+msgstr "Allergeenit:"
+
+msgid "The menu is being updated. Please check back soon."
+msgstr "Ruokalistaa päivitetään. Käy katsomassa pian uudelleen."
+
+msgid ""
+"Allergen information is provided by our kitchen. If you have an allergy, "
+"please tell your server when you order."
+msgstr ""
+"Allergeenitiedot ovat keittiömme antamia. Jos sinulla on allergia, kerro "
+"siitä tilatessasi."
+
+#, python-format
+msgid "Delete “%(t)s”?"
+msgstr "Poistetaanko “%(t)s”?"
+
+msgid ""
+"It disappears from the website and from this list. To hide it for now, edit "
+"it and untick “Show on the website” instead."
+msgstr ""
+"Se poistuu verkkosivulta ja tältä listalta. Jos haluat piilottaa sen vain "
+"toistaiseksi, muokkaa sitä ja poista rasti kohdasta “Näytä verkkosivulla”."
+
+msgid "Delete promotion"
+msgstr "Poista tarjous"
+
+msgid "New promotion"
+msgstr "Uusi tarjous"
+
+msgid "Edit promotion"
+msgstr "Muokkaa tarjousta"
+
+msgid "Delete"
+msgstr "Poista"
+
+msgid ""
+"Promotions appear on the public homepage from their first day to their last "
+"day, then disappear by themselves."
+msgstr ""
+"Tarjoukset näkyvät julkisella etusivulla ensimmäisestä viimeiseen päivään ja"
+" poistuvat sitten itsestään."
+
+msgid "On the website now"
+msgstr "Verkkosivulla nyt"
+
+msgid "Starting later"
+msgstr "Alkaa myöhemmin"
+
+msgid "Not shown (unpublished)"
+msgstr "Ei näytetä (julkaisematon)"
+
+msgid "Ended"
+msgstr "Päättynyt"
+
+msgid "No promotions yet."
+msgstr "Ei vielä tarjouksia."
+
+msgid "Promotion saved."
+msgstr "Tarjous tallennettu."
+
+msgid "Promotion deleted."
+msgstr "Tarjous poistettu."

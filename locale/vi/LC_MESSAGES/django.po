@@ -1,0 +1,2509 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-30 13:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Claude\n"
+"Language-Team: Vietnamese\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Title"
+msgstr "Tiêu đề"
+
+msgid "Type"
+msgstr "Loại"
+
+msgid "Add many tasks at once"
+msgstr "Thêm nhiều mục cùng lúc"
+
+msgid ""
+"Paste from a spreadsheet: select the Group and Task columns in Google Sheets"
+" or Excel (without the header row), copy, and paste here. Or type one task "
+"per line, and start a group with “# Group name”."
+msgstr ""
+"Dán từ bảng tính: chọn cột Nhóm và Hạng mục trong Google Sheets hoặc Excel "
+"(không lấy dòng tiêu đề), sao chép rồi dán vào đây. Hoặc gõ mỗi dòng một "
+"mục, và bắt đầu một nhóm bằng “# Tên nhóm”."
+
+msgid "Answer type for pasted tasks"
+msgstr "Kiểu trả lời cho các mục được dán"
+
+msgid "You can change individual tasks afterwards."
+msgstr "Bạn có thể sửa từng mục sau."
+
+msgid "Order"
+msgstr "Thứ tự"
+
+msgid "Group"
+msgstr "Nhóm"
+
+msgid "Task"
+msgstr "Hạng mục"
+
+msgid "Answer type"
+msgstr "Kiểu trả lời"
+
+msgid "Required"
+msgstr "Bắt buộc"
+
+msgid "Equipment or location"
+msgstr "Thiết bị hoặc vị trí"
+
+msgid "Lowest acceptable °C"
+msgstr "Nhiệt độ thấp nhất cho phép (°C)"
+
+msgid "Highest acceptable °C"
+msgstr "Nhiệt độ cao nhất cho phép (°C)"
+
+msgid "Remove task"
+msgstr "Xóa mục"
+
+msgid "What is the problem?"
+msgstr "Vấn đề là gì?"
+
+msgid "Photo (optional)"
+msgstr "Ảnh (không bắt buộc)"
+
+msgid "JPEG, PNG or WebP, up to 10 MB."
+msgstr "JPEG, PNG hoặc WebP, tối đa 10 MB."
+
+msgid "Describe the problem."
+msgstr "Hãy mô tả vấn đề."
+
+msgid "Add a photo"
+msgstr "Thêm ảnh"
+
+msgid "How was it resolved?"
+msgstr "Đã xử lý như thế nào?"
+
+msgid "Opening"
+msgstr "Mở cửa"
+
+msgid "Closing"
+msgstr "Đóng cửa"
+
+msgid "Cleaning"
+msgstr "Vệ sinh"
+
+msgid "Food safety"
+msgstr "An toàn thực phẩm"
+
+msgid "Stock check"
+msgstr "Kiểm kho"
+
+msgid "Other"
+msgstr "Khác"
+
+msgid "Pass / fail"
+msgstr "Đạt / không đạt"
+
+msgid "Temperature reading (°C)"
+msgstr "Đo nhiệt độ (°C)"
+
+msgid "Done / not done"
+msgstr "Đã làm / chưa làm"
+
+msgid "Stock level (enough / low)"
+msgstr "Mức tồn kho (đủ / thiếu)"
+
+msgid "title"
+msgstr "tiêu đề"
+
+msgid "type"
+msgstr "loại"
+
+msgid "active"
+msgstr "đang dùng"
+
+msgid "order"
+msgstr "thứ tự"
+
+msgid "group"
+msgstr "nhóm"
+
+msgid "Tasks with the same group are shown together."
+msgstr "Các mục cùng nhóm được hiển thị cùng nhau."
+
+msgid "task"
+msgstr "hạng mục"
+
+msgid "answer type"
+msgstr "kiểu trả lời"
+
+msgid "required"
+msgstr "bắt buộc"
+
+msgid "equipment or location"
+msgstr "thiết bị hoặc vị trí"
+
+msgid "lowest acceptable °C"
+msgstr "nhiệt độ thấp nhất cho phép (°C)"
+
+msgid "highest acceptable °C"
+msgstr "nhiệt độ cao nhất cho phép (°C)"
+
+msgid "In progress"
+msgstr "Đang làm"
+
+msgid "Submitted"
+msgstr "Đã gửi"
+
+msgid "run label"
+msgstr "tên lượt"
+
+msgid "Not answered"
+msgstr "Chưa trả lời"
+
+msgid "Pass"
+msgstr "Đạt"
+
+msgid "Fail"
+msgstr "Không đạt"
+
+msgid "Not applicable"
+msgstr "Không áp dụng"
+
+msgid "Open"
+msgstr "Chưa xử lý"
+
+msgid "Resolved"
+msgstr "Đã xử lý"
+
+msgid "Reported by staff"
+msgstr "Nhân viên báo cáo"
+
+msgid "Failed task"
+msgstr "Mục không đạt"
+
+msgid "Temperature outside range"
+msgstr "Nhiệt độ ngoài giới hạn"
+
+msgid "Enter a title."
+msgstr "Nhập tiêu đề."
+
+msgid "A task does not belong to this checklist. Reload and try again."
+msgstr "Có mục không thuộc checklist này. Hãy tải lại trang và thử lại."
+
+#, python-format
+msgid "Task %(n)s needs a description."
+msgstr "Mục %(n)s cần có nội dung."
+
+#, python-format
+msgid "Task %(n)s: the lowest temperature must not be above the highest."
+msgstr "Mục %(n)s: nhiệt độ thấp nhất không được cao hơn nhiệt độ cao nhất."
+
+msgid "A checklist needs at least one task."
+msgstr "Checklist cần có ít nhất một mục."
+
+msgid "Checklist not found."
+msgstr "Không tìm thấy checklist."
+
+msgid "A run with this label already exists today."
+msgstr "Hôm nay đã có một lượt với tên này."
+
+msgid "This checklist is deactivated."
+msgstr "Checklist này đã ngừng sử dụng."
+
+msgid "This checklist has no tasks."
+msgstr "Checklist này chưa có mục nào."
+
+msgid "This checklist was already submitted and can no longer be changed."
+msgstr "Checklist này đã được gửi và không thể sửa nữa."
+
+msgid "Enter the reading as a number, for example 3.5 or -18"
+msgstr "Nhập số đo, ví dụ 3.5 hoặc -18"
+
+msgid "That reading looks wrong. Enter degrees Celsius."
+msgstr "Số đo có vẻ không đúng. Hãy nhập độ C."
+
+msgid "Use at most two decimal places."
+msgstr "Chỉ dùng tối đa hai chữ số thập phân."
+
+msgid "Task not found."
+msgstr "Không tìm thấy mục."
+
+msgid "Choose an answer."
+msgstr "Hãy chọn câu trả lời."
+
+msgid "Write how much is left, for example “2 boxes”."
+msgstr "Ghi số lượng còn lại, ví dụ “còn 2 hộp”."
+
+msgid "Add a note explaining this answer."
+msgstr "Thêm ghi chú giải thích câu trả lời này."
+
+msgid "Enter the temperature reading."
+msgstr "Nhập nhiệt độ đo được."
+
+#, python-format
+msgid "Low: %(item)s. Left: %(note)s"
+msgstr "Thiếu: %(item)s. Còn lại: %(note)s"
+
+#, python-format
+msgid ""
+"Reading %(reading)s °C%(where)s is outside the configured range %(range)s."
+msgstr "Nhiệt độ %(reading)s °C%(where)s nằm ngoài giới hạn đã đặt %(range)s."
+
+msgid "This checklist was already submitted. Ask a manager to follow up."
+msgstr "Checklist này đã được gửi. Hãy nhờ quản lý xử lý tiếp."
+
+msgid "Describe how the issue was resolved."
+msgstr "Hãy mô tả cách đã xử lý sự cố."
+
+msgid "Issue not found."
+msgstr "Không tìm thấy sự cố."
+
+msgid "This issue is already resolved."
+msgstr "Sự cố này đã được xử lý."
+
+#, python-format
+msgid "%(n)s required task(s) still need an answer."
+msgstr "Còn %(n)s mục bắt buộc chưa trả lời."
+
+msgid "Checklist history"
+msgstr "Lịch sử checklist"
+
+msgid "My submitted checklists"
+msgstr "Checklist tôi đã gửi"
+
+msgid "From"
+msgstr "Từ ngày"
+
+msgid "To"
+msgstr "Đến ngày"
+
+msgid "Checklist"
+msgstr "Checklist"
+
+msgid "All"
+msgstr "Tất cả"
+
+msgid "deactivated"
+msgstr "ngừng sử dụng"
+
+msgid "Status"
+msgstr "Trạng thái"
+
+msgid "Staff"
+msgstr "Nhân viên"
+
+msgid "Everyone"
+msgstr "Mọi người"
+
+msgid "Filter"
+msgstr "Lọc"
+
+msgid "Date"
+msgstr "Ngày"
+
+msgid "Answered"
+msgstr "Đã trả lời"
+
+msgid "Failed"
+msgstr "Không đạt"
+
+msgid "Submitted by"
+msgstr "Người gửi"
+
+msgid "No checklists match these filters."
+msgstr "Không có checklist nào khớp với bộ lọc."
+
+msgid "Issue"
+msgstr "Sự cố"
+
+msgid "Back"
+msgstr "Quay lại"
+
+msgid "Checklist issue"
+msgstr "Sự cố từ checklist"
+
+msgid "Reading"
+msgstr "Số đo"
+
+msgid "Source"
+msgstr "Nguồn"
+
+msgid "Reported"
+msgstr "Đã báo"
+
+msgid "Description"
+msgstr "Mô tả"
+
+msgid "Resolution"
+msgstr "Cách xử lý"
+
+msgid "Photos"
+msgstr "Ảnh"
+
+#, python-format
+msgid "Photo %(name)s"
+msgstr "Ảnh %(name)s"
+
+msgid "No photos."
+msgstr "Không có ảnh."
+
+msgid "Upload photo"
+msgstr "Tải ảnh lên"
+
+msgid "Resolve"
+msgstr "Xử lý"
+
+msgid "Mark resolved"
+msgstr "Đánh dấu đã xử lý"
+
+msgid "Issues"
+msgstr "Sự cố"
+
+msgid "Checklist issues"
+msgstr "Sự cố từ checklist"
+
+msgid "Filter issues"
+msgstr "Lọc sự cố"
+
+msgid "No issues here."
+msgstr "Không có sự cố nào."
+
+msgid "Back to checklist"
+msgstr "Quay lại checklist"
+
+msgid "Report a problem"
+msgstr "Báo sự cố"
+
+msgid ""
+"If the photo cannot be accepted, nothing is saved and you will see why, so "
+"you can try again."
+msgstr ""
+"Nếu ảnh không hợp lệ, sẽ không có gì được lưu và bạn sẽ thấy lý do để thử "
+"lại."
+
+msgid "Send report"
+msgstr "Gửi báo cáo"
+
+msgid "Checklist review"
+msgstr "Xem lại checklist"
+
+msgid "Business date"
+msgstr "Ngày làm việc"
+
+msgid "Show"
+msgstr "Xem"
+
+msgid "Not started"
+msgstr "Chưa bắt đầu"
+
+msgid "Failed tasks"
+msgstr "Mục không đạt"
+
+msgid "Temperature warnings"
+msgstr "Cảnh báo nhiệt độ"
+
+msgid "No checklists were expected or started on this date."
+msgstr "Ngày này không có checklist nào cần làm hoặc đã bắt đầu."
+
+msgid "Checklists"
+msgstr "Checklist"
+
+msgid "Required left"
+msgstr "Bắt buộc còn lại"
+
+msgid "Temperature readings"
+msgstr "Các lần đo nhiệt độ"
+
+msgid "Time"
+msgstr "Giờ"
+
+msgid "Range"
+msgstr "Giới hạn"
+
+msgid "By"
+msgstr "Người làm"
+
+msgid "N/A"
+msgstr "Không áp dụng"
+
+msgid "Outside range"
+msgstr "Ngoài giới hạn"
+
+msgid "Not configured"
+msgstr "Chưa đặt"
+
+msgid "No readings recorded."
+msgstr "Chưa có số đo nào."
+
+msgid "Open issues"
+msgstr "Sự cố chưa xử lý"
+
+msgid "No open issues for this date."
+msgstr "Ngày này không có sự cố chưa xử lý."
+
+msgid "Progress"
+msgstr "Tiến độ"
+
+#, python-format
+msgid "%(a)s of %(t)s answered"
+msgstr "Đã trả lời %(a)s/%(t)s"
+
+#, python-format
+msgid "%(n)s required task left"
+msgid_plural "%(n)s required tasks left"
+msgstr[0] "còn %(n)s mục bắt buộc"
+
+#, python-format
+msgid "%(n)s failed or low"
+msgid_plural "%(n)s failed or low"
+msgstr[0] "%(n)s không đạt hoặc thiếu"
+
+#, python-format
+msgid "%(n)s temperature warning"
+msgid_plural "%(n)s temperature warnings"
+msgstr[0] "%(n)s cảnh báo nhiệt độ"
+
+#, python-format
+msgid "Started by %(who)s at %(when)s"
+msgstr "%(who)s bắt đầu lúc %(when)s"
+
+#, python-format
+msgid "submitted by %(who)s at %(when)s"
+msgstr "%(who)s đã gửi lúc %(when)s"
+
+#, python-format
+msgid "checklist version %(v)s"
+msgstr "phiên bản checklist %(v)s"
+
+msgid "Groups"
+msgstr "Nhóm"
+
+msgid "Tap an answer to save it. The page moves on to the next task."
+msgstr "Chạm vào câu trả lời để lưu. Trang sẽ chuyển sang mục tiếp theo."
+
+msgid "Optional"
+msgstr "Không bắt buộc"
+
+msgid "Acceptable range set by manager:"
+msgstr "Giới hạn do quản lý đặt:"
+
+msgid "No acceptable range is configured. The reading is recorded only."
+msgstr "Chưa đặt giới hạn. Chỉ ghi lại số đo."
+
+msgid "Reading (°C)"
+msgstr "Số đo (°C)"
+
+msgid "Reading °C"
+msgstr "Số đo °C"
+
+msgid "Quantity or note"
+msgstr "Số lượng hoặc ghi chú"
+
+msgid "Note"
+msgstr "Ghi chú"
+
+msgid "Quantity / note (needed for Low)"
+msgstr "Số lượng / ghi chú (bắt buộc khi Thiếu)"
+
+msgid "Note (needed for Fail, Not done, N/A)"
+msgstr "Ghi chú (bắt buộc khi Không đạt, Chưa làm, Không áp dụng)"
+
+#, python-format
+msgid "Answer for %(t)s"
+msgstr "Trả lời cho %(t)s"
+
+msgid "Report a problem with a photo"
+msgstr "Báo sự cố kèm ảnh"
+
+msgid "Flag an issue on this task"
+msgstr "Báo sự cố cho mục này"
+
+msgid "Open issue"
+msgstr "Sự cố chưa xử lý"
+
+msgid "Resolved issue"
+msgstr "Sự cố đã xử lý"
+
+#, python-format
+msgid "%(n)s photo"
+msgid_plural "%(n)s photos"
+msgstr[0] "%(n)s ảnh"
+
+msgid "Review and submit"
+msgstr "Xem lại và gửi"
+
+msgid "Submit checklist?"
+msgstr "Gửi checklist?"
+
+#, python-format
+msgid "%(n)s required task still needs an answer:"
+msgid_plural "%(n)s required tasks still need an answer:"
+msgstr[0] "Còn %(n)s mục bắt buộc chưa trả lời:"
+
+msgid "Go back and finish"
+msgstr "Quay lại để làm tiếp"
+
+#, python-format
+msgid "%(a)s of %(t)s tasks answered."
+msgstr "Đã trả lời %(a)s/%(t)s mục."
+
+#, python-format
+msgid "%(n)s optional task is unanswered."
+msgid_plural "%(n)s optional tasks are unanswered."
+msgstr[0] "%(n)s mục không bắt buộc chưa trả lời."
+
+#, python-format
+msgid "%(n)s open issue stays open for a manager after you submit."
+msgid_plural "%(n)s open issues stay open for a manager after you submit."
+msgstr[0] "%(n)s sự cố chưa xử lý sẽ được chuyển cho quản lý sau khi bạn gửi."
+
+msgid "After submitting, answers can no longer be changed."
+msgstr "Sau khi gửi, không thể sửa câu trả lời nữa."
+
+msgid "Submit checklist"
+msgstr "Gửi checklist"
+
+msgid "New checklist"
+msgstr "Checklist mới"
+
+msgid "Checklist templates"
+msgstr "Mẫu checklist"
+
+#, python-format
+msgid "Edit %(t)s"
+msgstr "Sửa %(t)s"
+
+msgid ""
+"Saving creates a new version. Checklists already started or submitted keep "
+"the tasks and thresholds they started with."
+msgstr ""
+"Mỗi lần lưu sẽ tạo phiên bản mới. Các checklist đã bắt đầu hoặc đã gửi vẫn "
+"giữ nguyên các mục và giới hạn ban đầu."
+
+msgid "Tasks"
+msgstr "Các mục"
+
+msgid ""
+"Empty rows are ignored. Temperature limits are optional: set them only if "
+"you want a warning, and only for temperature tasks."
+msgstr ""
+"Dòng trống sẽ bị bỏ qua. Giới hạn nhiệt độ không bắt buộc: chỉ đặt khi muốn "
+"có cảnh báo, và chỉ cho mục đo nhiệt độ."
+
+#, python-format
+msgid "Task %(n)s"
+msgstr "Mục %(n)s"
+
+msgid "New task"
+msgstr "Mục mới"
+
+msgid ""
+"Pasted tasks are added after the tasks above and are required. Rows with the"
+" same group are shown together on the checklist."
+msgstr ""
+"Các mục được dán sẽ thêm vào sau các mục ở trên và là bắt buộc. Các dòng "
+"cùng nhóm được hiển thị cùng nhau trong checklist."
+
+msgid "Save checklist"
+msgstr "Lưu checklist"
+
+msgid "Cancel"
+msgstr "Hủy"
+
+#, python-format
+msgid "%(n)s task"
+msgid_plural "%(n)s tasks"
+msgstr[0] "%(n)s mục"
+
+#, python-format
+msgid "version %(v)s"
+msgstr "phiên bản %(v)s"
+
+msgid "Active"
+msgstr "Đang dùng"
+
+msgid "Deactivated"
+msgstr "Ngừng sử dụng"
+
+msgid ""
+"Deactivate this checklist? No new runs can be started. History is kept."
+msgstr ""
+"Ngừng sử dụng checklist này? Sẽ không thể bắt đầu lượt mới. Lịch sử vẫn được"
+" giữ."
+
+msgid "Deactivate"
+msgstr "Ngừng sử dụng"
+
+msgid "Activate"
+msgstr "Dùng lại"
+
+msgid "No checklists yet."
+msgstr "Chưa có checklist nào."
+
+msgid "Today's checklists"
+msgstr "Checklist hôm nay"
+
+#, python-format
+msgid "%(a)s of %(t)s tasks answered"
+msgstr "Đã trả lời %(a)s/%(t)s mục"
+
+#, python-format
+msgid "%(n)s failed"
+msgid_plural "%(n)s failed"
+msgstr[0] "%(n)s không đạt"
+
+msgid "View"
+msgstr "Xem"
+
+msgid "Continue"
+msgstr "Tiếp tục"
+
+msgid "Start"
+msgstr "Bắt đầu"
+
+msgid "There are no checklists set up yet."
+msgstr "Chưa có checklist nào được tạo."
+
+msgid "Create one"
+msgstr "Tạo checklist"
+
+msgid "Start an extra run (for example a second shift)"
+msgstr "Bắt đầu thêm một lượt (ví dụ ca thứ hai)"
+
+msgid "Run label"
+msgstr "Tên lượt"
+
+msgid "e.g. Evening shift"
+msgstr "vd. Ca tối"
+
+msgid "Start extra run"
+msgstr "Bắt đầu thêm lượt"
+
+msgid "Done"
+msgstr "Đã làm"
+
+msgid "Not done"
+msgstr "Chưa làm"
+
+msgid "Record reading"
+msgstr "Ghi số đo"
+
+msgid "Enough"
+msgstr "Đủ"
+
+msgid "Low"
+msgstr "Thiếu"
+
+msgid "Reading recorded"
+msgstr "Đã ghi số đo"
+
+msgid "This checklist was already started today. Continue below."
+msgstr "Checklist này đã được bắt đầu hôm nay. Hãy làm tiếp bên dưới."
+
+#, python-format
+msgid "Saved “%(task)s”: %(answer)s."
+msgstr "Đã lưu “%(task)s”: %(answer)s."
+
+msgid ""
+"The reading is outside the configured range, so an issue was opened for a "
+"manager."
+msgstr "Số đo nằm ngoài giới hạn, nên một sự cố đã được mở cho quản lý."
+
+msgid "A manager can see it in the issue list."
+msgstr "Quản lý sẽ thấy trong danh sách sự cố."
+
+msgid "Checklist submitted. Thank you."
+msgstr "Đã gửi checklist. Cảm ơn bạn!"
+
+msgid "Issue reported with photo."
+msgstr "Đã báo sự cố kèm ảnh."
+
+msgid "Issue reported."
+msgstr "Đã báo sự cố."
+
+msgid "Photo uploaded."
+msgstr "Đã tải ảnh lên."
+
+msgid "Issue marked resolved."
+msgstr "Đã đánh dấu sự cố là đã xử lý."
+
+#, python-format
+msgid "%(n)s task(s) added from the pasted list."
+msgstr "Đã thêm %(n)s mục từ danh sách được dán."
+
+#, python-format
+msgid ""
+"Checklist saved (version %(v)s). Runs already started keep their original "
+"tasks."
+msgstr ""
+"Đã lưu checklist (phiên bản %(v)s). Các lượt đã bắt đầu vẫn giữ các mục ban "
+"đầu."
+
+msgid "Checklist activated."
+msgstr "Đã dùng lại checklist."
+
+msgid "Checklist deactivated. Its history is kept."
+msgstr "Đã ngừng sử dụng checklist. Lịch sử vẫn được giữ."
+
+#, python-format
+msgid "The photo is too large. The limit is %(mb)s MB."
+msgstr "Ảnh quá lớn. Giới hạn là %(mb)s MB."
+
+msgid "The photo is too large."
+msgstr "Ảnh quá lớn."
+
+msgid "Use a JPEG, PNG or WebP image."
+msgstr "Hãy dùng ảnh JPEG, PNG hoặc WebP."
+
+msgid "That file is not a readable JPEG, PNG or WebP image."
+msgstr "Tệp này không phải ảnh JPEG, PNG hoặc WebP hợp lệ."
+
+#, python-format
+msgid "Unknown time zone: %(tz)s"
+msgstr "Múi giờ không hợp lệ: %(tz)s"
+
+msgid "Not allowed"
+msgstr "Không được phép"
+
+msgid "You don't have access to this page"
+msgstr "Bạn không có quyền xem trang này"
+
+msgid ""
+"This page is for managers or owners. If you think you should have access, "
+"ask your manager."
+msgstr ""
+"Trang này dành cho quản lý hoặc chủ. Nếu bạn nghĩ mình cần quyền truy cập, "
+"hãy hỏi quản lý."
+
+msgid "Go to Today"
+msgstr "Về trang Hôm nay"
+
+msgid "Not found"
+msgstr "Không tìm thấy"
+
+msgid "Page not found"
+msgstr "Không tìm thấy trang"
+
+msgid "This page doesn't exist, or it isn't available to your account."
+msgstr "Trang này không tồn tại hoặc tài khoản của bạn không xem được."
+
+msgid "Go to sign in"
+msgstr "Đến trang đăng nhập"
+
+msgid "Restaurant operations"
+msgstr "Vận hành nhà hàng"
+
+msgid "Skip to content"
+msgstr "Bỏ qua đến nội dung"
+
+msgid ""
+"Demo with example data. Anything you change is reset when the demo restarts."
+msgstr ""
+"Bản demo với dữ liệu mẫu. Mọi thay đổi sẽ bị đặt lại khi demo khởi động lại."
+
+msgctxt "navigation"
+msgid "Menu"
+msgstr "Menu"
+
+msgid "Main"
+msgstr "Chính"
+
+msgid "Today"
+msgstr "Hôm nay"
+
+msgid "Clock in/out"
+msgstr "Chấm công"
+
+msgid "My hours"
+msgstr "Giờ làm của tôi"
+
+msgid "Inventory"
+msgstr "Kho"
+
+msgid "Dashboard"
+msgstr "Tổng quan"
+
+msgid "Stock history"
+msgstr "Lịch sử kho"
+
+msgid "Timesheets"
+msgstr "Bảng chấm công"
+
+msgid "Menu"
+msgstr "Thực đơn"
+
+msgid "Promotions"
+msgstr "Khuyến mãi"
+
+msgid "Public website"
+msgstr "Trang web công khai"
+
+msgid "My profile"
+msgstr "Hồ sơ của tôi"
+
+msgid "Sign out"
+msgstr "Đăng xuất"
+
+msgid "Language"
+msgstr "Ngôn ngữ"
+
+msgid "Pages"
+msgstr "Trang"
+
+msgid "Previous"
+msgstr "Trước"
+
+#, python-format
+msgid "Page %(n)s of %(total)s"
+msgstr "Trang %(n)s/%(total)s"
+
+msgid "Next"
+msgstr "Tiếp"
+
+#, python-format
+msgid "Hello, %(name)s"
+msgstr "Xin chào, %(name)s"
+
+msgid "My shift"
+msgstr "Ca của tôi"
+
+msgid "On break"
+msgstr "Đang nghỉ"
+
+msgid "Clocked in"
+msgstr "Đã vào ca"
+
+#, python-format
+msgid "Since %(t)s"
+msgstr "Từ %(t)s"
+
+msgid "Not clocked in"
+msgstr "Chưa vào ca"
+
+msgid "Tap to clock in"
+msgstr "Chạm để vào ca"
+
+msgid "submitted today"
+msgstr "đã gửi hôm nay"
+
+#, python-format
+msgid "%(n)s in progress"
+msgid_plural "%(n)s in progress"
+msgstr[0] "%(n)s đang làm"
+
+msgid "No checklists set up."
+msgstr "Chưa có checklist nào."
+
+#, python-format
+msgid "%(n)s item low"
+msgid_plural "%(n)s items low"
+msgstr[0] "%(n)s mặt hàng sắp hết"
+
+msgid "Nothing low"
+msgstr "Không có gì sắp hết"
+
+msgid "Record deliveries, use and waste"
+msgstr "Ghi nhập hàng, sử dụng và hao hụt"
+
+msgid "Staff, hours, checklists, issues, stock and temperatures in one place"
+msgstr "Nhân viên, giờ làm, checklist, sự cố, kho và nhiệt độ ở một nơi"
+
+msgid "Staff on shift"
+msgstr "Nhân viên trong ca"
+
+msgid "Sign in"
+msgstr "Đăng nhập"
+
+msgid "Forgot your password? Ask your manager for a new password link."
+msgstr "Quên mật khẩu? Hãy nhờ quản lý gửi liên kết đặt mật khẩu mới."
+
+msgid "Demo accounts"
+msgstr "Tài khoản demo"
+
+#, python-format
+msgid ""
+"Tap a person to sign in as them. Every demo account uses the password "
+"<strong>%(pw)s</strong>."
+msgstr ""
+"Chạm vào một người để đăng nhập bằng tài khoản đó. Mọi tài khoản demo đều "
+"dùng mật khẩu <strong>%(pw)s</strong>."
+
+msgid "Set your password"
+msgstr "Đặt mật khẩu"
+
+#, python-format
+msgid "Hi %(name)s. You will sign in as <strong>%(login)s</strong>."
+msgstr "Chào %(name)s. Bạn sẽ đăng nhập bằng <strong>%(login)s</strong>."
+
+msgid "Save password"
+msgstr "Lưu mật khẩu"
+
+msgid "This link does not work"
+msgstr "Liên kết này không dùng được"
+
+msgid ""
+"The password link has expired or has already been used. Ask your manager for"
+" a new one."
+msgstr ""
+"Liên kết đặt mật khẩu đã hết hạn hoặc đã được dùng. Hãy nhờ quản lý gửi liên"
+" kết mới."
+
+msgid "Enter a valid date and time."
+msgstr "Nhập ngày giờ hợp lệ."
+
+#, python-format
+msgid ""
+"%(value)s does not exist in the restaurant's time zone (daylight-saving "
+"change)."
+msgstr ""
+"%(value)s không tồn tại theo múi giờ của nhà hàng (do đổi giờ mùa hè)."
+
+msgid "Today's operation"
+msgstr "Hoạt động hôm nay"
+
+#, python-format
+msgid "Operation on %(d)s"
+msgstr "Hoạt động ngày %(d)s"
+
+msgid "Choose a date"
+msgstr "Chọn ngày"
+
+msgid "Back to today"
+msgstr "Về hôm nay"
+
+#, python-format
+msgid "Updated %(t)s"
+msgstr "Cập nhật lúc %(t)s"
+
+msgid "Refresh"
+msgstr "Làm mới"
+
+msgid "On shift now"
+msgstr "Đang trong ca"
+
+#, python-format
+msgid "%(n)s on break"
+msgid_plural "%(n)s on break"
+msgstr[0] "%(n)s đang nghỉ"
+
+msgid "clocked in"
+msgstr "đã vào ca"
+
+msgid "Hours worked"
+msgstr "Giờ đã làm"
+
+msgid "in progress"
+msgstr "đang làm"
+
+msgid "closed shifts"
+msgstr "ca đã kết thúc"
+
+msgid "Checklists submitted"
+msgstr "Checklist đã gửi"
+
+#, python-format
+msgid "%(n)s required task open"
+msgid_plural "%(n)s required tasks open"
+msgstr[0] "còn %(n)s mục bắt buộc"
+
+msgid "no required tasks open"
+msgstr "không còn mục bắt buộc"
+
+msgid "none expected"
+msgstr "không có"
+
+#, python-format
+msgid "%(n)s resolved this day"
+msgid_plural "%(n)s resolved this day"
+msgstr[0] "%(n)s đã xử lý trong ngày"
+
+msgid "Low stock"
+msgstr "Sắp hết hàng"
+
+msgid "items at or below minimum"
+msgstr "mặt hàng ở mức tối thiểu hoặc thấp hơn"
+
+msgid "Flagged temperatures"
+msgstr "Nhiệt độ bất thường"
+
+msgid "outside the set range"
+msgstr "ngoài giới hạn đã đặt"
+
+msgid "Staff on shift now"
+msgstr "Nhân viên đang trong ca"
+
+msgid "Since"
+msgstr "Từ"
+
+msgid "Worked so far"
+msgstr "Đã làm đến giờ"
+
+#, python-format
+msgid "On break since %(t)s"
+msgstr "Nghỉ từ %(t)s"
+
+msgid "Working"
+msgstr "Đang làm việc"
+
+msgid ""
+"Worked so far is provisional until the person clocks out. Breaks are not "
+"counted."
+msgstr ""
+"Giờ đã làm chỉ là tạm tính cho đến khi người đó ra ca. Không tính giờ nghỉ."
+
+msgid "Nobody is clocked in right now."
+msgstr "Hiện không có ai trong ca."
+
+msgid "Hours"
+msgstr "Giờ làm"
+
+msgid "Closed shifts"
+msgstr "Ca đã kết thúc"
+
+msgid "Still open"
+msgstr "Còn mở"
+
+msgid "so far (provisional)"
+msgstr "đến giờ (tạm tính)"
+
+msgid "People"
+msgstr "Số người"
+
+msgid "Counts shifts that started on this date, restaurant local time."
+msgstr "Tính các ca bắt đầu trong ngày này, theo giờ địa phương của nhà hàng."
+
+msgid "Open timesheets"
+msgstr "Mở bảng chấm công"
+
+msgid "Started by"
+msgstr "Người bắt đầu"
+
+msgid "Incomplete tasks"
+msgstr "Mục chưa hoàn thành"
+
+msgid "Responsible"
+msgstr "Người phụ trách"
+
+msgid "submitted"
+msgstr "đã gửi"
+
+msgid ""
+"Tasks are not assigned to people yet, so the person who started the "
+"checklist is shown as responsible."
+msgstr ""
+"Các mục chưa được giao cho từng người, nên người bắt đầu checklist được hiển"
+" thị là người phụ trách."
+
+msgid "Every task in the started checklists has an answer."
+msgstr "Mọi mục trong các checklist đã bắt đầu đều đã được trả lời."
+
+msgid "No checklist has been started yet."
+msgstr "Chưa có checklist nào được bắt đầu."
+
+msgid "Equipment"
+msgstr "Thiết bị"
+
+msgid "Set range"
+msgstr "Giới hạn đã đặt"
+
+msgid "No readings outside a set range on this date."
+msgstr "Ngày này không có số đo nào ngoài giới hạn."
+
+msgid "Reported issues"
+msgstr "Sự cố đã báo"
+
+msgid "No open issues."
+msgstr "Không có sự cố chưa xử lý."
+
+msgid "Resolved on this date"
+msgstr "Đã xử lý trong ngày này"
+
+#, python-format
+msgid "Resolved by %(who)s at %(t)s"
+msgstr "%(who)s đã xử lý lúc %(t)s"
+
+msgid ""
+"Open issues are listed whatever day they were reported, until someone "
+"resolves them."
+msgstr ""
+"Sự cố chưa xử lý luôn được liệt kê, dù được báo vào ngày nào, cho đến khi có"
+" người xử lý."
+
+msgid "Item"
+msgstr "Mặt hàng"
+
+msgid "In stock"
+msgstr "Tồn kho"
+
+msgid "Minimum"
+msgstr "Tối thiểu"
+
+msgid "Supplier"
+msgstr "Nhà cung cấp"
+
+msgid "Current stock, whatever date is selected."
+msgstr "Tồn kho hiện tại, bất kể ngày được chọn."
+
+msgid "No items are at or below their minimum."
+msgstr "Không có mặt hàng nào ở mức tối thiểu hoặc thấp hơn."
+
+msgid "Name"
+msgstr "Tên"
+
+msgid "Category"
+msgstr "Danh mục"
+
+msgid "Unit"
+msgstr "Đơn vị"
+
+msgid "For example kg, L or pcs. Cannot change after stock is recorded."
+msgstr "Ví dụ kg, L hoặc cái. Không thể đổi sau khi đã ghi kho."
+
+msgid "Opening quantity"
+msgstr "Số lượng ban đầu"
+
+msgid "Minimum quantity"
+msgstr "Số lượng tối thiểu"
+
+msgid "The item shows as low stock at or below this amount."
+msgstr "Mặt hàng sẽ hiện là sắp hết khi bằng hoặc thấp hơn mức này."
+
+msgid "Supplier (optional)"
+msgstr "Nhà cung cấp (không bắt buộc)"
+
+msgid "Locked because stock has been recorded for this item."
+msgstr "Đã khóa vì mặt hàng này đã có ghi nhận kho."
+
+msgid "What happened?"
+msgstr "Chuyện gì đã xảy ra?"
+
+msgid "Quantity"
+msgstr "Số lượng"
+
+msgid "Waste reason"
+msgstr "Lý do hao hụt"
+
+msgid "Choose a reason"
+msgstr "Chọn lý do"
+
+msgid "Required for waste."
+msgstr "Bắt buộc khi hao hụt."
+
+msgid ""
+"Optional, for example a delivery note number. Required for adjustments."
+msgstr "Không bắt buộc, ví dụ số phiếu giao hàng. Bắt buộc khi điều chỉnh."
+
+msgid "For an adjustment, use a minus sign to reduce stock, e.g. -1.5"
+msgstr "Khi điều chỉnh, dùng dấu trừ để giảm kho, ví dụ -1.5"
+
+msgid "Ingredient"
+msgstr "Nguyên liệu"
+
+msgid "Drink"
+msgstr "Đồ uống"
+
+msgid "Packaging"
+msgstr "Bao bì"
+
+msgid "Cleaning supply"
+msgstr "Đồ vệ sinh"
+
+msgid "name"
+msgstr "tên"
+
+msgid "category"
+msgstr "danh mục"
+
+msgid "unit"
+msgstr "đơn vị"
+
+msgid "For example kg, L or pcs. Fixed once stock is recorded."
+msgstr "Ví dụ kg, L hoặc cái. Cố định sau khi đã ghi kho."
+
+msgid "minimum quantity"
+msgstr "số lượng tối thiểu"
+
+msgid "supplier"
+msgstr "nhà cung cấp"
+
+msgid "Opening balance"
+msgstr "Tồn đầu kỳ"
+
+msgid "Received"
+msgstr "Nhập hàng"
+
+msgid "Used"
+msgstr "Đã dùng"
+
+msgid "Waste"
+msgstr "Hao hụt"
+
+msgid "Adjustment"
+msgstr "Điều chỉnh"
+
+msgid "Expired"
+msgstr "Hết hạn"
+
+msgid "Damaged"
+msgstr "Hư hỏng"
+
+msgid "Spilled"
+msgstr "Đổ vỡ"
+
+msgid "Enter a number, for example 2.5"
+msgstr "Nhập một số, ví dụ 2.5"
+
+msgid "Use at most three decimal places."
+msgstr "Chỉ dùng tối đa ba chữ số thập phân."
+
+msgid "That quantity is too large."
+msgstr "Số lượng quá lớn."
+
+msgid "Quantity cannot be negative."
+msgstr "Số lượng không được âm."
+
+msgid "Quantity must be more than zero."
+msgstr "Số lượng phải lớn hơn 0."
+
+msgid "Enter a name."
+msgstr "Nhập tên."
+
+msgid "Enter a unit, for example kg."
+msgstr "Nhập đơn vị, ví dụ kg."
+
+msgid "An item with this name already exists in this category."
+msgstr "Danh mục này đã có mặt hàng cùng tên."
+
+msgid ""
+"The unit cannot change after stock has been recorded. Create a new item "
+"instead."
+msgstr "Không thể đổi đơn vị sau khi đã ghi kho. Hãy tạo mặt hàng mới."
+
+msgid "An adjustment needs a reason."
+msgstr "Điều chỉnh cần có lý do."
+
+msgid "Choose why the stock was wasted."
+msgstr "Chọn lý do hao hụt."
+
+msgid "Describe the reason when choosing Other."
+msgstr "Hãy mô tả lý do khi chọn Khác."
+
+msgid "Choose an item."
+msgstr "Chọn mặt hàng."
+
+msgid "This item is deactivated."
+msgstr "Mặt hàng này đã ngừng sử dụng."
+
+msgid ""
+"This form was already used for a different entry. Reload the page and try "
+"again."
+msgstr ""
+"Biểu mẫu này đã được dùng cho một lần ghi khác. Hãy tải lại trang và thử "
+"lại."
+
+#, python-format
+msgid "Not enough stock: %(have)s %(unit)s available."
+msgstr "Không đủ hàng: chỉ còn %(have)s %(unit)s."
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Edit item"
+msgstr "Sửa mặt hàng"
+
+msgid ""
+"Deactivate this item? It will be hidden from stock entry but its history is "
+"kept."
+msgstr ""
+"Ngừng sử dụng mặt hàng này? Nó sẽ bị ẩn khi ghi kho nhưng lịch sử vẫn được "
+"giữ."
+
+msgid "Reactivate"
+msgstr "Dùng lại"
+
+msgid "Record stock"
+msgstr "Ghi kho"
+
+msgid "Save"
+msgstr "Lưu"
+
+msgid "This item is deactivated, so no new stock can be recorded."
+msgstr "Mặt hàng này đã ngừng sử dụng nên không thể ghi kho mới."
+
+msgid "History"
+msgstr "Lịch sử"
+
+msgid "When"
+msgstr "Thời gian"
+
+msgid "Change"
+msgstr "Thay đổi"
+
+msgid "Balance after"
+msgstr "Tồn sau"
+
+msgid "Reason / note"
+msgstr "Lý do / ghi chú"
+
+msgid "No stock has been recorded for this item yet."
+msgstr "Mặt hàng này chưa có ghi nhận kho nào."
+
+msgid "All items"
+msgstr "Tất cả mặt hàng"
+
+msgid "All types"
+msgstr "Tất cả loại"
+
+msgid "No stock movements match these filters."
+msgstr "Không có biến động kho nào khớp với bộ lọc."
+
+msgid ""
+"Dates use the restaurant's local time. Each row shows the item's balance "
+"right after that movement."
+msgstr ""
+"Thời gian theo giờ địa phương của nhà hàng. Mỗi dòng hiển thị tồn kho của "
+"mặt hàng ngay sau lần biến động đó."
+
+msgid "Add item"
+msgstr "Thêm mặt hàng"
+
+#, python-format
+msgid "%(n)s item low on stock"
+msgid_plural "%(n)s items low on stock"
+msgstr[0] "%(n)s mặt hàng sắp hết"
+
+msgid "No items low on stock"
+msgstr "Không có mặt hàng nào sắp hết"
+
+msgid "Search"
+msgstr "Tìm"
+
+msgid "Low stock only"
+msgstr "Chỉ hàng sắp hết"
+
+msgid "No items yet. Add your first inventory item."
+msgstr "Chưa có mặt hàng nào. Hãy thêm mặt hàng đầu tiên."
+
+msgid "No items match."
+msgstr "Không có mặt hàng nào khớp."
+
+#, python-format
+msgid "%(name)s was added."
+msgstr "Đã thêm %(name)s."
+
+msgid "Add inventory item"
+msgstr "Thêm mặt hàng kho"
+
+msgid "Item saved. Past stock records are unchanged."
+msgstr "Đã lưu mặt hàng. Các ghi nhận kho trước đó không thay đổi."
+
+#, python-format
+msgid "Edit %(name)s"
+msgstr "Sửa %(name)s"
+
+msgid "Item reactivated."
+msgstr "Đã dùng lại mặt hàng."
+
+msgid "Item deactivated. Its history is kept."
+msgstr "Đã ngừng sử dụng mặt hàng. Lịch sử vẫn được giữ."
+
+#, python-format
+msgid "Saved: %(type)s %(qty)s %(unit)s. Stock is now %(bal)s %(unit)s."
+msgstr "Đã lưu: %(type)s %(qty)s %(unit)s. Tồn kho hiện là %(bal)s %(unit)s."
+
+msgid "This entry was already saved. It was not recorded twice."
+msgstr "Lần ghi này đã được lưu trước đó. Không bị ghi hai lần."
+
+msgid "Category name"
+msgstr "Tên danh mục"
+
+msgid "Dish name"
+msgstr "Tên món"
+
+msgid "Enter the dish name."
+msgstr "Nhập tên món."
+
+msgid "Choose a category."
+msgstr "Chọn danh mục."
+
+msgid "Shown on the public menu. Up to 600 characters."
+msgstr "Hiển thị trên thực đơn công khai. Tối đa 600 ký tự."
+
+msgid "Price (€)"
+msgstr "Giá (€)"
+
+msgid "For example 14.50"
+msgstr "Ví dụ 14.50"
+
+msgid "Enter a price."
+msgstr "Nhập giá."
+
+msgid "Allergens"
+msgstr "Chất gây dị ứng"
+
+msgid "Tick every allergen the dish contains."
+msgstr "Đánh dấu mọi chất gây dị ứng có trong món."
+
+msgid "Diet labels"
+msgstr "Nhãn chế độ ăn"
+
+msgid "Menu status"
+msgstr "Trạng thái trên thực đơn"
+
+msgid ""
+"Drafts are only visible here. Published dishes appear on the public menu."
+msgstr "Bản nháp chỉ hiện ở đây. Món đã đăng sẽ hiện trên thực đơn công khai."
+
+msgid "Available now"
+msgstr "Đang có"
+
+msgid "When it is unavailable"
+msgstr "Khi món tạm hết"
+
+msgid "Photo"
+msgstr "Ảnh"
+
+msgid "JPEG, PNG or WebP, up to 10 MB. Large photos are scaled down."
+msgstr "JPEG, PNG hoặc WebP, tối đa 10 MB. Ảnh lớn sẽ được thu nhỏ."
+
+msgid "Remove the current photo"
+msgstr "Xóa ảnh hiện tại"
+
+msgid "Choose a category"
+msgstr "Chọn danh mục"
+
+msgid "Cereals containing gluten"
+msgstr "Ngũ cốc chứa gluten"
+
+msgid "Crustaceans"
+msgstr "Giáp xác"
+
+msgid "Eggs"
+msgstr "Trứng"
+
+msgid "Fish"
+msgstr "Cá"
+
+msgid "Peanuts"
+msgstr "Đậu phộng"
+
+msgid "Soy"
+msgstr "Đậu nành"
+
+msgid "Milk"
+msgstr "Sữa"
+
+msgid "Tree nuts"
+msgstr "Các loại hạt"
+
+msgid "Celery"
+msgstr "Cần tây"
+
+msgid "Mustard"
+msgstr "Mù tạt"
+
+msgid "Sesame"
+msgstr "Mè"
+
+msgid "Sulphites"
+msgstr "Sulfit"
+
+msgid "Lupin"
+msgstr "Đậu lupin"
+
+msgid "Molluscs"
+msgstr "Động vật thân mềm"
+
+msgid "Vegan"
+msgstr "Thuần chay"
+
+msgid "Vegetarian"
+msgstr "Chay"
+
+msgid "Gluten-free"
+msgstr "Không gluten"
+
+msgid "Milk-free"
+msgstr "Không sữa"
+
+msgid "Lactose-free"
+msgstr "Không lactose"
+
+msgid "Draft"
+msgstr "Nháp"
+
+msgid "Published"
+msgstr "Đã đăng"
+
+msgid "Show it marked as unavailable"
+msgstr "Hiển thị là tạm hết"
+
+msgid "Hide it from the menu"
+msgstr "Ẩn khỏi thực đơn"
+
+msgid "description"
+msgstr "mô tả"
+
+msgid "price (€)"
+msgstr "giá (€)"
+
+msgid "available now"
+msgstr "đang có"
+
+msgid "when unavailable"
+msgstr "khi tạm hết"
+
+msgid "Enter the price as a number, for example 12.50"
+msgstr "Nhập giá bằng số, ví dụ 12.50"
+
+msgid "The price cannot be negative."
+msgstr "Giá không được âm."
+
+msgid "Use at most two decimals (cents)."
+msgstr "Chỉ dùng tối đa hai chữ số thập phân (xu)."
+
+msgid "That price is too large."
+msgstr "Giá quá lớn."
+
+msgid "Enter a category name."
+msgstr "Nhập tên danh mục."
+
+msgid "A category with this name already exists."
+msgstr "Đã có danh mục cùng tên."
+
+msgid "Move or delete the dishes in this category first."
+msgstr "Hãy chuyển hoặc xóa các món trong danh mục này trước."
+
+msgid "Choose draft or published."
+msgstr "Chọn nháp hoặc đã đăng."
+
+msgid "Choose what to show when the dish is unavailable."
+msgstr "Chọn cách hiển thị khi món tạm hết."
+
+#, python-format
+msgid "Category: %(n)s"
+msgstr "Danh mục: %(n)s"
+
+msgid "Save name"
+msgstr "Lưu tên"
+
+#, python-format
+msgid ""
+"This category has %(n)s dish. Move or delete it before deleting the "
+"category."
+msgid_plural ""
+"This category has %(n)s dishes. Move or delete them before deleting the "
+"category."
+msgstr[0] ""
+"Danh mục này có %(n)s món. Hãy chuyển hoặc xóa các món trước khi xóa danh "
+"mục."
+
+msgid "Delete this empty category?"
+msgstr "Xóa danh mục trống này?"
+
+msgid "Delete category"
+msgstr "Xóa danh mục"
+
+#, python-format
+msgid "Delete %(n)s?"
+msgstr "Xóa %(n)s?"
+
+msgid ""
+"The dish and its photo are removed from the menu for good. To take it off "
+"the menu for now, unpublish it or mark it unavailable instead."
+msgstr ""
+"Món và ảnh sẽ bị xóa vĩnh viễn khỏi thực đơn. Nếu chỉ muốn tạm gỡ, hãy bỏ "
+"đăng hoặc đánh dấu tạm hết."
+
+msgid "Delete dish"
+msgstr "Xóa món"
+
+msgid "Add dish"
+msgstr "Thêm món"
+
+#, python-format
+msgid "Edit %(n)s"
+msgstr "Sửa %(n)s"
+
+#, python-format
+msgid "Current photo of %(n)s"
+msgstr "Ảnh hiện tại của %(n)s"
+
+msgid "Replace with a new photo"
+msgstr "Thay bằng ảnh mới"
+
+msgid "Add a photo (optional)"
+msgstr "Thêm ảnh (không bắt buộc)"
+
+msgid "Preview of the new photo"
+msgstr "Xem trước ảnh mới"
+
+msgid "Save dish"
+msgstr "Lưu món"
+
+msgid "View public menu"
+msgstr "Xem thực đơn công khai"
+
+#, python-format
+msgid "%(n)s published dish"
+msgid_plural "%(n)s published dishes"
+msgstr[0] "%(n)s món đã đăng"
+
+#, python-format
+msgid "%(n)s draft"
+msgid_plural "%(n)s drafts"
+msgstr[0] "%(n)s bản nháp"
+
+#, python-format
+msgid "%(n)s unavailable"
+msgid_plural "%(n)s unavailable"
+msgstr[0] "%(n)s tạm hết"
+
+#, python-format
+msgid "Move %(c)s up"
+msgstr "Đưa %(c)s lên"
+
+#, python-format
+msgid "Move %(c)s down"
+msgstr "Đưa %(c)s xuống"
+
+msgid "Rename"
+msgstr "Đổi tên"
+
+msgid "Unavailable · hidden"
+msgstr "Tạm hết · đang ẩn"
+
+msgid "Unavailable · shown as sold out"
+msgstr "Tạm hết · hiển thị là đã hết"
+
+msgid "Mark unavailable"
+msgstr "Đánh dấu tạm hết"
+
+msgid "Mark available"
+msgstr "Đánh dấu còn món"
+
+msgid "Unpublish"
+msgstr "Bỏ đăng"
+
+msgid "Publish"
+msgstr "Đăng"
+
+#, python-format
+msgid "Move %(d)s up"
+msgstr "Đưa %(d)s lên"
+
+#, python-format
+msgid "Move %(d)s down"
+msgstr "Đưa %(d)s xuống"
+
+msgid "No dishes in this category yet."
+msgstr "Danh mục này chưa có món nào."
+
+msgid "Add one"
+msgstr "Thêm món"
+
+msgid ""
+"The menu is empty. Start by adding a category, such as Starters or Drinks."
+msgstr ""
+"Thực đơn đang trống. Hãy bắt đầu bằng cách thêm danh mục, ví dụ Khai vị hoặc"
+" Đồ uống."
+
+msgid "New category"
+msgstr "Danh mục mới"
+
+msgid "Add category"
+msgstr "Thêm danh mục"
+
+#, python-format
+msgid "Category “%(name)s” added."
+msgstr "Đã thêm danh mục “%(name)s”."
+
+msgid "Category renamed."
+msgstr "Đã đổi tên danh mục."
+
+msgid "Category deleted."
+msgstr "Đã xóa danh mục."
+
+msgid "Add a category first, then add dishes to it."
+msgstr "Hãy thêm danh mục trước, rồi thêm món vào đó."
+
+#, python-format
+msgid "“%(name)s” is saved and on the public menu."
+msgstr "Đã lưu “%(name)s” và món đang hiện trên thực đơn công khai."
+
+#, python-format
+msgid "“%(name)s” is saved as a draft."
+msgstr "Đã lưu “%(name)s” dưới dạng nháp."
+
+#, python-format
+msgid "“%(name)s” is available again."
+msgstr "“%(name)s” đã có lại."
+
+#, python-format
+msgid "“%(name)s” is marked unavailable."
+msgstr "Đã đánh dấu “%(name)s” là tạm hết."
+
+#, python-format
+msgid "“%(name)s” is published."
+msgstr "Đã đăng “%(name)s”."
+
+#, python-format
+msgid "“%(name)s” is back to draft."
+msgstr "“%(name)s” đã chuyển về nháp."
+
+#, python-format
+msgid "“%(name)s” was deleted."
+msgstr "Đã xóa “%(name)s”."
+
+msgid "Those login details did not work. Check them and try again."
+msgstr "Thông tin đăng nhập không đúng. Hãy kiểm tra và thử lại."
+
+msgid "Login name or email"
+msgstr "Tên đăng nhập hoặc email"
+
+msgid "Not case-sensitive. Must be unique."
+msgstr "Không phân biệt chữ hoa/thường. Không được trùng."
+
+msgid "Contact number (optional)"
+msgstr "Số điện thoại (không bắt buộc)"
+
+msgid "Role"
+msgstr "Vai trò"
+
+msgid "Owner"
+msgstr "Chủ"
+
+msgid "Manager"
+msgstr "Quản lý"
+
+msgid "Employee"
+msgstr "Nhân viên"
+
+msgid "display name"
+msgstr "tên hiển thị"
+
+msgid "login name or email"
+msgstr "tên đăng nhập hoặc email"
+
+msgid "Used to sign in. Not case-sensitive."
+msgstr "Dùng để đăng nhập. Không phân biệt chữ hoa/thường."
+
+msgid "contact number"
+msgstr "số điện thoại"
+
+msgid "This login name is already in use."
+msgstr "Tên đăng nhập này đã được dùng."
+
+msgid "Enter a login name."
+msgstr "Nhập tên đăng nhập."
+
+msgid "Choose a valid role."
+msgstr "Chọn vai trò hợp lệ."
+
+msgid ""
+"The last active owner cannot be demoted. Make someone else owner first."
+msgstr ""
+"Không thể hạ vai trò của chủ duy nhất còn hoạt động. Hãy chỉ định người khác"
+" làm chủ trước."
+
+msgid "You cannot deactivate your own account."
+msgstr "Bạn không thể khóa tài khoản của chính mình."
+
+msgid "The last active owner cannot be deactivated."
+msgstr "Không thể khóa chủ duy nhất còn hoạt động."
+
+#, python-format
+msgid ""
+"%(name)s has an open shift. Close it with a time correction (with a reason) "
+"before deactivating the account."
+msgstr ""
+"%(name)s đang có ca chưa kết thúc. Hãy đóng ca bằng một lần sửa giờ (kèm lý "
+"do) trước khi khóa tài khoản."
+
+#, python-format
+msgid "Deactivate %(name)s?"
+msgstr "Khóa tài khoản %(name)s?"
+
+#, python-format
+msgid ""
+"This person is still clocked in (since %(t)s). Close the shift with a time "
+"correction first."
+msgstr ""
+"Người này vẫn đang trong ca (từ %(t)s). Hãy đóng ca bằng một lần sửa giờ "
+"trước."
+
+msgid "Correct this shift"
+msgstr "Sửa ca này"
+
+msgid ""
+"They will be signed out and will not be able to sign in. Their timesheets, "
+"checklists and stock records stay in the history under their name. You can "
+"reactivate the account later."
+msgstr ""
+"Người này sẽ bị đăng xuất và không thể đăng nhập. Bảng chấm công, checklist "
+"và ghi nhận kho vẫn được giữ trong lịch sử dưới tên của họ. Bạn có thể mở "
+"lại tài khoản sau."
+
+msgid "Deactivate account"
+msgstr "Khóa tài khoản"
+
+msgid "You"
+msgstr "Bạn"
+
+msgid "Login"
+msgstr "Tên đăng nhập"
+
+msgid "Contact number"
+msgstr "Số điện thoại"
+
+msgid "Password not set yet"
+msgstr "Chưa đặt mật khẩu"
+
+msgid "On shift"
+msgstr "Trong ca"
+
+msgid "Change my password"
+msgstr "Đổi mật khẩu"
+
+msgid "To change your name or contact number, ask a manager."
+msgstr "Muốn đổi tên hoặc số điện thoại, hãy nhờ quản lý."
+
+msgid "Records"
+msgstr "Hồ sơ"
+
+msgid "Timesheet"
+msgstr "Bảng chấm công"
+
+msgid "Stock movements"
+msgstr "Biến động kho"
+
+msgid "Manage"
+msgstr "Quản lý"
+
+msgid "Edit details"
+msgstr "Sửa thông tin"
+
+msgid "Change role"
+msgstr "Đổi vai trò"
+
+msgid "Create password reset link"
+msgstr "Tạo liên kết đặt lại mật khẩu"
+
+msgid "Create password setup link"
+msgstr "Tạo liên kết đặt mật khẩu"
+
+msgid "Reactivate this account?"
+msgstr "Mở lại tài khoản này?"
+
+msgid "Account history"
+msgstr "Lịch sử tài khoản"
+
+msgid "System setup"
+msgstr "Thiết lập hệ thống"
+
+msgid "Add staff member"
+msgstr "Thêm nhân viên"
+
+msgid "All roles"
+msgstr "Tất cả vai trò"
+
+msgid "Awaiting password"
+msgstr "Chờ đặt mật khẩu"
+
+msgid "No staff match these filters."
+msgstr "Không có nhân viên nào khớp với bộ lọc."
+
+msgid "Staff member added"
+msgstr "Đã thêm nhân viên"
+
+msgid "Password link"
+msgstr "Liên kết mật khẩu"
+
+#, python-format
+msgid ""
+"Give this one-time link to <strong>%(name)s</strong>. They open it, choose "
+"their own password, then sign in as <strong>%(login)s</strong>."
+msgstr ""
+"Gửi liên kết dùng một lần này cho <strong>%(name)s</strong>. Họ mở liên kết,"
+" tự chọn mật khẩu, rồi đăng nhập bằng <strong>%(login)s</strong>."
+
+msgid "One-time link"
+msgstr "Liên kết dùng một lần"
+
+msgid ""
+"The link stops working once it has been used or after it expires. It is not "
+"stored, so copy it now. You can create a new link from the staff member's "
+"page at any time."
+msgstr ""
+"Liên kết sẽ hết hiệu lực sau khi được dùng hoặc hết hạn. Liên kết không được"
+" lưu lại, nên hãy sao chép ngay. Bạn có thể tạo liên kết mới từ trang của "
+"nhân viên bất cứ lúc nào."
+
+msgid "Employee · on a break"
+msgstr "Nhân viên · đang nghỉ"
+
+msgid "You have signed out."
+msgstr "Bạn đã đăng xuất."
+
+msgid "Your password is set. You can now sign in."
+msgstr "Đã đặt mật khẩu. Bây giờ bạn có thể đăng nhập."
+
+msgid "Details saved."
+msgstr "Đã lưu thông tin."
+
+msgid "Role updated."
+msgstr "Đã cập nhật vai trò."
+
+#, python-format
+msgid "Change role for %(name)s"
+msgstr "Đổi vai trò cho %(name)s"
+
+#, python-format
+msgid "%(name)s can no longer sign in."
+msgstr "%(name)s không thể đăng nhập nữa."
+
+#, python-format
+msgid "%(name)s is active again."
+msgstr "%(name)s đã hoạt động trở lại."
+
+msgid "Your password was changed."
+msgstr "Đã đổi mật khẩu."
+
+msgid "Closed"
+msgstr "Đóng cửa"
+
+msgid "Break started"
+msgstr "Bắt đầu nghỉ"
+
+msgid "Break ended"
+msgstr "Kết thúc nghỉ"
+
+msgid "Clocked out"
+msgstr "Đã ra ca"
+
+msgid "You are already clocked in."
+msgstr "Bạn đã vào ca rồi."
+
+msgid "You are not clocked in."
+msgstr "Bạn chưa vào ca."
+
+msgid "You are not on a break."
+msgstr "Bạn không đang nghỉ."
+
+msgid "The break has not lasted any time yet. Try again in a moment."
+msgstr "Giờ nghỉ chưa bắt đầu tính. Hãy thử lại sau giây lát."
+
+msgid "You are on a break. End your break first, then clock out."
+msgstr "Bạn đang nghỉ. Hãy kết thúc nghỉ trước, rồi ra ca."
+
+msgid "You clocked in just now. Try again in a moment."
+msgstr "Bạn vừa mới vào ca. Hãy thử lại sau giây lát."
+
+msgid "Clock-in cannot be in the future."
+msgstr "Giờ vào ca không được ở tương lai."
+
+msgid "Clock-out must be after clock-in."
+msgstr "Giờ ra ca phải sau giờ vào ca."
+
+msgid "Clock-out cannot be in the future."
+msgstr "Giờ ra ca không được ở tương lai."
+
+msgid "Every break needs an end time when the shift has a clock-out."
+msgstr "Mỗi lần nghỉ cần có giờ kết thúc khi ca đã có giờ ra ca."
+
+msgid "Only one break can be still running."
+msgstr "Chỉ được có một lần nghỉ đang diễn ra."
+
+msgid "Each break must start during the shift."
+msgstr "Mỗi lần nghỉ phải bắt đầu trong ca."
+
+msgid "A break must end after it starts."
+msgstr "Giờ kết thúc nghỉ phải sau giờ bắt đầu."
+
+msgid "Each break must end within the shift."
+msgstr "Mỗi lần nghỉ phải kết thúc trong ca."
+
+msgid "Breaks must not overlap."
+msgstr "Các lần nghỉ không được chồng lên nhau."
+
+msgid "Give a reason for the correction."
+msgstr "Hãy ghi lý do sửa."
+
+msgid "A closed shift cannot be reopened. Enter a clock-out time."
+msgstr "Không thể mở lại ca đã đóng. Hãy nhập giờ ra ca."
+
+#, python-format
+msgid ""
+"These times overlap another shift of this person (%(start)s). Correct that "
+"shift first."
+msgstr ""
+"Thời gian này trùng với một ca khác của người này (%(start)s). Hãy sửa ca đó"
+" trước."
+
+msgid "Nothing was changed."
+msgstr "Không có gì thay đổi."
+
+msgid "End"
+msgstr "Kết thúc"
+
+msgid "Breaks"
+msgstr "Nghỉ"
+
+msgid "Worked"
+msgstr "Đã làm"
+
+msgid "Provisional, shift still open"
+msgstr "Tạm tính, ca vẫn đang mở"
+
+msgid "Open · on break"
+msgstr "Đang mở · đang nghỉ"
+
+msgid "Corrected"
+msgstr "Đã sửa"
+
+msgid "No shifts in this period."
+msgstr "Không có ca nào trong khoảng thời gian này."
+
+#, python-format
+msgid "Now: %(now)s"
+msgstr "Bây giờ: %(now)s"
+
+msgid "Clock in"
+msgstr "Vào ca"
+
+#, python-format
+msgid "Break started at %(t)s"
+msgstr "Bắt đầu nghỉ lúc %(t)s"
+
+#, python-format
+msgid "Clocked in %(t)s"
+msgstr "Vào ca lúc %(t)s"
+
+msgid "Worked so far (provisional):"
+msgstr "Đã làm đến giờ (tạm tính):"
+
+msgid "breaks"
+msgstr "nghỉ"
+
+msgid "End break"
+msgstr "Kết thúc nghỉ"
+
+msgid "End your break before clocking out."
+msgstr "Hãy kết thúc nghỉ trước khi ra ca."
+
+msgid "Start break"
+msgstr "Bắt đầu nghỉ"
+
+msgid "Clock out now?"
+msgstr "Ra ca bây giờ?"
+
+msgid "Clock out"
+msgstr "Ra ca"
+
+msgid "Last completed shift"
+msgstr "Ca hoàn thành gần nhất"
+
+msgid "Clock-in"
+msgstr "Vào ca"
+
+msgid "Clock-out"
+msgstr "Ra ca"
+
+msgid "See all my hours"
+msgstr "Xem tất cả giờ làm của tôi"
+
+msgid "Correct shift"
+msgstr "Sửa ca"
+
+msgid "Back to shift"
+msgstr "Quay lại ca"
+
+#, python-format
+msgid "Correct shift for %(name)s"
+msgstr "Sửa ca của %(name)s"
+
+#, python-format
+msgid ""
+"Times are local restaurant time (%(tz)s). The original times, your changes, "
+"your name and the reason are kept and shown to the employee."
+msgstr ""
+"Thời gian theo giờ địa phương của nhà hàng (%(tz)s). Giờ gốc, thay đổi của "
+"bạn, tên bạn và lý do sẽ được lưu lại và hiển thị cho nhân viên."
+
+msgid "Leave empty to keep the shift open, or enter a time to close it."
+msgstr "Để trống nếu ca vẫn mở, hoặc nhập giờ để đóng ca."
+
+msgid "Required for a closed shift."
+msgstr "Bắt buộc với ca đã đóng."
+
+#, python-format
+msgid "Break %(n)s"
+msgstr "Nghỉ lần %(n)s"
+
+msgid "Remove this break"
+msgstr "Xóa lần nghỉ này"
+
+msgid "Reason for the correction"
+msgstr "Lý do sửa"
+
+msgid "Save correction"
+msgstr "Lưu thay đổi"
+
+msgid "Total of closed shifts"
+msgstr "Tổng các ca đã kết thúc"
+
+#, python-format
+msgid "%(n)s open shift not included"
+msgid_plural "%(n)s open shifts not included"
+msgstr[0] "chưa tính %(n)s ca đang mở"
+
+msgid ""
+"A shift is counted on the date it started (restaurant local time), even if "
+"it ends after midnight. Hours are rounded only for display."
+msgstr ""
+"Ca được tính vào ngày bắt đầu (giờ địa phương của nhà hàng), kể cả khi kết "
+"thúc sau nửa đêm. Số giờ chỉ được làm tròn khi hiển thị."
+
+msgid "Shift"
+msgstr "Ca"
+
+#, python-format
+msgid "%(name)s · shift %(d)s"
+msgstr "%(name)s · ca %(d)s"
+
+msgid "provisional, shift still open"
+msgstr "tạm tính, ca vẫn đang mở"
+
+msgid "This shift has been corrected"
+msgstr "Ca này đã được sửa"
+
+msgid "Correction history"
+msgstr "Lịch sử sửa"
+
+msgid "Reason"
+msgstr "Lý do"
+
+msgid "Before"
+msgstr "Trước"
+
+msgid "After"
+msgstr "Sau"
+
+msgid "Original clock actions"
+msgstr "Các lần chấm công gốc"
+
+msgid "Action"
+msgstr "Thao tác"
+
+msgid ""
+"Shifts are included by the local date they started, even if they end after "
+"midnight. Totals include closed shifts only; open shifts are shown "
+"separately as provisional. Not payroll-approved."
+msgstr ""
+"Ca được tính theo ngày bắt đầu (giờ địa phương), kể cả khi kết thúc sau nửa "
+"đêm. Tổng chỉ gồm các ca đã kết thúc; ca đang mở được hiển thị riêng ở dạng "
+"tạm tính. Chưa được duyệt để tính lương."
+
+msgid "Totals"
+msgstr "Tổng"
+
+msgid "Shifts"
+msgstr "Số ca"
+
+msgid "Closed-shift hours"
+msgstr "Giờ của các ca đã kết thúc"
+
+#, python-format
+msgid "%(n)s open"
+msgid_plural "%(n)s open"
+msgstr[0] "%(n)s đang mở"
+
+msgid "open"
+msgstr "đang mở"
+
+msgid "Clocked in."
+msgstr "Đã vào ca."
+
+msgid "Break started."
+msgstr "Đã bắt đầu nghỉ."
+
+msgid "Break ended."
+msgstr "Đã kết thúc nghỉ."
+
+msgid "Clocked out. Have a good rest of your day."
+msgstr "Đã ra ca. Chúc bạn một ngày tốt lành!"
+
+msgid "Your break was already running."
+msgstr "Bạn đã đang nghỉ rồi."
+
+msgid "Enter the clock-in time."
+msgstr "Nhập giờ vào ca."
+
+msgid "Each break needs a start time."
+msgstr "Mỗi lần nghỉ cần có giờ bắt đầu."
+
+msgid "Shift corrected. The previous times are kept in the history."
+msgstr "Đã sửa ca. Giờ cũ vẫn được giữ trong lịch sử."
+
+msgid "For example: Lunch deal – soup and bánh mì 12 €"
+msgstr "Ví dụ: Ưu đãi trưa – súp và bánh mì 12 €"
+
+msgid "Text"
+msgstr "Nội dung"
+
+msgid "First day"
+msgstr "Ngày bắt đầu"
+
+msgid "Last day"
+msgstr "Ngày kết thúc"
+
+msgid ""
+"The promotion disappears from the website after this day. Leave empty to "
+"keep it running."
+msgstr ""
+"Khuyến mãi sẽ biến mất khỏi trang web sau ngày này. Để trống để giữ khuyến "
+"mãi mãi."
+
+msgid "Show on the website"
+msgstr "Hiển thị trên trang web"
+
+msgid "tagline"
+msgstr "khẩu hiệu"
+
+msgid "introduction"
+msgstr "giới thiệu"
+
+msgid "street address"
+msgstr "địa chỉ"
+
+msgid "postal code"
+msgstr "mã bưu điện"
+
+msgid "city"
+msgstr "thành phố"
+
+msgid "country"
+msgstr "quốc gia"
+
+msgid "phone"
+msgstr "điện thoại"
+
+msgid "email"
+msgstr "email"
+
+msgid "hero image description"
+msgstr "mô tả ảnh bìa"
+
+msgid "Monday"
+msgstr "Thứ Hai"
+
+msgid "Tuesday"
+msgstr "Thứ Ba"
+
+msgid "Wednesday"
+msgstr "Thứ Tư"
+
+msgid "Thursday"
+msgstr "Thứ Năm"
+
+msgid "Friday"
+msgstr "Thứ Sáu"
+
+msgid "Saturday"
+msgstr "Thứ Bảy"
+
+msgid "Sunday"
+msgstr "Chủ Nhật"
+
+msgid "text"
+msgstr "nội dung"
+
+msgid "first day"
+msgstr "ngày bắt đầu"
+
+msgid "last day"
+msgstr "ngày kết thúc"
+
+msgid "Leave empty to keep it running."
+msgstr "Để trống để giữ mãi."
+
+msgid "published"
+msgstr "đã đăng"
+
+msgid "Choose the first day."
+msgstr "Chọn ngày bắt đầu."
+
+msgid "The last day cannot be before the first day."
+msgstr "Ngày kết thúc không được trước ngày bắt đầu."
+
+msgid "Open now"
+msgstr "Đang mở cửa"
+
+#, python-format
+msgid "until %(t)s"
+msgstr "đến %(t)s"
+
+msgid "Closed now"
+msgstr "Đang đóng cửa"
+
+#, python-format
+msgid "opens at %(t)s"
+msgstr "mở cửa lúc %(t)s"
+
+#, python-format
+msgid "opens %(d)s at %(t)s"
+msgstr "mở cửa %(d)s lúc %(t)s"
+
+msgid "no end date"
+msgstr "không có ngày kết thúc"
+
+msgid "Demo restaurant with example content."
+msgstr "Nhà hàng demo với nội dung mẫu."
+
+msgid "Try the staff app"
+msgstr "Dùng thử ứng dụng nhân viên"
+
+msgid "Home"
+msgstr "Trang chủ"
+
+msgid "Contact"
+msgstr "Liên hệ"
+
+msgid "Opening hours"
+msgstr "Giờ mở cửa"
+
+msgid "Staff sign-in"
+msgstr "Nhân viên đăng nhập"
+
+msgid "Coming soon"
+msgstr "Sắp ra mắt"
+
+msgid "Our website is coming soon"
+msgstr "Trang web của chúng tôi sắp ra mắt"
+
+msgid "Contact and opening hours"
+msgstr "Liên hệ và giờ mở cửa"
+
+msgid "Where to find us"
+msgstr "Địa chỉ của chúng tôi"
+
+msgid "Open in maps"
+msgstr "Mở trên bản đồ"
+
+msgid "Address coming soon."
+msgstr "Địa chỉ sẽ sớm được cập nhật."
+
+msgid "Get in touch"
+msgstr "Liên hệ với chúng tôi"
+
+msgid "Phone"
+msgstr "Điện thoại"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Contact details coming soon."
+msgstr "Thông tin liên hệ sẽ sớm được cập nhật."
+
+msgid "See the menu"
+msgstr "Xem thực đơn"
+
+msgid "Find us"
+msgstr "Tìm chúng tôi"
+
+msgid "Right now"
+msgstr "Hiện đang có"
+
+#, python-format
+msgid "Until %(d)s"
+msgstr "Đến %(d)s"
+
+msgid "About us"
+msgstr "Về chúng tôi"
+
+msgid "From the menu"
+msgstr "Từ thực đơn"
+
+msgid "Full menu"
+msgstr "Xem toàn bộ thực đơn"
+
+msgid "Visit us"
+msgstr "Ghé thăm chúng tôi"
+
+msgid "Opening hours and contact"
+msgstr "Giờ mở cửa và liên hệ"
+
+msgid "Menu sections"
+msgstr "Các phần thực đơn"
+
+msgid "Not available today"
+msgstr "Hôm nay tạm hết"
+
+msgid "Allergens:"
+msgstr "Chất gây dị ứng:"
+
+msgid "The menu is being updated. Please check back soon."
+msgstr "Thực đơn đang được cập nhật. Vui lòng quay lại sau."
+
+msgid ""
+"Allergen information is provided by our kitchen. If you have an allergy, "
+"please tell your server when you order."
+msgstr ""
+"Thông tin chất gây dị ứng do bếp của chúng tôi cung cấp. Nếu bạn bị dị ứng, "
+"vui lòng báo cho nhân viên khi gọi món."
+
+#, python-format
+msgid "Delete “%(t)s”?"
+msgstr "Xóa “%(t)s”?"
+
+msgid ""
+"It disappears from the website and from this list. To hide it for now, edit "
+"it and untick “Show on the website” instead."
+msgstr ""
+"Khuyến mãi sẽ biến mất khỏi trang web và khỏi danh sách này. Nếu chỉ muốn "
+"tạm ẩn, hãy sửa và bỏ chọn “Hiển thị trên trang web”."
+
+msgid "Delete promotion"
+msgstr "Xóa khuyến mãi"
+
+msgid "New promotion"
+msgstr "Khuyến mãi mới"
+
+msgid "Edit promotion"
+msgstr "Sửa khuyến mãi"
+
+msgid "Delete"
+msgstr "Xóa"
+
+msgid ""
+"Promotions appear on the public homepage from their first day to their last "
+"day, then disappear by themselves."
+msgstr ""
+"Khuyến mãi hiển thị trên trang chủ từ ngày bắt đầu đến ngày kết thúc, sau đó"
+" tự biến mất."
+
+msgid "On the website now"
+msgstr "Đang hiện trên trang web"
+
+msgid "Starting later"
+msgstr "Sẽ bắt đầu sau"
+
+msgid "Not shown (unpublished)"
+msgstr "Không hiển thị (chưa đăng)"
+
+msgid "Ended"
+msgstr "Đã kết thúc"
+
+msgid "No promotions yet."
+msgstr "Chưa có khuyến mãi nào."
+
+msgid "Promotion saved."
+msgstr "Đã lưu khuyến mãi."
+
+msgid "Promotion deleted."
+msgstr "Đã xóa khuyến mãi."

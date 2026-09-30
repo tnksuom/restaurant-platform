@@ -184,13 +184,14 @@ All stories of the MVP release are implemented: EP01–EP07, 42 stories.
 - **Editing submitted checklists.** Not supported in this release: submitted runs are read-only for everyone. Managers follow up through issues instead. This avoids silent changes to submissions.
 - **Time corrections.** The form works in whole seconds in the restaurant's time zone. Fields left unchanged keep their exact stored instant. Times that don't exist because of daylight saving (e.g. 03:30 on the last Sunday of March) are rejected. Ambiguous times at the autumn change resolve to the first occurrence. A closed shift cannot be reopened by a correction, which prevents accidental duplicate open shifts.
 - **Date rules.** A business day is the local calendar date. A shift belongs to the local date it started, even if it ends after midnight; the UI states this rule. Hours are summed in exact seconds and rounded to two decimals only for display.
-- **Translations.** All interface text is marked for translation, and Finnish and Vietnamese are declared in settings. Translation files are not written yet. Data such as task names is stored as entered, in Unicode.
+- **Languages.** The staff app and the public site are in English, Finnish and Vietnamese. Anyone can switch with the EN / FI / VI buttons in the top bar, including before signing in; the choice is kept in a cookie for a year on that device. Content that people type in (dish names, checklist tasks, promotions, the restaurant introduction) is shown as entered.
+- **Updating translations.** After adding or changing UI text, run `python manage.py makemessages -l fi -l vi`, fill in the new entries in `locale/*/LC_MESSAGES/django.po`, then run `python manage.py compilemessages`. The compiled `.mo` files are committed, so the Docker image needs no gettext. `core/test_i18n.py` fails if any entry is untranslated or fuzzy, if placeholders differ from the English text, or if a `.mo` file is out of date.
 - **`restaurant_id`** is on every operational table, and every query filters by the signed-in user's restaurant. There is no multi-location administration.
 
 ## Known limitations
 
 - **Public details can't be edited in the app yet.** The restaurant name, introduction, address, phone, opening hours, logo and hero image are set up by `seed_demo` (example content) or by an administrator. Editing screens are EP08 ("Later" in the backlog).
-- Dish names and descriptions are stored in one language; translated menus are not built yet.
+- Dish names, descriptions and other typed-in content are stored in one language; per-language versions of content are not built yet.
 
 - There is no email, so password resets are manager-issued one-time links.
 - The template editor shows every task as a full form, which gets long for big checklists (64 tasks in the demo). New tasks are best added with the paste box. Task order is a number field, not drag-and-drop.

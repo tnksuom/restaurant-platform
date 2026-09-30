@@ -13,8 +13,9 @@
 {% if user.is_authenticated %}
 <header class="topbar">
   <a class="brand" href="{% url 'today' %}">{{ restaurant.name }}</a>
+  {% include "core/language_switcher.html" %}
   <details class="menu">
-    <summary aria-label="{% translate 'Menu' %}">{% translate "Menu" %}</summary>
+    <summary aria-label="{% translate 'Menu' context 'navigation' %}">{% translate "Menu" context "navigation" %}</summary>
     <nav aria-label="{% translate 'Main' %}">
       <ul>
         <li><a href="{% url 'today' %}">{% translate "Today" %}</a></li>
@@ -49,6 +50,7 @@
   </details>
 </header>
 {% endif %}
+{% if not user.is_authenticated %}<div class="topbar topbar-plain">{% include "core/language_switcher.html" %}</div>{% endif %}
 <main id="main" class="page">
   {% if messages %}
   <div class="messages" role="status" aria-live="polite">

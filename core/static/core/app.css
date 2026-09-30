@@ -169,3 +169,8 @@ button.answer-fail[aria-pressed="true"] { border-color: var(--bad); background: 
 .group-nav a span { color: var(--muted); font-variant-numeric: tabular-nums; }
 .group-nav a.complete { border-color: var(--ok); background: var(--ok-bg); }
 #finish { scroll-margin-top: 72px; margin-top: 16px; }
+/* Language switcher */
+.lang-switch { display: flex; gap: 2px; margin-left: auto; margin-right: 8px; }
+.lang-switch button { min-height: 40px; min-width: 40px; padding: 0 8px; border: 1px solid transparent; background: none; color: var(--muted); font: 600 .85rem/1 system-ui, sans-serif; border-radius: 8px; cursor: pointer; }
+.lang-switch button[aria-current="true"] { color: var(--text); border-color: var(--border); background: var(--surface); }
+.topbar-plain { justify-content: flex-end; }

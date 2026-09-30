@@ -8,5 +8,6 @@ Django 5.2 + PostgreSQL app for restaurant operations (EP01–EP07 done; EP08 no
 - Quantities are `Decimal` (3 dp), temperatures `Decimal` (2 dp). Never use floats for stock.
 - Store instants in UTC; business dates are the restaurant's local date (`core.timeutils`).
 - Mark every UI string for translation (`{% translate %}` / `gettext`).
+- UI languages are en/fi/vi. When UI text changes, run `makemessages -l fi -l vi`, translate the new entries in both `.po` files and run `compilemessages`; commit the `.mo` files (`core/test_i18n.py` checks this).
 - Every behavior change comes with a test. Run `python manage.py test` (needs PostgreSQL; see `.env.example`).
 - Run `python manage.py makemigrations --check` before committing model changes.
