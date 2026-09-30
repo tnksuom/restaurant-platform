@@ -49,3 +49,74 @@ jobs:
         run: python manage.py migrate --noinput
       - name: Run tests
         run: python manage.py test --noinput --verbosity 2
+
+  image:
+    # Builds the production image exactly as Render will, then runs it against a real
+    # database: migrations, owner creation, health check and the public homepage.
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: restaurant
+          POSTGRES_PASSWORD: restaurant
+          POSTGRES_DB: restaurant
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U restaurant"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build production image
+        run: docker build -t restaurant-ops:ci .
+      - name: Run pre-deploy steps and start the app
+        run: |
+          cat > prod.env <<'ENV'
+          DATABASE_URL=postgres://restaurant:restaurant@localhost:5432/restaurant
+          DJANGO_SECRET_KEY=ci-only-not-secret-but-long-enough-0123456789abcdef
+          DJANGO_DEBUG=false
+          DJANGO_BEHIND_PROXY=true
+          DJANGO_SECURE_COOKIES=true
+          DJANGO_SSL_REDIRECT=true
+          RENDER_EXTERNAL_HOSTNAME=restaurant-ops.example.com
+          INITIAL_RESTAURANT_NAME=CI Bistro
+          INITIAL_OWNER_LOGIN=owner
+          INITIAL_OWNER_PASSWORD=Ci-Owner-Password-2026
+          PORT=8000
+          ENV
+          docker run --rm --network host --env-file prod.env restaurant-ops:ci python manage.py check --deploy --fail-level WARNING
+          docker run --rm --network host --env-file prod.env restaurant-ops:ci sh -c "python manage.py migrate --noinput && python manage.py ensure_owner"
+          docker run -d --name app --network host --env-file prod.env -v uploads:/var/data restaurant-ops:ci
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8000/healthz && break; sleep 1; done
+      - name: Smoke test
+        run: |
+          set -e
+          test "$(curl -fsS http://127.0.0.1:8000/healthz)" = "ok"
+          curl -fsS -H "Host: restaurant-ops.example.com" -H "X-Forwarded-Proto: https" http://127.0.0.1:8000/ | grep -q "CI Bistro"
+          curl -fsS -H "Host: restaurant-ops.example.com" -H "X-Forwarded-Proto: https" http://127.0.0.1:8000/menu/ > /dev/null
+          code=$(curl -s -o /dev/null -w "%{http_code}" -H "Host: restaurant-ops.example.com" http://127.0.0.1:8000/)
+          test "$code" = "301"
+          # The app runs as the unprivileged "app" user and can write to both upload folders on the disk.
+          test "$(docker exec app stat -c %U /proc/1)" = "app"
+          docker exec -u app app sh -c 'for d in /var/data/public_uploads /var/data/private_uploads; do touch $d/.probe && rm $d/.probe; done'
+          test "$(docker exec app stat -c %a /var/data/private_uploads)" = "750"
+      - name: Demo mode starts from scratch and serves the example restaurant
+        run: |
+          set -e
+          docker exec -e PGPASSWORD=restaurant app python -c "import psycopg; c=psycopg.connect('postgresql://restaurant:restaurant@localhost:5432/restaurant', autocommit=True); c.execute('CREATE DATABASE restaurant_demo')"
+          sed -e 's#/restaurant$#/restaurant_demo#' -e '/^INITIAL_/d' -e 's/^PORT=8000/PORT=8001/' prod.env > demo.env
+          printf 'DEMO_MODE=true\nDEMO_PASSWORD=demo-ci-pass\n' >> demo.env
+          docker run -d --name demo --network host --env-file demo.env restaurant-ops:ci
+          for i in $(seq 1 90); do curl -fsS http://127.0.0.1:8001/healthz >/dev/null 2>&1 && break; sleep 1; done
+          H="Host: restaurant-ops.example.com"; P="X-Forwarded-Proto: https"
+          curl -fsS -H "$H" -H "$P" http://127.0.0.1:8001/login/ | grep -q "demo-ci-pass"
+          curl -fsS -H "$H" -H "$P" http://127.0.0.1:8001/menu/ | grep -q "Phở bò"
+          curl -fsS -H "$H" -H "$P" http://127.0.0.1:8001/ | grep -q "Demo restaurant with example content"
+          # The production container above must not show any demo hints.
+          ! curl -fsS -H "$H" -H "$P" http://127.0.0.1:8000/login/ | grep -q "Demo accounts"
+      - name: App log on failure
+        if: failure()
+        run: |
+          docker logs app || true
+          docker logs demo || true

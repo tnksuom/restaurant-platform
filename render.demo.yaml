@@ -1,0 +1,52 @@
+# FREE DEMO on Render — for showing the app, not for running a real restaurant.
+# In Render: New → Blueprint → pick this repository → set "Blueprint Path" to render.demo.yaml.
+#
+# - Costs nothing: free web service + free Postgres (Frankfurt, EU).
+# - Every start wipes the database and loads the example restaurant again, so each
+#   presentation begins from the same clean demo. Visitors' changes don't last.
+# - Free services sleep after 15 minutes without visitors; the first visit then takes
+#   about a minute. Open the link a minute before you present.
+# - Render deletes free databases 30 days after creation; see DEPLOY.md for renewing it.
+
+databases:
+  - name: restaurant-demo-db
+    plan: free
+    region: frankfurt
+    postgresMajorVersion: "16"
+    databaseName: restaurant_demo
+    user: restaurant_demo
+    ipAllowList: []            # only the app inside Render can connect
+
+services:
+  - type: web
+    name: restaurant-ops-demo
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    region: frankfurt
+    plan: free
+    branch: main
+    autoDeployTrigger: checksPass   # new versions go live only after GitHub's tests pass
+    healthCheckPath: /healthz
+    envVars:
+      - key: DEMO_MODE
+        value: "true"
+      - key: DEMO_PASSWORD
+        value: demo-bistro-2026
+      - key: DATABASE_URL
+        fromDatabase:
+          name: restaurant-demo-db
+          property: connectionString
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: "false"
+      - key: DJANGO_BEHIND_PROXY
+        value: "true"
+      - key: DJANGO_SECURE_COOKIES
+        value: "true"
+      - key: DJANGO_SSL_REDIRECT
+        value: "true"
+      - key: RESTAURANT_TIME_ZONE
+        value: Europe/Helsinki
+      - key: WEB_CONCURRENCY
+        value: "2"

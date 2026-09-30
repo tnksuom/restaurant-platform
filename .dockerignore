@@ -1,0 +1,11 @@
+.git
+.github
+.env
+**/__pycache__
+*.pyc
+private_uploads
+public_uploads
+.test_private_uploads
+.test_public_uploads
+staticfiles
+.venv

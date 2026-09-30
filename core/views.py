@@ -1,4 +1,7 @@
+from django.contrib.auth.decorators import login_not_required
+from django.db import connection
 from django.db.models import F
+from django.http import HttpResponse
 from django.shortcuts import render
 
 from checklists.models import ChecklistIssue, ChecklistRun, ChecklistTemplate
@@ -33,3 +36,14 @@ def today(request):
         context["open_issues"] = ChecklistIssue.objects.filter(restaurant=restaurant, status=ChecklistIssue.Status.OPEN).count()
         context["on_shift"] = Shift.objects.filter(restaurant=restaurant, status=Shift.Status.OPEN).count()
     return render(request, "core/today.html", context)
+
+
+@login_not_required
+def healthz(request):
+    """Liveness check for the hosting platform: the app is up and the database answers."""
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT 1")
+    except Exception:
+        return HttpResponse("database unavailable", status=503, content_type="text/plain")
+    return HttpResponse("ok", content_type="text/plain")

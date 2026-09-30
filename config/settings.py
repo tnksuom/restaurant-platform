@@ -4,7 +4,7 @@ All deployment-specific values come from environment variables (see .env.example
 """
 import os
 from pathlib import Path
-from urllib.parse import unquote, urlparse
+from urllib.parse import parse_qsl, unquote, urlparse
 
 from django.core.exceptions import ImproperlyConfigured
 
@@ -40,6 +40,15 @@ DEBUG = env_bool("DJANGO_DEBUG", False)
 SECRET_KEY = env("DJANGO_SECRET_KEY", "insecure-dev-only-key" if DEBUG else None, required=not DEBUG)
 ALLOWED_HOSTS = [h.strip() for h in env("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1").split(",") if h.strip()]
 CSRF_TRUSTED_ORIGINS = [o.strip() for o in env("DJANGO_CSRF_TRUSTED_ORIGINS", "").split(",") if o.strip()]
+# Render (and similar hosts) tell the app its public hostname; trust it automatically.
+_platform_host = env("RENDER_EXTERNAL_HOSTNAME", "")
+if _platform_host and _platform_host not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append(_platform_host)
+for _host in ALLOWED_HOSTS:
+    if _host not in {"localhost", "127.0.0.1"} and not _host.startswith("."):
+        _origin = f"https://{_host}"
+        if _origin not in CSRF_TRUSTED_ORIGINS:
+            CSRF_TRUSTED_ORIGINS.append(_origin)
 
 INSTALLED_APPS = [
     "django.contrib.auth",
@@ -58,7 +67,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "core.middleware.HealthCheckMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -94,7 +105,7 @@ def database_from_url(url):
     parsed = urlparse(url)
     if parsed.scheme not in {"postgres", "postgresql"}:
         raise ImproperlyConfigured("DATABASE_URL must be a postgres:// URL")
-    return {
+    config = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": unquote(parsed.path.lstrip("/")),
         "USER": unquote(parsed.username or ""),
@@ -103,7 +114,13 @@ def database_from_url(url):
         "PORT": str(parsed.port or 5432),
         "ATOMIC_REQUESTS": False,
         "CONN_MAX_AGE": 60,
+        "CONN_HEALTH_CHECKS": True,
     }
+    # Pass connection options such as ?sslmode=require straight to the driver.
+    options = dict(parse_qsl(parsed.query))
+    if options:
+        config["OPTIONS"] = options
+    return config
 
 
 DATABASES = {"default": database_from_url(env("DATABASE_URL", required=True))}
@@ -130,6 +147,17 @@ SESSION_COOKIE_AGE = 12 * 3600
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = "DENY"
 
+# HTTPS. Hosting platforms end TLS at their proxy and forward X-Forwarded-Proto.
+if env_bool("DJANGO_BEHIND_PROXY", False):
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SECURE_SSL_REDIRECT = env_bool("DJANGO_SSL_REDIRECT", not DEBUG and SESSION_COOKIE_SECURE)
+SECURE_REDIRECT_EXEMPT = [r"^healthz$"]  # the platform's health check calls over plain HTTP
+SECURE_HSTS_SECONDS = int(env("DJANGO_HSTS_SECONDS", 0 if DEBUG else 60 * 60 * 24 * 30))
+SECURE_HSTS_INCLUDE_SUBDOMAINS = False  # a custom domain's other subdomains are not ours to decide
+SECURE_REFERRER_POLICY = "same-origin"
+# HSTS for subdomains/preload is left to the owner of a custom domain, who may run other sites on it.
+SILENCED_SYSTEM_CHECKS = ["security.W005", "security.W021"]
+
 LANGUAGE_CODE = "en"
 LANGUAGES = [("en", "English"), ("fi", "Suomi"), ("vi", "Tiếng Việt")]
 LOCALE_PATHS = [BASE_DIR / "locale"]
@@ -138,8 +166,23 @@ USE_TZ = True
 TIME_ZONE = "UTC"  # storage and server time; display uses the restaurant's zone
 DEFAULT_RESTAURANT_TIME_ZONE = env("RESTAURANT_TIME_ZONE", "Europe/Helsinki")
 
+# Demo mode: for showing the app to people. On every start the database is wiped and refilled
+# with the example restaurant, the demo accounts are listed on the sign-in page, and every page
+# says it is a demo. Never enable it for a real restaurant.
+DEMO_MODE = env_bool("DEMO_MODE", False)
+DEMO_PASSWORD = env("DEMO_PASSWORD", "demo-bistro-2026")
+
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+STORAGES = {
+    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+    # Compressed, cache-busting file names; served by WhiteNoise without a separate web server.
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"
+        if not DEBUG
+        else "django.contrib.staticfiles.storage.StaticFilesStorage"
+    },
+}
 
 # Private uploads (checklist issue photos). Never served as public static/media.
 PRIVATE_UPLOAD_ROOT = Path(env("PRIVATE_UPLOAD_ROOT", "private_uploads"))
@@ -174,3 +217,5 @@ if len(sys.argv) > 1 and sys.argv[1] == "test":
     LOGGING["loggers"]["django.request"]["level"] = "CRITICAL"
     PRIVATE_UPLOAD_ROOT = BASE_DIR / ".test_private_uploads"
     PUBLIC_UPLOAD_ROOT = BASE_DIR / ".test_public_uploads"
+    STORAGES["staticfiles"]["BACKEND"] = "django.contrib.staticfiles.storage.StaticFilesStorage"
+    SECURE_SSL_REDIRECT = False

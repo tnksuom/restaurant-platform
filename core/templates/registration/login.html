@@ -11,4 +11,17 @@
   </form>
   <p class="muted small">{% translate "Forgot your password? Ask your manager for a new password link." %}</p>
 </div>
+{% if demo_mode %}
+<div class="card stack" style="max-width:420px;margin:0 auto 40px">
+  <h2 style="margin:0">{% translate "Demo accounts" %}</h2>
+  <p class="small muted" style="margin:0">{% blocktranslate with pw=demo_password %}Tap a person to sign in as them. Every demo account uses the password <strong>{{ pw }}</strong>.{% endblocktranslate %}</p>
+  {% for login, name, role in demo_accounts %}
+  <form method="post" action="{% url 'login' %}">{% csrf_token %}
+    <input type="hidden" name="username" value="{{ login }}">
+    <input type="hidden" name="password" value="{{ demo_password }}">
+    <button type="submit" class="btn btn-secondary btn-block demo-account"><span>{{ name }}</span><span class="small">{{ role }} · {{ login }}</span></button>
+  </form>
+  {% endfor %}
+</div>
+{% endif %}
 {% endblock %}

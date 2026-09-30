@@ -48,6 +48,8 @@ python manage.py runserver          # public site http://127.0.0.1:8000 · staff
 **Demo data instead of step 3.** On an *empty* development database (`DJANGO_DEBUG=true`), run
 `python manage.py seed_demo --password 'Choose-A-Password'`. It creates a demo restaurant with an owner (`owner`), a manager (`mia`), employees (`linh`, `eero`, `sara`), stock, a week of checklists and shifts, open issues with a photo, and a corrected shift. All accounts use the password you give. It refuses to run on a database that already has staff.
 
+**To put it online, follow [DEPLOY.md](DEPLOY.md)**: a free self-resetting demo (`render.demo.yaml`) or a real installation (`render.yaml`), both on Render in the EU, deploying automatically after the tests pass. In general:
+
 For production, run behind HTTPS with a WSGI server (for example `gunicorn config.wsgi`). Set `DJANGO_DEBUG=false` and run `python manage.py collectstatic`. Serve `staticfiles/` as static files. **Never** expose `PRIVATE_UPLOAD_ROOT` or `PUBLIC_UPLOAD_ROOT` directly through the web server: issue photos are served only by a permission-checked view, and dish photos go through the app so that photos of draft dishes stay hidden.
 
 ### Environment variables
@@ -67,11 +69,18 @@ For production, run behind HTTPS with a WSGI server (for example `gunicorn confi
 | `MENU_PHOTO_MAX_BYTES` | no | `10485760` | Dish photo size limit (10 MB); photos are scaled to at most 1600 px |
 | `PASSWORD_SETUP_LINK_TIMEOUT` | no | `259200` | Lifetime of one-time password links, in seconds (3 days) |
 | `LOG_LEVEL` | no | `INFO` | |
+| `DJANGO_BEHIND_PROXY` | no | `false` | `true` when a hosting proxy ends HTTPS and forwards `X-Forwarded-Proto` |
+| `DJANGO_SSL_REDIRECT` | no | on when not debugging | Redirect plain HTTP to HTTPS (`/healthz` is exempt) |
+| `DJANGO_HSTS_SECONDS` | no | 30 days when not debugging | How long browsers must use HTTPS |
+| `RENDER_EXTERNAL_HOSTNAME` | set by Render | — | Added to the allowed host names automatically |
+| `DEMO_MODE` | no | `false` | **Demo only.** Every start wipes the database and reloads the example restaurant; the sign-in page lists demo accounts. Never set it for a real restaurant. |
+| `DEMO_PASSWORD` | no | `demo-bistro-2026` | Shared password of the demo accounts in demo mode |
+| `INITIAL_OWNER_LOGIN`, `INITIAL_OWNER_PASSWORD`, `INITIAL_OWNER_NAME`, `INITIAL_RESTAURANT_NAME` | first deploy only | — | Used by `python manage.py ensure_owner` to create the first owner once; remove the password afterwards |
 
 ## Tests
 
 ```bash
-python manage.py test                      # 112 tests, about 10 seconds; needs the database user to have CREATEDB
+python manage.py test                      # 124 tests, about 20 seconds; needs the database user to have CREATEDB
 python manage.py verify_stock_ledger       # checks cached balances against the movement ledger
 ```
 
