@@ -19,7 +19,7 @@ Everything is stored in PostgreSQL. Uploaded photos go to a private directory on
 
 ### Out of scope
 
-The app does **not** integrate with payroll, point of sale or purchasing, and restaurant administration (EP08: editing the public details, hours and images) is not built yet.
+The app does **not** integrate with payroll, point of sale or purchasing.
 
 **Addresses.** The public website is at `/` (home), `/menu/` and `/contact/`. The staff app starts at `/app/` after signing in at `/login/`. The EP07 management dashboard is at `/dashboard/`, the menu editor at `/menu-admin/` and promotions at `/manage/promotions/`.
 
@@ -119,7 +119,7 @@ This follows the spec's walkthrough.
 
 ## Story status
 
-All stories of the MVP release are implemented: EP01–EP07, 42 stories.
+All 46 stories are implemented: the MVP release (EP01–EP07, 42 stories) and EP08 Restaurant Administration (4 stories).
 
 | Story | Status | Notes |
 |---|---|---|
@@ -165,6 +165,10 @@ All stories of the MVP release are implemented: EP01–EP07, 42 stories.
 | US-02.04 Disable menu item | Done | "Mark unavailable" / "Mark available" on each dish. Each dish chooses whether it is then shown as "Not available today" or hidden. |
 | US-02.05 Manage menu categories | Done | Add, rename, reorder (up/down) and delete when empty. Dishes appear under their category and can be reordered too. |
 | US-02.06 Upload dish photo | Done | JPEG, PNG or WebP up to 10 MB, with a preview before saving. Replace or remove later; the old file is deleted. Photos are re-encoded (metadata stripped) and scaled down. Photos of draft dishes are not public. |
+| US-08.01 Manage restaurant information | Done | Owner only: **Menu → Restaurant details** (`/manage/restaurant/`). Name, tagline, introduction, address, phone and email; they appear on the homepage, contact page and footer straight away. Address and city go together; phone and email are checked. Changes are audited field by field. |
+| US-08.02 Manage opening hours | Done | Owner only: **Menu → Opening hours** (`/manage/hours/`). Up to two periods per weekday (e.g. lunch and dinner); an empty day shows "Closed". Periods past midnight are allowed, but not into the next day's opening. Overlaps and half-filled times are explained per day and nothing is saved. |
+| US-08.03 Manage special opening hours | Done | Same page, **Add special hours**: a date that is closed all day or has one or two periods, with an optional note ("Christmas Eve"). It replaces the regular hours on that date in the "Open now" status, the contact page (next 60 days) and search-engine data. One entry per date; dates in the past are refused. |
+| US-08.04 Manage restaurant images | Done | Owner only: **Menu → Website images** (`/manage/images/`). Logo (scaled to 512 px), homepage photo and a gallery of up to 8 photos shown on the homepage; upload, replace, reorder and remove. The homepage and gallery photos need a short description for screen readers. Photos are re-encoded like dish photos, and a replaced or removed file is deleted and no longer served. |
 
 ## Design decisions and assumptions
 
@@ -186,11 +190,11 @@ All stories of the MVP release are implemented: EP01–EP07, 42 stories.
 - **Date rules.** A business day is the local calendar date. A shift belongs to the local date it started, even if it ends after midnight; the UI states this rule. Hours are summed in exact seconds and rounded to two decimals only for display.
 - **Languages.** The staff app and the public site are in English, Finnish and Vietnamese. Anyone can switch with the EN / FI / VI buttons in the top bar, including before signing in; the choice is kept in a cookie for a year on that device. Content that people type in (dish names, checklist tasks, promotions, the restaurant introduction) is shown as entered.
 - **Updating translations.** After adding or changing UI text, run `python manage.py makemessages -l fi -l vi`, fill in the new entries in `locale/*/LC_MESSAGES/django.po`, then run `python manage.py compilemessages`. The compiled `.mo` files are committed, so the Docker image needs no gettext. `core/test_i18n.py` fails if any entry is untranslated or fuzzy, if placeholders differ from the English text, or if a `.mo` file is out of date.
+- **Restaurant administration is owner-only.** The EP08 stories are written for the owner, so managers cannot change the public details, hours or images (they still manage the menu and promotions). Special hours for a date override that date's weekly hours; a late period from the previous evening still runs past midnight as usual.
 - **`restaurant_id`** is on every operational table, and every query filters by the signed-in user's restaurant. There is no multi-location administration.
 
 ## Known limitations
 
-- **Public details can't be edited in the app yet.** The restaurant name, introduction, address, phone, opening hours, logo and hero image are set up by `seed_demo` (example content) or by an administrator. Editing screens are EP08 ("Later" in the backlog).
 - Dish names, descriptions and other typed-in content are stored in one language; per-language versions of content are not built yet.
 
 - There is no email, so password resets are manager-issued one-time links.

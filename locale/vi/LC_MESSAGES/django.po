@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-30 13:01+0000\n"
+"POT-Creation-Date: 2026-09-30 17:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Claude\n"
 "Language-Team: Vietnamese\n"
@@ -18,15 +18,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: checklists/forms.py:8 website/forms.py:6
 msgid "Title"
 msgstr "Tiêu đề"
 
+#: checklists/forms.py:9 inventory/templates/inventory/detail.html:70
+#: inventory/templates/inventory/history.html:10
+#: inventory/templates/inventory/history.html:23
 msgid "Type"
 msgstr "Loại"
 
+#: checklists/forms.py:11
+#: checklists/templates/checklists/template_form.html:24
 msgid "Add many tasks at once"
 msgstr "Thêm nhiều mục cùng lúc"
 
+#: checklists/forms.py:13
 msgid ""
 "Paste from a spreadsheet: select the Group and Task columns in Google Sheets"
 " or Excel (without the header row), copy, and paste here. Or type one task "
@@ -36,349 +43,541 @@ msgstr ""
 "(không lấy dòng tiêu đề), sao chép rồi dán vào đây. Hoặc gõ mỗi dòng một "
 "mục, và bắt đầu một nhóm bằng “# Tên nhóm”."
 
+#: checklists/forms.py:18
 msgid "Answer type for pasted tasks"
 msgstr "Kiểu trả lời cho các mục được dán"
 
+#: checklists/forms.py:19
 msgid "You can change individual tasks afterwards."
 msgstr "Bạn có thể sửa từng mục sau."
 
+#: checklists/forms.py:25
 msgid "Order"
 msgstr "Thứ tự"
 
+#: checklists/forms.py:26
 msgid "Group"
 msgstr "Nhóm"
 
+#: checklists/forms.py:27 checklists/templates/checklists/issue.html:11
+#: checklists/templates/checklists/review.html:43
+#: dashboard/templates/dashboard/dashboard.html:104
 msgid "Task"
 msgstr "Hạng mục"
 
+#: checklists/forms.py:28
 msgid "Answer type"
 msgstr "Kiểu trả lời"
 
+#: checklists/forms.py:29 dashboard/templates/dashboard/dashboard.html:108
 msgid "Required"
 msgstr "Bắt buộc"
 
+#: checklists/forms.py:30
 msgid "Equipment or location"
 msgstr "Thiết bị hoặc vị trí"
 
+#: checklists/forms.py:32
 msgid "Lowest acceptable °C"
 msgstr "Nhiệt độ thấp nhất cho phép (°C)"
 
+#: checklists/forms.py:36
 msgid "Highest acceptable °C"
 msgstr "Nhiệt độ cao nhất cho phép (°C)"
 
+#: checklists/forms.py:39
 msgid "Remove task"
 msgstr "Xóa mục"
 
+#: checklists/forms.py:46
 msgid "What is the problem?"
 msgstr "Vấn đề là gì?"
 
+#: checklists/forms.py:48
 msgid "Photo (optional)"
 msgstr "Ảnh (không bắt buộc)"
 
+#: checklists/forms.py:50 checklists/forms.py:64
 msgid "JPEG, PNG or WebP, up to 10 MB."
 msgstr "JPEG, PNG hoặc WebP, tối đa 10 MB."
 
+#: checklists/forms.py:56 checklists/services.py:320
 msgid "Describe the problem."
 msgstr "Hãy mô tả vấn đề."
 
+#: checklists/forms.py:62 website/templates/website/manage_images.html:83
 msgid "Add a photo"
 msgstr "Thêm ảnh"
 
+#: checklists/forms.py:69
 msgid "How was it resolved?"
 msgstr "Đã xử lý như thế nào?"
 
+#: checklists/models.py:13
 msgid "Opening"
 msgstr "Mở cửa"
 
+#: checklists/models.py:14
 msgid "Closing"
 msgstr "Đóng cửa"
 
+#: checklists/models.py:15
 msgid "Cleaning"
 msgstr "Vệ sinh"
 
+#: checklists/models.py:16
 msgid "Food safety"
 msgstr "An toàn thực phẩm"
 
+#: checklists/models.py:17
 msgid "Stock check"
 msgstr "Kiểm kho"
 
+#: checklists/models.py:18 checklists/templates/checklists/run.html:21
+#: checklists/templates/checklists/run.html:29 inventory/models.py:20
+#: inventory/models.py:69
 msgid "Other"
 msgstr "Khác"
 
+#: checklists/models.py:22
 msgid "Pass / fail"
 msgstr "Đạt / không đạt"
 
+#: checklists/models.py:23
 msgid "Temperature reading (°C)"
 msgstr "Đo nhiệt độ (°C)"
 
+#: checklists/models.py:24
 msgid "Done / not done"
 msgstr "Đã làm / chưa làm"
 
+#: checklists/models.py:25
 msgid "Stock level (enough / low)"
 msgstr "Mức tồn kho (đủ / thiếu)"
 
+#: checklists/models.py:30 website/models.py:156
 msgid "title"
 msgstr "tiêu đề"
 
+#: checklists/models.py:31
 msgid "type"
 msgstr "loại"
 
+#: checklists/models.py:32 inventory/models.py:32 staff/models.py:58
 msgid "active"
 msgstr "đang dùng"
 
+#: checklists/models.py:50
 msgid "order"
 msgstr "thứ tự"
 
+#: checklists/models.py:51
 msgid "group"
 msgstr "nhóm"
 
+#: checklists/models.py:51
 msgid "Tasks with the same group are shown together."
 msgstr "Các mục cùng nhóm được hiển thị cùng nhau."
 
+#: checklists/models.py:52
 msgid "task"
 msgstr "hạng mục"
 
+#: checklists/models.py:53
 msgid "answer type"
 msgstr "kiểu trả lời"
 
+#: checklists/models.py:54
 msgid "required"
 msgstr "bắt buộc"
 
+#: checklists/models.py:55
 msgid "equipment or location"
 msgstr "thiết bị hoặc vị trí"
 
+#: checklists/models.py:56
 msgid "lowest acceptable °C"
 msgstr "nhiệt độ thấp nhất cho phép (°C)"
 
+#: checklists/models.py:57
 msgid "highest acceptable °C"
 msgstr "nhiệt độ cao nhất cho phép (°C)"
 
+#: checklists/models.py:74 checklists/templates/checklists/history.html:31
+#: checklists/templates/checklists/review.html:12
+#: checklists/templates/checklists/review.html:27
+#: checklists/templates/checklists/run.html:9
+#: checklists/templates/checklists/today.html:13
+#: dashboard/templates/dashboard/dashboard.html:89
 msgid "In progress"
 msgstr "Đang làm"
 
+#: checklists/models.py:75 checklists/templates/checklists/history.html:31
+#: checklists/templates/checklists/review.html:11
+#: checklists/templates/checklists/review.html:27
+#: checklists/templates/checklists/run.html:9
+#: checklists/templates/checklists/today.html:12
+#: dashboard/templates/dashboard/dashboard.html:89
 msgid "Submitted"
 msgstr "Đã gửi"
 
+#: checklists/models.py:83
 msgid "run label"
 msgstr "tên lượt"
 
+#: checklists/models.py:134 checklists/templates/checklists/run.html:47
+#: checklists/views.py:44
 msgid "Not answered"
 msgstr "Chưa trả lời"
 
+#: checklists/models.py:135 checklists/views.py:35
 msgid "Pass"
 msgstr "Đạt"
 
+#: checklists/models.py:136 checklists/views.py:35
 msgid "Fail"
 msgstr "Không đạt"
 
+#: checklists/models.py:137
 msgid "Not applicable"
 msgstr "Không áp dụng"
 
+#: checklists/models.py:172 checklists/templates/checklists/issue.html:6
+#: checklists/templates/checklists/issues.html:6
+#: checklists/templates/checklists/issues.html:14
+#: dashboard/templates/dashboard/dashboard.html:148 timeclock/models.py:13
+#: timeclock/templates/timeclock/_shift_table.html:16
+#: timeclock/templates/timeclock/timesheets.html:18
 msgid "Open"
 msgstr "Chưa xử lý"
 
+#: checklists/models.py:173 checklists/templates/checklists/issue.html:6
+#: checklists/templates/checklists/issue.html:17
+#: checklists/templates/checklists/issues.html:7
+#: checklists/templates/checklists/issues.html:14
+#: dashboard/templates/dashboard/dashboard.html:159
 msgid "Resolved"
 msgstr "Đã xử lý"
 
+#: checklists/models.py:176
 msgid "Reported by staff"
 msgstr "Nhân viên báo cáo"
 
+#: checklists/models.py:177
 msgid "Failed task"
 msgstr "Mục không đạt"
 
+#: checklists/models.py:178
 msgid "Temperature outside range"
 msgstr "Nhiệt độ ngoài giới hạn"
 
+#: checklists/services.py:61 website/services.py:128
 msgid "Enter a title."
 msgstr "Nhập tiêu đề."
 
+#: checklists/services.py:78
 msgid "A task does not belong to this checklist. Reload and try again."
 msgstr "Có mục không thuộc checklist này. Hãy tải lại trang và thử lại."
 
+#: checklists/services.py:88
 #, python-format
 msgid "Task %(n)s needs a description."
 msgstr "Mục %(n)s cần có nội dung."
 
+#: checklists/services.py:101
 #, python-format
 msgid "Task %(n)s: the lowest temperature must not be above the highest."
 msgstr "Mục %(n)s: nhiệt độ thấp nhất không được cao hơn nhiệt độ cao nhất."
 
+#: checklists/services.py:109
 msgid "A checklist needs at least one task."
 msgstr "Checklist cần có ít nhất một mục."
 
+#: checklists/services.py:172 checklists/services.py:208
 msgid "Checklist not found."
 msgstr "Không tìm thấy checklist."
 
+#: checklists/services.py:177
 msgid "A run with this label already exists today."
 msgstr "Hôm nay đã có một lượt với tên này."
 
+#: checklists/services.py:180
 msgid "This checklist is deactivated."
 msgstr "Checklist này đã ngừng sử dụng."
 
+#: checklists/services.py:183
 msgid "This checklist has no tasks."
 msgstr "Checklist này chưa có mục nào."
 
+#: checklists/services.py:210
 msgid "This checklist was already submitted and can no longer be changed."
 msgstr "Checklist này đã được gửi và không thể sửa nữa."
 
+#: checklists/services.py:221
 msgid "Enter the reading as a number, for example 3.5 or -18"
 msgstr "Nhập số đo, ví dụ 3.5 hoặc -18"
 
+#: checklists/services.py:223
 msgid "That reading looks wrong. Enter degrees Celsius."
 msgstr "Số đo có vẻ không đúng. Hãy nhập độ C."
 
+#: checklists/services.py:225
 msgid "Use at most two decimal places."
 msgstr "Chỉ dùng tối đa hai chữ số thập phân."
 
+#: checklists/services.py:255 checklists/services.py:327
 msgid "Task not found."
 msgstr "Không tìm thấy mục."
 
+#: checklists/services.py:267
 msgid "Choose an answer."
 msgstr "Hãy chọn câu trả lời."
 
+#: checklists/services.py:270
 msgid "Write how much is left, for example “2 boxes”."
 msgstr "Ghi số lượng còn lại, ví dụ “còn 2 hộp”."
 
+#: checklists/services.py:271
 msgid "Add a note explaining this answer."
 msgstr "Thêm ghi chú giải thích câu trả lời này."
 
+#: checklists/services.py:276
 msgid "Enter the temperature reading."
 msgstr "Nhập nhiệt độ đo được."
 
+#: checklists/services.py:290
 #, python-format
 msgid "Low: %(item)s. Left: %(note)s"
 msgstr "Thiếu: %(item)s. Còn lại: %(note)s"
 
+#: checklists/services.py:294
 #, python-format
 msgid ""
 "Reading %(reading)s °C%(where)s is outside the configured range %(range)s."
 msgstr "Nhiệt độ %(reading)s °C%(where)s nằm ngoài giới hạn đã đặt %(range)s."
 
+#: checklists/services.py:330
 msgid "This checklist was already submitted. Ask a manager to follow up."
 msgstr "Checklist này đã được gửi. Hãy nhờ quản lý xử lý tiếp."
 
+#: checklists/services.py:386
 msgid "Describe how the issue was resolved."
 msgstr "Hãy mô tả cách đã xử lý sự cố."
 
+#: checklists/services.py:389
 msgid "Issue not found."
 msgstr "Không tìm thấy sự cố."
 
+#: checklists/services.py:391
 msgid "This issue is already resolved."
 msgstr "Sự cố này đã được xử lý."
 
+#: checklists/services.py:414
 #, python-format
 msgid "%(n)s required task(s) still need an answer."
 msgstr "Còn %(n)s mục bắt buộc chưa trả lời."
 
+#: checklists/templates/checklists/history.html:2
+#: checklists/templates/checklists/history.html:4
 msgid "Checklist history"
 msgstr "Lịch sử checklist"
 
+#: checklists/templates/checklists/history.html:4 core/templates/base.html:44
 msgid "My submitted checklists"
 msgstr "Checklist tôi đã gửi"
 
+#: checklists/templates/checklists/history.html:6
+#: inventory/templates/inventory/history.html:18
+#: timeclock/templates/timeclock/mine.html:6
+#: timeclock/templates/timeclock/timesheets.html:10
 msgid "From"
 msgstr "Từ ngày"
 
+#: checklists/templates/checklists/history.html:7
+#: inventory/templates/inventory/history.html:19
+#: timeclock/templates/timeclock/mine.html:7
+#: timeclock/templates/timeclock/timesheets.html:11
 msgid "To"
 msgstr "Đến ngày"
 
+#: checklists/templates/checklists/history.html:8
+#: checklists/templates/checklists/history.html:25
+#: checklists/templates/checklists/issue.html:10
+#: checklists/templates/checklists/review.html:22
+#: checklists/templates/checklists/today.html:36
+#: dashboard/templates/dashboard/dashboard.html:84
+#: dashboard/templates/dashboard/dashboard.html:104
 msgid "Checklist"
 msgstr "Checklist"
 
+#: checklists/templates/checklists/history.html:9
+#: checklists/templates/checklists/history.html:14
+#: checklists/templates/checklists/issues.html:8
+#: inventory/templates/inventory/list.html:18
+#: inventory/templates/inventory/list.html:26
+#: staff/templates/staff/list.html:15
+#: timeclock/templates/timeclock/timesheets.html:26
 msgid "All"
 msgstr "Tất cả"
 
+#: checklists/templates/checklists/history.html:10
+#: inventory/templates/inventory/detail.html:78
+#: timeclock/templates/timeclock/_shift_table.html:10
+#: timeclock/templates/timeclock/timesheets.html:8
 msgid "deactivated"
 msgstr "ngừng sử dụng"
 
+#: checklists/templates/checklists/history.html:13
+#: checklists/templates/checklists/history.html:25
+#: checklists/templates/checklists/review.html:22
+#: dashboard/templates/dashboard/dashboard.html:53
+#: dashboard/templates/dashboard/dashboard.html:84
+#: inventory/templates/inventory/list.html:22
+#: inventory/templates/inventory/list.html:33
+#: staff/templates/staff/detail.html:10 staff/templates/staff/list.html:11
+#: staff/templates/staff/list.html:20
+#: timeclock/templates/timeclock/_shift_table.html:5
 msgid "Status"
 msgstr "Trạng thái"
 
+#: checklists/templates/checklists/history.html:17
+#: checklists/templates/checklists/review.html:22 core/templates/base.html:34
+#: dashboard/templates/dashboard/dashboard.html:53
+#: inventory/templates/inventory/history.html:14
+#: staff/templates/staff/list.html:2 staff/templates/staff/list.html:4
+#: timeclock/templates/timeclock/_shift_table.html:4
+#: timeclock/templates/timeclock/timesheets.html:6
+#: timeclock/templates/timeclock/timesheets.html:18
 msgid "Staff"
 msgstr "Nhân viên"
 
+#: checklists/templates/checklists/history.html:18
+#: inventory/templates/inventory/history.html:15
+#: timeclock/templates/timeclock/timesheets.html:7
 msgid "Everyone"
 msgstr "Mọi người"
 
+#: checklists/templates/checklists/history.html:22
+#: inventory/templates/inventory/history.html:20
+#: inventory/templates/inventory/list.html:30
+#: staff/templates/staff/list.html:17
 msgid "Filter"
 msgstr "Lọc"
 
+#: checklists/templates/checklists/history.html:25 website/forms.py:71
+#: website/templates/website/manage_hours.html:46
 msgid "Date"
 msgstr "Ngày"
 
+#: checklists/templates/checklists/history.html:25
+#: checklists/templates/checklists/review.html:22
+#: dashboard/templates/dashboard/dashboard.html:84
 msgid "Answered"
 msgstr "Đã trả lời"
 
+#: checklists/templates/checklists/history.html:25
+#: checklists/templates/checklists/review.html:22
 msgid "Failed"
 msgstr "Không đạt"
 
+#: checklists/templates/checklists/history.html:25
 msgid "Submitted by"
 msgstr "Người gửi"
 
+#: checklists/templates/checklists/history.html:37
 msgid "No checklists match these filters."
 msgstr "Không có checklist nào khớp với bộ lọc."
 
+#: checklists/templates/checklists/issue.html:2
 msgid "Issue"
 msgstr "Sự cố"
 
+#: checklists/templates/checklists/issue.html:4
+#: checklists/templates/checklists/run.html:4
+#: timeclock/templates/timeclock/shift.html:4
 msgid "Back"
 msgstr "Quay lại"
 
+#: checklists/templates/checklists/issue.html:5
 msgid "Checklist issue"
 msgstr "Sự cố từ checklist"
 
+#: checklists/templates/checklists/issue.html:12
+#: checklists/templates/checklists/review.html:43
+#: dashboard/templates/dashboard/dashboard.html:127
 msgid "Reading"
 msgstr "Số đo"
 
+#: checklists/templates/checklists/issue.html:13
 msgid "Source"
 msgstr "Nguồn"
 
+#: checklists/templates/checklists/issue.html:14
 msgid "Reported"
 msgstr "Đã báo"
 
+#: checklists/templates/checklists/issue.html:15 menu/forms.py:15
+#: website/forms.py:91 website/forms.py:96
+#: website/templates/website/manage_images.html:59
 msgid "Description"
 msgstr "Mô tả"
 
+#: checklists/templates/checklists/issue.html:18
 msgid "Resolution"
 msgstr "Cách xử lý"
 
+#: checklists/templates/checklists/issue.html:23
 msgid "Photos"
 msgstr "Ảnh"
 
+#: checklists/templates/checklists/issue.html:26
 #, python-format
 msgid "Photo %(name)s"
 msgstr "Ảnh %(name)s"
 
+#: checklists/templates/checklists/issue.html:30
 msgid "No photos."
 msgstr "Không có ảnh."
 
+#: checklists/templates/checklists/issue.html:38
+#: website/templates/website/manage_images.html:45
 msgid "Upload photo"
 msgstr "Tải ảnh lên"
 
+#: checklists/templates/checklists/issue.html:44
 msgid "Resolve"
 msgstr "Xử lý"
 
+#: checklists/templates/checklists/issue.html:49
 msgid "Mark resolved"
 msgstr "Đánh dấu đã xử lý"
 
+#: checklists/templates/checklists/issues.html:2 core/templates/base.html:30
 msgid "Issues"
 msgstr "Sự cố"
 
+#: checklists/templates/checklists/issues.html:4
 msgid "Checklist issues"
 msgstr "Sự cố từ checklist"
 
+#: checklists/templates/checklists/issues.html:5
 msgid "Filter issues"
 msgstr "Lọc sự cố"
 
+#: checklists/templates/checklists/issues.html:20
 msgid "No issues here."
 msgstr "Không có sự cố nào."
 
+#: checklists/templates/checklists/report_issue.html:3
+#: checklists/templates/checklists/submit.html:3
 msgid "Back to checklist"
 msgstr "Quay lại checklist"
 
+#: checklists/templates/checklists/report_issue.html:4
 msgid "Report a problem"
 msgstr "Báo sự cố"
 
+#: checklists/templates/checklists/report_issue.html:9
 msgid ""
 "If the photo cannot be accepted, nothing is saved and you will see why, so "
 "you can try again."
@@ -386,198 +585,288 @@ msgstr ""
 "Nếu ảnh không hợp lệ, sẽ không có gì được lưu và bạn sẽ thấy lý do để thử "
 "lại."
 
+#: checklists/templates/checklists/report_issue.html:10
 msgid "Send report"
 msgstr "Gửi báo cáo"
 
+#: checklists/templates/checklists/review.html:2
+#: checklists/templates/checklists/review.html:4 core/templates/base.html:29
 msgid "Checklist review"
 msgstr "Xem lại checklist"
 
+#: checklists/templates/checklists/review.html:6
+#: dashboard/templates/dashboard/dashboard.html:9
 msgid "Business date"
 msgstr "Ngày làm việc"
 
+#: checklists/templates/checklists/review.html:7
+#: dashboard/templates/dashboard/dashboard.html:10
+#: timeclock/templates/timeclock/mine.html:8
+#: timeclock/templates/timeclock/timesheets.html:12
 msgid "Show"
 msgstr "Xem"
 
+#: checklists/templates/checklists/review.html:13
+#: checklists/templates/checklists/review.html:35
+#: checklists/templates/checklists/today.html:11
+#: dashboard/templates/dashboard/dashboard.html:96
 msgid "Not started"
 msgstr "Chưa bắt đầu"
 
+#: checklists/templates/checklists/review.html:14
 msgid "Failed tasks"
 msgstr "Mục không đạt"
 
+#: checklists/templates/checklists/review.html:15
 msgid "Temperature warnings"
 msgstr "Cảnh báo nhiệt độ"
 
+#: checklists/templates/checklists/review.html:17
+#: dashboard/templates/dashboard/dashboard.html:120
 msgid "No checklists were expected or started on this date."
 msgstr "Ngày này không có checklist nào cần làm hoặc đã bắt đầu."
 
+#: checklists/templates/checklists/review.html:20
+#: checklists/templates/checklists/today.html:2 core/templates/base.html:24
+#: core/templates/core/today.html:18
+#: dashboard/templates/dashboard/dashboard.html:81
+#: staff/templates/staff/detail.html:30
 msgid "Checklists"
 msgstr "Checklist"
 
+#: checklists/templates/checklists/review.html:22
+#: dashboard/templates/dashboard/dashboard.html:84
 msgid "Required left"
 msgstr "Bắt buộc còn lại"
 
+#: checklists/templates/checklists/review.html:41
 msgid "Temperature readings"
 msgstr "Các lần đo nhiệt độ"
 
+#: checklists/templates/checklists/review.html:43
+#: dashboard/templates/dashboard/dashboard.html:127
 msgid "Time"
 msgstr "Giờ"
 
+#: checklists/templates/checklists/review.html:43
 msgid "Range"
 msgstr "Giới hạn"
 
+#: checklists/templates/checklists/review.html:43
+#: dashboard/templates/dashboard/dashboard.html:127
+#: inventory/templates/inventory/detail.html:70
+#: inventory/templates/inventory/history.html:23
+#: staff/templates/staff/detail.html:58
+#: timeclock/templates/timeclock/shift.html:39
 msgid "By"
 msgstr "Người làm"
 
+#: checklists/templates/checklists/review.html:49 checklists/views.py:35
+#: checklists/views.py:36 checklists/views.py:37 checklists/views.py:38
 msgid "N/A"
 msgstr "Không áp dụng"
 
+#: checklists/templates/checklists/review.html:50
+#: checklists/templates/checklists/run.html:45
 msgid "Outside range"
 msgstr "Ngoài giới hạn"
 
+#: checklists/templates/checklists/review.html:51
 msgid "Not configured"
 msgstr "Chưa đặt"
 
+#: checklists/templates/checklists/review.html:55
 msgid "No readings recorded."
 msgstr "Chưa có số đo nào."
 
+#: checklists/templates/checklists/review.html:60
+#: core/templates/core/today.html:37
+#: dashboard/templates/dashboard/dashboard.html:33
 msgid "Open issues"
 msgstr "Sự cố chưa xử lý"
 
+#: checklists/templates/checklists/review.html:67
 msgid "No open issues for this date."
 msgstr "Ngày này không có sự cố chưa xử lý."
 
+#: checklists/templates/checklists/run.html:11
+#: checklists/templates/checklists/today.html:17
 msgid "Progress"
 msgstr "Tiến độ"
 
+#: checklists/templates/checklists/run.html:13
 #, python-format
 msgid "%(a)s of %(t)s answered"
 msgstr "Đã trả lời %(a)s/%(t)s"
 
+#: checklists/templates/checklists/run.html:14
 #, python-format
 msgid "%(n)s required task left"
 msgid_plural "%(n)s required tasks left"
 msgstr[0] "còn %(n)s mục bắt buộc"
 
+#: checklists/templates/checklists/run.html:15
 #, python-format
 msgid "%(n)s failed or low"
 msgid_plural "%(n)s failed or low"
 msgstr[0] "%(n)s không đạt hoặc thiếu"
 
+#: checklists/templates/checklists/run.html:16
 #, python-format
 msgid "%(n)s temperature warning"
 msgid_plural "%(n)s temperature warnings"
 msgstr[0] "%(n)s cảnh báo nhiệt độ"
 
+#: checklists/templates/checklists/run.html:18
 #, python-format
 msgid "Started by %(who)s at %(when)s"
 msgstr "%(who)s bắt đầu lúc %(when)s"
 
+#: checklists/templates/checklists/run.html:18
 #, python-format
 msgid "submitted by %(who)s at %(when)s"
 msgstr "%(who)s đã gửi lúc %(when)s"
 
+#: checklists/templates/checklists/run.html:18
 #, python-format
 msgid "checklist version %(v)s"
 msgstr "phiên bản checklist %(v)s"
 
+#: checklists/templates/checklists/run.html:20
 msgid "Groups"
 msgstr "Nhóm"
 
+#: checklists/templates/checklists/run.html:24
 msgid "Tap an answer to save it. The page moves on to the next task."
 msgstr "Chạm vào câu trả lời để lưu. Trang sẽ chuyển sang mục tiếp theo."
 
+#: checklists/templates/checklists/run.html:38
+#: dashboard/templates/dashboard/dashboard.html:108
 msgid "Optional"
 msgstr "Không bắt buộc"
 
+#: checklists/templates/checklists/run.html:42
 msgid "Acceptable range set by manager:"
 msgstr "Giới hạn do quản lý đặt:"
 
+#: checklists/templates/checklists/run.html:42
 msgid "No acceptable range is configured. The reading is recorded only."
 msgstr "Chưa đặt giới hạn. Chỉ ghi lại số đo."
 
+#: checklists/templates/checklists/run.html:55
 msgid "Reading (°C)"
 msgstr "Số đo (°C)"
 
+#: checklists/templates/checklists/run.html:56
 msgid "Reading °C"
 msgstr "Số đo °C"
 
+#: checklists/templates/checklists/run.html:58
 msgid "Quantity or note"
 msgstr "Số lượng hoặc ghi chú"
 
+#: checklists/templates/checklists/run.html:58 inventory/forms.py:39
+#: website/templates/website/manage_hours.html:46
 msgid "Note"
 msgstr "Ghi chú"
 
+#: checklists/templates/checklists/run.html:60
 msgid "Quantity / note (needed for Low)"
 msgstr "Số lượng / ghi chú (bắt buộc khi Thiếu)"
 
+#: checklists/templates/checklists/run.html:60
 msgid "Note (needed for Fail, Not done, N/A)"
 msgstr "Ghi chú (bắt buộc khi Không đạt, Chưa làm, Không áp dụng)"
 
+#: checklists/templates/checklists/run.html:61
 #, python-format
 msgid "Answer for %(t)s"
 msgstr "Trả lời cho %(t)s"
 
+#: checklists/templates/checklists/run.html:67
 msgid "Report a problem with a photo"
 msgstr "Báo sự cố kèm ảnh"
 
+#: checklists/templates/checklists/run.html:69
 msgid "Flag an issue on this task"
 msgstr "Báo sự cố cho mục này"
 
+#: checklists/templates/checklists/run.html:74
 msgid "Open issue"
 msgstr "Sự cố chưa xử lý"
 
+#: checklists/templates/checklists/run.html:74
 msgid "Resolved issue"
 msgstr "Sự cố đã xử lý"
 
+#: checklists/templates/checklists/run.html:76
 #, python-format
 msgid "%(n)s photo"
 msgid_plural "%(n)s photos"
 msgstr[0] "%(n)s ảnh"
 
+#: checklists/templates/checklists/run.html:87
 msgid "Review and submit"
 msgstr "Xem lại và gửi"
 
+#: checklists/templates/checklists/submit.html:4
 msgid "Submit checklist?"
 msgstr "Gửi checklist?"
 
+#: checklists/templates/checklists/submit.html:8
 #, python-format
 msgid "%(n)s required task still needs an answer:"
 msgid_plural "%(n)s required tasks still need an answer:"
 msgstr[0] "Còn %(n)s mục bắt buộc chưa trả lời:"
 
+#: checklists/templates/checklists/submit.html:10
 msgid "Go back and finish"
 msgstr "Quay lại để làm tiếp"
 
+#: checklists/templates/checklists/submit.html:12
 #, python-format
 msgid "%(a)s of %(t)s tasks answered."
 msgstr "Đã trả lời %(a)s/%(t)s mục."
 
+#: checklists/templates/checklists/submit.html:13
 #, python-format
 msgid "%(n)s optional task is unanswered."
 msgid_plural "%(n)s optional tasks are unanswered."
 msgstr[0] "%(n)s mục không bắt buộc chưa trả lời."
 
+#: checklists/templates/checklists/submit.html:14
 #, python-format
 msgid "%(n)s open issue stays open for a manager after you submit."
 msgid_plural "%(n)s open issues stay open for a manager after you submit."
 msgstr[0] "%(n)s sự cố chưa xử lý sẽ được chuyển cho quản lý sau khi bạn gửi."
 
+#: checklists/templates/checklists/submit.html:15
 msgid "After submitting, answers can no longer be changed."
 msgstr "Sau khi gửi, không thể sửa câu trả lời nữa."
 
+#: checklists/templates/checklists/submit.html:17
 msgid "Submit checklist"
 msgstr "Gửi checklist"
 
+#: checklists/templates/checklists/template_form.html:2
+#: checklists/templates/checklists/template_form.html:5
+#: checklists/templates/checklists/templates.html:4
 msgid "New checklist"
 msgstr "Checklist mới"
 
+#: checklists/templates/checklists/template_form.html:4
+#: checklists/templates/checklists/templates.html:2
+#: checklists/templates/checklists/templates.html:4
+#: core/templates/base.html:31
 msgid "Checklist templates"
 msgstr "Mẫu checklist"
 
+#: checklists/templates/checklists/template_form.html:5
 #, python-format
 msgid "Edit %(t)s"
 msgstr "Sửa %(t)s"
 
+#: checklists/templates/checklists/template_form.html:6
 msgid ""
 "Saving creates a new version. Checklists already started or submitted keep "
 "the tasks and thresholds they started with."
@@ -585,9 +874,11 @@ msgstr ""
 "Mỗi lần lưu sẽ tạo phiên bản mới. Các checklist đã bắt đầu hoặc đã gửi vẫn "
 "giữ nguyên các mục và giới hạn ban đầu."
 
+#: checklists/templates/checklists/template_form.html:16
 msgid "Tasks"
 msgstr "Các mục"
 
+#: checklists/templates/checklists/template_form.html:17
 msgid ""
 "Empty rows are ignored. Temperature limits are optional: set them only if "
 "you want a warning, and only for temperature tasks."
@@ -595,13 +886,16 @@ msgstr ""
 "Dòng trống sẽ bị bỏ qua. Giới hạn nhiệt độ không bắt buộc: chỉ đặt khi muốn "
 "có cảnh báo, và chỉ cho mục đo nhiệt độ."
 
+#: checklists/templates/checklists/template_form.html:20
 #, python-format
 msgid "Task %(n)s"
 msgstr "Mục %(n)s"
 
+#: checklists/templates/checklists/template_form.html:20
 msgid "New task"
 msgstr "Mục mới"
 
+#: checklists/templates/checklists/template_form.html:28
 msgid ""
 "Pasted tasks are added after the tasks above and are required. Rows with the"
 " same group are shown together on the checklist."
@@ -609,133 +903,193 @@ msgstr ""
 "Các mục được dán sẽ thêm vào sau các mục ở trên và là bắt buộc. Các dòng "
 "cùng nhóm được hiển thị cùng nhau trong checklist."
 
+#: checklists/templates/checklists/template_form.html:31
 msgid "Save checklist"
 msgstr "Lưu checklist"
 
+#: checklists/templates/checklists/template_form.html:32
+#: inventory/templates/inventory/item_form.html:9
+#: menu/templates/menu/category_form.html:10
+#: menu/templates/menu/item_delete.html:9
+#: menu/templates/menu/item_form.html:49
+#: staff/templates/staff/deactivate.html:14 staff/templates/staff/form.html:10
+#: timeclock/templates/timeclock/correct.html:33
+#: website/templates/website/manage_special_day.html:27
+#: website/templates/website/promotion_delete.html:9
+#: website/templates/website/promotion_form.html:11
 msgid "Cancel"
 msgstr "Hủy"
 
+#: checklists/templates/checklists/templates.html:10
 #, python-format
 msgid "%(n)s task"
 msgid_plural "%(n)s tasks"
 msgstr[0] "%(n)s mục"
 
+#: checklists/templates/checklists/templates.html:10
 #, python-format
 msgid "version %(v)s"
 msgstr "phiên bản %(v)s"
 
+#: checklists/templates/checklists/templates.html:13
+#: inventory/templates/inventory/list.html:24
+#: staff/templates/staff/detail.html:11 staff/templates/staff/list.html:13
+#: staff/templates/staff/list.html:27
 msgid "Active"
 msgstr "Đang dùng"
 
+#: checklists/templates/checklists/templates.html:13
+#: inventory/templates/inventory/detail.html:13
+#: inventory/templates/inventory/list.html:25
+#: inventory/templates/inventory/list.html:40
+#: staff/templates/staff/detail.html:12 staff/templates/staff/list.html:14
+#: staff/templates/staff/list.html:27
 msgid "Deactivated"
 msgstr "Ngừng sử dụng"
 
+#: checklists/templates/checklists/templates.html:14
 msgid ""
 "Deactivate this checklist? No new runs can be started. History is kept."
 msgstr ""
 "Ngừng sử dụng checklist này? Sẽ không thể bắt đầu lượt mới. Lịch sử vẫn được"
 " giữ."
 
+#: checklists/templates/checklists/templates.html:16
+#: inventory/templates/inventory/detail.html:28
+#: staff/templates/staff/detail.html:45
 msgid "Deactivate"
 msgstr "Ngừng sử dụng"
 
+#: checklists/templates/checklists/templates.html:16
 msgid "Activate"
 msgstr "Dùng lại"
 
+#: checklists/templates/checklists/templates.html:22
 msgid "No checklists yet."
 msgstr "Chưa có checklist nào."
 
+#: checklists/templates/checklists/today.html:4
 msgid "Today's checklists"
 msgstr "Checklist hôm nay"
 
+#: checklists/templates/checklists/today.html:18
 #, python-format
 msgid "%(a)s of %(t)s tasks answered"
 msgstr "Đã trả lời %(a)s/%(t)s mục"
 
+#: checklists/templates/checklists/today.html:18
 #, python-format
 msgid "%(n)s failed"
 msgid_plural "%(n)s failed"
 msgstr[0] "%(n)s không đạt"
 
+#: checklists/templates/checklists/today.html:19
 msgid "View"
 msgstr "Xem"
 
+#: checklists/templates/checklists/today.html:19
 msgid "Continue"
 msgstr "Tiếp tục"
 
+#: checklists/templates/checklists/today.html:23
+#: timeclock/templates/timeclock/_shift_table.html:5
+#: timeclock/templates/timeclock/correct.html:21
 msgid "Start"
 msgstr "Bắt đầu"
 
+#: checklists/templates/checklists/today.html:28
 msgid "There are no checklists set up yet."
 msgstr "Chưa có checklist nào được tạo."
 
+#: checklists/templates/checklists/today.html:28
 msgid "Create one"
 msgstr "Tạo checklist"
 
+#: checklists/templates/checklists/today.html:34
 msgid "Start an extra run (for example a second shift)"
 msgstr "Bắt đầu thêm một lượt (ví dụ ca thứ hai)"
 
+#: checklists/templates/checklists/today.html:38
 msgid "Run label"
 msgstr "Tên lượt"
 
+#: checklists/templates/checklists/today.html:39
 msgid "e.g. Evening shift"
 msgstr "vd. Ca tối"
 
+#: checklists/templates/checklists/today.html:40
 msgid "Start extra run"
 msgstr "Bắt đầu thêm lượt"
 
+#: checklists/views.py:36 staff/templates/staff/setup_link.html:9
 msgid "Done"
 msgstr "Đã làm"
 
+#: checklists/views.py:36
 msgid "Not done"
 msgstr "Chưa làm"
 
+#: checklists/views.py:37
 msgid "Record reading"
 msgstr "Ghi số đo"
 
+#: checklists/views.py:38
 msgid "Enough"
 msgstr "Đủ"
 
+#: checklists/views.py:38
 msgid "Low"
 msgstr "Thiếu"
 
+#: checklists/views.py:46
 msgid "Reading recorded"
 msgstr "Đã ghi số đo"
 
+#: checklists/views.py:87
 msgid "This checklist was already started today. Continue below."
 msgstr "Checklist này đã được bắt đầu hôm nay. Hãy làm tiếp bên dưới."
 
+#: checklists/views.py:146
 #, python-format
 msgid "Saved “%(task)s”: %(answer)s."
 msgstr "Đã lưu “%(task)s”: %(answer)s."
 
+#: checklists/views.py:149
 msgid ""
 "The reading is outside the configured range, so an issue was opened for a "
 "manager."
 msgstr "Số đo nằm ngoài giới hạn, nên một sự cố đã được mở cho quản lý."
 
+#: checklists/views.py:151
 msgid "A manager can see it in the issue list."
 msgstr "Quản lý sẽ thấy trong danh sách sự cố."
 
+#: checklists/views.py:175
 msgid "Checklist submitted. Thank you."
 msgstr "Đã gửi checklist. Cảm ơn bạn!"
 
+#: checklists/views.py:199
 msgid "Issue reported with photo."
 msgstr "Đã báo sự cố kèm ảnh."
 
+#: checklists/views.py:201
 msgid "Issue reported."
 msgstr "Đã báo sự cố."
 
+#: checklists/views.py:228
 msgid "Photo uploaded."
 msgstr "Đã tải ảnh lên."
 
+#: checklists/views.py:236
 msgid "Issue marked resolved."
 msgstr "Đã đánh dấu sự cố là đã xử lý."
 
+#: checklists/views.py:394
 #, python-format
 msgid "%(n)s task(s) added from the pasted list."
 msgstr "Đã thêm %(n)s mục từ danh sách được dán."
 
+#: checklists/views.py:395
 #, python-format
 msgid ""
 "Checklist saved (version %(v)s). Runs already started keep their original "
@@ -744,35 +1098,45 @@ msgstr ""
 "Đã lưu checklist (phiên bản %(v)s). Các lượt đã bắt đầu vẫn giữ các mục ban "
 "đầu."
 
+#: checklists/views.py:409
 msgid "Checklist activated."
 msgstr "Đã dùng lại checklist."
 
+#: checklists/views.py:409
 msgid "Checklist deactivated. Its history is kept."
 msgstr "Đã ngừng sử dụng checklist. Lịch sử vẫn được giữ."
 
+#: core/images.py:38
 #, python-format
 msgid "The photo is too large. The limit is %(mb)s MB."
 msgstr "Ảnh quá lớn. Giới hạn là %(mb)s MB."
 
+#: core/images.py:42
 msgid "The photo is too large."
 msgstr "Ảnh quá lớn."
 
+#: core/images.py:48
 msgid "Use a JPEG, PNG or WebP image."
 msgstr "Hãy dùng ảnh JPEG, PNG hoặc WebP."
 
+#: core/images.py:63
 msgid "That file is not a readable JPEG, PNG or WebP image."
 msgstr "Tệp này không phải ảnh JPEG, PNG hoặc WebP hợp lệ."
 
+#: core/models.py:13
 #, python-format
 msgid "Unknown time zone: %(tz)s"
 msgstr "Múi giờ không hợp lệ: %(tz)s"
 
+#: core/templates/403.html:2
 msgid "Not allowed"
 msgstr "Không được phép"
 
+#: core/templates/403.html:5
 msgid "You don't have access to this page"
 msgstr "Bạn không có quyền xem trang này"
 
+#: core/templates/403.html:6
 msgid ""
 "This page is for managers or owners. If you think you should have access, "
 "ask your manager."
@@ -780,151 +1144,238 @@ msgstr ""
 "Trang này dành cho quản lý hoặc chủ. Nếu bạn nghĩ mình cần quyền truy cập, "
 "hãy hỏi quản lý."
 
+#: core/templates/403.html:7 core/templates/404.html:7
 msgid "Go to Today"
 msgstr "Về trang Hôm nay"
 
+#: core/templates/404.html:2
 msgid "Not found"
 msgstr "Không tìm thấy"
 
+#: core/templates/404.html:5
 msgid "Page not found"
 msgstr "Không tìm thấy trang"
 
+#: core/templates/404.html:6
 msgid "This page doesn't exist, or it isn't available to your account."
 msgstr "Trang này không tồn tại hoặc tài khoản của bạn không xem được."
 
+#: core/templates/404.html:7
+#: core/templates/registration/set_password_invalid.html:6
 msgid "Go to sign in"
 msgstr "Đến trang đăng nhập"
 
+#: core/templates/base.html:6
 msgid "Restaurant operations"
 msgstr "Vận hành nhà hàng"
 
+#: core/templates/base.html:11 website/templates/website/base.html:15
 msgid "Skip to content"
 msgstr "Bỏ qua đến nội dung"
 
+#: core/templates/base.html:12
 msgid ""
 "Demo with example data. Anything you change is reset when the demo restarts."
 msgstr ""
 "Bản demo với dữ liệu mẫu. Mọi thay đổi sẽ bị đặt lại khi demo khởi động lại."
 
+#: core/templates/base.html:18
 msgctxt "navigation"
 msgid "Menu"
 msgstr "Menu"
 
+#: core/templates/base.html:19 website/templates/website/base.html:24
 msgid "Main"
 msgstr "Chính"
 
+#: core/templates/base.html:21 core/templates/core/today.html:2
 msgid "Today"
 msgstr "Hôm nay"
 
+#: core/templates/base.html:22 timeclock/templates/timeclock/clock.html:2
+#: timeclock/templates/timeclock/clock.html:4
 msgid "Clock in/out"
 msgstr "Chấm công"
 
+#: core/templates/base.html:23 staff/templates/staff/detail.html:21
+#: timeclock/templates/timeclock/mine.html:2
+#: timeclock/templates/timeclock/mine.html:4
 msgid "My hours"
 msgstr "Giờ làm của tôi"
 
+#: core/templates/base.html:25 core/templates/core/today.html:27
+#: inventory/templates/inventory/detail.html:4
+#: inventory/templates/inventory/list.html:2
+#: inventory/templates/inventory/list.html:5
 msgid "Inventory"
 msgstr "Kho"
 
+#: core/templates/base.html:28 core/templates/core/today.html:33
+#: dashboard/templates/dashboard/dashboard.html:2
 msgid "Dashboard"
 msgstr "Tổng quan"
 
+#: core/templates/base.html:32 inventory/templates/inventory/history.html:2
+#: inventory/templates/inventory/history.html:4
 msgid "Stock history"
 msgstr "Lịch sử kho"
 
+#: core/templates/base.html:33 timeclock/templates/timeclock/timesheets.html:2
+#: timeclock/templates/timeclock/timesheets.html:4
 msgid "Timesheets"
 msgstr "Bảng chấm công"
 
+#: core/templates/base.html:35 menu/templates/menu/category_form.html:3
+#: menu/templates/menu/item_form.html:4 menu/templates/menu/overview.html:2
+#: menu/templates/menu/overview.html:5 website/templates/website/base.html:26
+#: website/templates/website/menu.html:2 website/templates/website/menu.html:5
 msgid "Menu"
 msgstr "Thực đơn"
 
+#: core/templates/base.html:36 website/templates/website/promotion_form.html:4
+#: website/templates/website/promotion_list.html:2
+#: website/templates/website/promotion_list.html:5
 msgid "Promotions"
 msgstr "Khuyến mãi"
 
+#: core/templates/base.html:38 website/templates/website/manage_images.html:90
+#: website/templates/website/manage_info.html:2
+#: website/templates/website/manage_info.html:5
+msgid "Restaurant details"
+msgstr "Thông tin nhà hàng"
+
+#: core/templates/base.html:39 website/templates/website/base.html:46
+#: website/templates/website/contact.html:22
+#: website/templates/website/manage_hours.html:2
+#: website/templates/website/manage_hours.html:5
+#: website/templates/website/manage_images.html:90
+#: website/templates/website/manage_info.html:17
+#: website/templates/website/manage_special_day.html:4
+msgid "Opening hours"
+msgstr "Giờ mở cửa"
+
+#: core/templates/base.html:40 website/templates/website/manage_images.html:2
+#: website/templates/website/manage_images.html:5
+#: website/templates/website/manage_info.html:17
+msgid "Website images"
+msgstr "Hình ảnh trang web"
+
+#: core/templates/base.html:42
 msgid "Public website"
 msgstr "Trang web công khai"
 
+#: core/templates/base.html:47
 msgid "My profile"
 msgstr "Hồ sơ của tôi"
 
+#: core/templates/base.html:50
 msgid "Sign out"
 msgstr "Đăng xuất"
 
+#: core/templates/core/language_switcher.html:2
 msgid "Language"
 msgstr "Ngôn ngữ"
 
+#: core/templates/core/pagination.html:2
 msgid "Pages"
 msgstr "Trang"
 
+#: core/templates/core/pagination.html:3
 msgid "Previous"
 msgstr "Trước"
 
+#: core/templates/core/pagination.html:4
 #, python-format
 msgid "Page %(n)s of %(total)s"
 msgstr "Trang %(n)s/%(total)s"
 
+#: core/templates/core/pagination.html:5
 msgid "Next"
 msgstr "Tiếp"
 
+#: core/templates/core/today.html:4
 #, python-format
 msgid "Hello, %(name)s"
 msgstr "Xin chào, %(name)s"
 
+#: core/templates/core/today.html:8
 msgid "My shift"
 msgstr "Ca của tôi"
 
+#: core/templates/core/today.html:10
+#: timeclock/templates/timeclock/clock.html:16
 msgid "On break"
 msgstr "Đang nghỉ"
 
+#: core/templates/core/today.html:10 timeclock/models.py:66
 msgid "Clocked in"
 msgstr "Đã vào ca"
 
+#: core/templates/core/today.html:11
 #, python-format
 msgid "Since %(t)s"
 msgstr "Từ %(t)s"
 
+#: core/templates/core/today.html:13
+#: timeclock/templates/timeclock/clock.html:9
 msgid "Not clocked in"
 msgstr "Chưa vào ca"
 
+#: core/templates/core/today.html:14
 msgid "Tap to clock in"
 msgstr "Chạm để vào ca"
 
+#: core/templates/core/today.html:21
 msgid "submitted today"
 msgstr "đã gửi hôm nay"
 
+#: core/templates/core/today.html:21
 #, python-format
 msgid "%(n)s in progress"
 msgid_plural "%(n)s in progress"
 msgstr[0] "%(n)s đang làm"
 
+#: core/templates/core/today.html:23
 msgid "No checklists set up."
 msgstr "Chưa có checklist nào."
 
+#: core/templates/core/today.html:28
 #, python-format
 msgid "%(n)s item low"
 msgid_plural "%(n)s items low"
 msgstr[0] "%(n)s mặt hàng sắp hết"
 
+#: core/templates/core/today.html:28
 msgid "Nothing low"
 msgstr "Không có gì sắp hết"
 
+#: core/templates/core/today.html:29
 msgid "Record deliveries, use and waste"
 msgstr "Ghi nhập hàng, sử dụng và hao hụt"
 
+#: core/templates/core/today.html:34
 msgid "Staff, hours, checklists, issues, stock and temperatures in one place"
 msgstr "Nhân viên, giờ làm, checklist, sự cố, kho và nhiệt độ ở một nơi"
 
+#: core/templates/core/today.html:41
 msgid "Staff on shift"
 msgstr "Nhân viên trong ca"
 
+#: core/templates/registration/login.html:2
+#: core/templates/registration/login.html:5
+#: core/templates/registration/login.html:10
 msgid "Sign in"
 msgstr "Đăng nhập"
 
+#: core/templates/registration/login.html:12
 msgid "Forgot your password? Ask your manager for a new password link."
 msgstr "Quên mật khẩu? Hãy nhờ quản lý gửi liên kết đặt mật khẩu mới."
 
+#: core/templates/registration/login.html:16
 msgid "Demo accounts"
 msgstr "Tài khoản demo"
 
+#: core/templates/registration/login.html:17
 #, python-format
 msgid ""
 "Tap a person to sign in as them. Every demo account uses the password "
@@ -933,19 +1384,25 @@ msgstr ""
 "Chạm vào một người để đăng nhập bằng tài khoản đó. Mọi tài khoản demo đều "
 "dùng mật khẩu <strong>%(pw)s</strong>."
 
+#: core/templates/registration/set_password.html:2
+#: core/templates/registration/set_password.html:5
 msgid "Set your password"
 msgstr "Đặt mật khẩu"
 
+#: core/templates/registration/set_password.html:6
 #, python-format
 msgid "Hi %(name)s. You will sign in as <strong>%(login)s</strong>."
 msgstr "Chào %(name)s. Bạn sẽ đăng nhập bằng <strong>%(login)s</strong>."
 
+#: core/templates/registration/set_password.html:10
 msgid "Save password"
 msgstr "Lưu mật khẩu"
 
+#: core/templates/registration/set_password_invalid.html:4
 msgid "This link does not work"
 msgstr "Liên kết này không dùng được"
 
+#: core/templates/registration/set_password_invalid.html:5
 msgid ""
 "The password link has expired or has already been used. Ask your manager for"
 " a new one."
@@ -953,9 +1410,11 @@ msgstr ""
 "Liên kết đặt mật khẩu đã hết hạn hoặc đã được dùng. Hãy nhờ quản lý gửi liên"
 " kết mới."
 
+#: core/timeutils.py:47
 msgid "Enter a valid date and time."
 msgstr "Nhập ngày giờ hợp lệ."
 
+#: core/timeutils.py:52
 #, python-format
 msgid ""
 "%(value)s does not exist in the restaurant's time zone (daylight-saving "
@@ -963,135 +1422,182 @@ msgid ""
 msgstr ""
 "%(value)s không tồn tại theo múi giờ của nhà hàng (do đổi giờ mùa hè)."
 
+#: dashboard/templates/dashboard/dashboard.html:6
 msgid "Today's operation"
 msgstr "Hoạt động hôm nay"
 
+#: dashboard/templates/dashboard/dashboard.html:6
 #, python-format
 msgid "Operation on %(d)s"
 msgstr "Hoạt động ngày %(d)s"
 
+#: dashboard/templates/dashboard/dashboard.html:8
 msgid "Choose a date"
 msgstr "Chọn ngày"
 
+#: dashboard/templates/dashboard/dashboard.html:11
 msgid "Back to today"
 msgstr "Về hôm nay"
 
+#: dashboard/templates/dashboard/dashboard.html:13
 #, python-format
 msgid "Updated %(t)s"
 msgstr "Cập nhật lúc %(t)s"
 
+#: dashboard/templates/dashboard/dashboard.html:13
 msgid "Refresh"
 msgstr "Làm mới"
 
+#: dashboard/templates/dashboard/dashboard.html:18
 msgid "On shift now"
 msgstr "Đang trong ca"
 
+#: dashboard/templates/dashboard/dashboard.html:20
 #, python-format
 msgid "%(n)s on break"
 msgid_plural "%(n)s on break"
 msgstr[0] "%(n)s đang nghỉ"
 
+#: dashboard/templates/dashboard/dashboard.html:20
 msgid "clocked in"
 msgstr "đã vào ca"
 
+#: dashboard/templates/dashboard/dashboard.html:23
 msgid "Hours worked"
 msgstr "Giờ đã làm"
 
+#: dashboard/templates/dashboard/dashboard.html:25
 msgid "in progress"
 msgstr "đang làm"
 
+#: dashboard/templates/dashboard/dashboard.html:25
 msgid "closed shifts"
 msgstr "ca đã kết thúc"
 
+#: dashboard/templates/dashboard/dashboard.html:28
 msgid "Checklists submitted"
 msgstr "Checklist đã gửi"
 
+#: dashboard/templates/dashboard/dashboard.html:30
 #, python-format
 msgid "%(n)s required task open"
 msgid_plural "%(n)s required tasks open"
 msgstr[0] "còn %(n)s mục bắt buộc"
 
+#: dashboard/templates/dashboard/dashboard.html:30
 msgid "no required tasks open"
 msgstr "không còn mục bắt buộc"
 
+#: dashboard/templates/dashboard/dashboard.html:30
 msgid "none expected"
 msgstr "không có"
 
+#: dashboard/templates/dashboard/dashboard.html:35
 #, python-format
 msgid "%(n)s resolved this day"
 msgid_plural "%(n)s resolved this day"
 msgstr[0] "%(n)s đã xử lý trong ngày"
 
+#: dashboard/templates/dashboard/dashboard.html:38
+#: dashboard/templates/dashboard/dashboard.html:168
+#: inventory/templates/inventory/detail.html:14
+#: inventory/templates/inventory/list.html:40
 msgid "Low stock"
 msgstr "Sắp hết hàng"
 
+#: dashboard/templates/dashboard/dashboard.html:40
 msgid "items at or below minimum"
 msgstr "mặt hàng ở mức tối thiểu hoặc thấp hơn"
 
+#: dashboard/templates/dashboard/dashboard.html:43
+#: dashboard/templates/dashboard/dashboard.html:124
 msgid "Flagged temperatures"
 msgstr "Nhiệt độ bất thường"
 
+#: dashboard/templates/dashboard/dashboard.html:45
 msgid "outside the set range"
 msgstr "ngoài giới hạn đã đặt"
 
+#: dashboard/templates/dashboard/dashboard.html:50
 msgid "Staff on shift now"
 msgstr "Nhân viên đang trong ca"
 
+#: dashboard/templates/dashboard/dashboard.html:53
 msgid "Since"
 msgstr "Từ"
 
+#: dashboard/templates/dashboard/dashboard.html:53
 msgid "Worked so far"
 msgstr "Đã làm đến giờ"
 
+#: dashboard/templates/dashboard/dashboard.html:58
 #, python-format
 msgid "On break since %(t)s"
 msgstr "Nghỉ từ %(t)s"
 
+#: dashboard/templates/dashboard/dashboard.html:58
 msgid "Working"
 msgstr "Đang làm việc"
 
+#: dashboard/templates/dashboard/dashboard.html:65
 msgid ""
 "Worked so far is provisional until the person clocks out. Breaks are not "
 "counted."
 msgstr ""
 "Giờ đã làm chỉ là tạm tính cho đến khi người đó ra ca. Không tính giờ nghỉ."
 
+#: dashboard/templates/dashboard/dashboard.html:67
 msgid "Nobody is clocked in right now."
 msgstr "Hiện không có ai trong ca."
 
+#: dashboard/templates/dashboard/dashboard.html:70 website/services.py:306
+#: website/templates/website/manage_hours.html:46
+#: website/templates/website/manage_special_day.html:14
 msgid "Hours"
 msgstr "Giờ làm"
 
+#: dashboard/templates/dashboard/dashboard.html:73
 msgid "Closed shifts"
 msgstr "Ca đã kết thúc"
 
+#: dashboard/templates/dashboard/dashboard.html:74
+#: timeclock/templates/timeclock/shift.html:9
 msgid "Still open"
 msgstr "Còn mở"
 
+#: dashboard/templates/dashboard/dashboard.html:74
 msgid "so far (provisional)"
 msgstr "đến giờ (tạm tính)"
 
+#: dashboard/templates/dashboard/dashboard.html:75
 msgid "People"
 msgstr "Số người"
 
+#: dashboard/templates/dashboard/dashboard.html:77
 msgid "Counts shifts that started on this date, restaurant local time."
 msgstr "Tính các ca bắt đầu trong ngày này, theo giờ địa phương của nhà hàng."
 
+#: dashboard/templates/dashboard/dashboard.html:77
 msgid "Open timesheets"
 msgstr "Mở bảng chấm công"
 
+#: dashboard/templates/dashboard/dashboard.html:84
 msgid "Started by"
 msgstr "Người bắt đầu"
 
+#: dashboard/templates/dashboard/dashboard.html:101
 msgid "Incomplete tasks"
 msgstr "Mục chưa hoàn thành"
 
+#: dashboard/templates/dashboard/dashboard.html:104
 msgid "Responsible"
 msgstr "Người phụ trách"
 
+#: dashboard/templates/dashboard/dashboard.html:109
 msgid "submitted"
 msgstr "đã gửi"
 
+#: dashboard/templates/dashboard/dashboard.html:115
 msgid ""
 "Tasks are not assigned to people yet, so the person who started the "
 "checklist is shown as responsible."
@@ -1099,34 +1605,44 @@ msgstr ""
 "Các mục chưa được giao cho từng người, nên người bắt đầu checklist được hiển"
 " thị là người phụ trách."
 
+#: dashboard/templates/dashboard/dashboard.html:117
 msgid "Every task in the started checklists has an answer."
 msgstr "Mọi mục trong các checklist đã bắt đầu đều đã được trả lời."
 
+#: dashboard/templates/dashboard/dashboard.html:117
 msgid "No checklist has been started yet."
 msgstr "Chưa có checklist nào được bắt đầu."
 
+#: dashboard/templates/dashboard/dashboard.html:127
 msgid "Equipment"
 msgstr "Thiết bị"
 
+#: dashboard/templates/dashboard/dashboard.html:127
 msgid "Set range"
 msgstr "Giới hạn đã đặt"
 
+#: dashboard/templates/dashboard/dashboard.html:141
 msgid "No readings outside a set range on this date."
 msgstr "Ngày này không có số đo nào ngoài giới hạn."
 
+#: dashboard/templates/dashboard/dashboard.html:145
 msgid "Reported issues"
 msgstr "Sự cố đã báo"
 
+#: dashboard/templates/dashboard/dashboard.html:153
 msgid "No open issues."
 msgstr "Không có sự cố chưa xử lý."
 
+#: dashboard/templates/dashboard/dashboard.html:156
 msgid "Resolved on this date"
 msgstr "Đã xử lý trong ngày này"
 
+#: dashboard/templates/dashboard/dashboard.html:160
 #, python-format
 msgid "Resolved by %(who)s at %(t)s"
 msgstr "%(who)s đã xử lý lúc %(t)s"
 
+#: dashboard/templates/dashboard/dashboard.html:165
 msgid ""
 "Open issues are listed whatever day they were reported, until someone "
 "resolves them."
@@ -1134,171 +1650,236 @@ msgstr ""
 "Sự cố chưa xử lý luôn được liệt kê, dù được báo vào ngày nào, cho đến khi có"
 " người xử lý."
 
+#: dashboard/templates/dashboard/dashboard.html:171
+#: inventory/templates/inventory/history.html:6
+#: inventory/templates/inventory/history.html:23
+#: inventory/templates/inventory/list.html:33
 msgid "Item"
 msgstr "Mặt hàng"
 
+#: dashboard/templates/dashboard/dashboard.html:171
+#: inventory/templates/inventory/detail.html:9
+#: inventory/templates/inventory/list.html:33
 msgid "In stock"
 msgstr "Tồn kho"
 
+#: dashboard/templates/dashboard/dashboard.html:171
+#: inventory/templates/inventory/detail.html:19
+#: inventory/templates/inventory/list.html:33
 msgid "Minimum"
 msgstr "Tối thiểu"
 
+#: dashboard/templates/dashboard/dashboard.html:171
+#: inventory/templates/inventory/detail.html:21
 msgid "Supplier"
 msgstr "Nhà cung cấp"
 
+#: dashboard/templates/dashboard/dashboard.html:183
 msgid "Current stock, whatever date is selected."
 msgstr "Tồn kho hiện tại, bất kể ngày được chọn."
 
+#: dashboard/templates/dashboard/dashboard.html:185
 msgid "No items are at or below their minimum."
 msgstr "Không có mặt hàng nào ở mức tối thiểu hoặc thấp hơn."
 
+#: inventory/forms.py:12 staff/forms.py:22 staff/forms.py:36
+#: staff/templates/staff/list.html:20
 msgid "Name"
 msgstr "Tên"
 
+#: inventory/forms.py:13 inventory/templates/inventory/detail.html:20
+#: inventory/templates/inventory/list.html:17 menu/forms.py:13
 msgid "Category"
 msgstr "Danh mục"
 
+#: inventory/forms.py:14
 msgid "Unit"
 msgstr "Đơn vị"
 
+#: inventory/forms.py:14
 msgid "For example kg, L or pcs. Cannot change after stock is recorded."
 msgstr "Ví dụ kg, L hoặc cái. Không thể đổi sau khi đã ghi kho."
 
+#: inventory/forms.py:15
 msgid "Opening quantity"
 msgstr "Số lượng ban đầu"
 
+#: inventory/forms.py:17
 msgid "Minimum quantity"
 msgstr "Số lượng tối thiểu"
 
+#: inventory/forms.py:18
 msgid "The item shows as low stock at or below this amount."
 msgstr "Mặt hàng sẽ hiện là sắp hết khi bằng hoặc thấp hơn mức này."
 
+#: inventory/forms.py:20
 msgid "Supplier (optional)"
 msgstr "Nhà cung cấp (không bắt buộc)"
 
+#: inventory/forms.py:28
 msgid "Locked because stock has been recorded for this item."
 msgstr "Đã khóa vì mặt hàng này đã có ghi nhận kho."
 
+#: inventory/forms.py:32
 msgid "What happened?"
 msgstr "Chuyện gì đã xảy ra?"
 
+#: inventory/forms.py:33
 msgid "Quantity"
 msgstr "Số lượng"
 
+#: inventory/forms.py:35
 msgid "Waste reason"
 msgstr "Lý do hao hụt"
 
+#: inventory/forms.py:35
 msgid "Choose a reason"
 msgstr "Chọn lý do"
 
+#: inventory/forms.py:36
 msgid "Required for waste."
 msgstr "Bắt buộc khi hao hụt."
 
+#: inventory/forms.py:40
 msgid ""
 "Optional, for example a delivery note number. Required for adjustments."
 msgstr "Không bắt buộc, ví dụ số phiếu giao hàng. Bắt buộc khi điều chỉnh."
 
+#: inventory/forms.py:49
 msgid "For an adjustment, use a minus sign to reduce stock, e.g. -1.5"
 msgstr "Khi điều chỉnh, dùng dấu trừ để giảm kho, ví dụ -1.5"
 
+#: inventory/models.py:16
 msgid "Ingredient"
 msgstr "Nguyên liệu"
 
+#: inventory/models.py:17
 msgid "Drink"
 msgstr "Đồ uống"
 
+#: inventory/models.py:18
 msgid "Packaging"
 msgstr "Bao bì"
 
+#: inventory/models.py:19
 msgid "Cleaning supply"
 msgstr "Đồ vệ sinh"
 
+#: inventory/models.py:25 menu/models.py:44 menu/models.py:71
 msgid "name"
 msgstr "tên"
 
+#: inventory/models.py:26
 msgid "category"
 msgstr "danh mục"
 
+#: inventory/models.py:27
 msgid "unit"
 msgstr "đơn vị"
 
+#: inventory/models.py:27
 msgid "For example kg, L or pcs. Fixed once stock is recorded."
 msgstr "Ví dụ kg, L hoặc cái. Cố định sau khi đã ghi kho."
 
+#: inventory/models.py:29
 msgid "minimum quantity"
 msgstr "số lượng tối thiểu"
 
+#: inventory/models.py:31
 msgid "supplier"
 msgstr "nhà cung cấp"
 
+#: inventory/models.py:58 inventory/services.py:66
 msgid "Opening balance"
 msgstr "Tồn đầu kỳ"
 
+#: inventory/models.py:59
 msgid "Received"
 msgstr "Nhập hàng"
 
+#: inventory/models.py:60
 msgid "Used"
 msgstr "Đã dùng"
 
+#: inventory/models.py:61
 msgid "Waste"
 msgstr "Hao hụt"
 
+#: inventory/models.py:62
 msgid "Adjustment"
 msgstr "Điều chỉnh"
 
+#: inventory/models.py:66
 msgid "Expired"
 msgstr "Hết hạn"
 
+#: inventory/models.py:67
 msgid "Damaged"
 msgstr "Hư hỏng"
 
+#: inventory/models.py:68
 msgid "Spilled"
 msgstr "Đổ vỡ"
 
+#: inventory/services.py:31 inventory/services.py:33
 msgid "Enter a number, for example 2.5"
 msgstr "Nhập một số, ví dụ 2.5"
 
+#: inventory/services.py:35
 msgid "Use at most three decimal places."
 msgstr "Chỉ dùng tối đa ba chữ số thập phân."
 
+#: inventory/services.py:37
 msgid "That quantity is too large."
 msgstr "Số lượng quá lớn."
 
+#: inventory/services.py:39
 msgid "Quantity cannot be negative."
 msgstr "Số lượng không được âm."
 
+#: inventory/services.py:41
 msgid "Quantity must be more than zero."
 msgstr "Số lượng phải lớn hơn 0."
 
+#: inventory/services.py:73 staff/services.py:55 staff/services.py:79
 msgid "Enter a name."
 msgstr "Nhập tên."
 
+#: inventory/services.py:75
 msgid "Enter a unit, for example kg."
 msgstr "Nhập đơn vị, ví dụ kg."
 
+#: inventory/services.py:83
 msgid "An item with this name already exists in this category."
 msgstr "Danh mục này đã có mặt hàng cùng tên."
 
+#: inventory/services.py:107
 msgid ""
 "The unit cannot change after stock has been recorded. Create a new item "
 "instead."
 msgstr "Không thể đổi đơn vị sau khi đã ghi kho. Hãy tạo mặt hàng mới."
 
+#: inventory/services.py:153
 msgid "An adjustment needs a reason."
 msgstr "Điều chỉnh cần có lý do."
 
+#: inventory/services.py:160
 msgid "Choose why the stock was wasted."
 msgstr "Chọn lý do hao hụt."
 
+#: inventory/services.py:162
 msgid "Describe the reason when choosing Other."
 msgstr "Hãy mô tả lý do khi chọn Khác."
 
+#: inventory/services.py:171
 msgid "Choose an item."
 msgstr "Chọn mặt hàng."
 
+#: inventory/services.py:180
 msgid "This item is deactivated."
 msgstr "Mặt hàng này đã ngừng sử dụng."
 
+#: inventory/services.py:197
 msgid ""
 "This form was already used for a different entry. Reload the page and try "
 "again."
@@ -1306,16 +1887,21 @@ msgstr ""
 "Biểu mẫu này đã được dùng cho một lần ghi khác. Hãy tải lại trang và thử "
 "lại."
 
+#: inventory/services.py:206
 #, python-format
 msgid "Not enough stock: %(have)s %(unit)s available."
 msgstr "Không đủ hàng: chỉ còn %(have)s %(unit)s."
 
+#: inventory/templates/inventory/detail.html:15
+#: inventory/templates/inventory/list.html:40
 msgid "OK"
 msgstr "OK"
 
+#: inventory/templates/inventory/detail.html:25
 msgid "Edit item"
 msgstr "Sửa mặt hàng"
 
+#: inventory/templates/inventory/detail.html:26
 msgid ""
 "Deactivate this item? It will be hidden from stock entry but its history is "
 "kept."
@@ -1323,45 +1909,72 @@ msgstr ""
 "Ngừng sử dụng mặt hàng này? Nó sẽ bị ẩn khi ghi kho nhưng lịch sử vẫn được "
 "giữ."
 
+#: inventory/templates/inventory/detail.html:28
+#: staff/templates/staff/detail.html:48
 msgid "Reactivate"
 msgstr "Dùng lại"
 
+#: inventory/templates/inventory/detail.html:35
 msgid "Record stock"
 msgstr "Ghi kho"
 
+#: inventory/templates/inventory/detail.html:61
+#: inventory/templates/inventory/item_form.html:8
+#: staff/templates/staff/form.html:9
+#: website/templates/website/manage_info.html:13
+#: website/templates/website/manage_special_day.html:26
+#: website/templates/website/promotion_form.html:10
 msgid "Save"
 msgstr "Lưu"
 
+#: inventory/templates/inventory/detail.html:65
 msgid "This item is deactivated, so no new stock can be recorded."
 msgstr "Mặt hàng này đã ngừng sử dụng nên không thể ghi kho mới."
 
+#: inventory/templates/inventory/detail.html:68
 msgid "History"
 msgstr "Lịch sử"
 
+#: inventory/templates/inventory/detail.html:70
+#: inventory/templates/inventory/history.html:23
+#: staff/templates/staff/detail.html:58
+#: timeclock/templates/timeclock/shift.html:39
 msgid "When"
 msgstr "Thời gian"
 
+#: inventory/templates/inventory/detail.html:70
+#: inventory/templates/inventory/history.html:23
+#: staff/templates/staff/detail.html:58
 msgid "Change"
 msgstr "Thay đổi"
 
+#: inventory/templates/inventory/detail.html:70
+#: inventory/templates/inventory/history.html:23
 msgid "Balance after"
 msgstr "Tồn sau"
 
+#: inventory/templates/inventory/detail.html:70
+#: inventory/templates/inventory/history.html:23
 msgid "Reason / note"
 msgstr "Lý do / ghi chú"
 
+#: inventory/templates/inventory/detail.html:82
 msgid "No stock has been recorded for this item yet."
 msgstr "Mặt hàng này chưa có ghi nhận kho nào."
 
+#: inventory/templates/inventory/history.html:7
 msgid "All items"
 msgstr "Tất cả mặt hàng"
 
+#: inventory/templates/inventory/history.html:11
 msgid "All types"
 msgstr "Tất cả loại"
 
+#: inventory/templates/inventory/history.html:36
 msgid "No stock movements match these filters."
 msgstr "Không có biến động kho nào khớp với bộ lọc."
 
+#: inventory/templates/inventory/history.html:40
 msgid ""
 "Dates use the restaurant's local time. Each row shows the item's balance "
 "right after that movement."
@@ -1369,229 +1982,304 @@ msgstr ""
 "Thời gian theo giờ địa phương của nhà hàng. Mỗi dòng hiển thị tồn kho của "
 "mặt hàng ngay sau lần biến động đó."
 
+#: inventory/templates/inventory/list.html:6
 msgid "Add item"
 msgstr "Thêm mặt hàng"
 
+#: inventory/templates/inventory/list.html:10
 #, python-format
 msgid "%(n)s item low on stock"
 msgid_plural "%(n)s items low on stock"
 msgstr[0] "%(n)s mặt hàng sắp hết"
 
+#: inventory/templates/inventory/list.html:12
 msgid "No items low on stock"
 msgstr "Không có mặt hàng nào sắp hết"
 
+#: inventory/templates/inventory/list.html:16
+#: staff/templates/staff/list.html:6
 msgid "Search"
 msgstr "Tìm"
 
+#: inventory/templates/inventory/list.html:29
 msgid "Low stock only"
 msgstr "Chỉ hàng sắp hết"
 
+#: inventory/templates/inventory/list.html:43
 msgid "No items yet. Add your first inventory item."
 msgstr "Chưa có mặt hàng nào. Hãy thêm mặt hàng đầu tiên."
 
+#: inventory/templates/inventory/list.html:43
 msgid "No items match."
 msgstr "Không có mặt hàng nào khớp."
 
+#: inventory/views.py:66 staff/views.py:117
 #, python-format
 msgid "%(name)s was added."
 msgstr "Đã thêm %(name)s."
 
+#: inventory/views.py:68
 msgid "Add inventory item"
 msgstr "Thêm mặt hàng kho"
 
+#: inventory/views.py:86
 msgid "Item saved. Past stock records are unchanged."
 msgstr "Đã lưu mặt hàng. Các ghi nhận kho trước đó không thay đổi."
 
+#: inventory/views.py:88 staff/views.py:166
 #, python-format
 msgid "Edit %(name)s"
 msgstr "Sửa %(name)s"
 
+#: inventory/views.py:97
 msgid "Item reactivated."
 msgstr "Đã dùng lại mặt hàng."
 
+#: inventory/views.py:97
 msgid "Item deactivated. Its history is kept."
 msgstr "Đã ngừng sử dụng mặt hàng. Lịch sử vẫn được giữ."
 
+#: inventory/views.py:120
 #, python-format
 msgid "Saved: %(type)s %(qty)s %(unit)s. Stock is now %(bal)s %(unit)s."
 msgstr "Đã lưu: %(type)s %(qty)s %(unit)s. Tồn kho hiện là %(bal)s %(unit)s."
 
+#: inventory/views.py:127
 msgid "This entry was already saved. It was not recorded twice."
 msgstr "Lần ghi này đã được lưu trước đó. Không bị ghi hai lần."
 
+#: menu/forms.py:8
 msgid "Category name"
 msgstr "Tên danh mục"
 
+#: menu/forms.py:12
 msgid "Dish name"
 msgstr "Tên món"
 
+#: menu/forms.py:12 menu/services.py:135
 msgid "Enter the dish name."
 msgstr "Nhập tên món."
 
+#: menu/forms.py:13 menu/services.py:140
 msgid "Choose a category."
 msgstr "Chọn danh mục."
 
+#: menu/forms.py:16
 msgid "Shown on the public menu. Up to 600 characters."
 msgstr "Hiển thị trên thực đơn công khai. Tối đa 600 ký tự."
 
+#: menu/forms.py:19
 msgid "Price (€)"
 msgstr "Giá (€)"
 
+#: menu/forms.py:20
 msgid "For example 14.50"
 msgstr "Ví dụ 14.50"
 
+#: menu/forms.py:20 menu/services.py:32
 msgid "Enter a price."
 msgstr "Nhập giá."
 
+#: menu/forms.py:23
 msgid "Allergens"
 msgstr "Chất gây dị ứng"
 
+#: menu/forms.py:24
 msgid "Tick every allergen the dish contains."
 msgstr "Đánh dấu mọi chất gây dị ứng có trong món."
 
+#: menu/forms.py:27
 msgid "Diet labels"
 msgstr "Nhãn chế độ ăn"
 
+#: menu/forms.py:31
 msgid "Menu status"
 msgstr "Trạng thái trên thực đơn"
 
+#: menu/forms.py:32
 msgid ""
 "Drafts are only visible here. Published dishes appear on the public menu."
 msgstr "Bản nháp chỉ hiện ở đây. Món đã đăng sẽ hiện trên thực đơn công khai."
 
+#: menu/forms.py:34
 msgid "Available now"
 msgstr "Đang có"
 
+#: menu/forms.py:36
 msgid "When it is unavailable"
 msgstr "Khi món tạm hết"
 
+#: menu/forms.py:39 menu/templates/menu/item_form.html:34 website/forms.py:86
+#: website/forms.py:90
 msgid "Photo"
 msgstr "Ảnh"
 
+#: menu/forms.py:41 website/forms.py:19
 msgid "JPEG, PNG or WebP, up to 10 MB. Large photos are scaled down."
 msgstr "JPEG, PNG hoặc WebP, tối đa 10 MB. Ảnh lớn sẽ được thu nhỏ."
 
+#: menu/forms.py:43
 msgid "Remove the current photo"
 msgstr "Xóa ảnh hiện tại"
 
+#: menu/forms.py:47
 msgid "Choose a category"
 msgstr "Chọn danh mục"
 
+#: menu/models.py:16
 msgid "Cereals containing gluten"
 msgstr "Ngũ cốc chứa gluten"
 
+#: menu/models.py:17
 msgid "Crustaceans"
 msgstr "Giáp xác"
 
+#: menu/models.py:18
 msgid "Eggs"
 msgstr "Trứng"
 
+#: menu/models.py:19
 msgid "Fish"
 msgstr "Cá"
 
+#: menu/models.py:20
 msgid "Peanuts"
 msgstr "Đậu phộng"
 
+#: menu/models.py:21
 msgid "Soy"
 msgstr "Đậu nành"
 
+#: menu/models.py:22
 msgid "Milk"
 msgstr "Sữa"
 
+#: menu/models.py:23
 msgid "Tree nuts"
 msgstr "Các loại hạt"
 
+#: menu/models.py:24
 msgid "Celery"
 msgstr "Cần tây"
 
+#: menu/models.py:25
 msgid "Mustard"
 msgstr "Mù tạt"
 
+#: menu/models.py:26
 msgid "Sesame"
 msgstr "Mè"
 
+#: menu/models.py:27
 msgid "Sulphites"
 msgstr "Sulfit"
 
+#: menu/models.py:28
 msgid "Lupin"
 msgstr "Đậu lupin"
 
+#: menu/models.py:29
 msgid "Molluscs"
 msgstr "Động vật thân mềm"
 
+#: menu/models.py:35
 msgid "Vegan"
 msgstr "Thuần chay"
 
+#: menu/models.py:36
 msgid "Vegetarian"
 msgstr "Chay"
 
+#: menu/models.py:37
 msgid "Gluten-free"
 msgstr "Không gluten"
 
+#: menu/models.py:38
 msgid "Milk-free"
 msgstr "Không sữa"
 
+#: menu/models.py:39
 msgid "Lactose-free"
 msgstr "Không lactose"
 
+#: menu/models.py:62 menu/templates/menu/overview.html:37
 msgid "Draft"
 msgstr "Nháp"
 
+#: menu/models.py:63 menu/templates/menu/overview.html:37
 msgid "Published"
 msgstr "Đã đăng"
 
+#: menu/models.py:66
 msgid "Show it marked as unavailable"
 msgstr "Hiển thị là tạm hết"
 
+#: menu/models.py:67
 msgid "Hide it from the menu"
 msgstr "Ẩn khỏi thực đơn"
 
+#: menu/models.py:72 website/models.py:141
 msgid "description"
 msgstr "mô tả"
 
+#: menu/models.py:74
 msgid "price (€)"
 msgstr "giá (€)"
 
+#: menu/models.py:79
 msgid "available now"
 msgstr "đang có"
 
+#: menu/models.py:81
 msgid "when unavailable"
 msgstr "khi tạm hết"
 
+#: menu/services.py:36
 msgid "Enter the price as a number, for example 12.50"
 msgstr "Nhập giá bằng số, ví dụ 12.50"
 
+#: menu/services.py:38
 msgid "The price cannot be negative."
 msgstr "Giá không được âm."
 
+#: menu/services.py:40
 msgid "Use at most two decimals (cents)."
 msgstr "Chỉ dùng tối đa hai chữ số thập phân (xu)."
 
+#: menu/services.py:42
 msgid "That price is too large."
 msgstr "Giá quá lớn."
 
+#: menu/services.py:52 menu/views.py:59
 msgid "Enter a category name."
 msgstr "Nhập tên danh mục."
 
+#: menu/services.py:61 menu/services.py:69 menu/services.py:80
 msgid "A category with this name already exists."
 msgstr "Đã có danh mục cùng tên."
 
+#: menu/services.py:94
 msgid "Move or delete the dishes in this category first."
 msgstr "Hãy chuyển hoặc xóa các món trong danh mục này trước."
 
+#: menu/services.py:150 menu/services.py:235
 msgid "Choose draft or published."
 msgstr "Chọn nháp hoặc đã đăng."
 
+#: menu/services.py:153
 msgid "Choose what to show when the dish is unavailable."
 msgstr "Chọn cách hiển thị khi món tạm hết."
 
+#: menu/templates/menu/category_form.html:4
 #, python-format
 msgid "Category: %(n)s"
 msgstr "Danh mục: %(n)s"
 
+#: menu/templates/menu/category_form.html:9
 msgid "Save name"
 msgstr "Lưu tên"
 
+#: menu/templates/menu/category_form.html:16
 #, python-format
 msgid ""
 "This category has %(n)s dish. Move or delete it before deleting the "
@@ -1603,16 +2291,20 @@ msgstr[0] ""
 "Danh mục này có %(n)s món. Hãy chuyển hoặc xóa các món trước khi xóa danh "
 "mục."
 
+#: menu/templates/menu/category_form.html:18
 msgid "Delete this empty category?"
 msgstr "Xóa danh mục trống này?"
 
+#: menu/templates/menu/category_form.html:19
 msgid "Delete category"
 msgstr "Xóa danh mục"
 
+#: menu/templates/menu/item_delete.html:3
 #, python-format
 msgid "Delete %(n)s?"
 msgstr "Xóa %(n)s?"
 
+#: menu/templates/menu/item_delete.html:5
 msgid ""
 "The dish and its photo are removed from the menu for good. To take it off "
 "the menu for now, unpublish it or mark it unavailable instead."
@@ -1620,203 +2312,265 @@ msgstr ""
 "Món và ảnh sẽ bị xóa vĩnh viễn khỏi thực đơn. Nếu chỉ muốn tạm gỡ, hãy bỏ "
 "đăng hoặc đánh dấu tạm hết."
 
+#: menu/templates/menu/item_delete.html:8
+#: menu/templates/menu/item_form.html:50
 msgid "Delete dish"
 msgstr "Xóa món"
 
+#: menu/templates/menu/item_form.html:2 menu/templates/menu/item_form.html:5
+#: menu/templates/menu/overview.html:8
 msgid "Add dish"
 msgstr "Thêm món"
 
+#: menu/templates/menu/item_form.html:5
 #, python-format
 msgid "Edit %(n)s"
 msgstr "Sửa %(n)s"
 
+#: menu/templates/menu/item_form.html:36
 #, python-format
 msgid "Current photo of %(n)s"
 msgstr "Ảnh hiện tại của %(n)s"
 
+#: menu/templates/menu/item_form.html:38
+#: website/templates/website/manage_images.html:41
 msgid "Replace with a new photo"
 msgstr "Thay bằng ảnh mới"
 
+#: menu/templates/menu/item_form.html:40
 msgid "Add a photo (optional)"
 msgstr "Thêm ảnh (không bắt buộc)"
 
+#: menu/templates/menu/item_form.html:45
 msgid "Preview of the new photo"
 msgstr "Xem trước ảnh mới"
 
+#: menu/templates/menu/item_form.html:48
 msgid "Save dish"
 msgstr "Lưu món"
 
+#: menu/templates/menu/overview.html:7
 msgid "View public menu"
 msgstr "Xem thực đơn công khai"
 
+#: menu/templates/menu/overview.html:12
 #, python-format
 msgid "%(n)s published dish"
 msgid_plural "%(n)s published dishes"
 msgstr[0] "%(n)s món đã đăng"
 
+#: menu/templates/menu/overview.html:13
 #, python-format
 msgid "%(n)s draft"
 msgid_plural "%(n)s drafts"
 msgstr[0] "%(n)s bản nháp"
 
+#: menu/templates/menu/overview.html:14
 #, python-format
 msgid "%(n)s unavailable"
 msgid_plural "%(n)s unavailable"
 msgstr[0] "%(n)s tạm hết"
 
+#: menu/templates/menu/overview.html:22
 #, python-format
 msgid "Move %(c)s up"
 msgstr "Đưa %(c)s lên"
 
+#: menu/templates/menu/overview.html:23
 #, python-format
 msgid "Move %(c)s down"
 msgstr "Đưa %(c)s xuống"
 
+#: menu/templates/menu/overview.html:24
 msgid "Rename"
 msgstr "Đổi tên"
 
+#: menu/templates/menu/overview.html:38
 msgid "Unavailable · hidden"
 msgstr "Tạm hết · đang ẩn"
 
+#: menu/templates/menu/overview.html:38
 msgid "Unavailable · shown as sold out"
 msgstr "Tạm hết · hiển thị là đã hết"
 
+#: menu/templates/menu/overview.html:44
 msgid "Mark unavailable"
 msgstr "Đánh dấu tạm hết"
 
+#: menu/templates/menu/overview.html:44
 msgid "Mark available"
 msgstr "Đánh dấu còn món"
 
+#: menu/templates/menu/overview.html:48
 msgid "Unpublish"
 msgstr "Bỏ đăng"
 
+#: menu/templates/menu/overview.html:48
 msgid "Publish"
 msgstr "Đăng"
 
+#: menu/templates/menu/overview.html:50
 #, python-format
 msgid "Move %(d)s up"
 msgstr "Đưa %(d)s lên"
 
+#: menu/templates/menu/overview.html:51
 #, python-format
 msgid "Move %(d)s down"
 msgstr "Đưa %(d)s xuống"
 
+#: menu/templates/menu/overview.html:56
 msgid "No dishes in this category yet."
 msgstr "Danh mục này chưa có món nào."
 
+#: menu/templates/menu/overview.html:56
 msgid "Add one"
 msgstr "Thêm món"
 
+#: menu/templates/menu/overview.html:60
 msgid ""
 "The menu is empty. Start by adding a category, such as Starters or Drinks."
 msgstr ""
 "Thực đơn đang trống. Hãy bắt đầu bằng cách thêm danh mục, ví dụ Khai vị hoặc"
 " Đồ uống."
 
+#: menu/templates/menu/overview.html:65
 msgid "New category"
 msgstr "Danh mục mới"
 
+#: menu/templates/menu/overview.html:66
 msgid "Add category"
 msgstr "Thêm danh mục"
 
+#: menu/views.py:57
 #, python-format
 msgid "Category “%(name)s” added."
 msgstr "Đã thêm danh mục “%(name)s”."
 
+#: menu/views.py:73
 msgid "Category renamed."
 msgstr "Đã đổi tên danh mục."
 
+#: menu/views.py:90
 msgid "Category deleted."
 msgstr "Đã xóa danh mục."
 
+#: menu/views.py:123
 msgid "Add a category first, then add dishes to it."
 msgstr "Hãy thêm danh mục trước, rồi thêm món vào đó."
 
+#: menu/views.py:135
 #, python-format
 msgid "“%(name)s” is saved and on the public menu."
 msgstr "Đã lưu “%(name)s” và món đang hiện trên thực đơn công khai."
 
+#: menu/views.py:137
 #, python-format
 msgid "“%(name)s” is saved as a draft."
 msgstr "Đã lưu “%(name)s” dưới dạng nháp."
 
+#: menu/views.py:161
 #, python-format
 msgid "“%(name)s” is available again."
 msgstr "“%(name)s” đã có lại."
 
+#: menu/views.py:161
 #, python-format
 msgid "“%(name)s” is marked unavailable."
 msgstr "Đã đánh dấu “%(name)s” là tạm hết."
 
+#: menu/views.py:179
 #, python-format
 msgid "“%(name)s” is published."
 msgstr "Đã đăng “%(name)s”."
 
+#: menu/views.py:179
 #, python-format
 msgid "“%(name)s” is back to draft."
 msgstr "“%(name)s” đã chuyển về nháp."
 
+#: menu/views.py:200
 #, python-format
 msgid "“%(name)s” was deleted."
 msgstr "Đã xóa “%(name)s”."
 
+#: staff/forms.py:11 staff/forms.py:12
 msgid "Those login details did not work. Check them and try again."
 msgstr "Thông tin đăng nhập không đúng. Hãy kiểm tra và thử lại."
 
+#: staff/forms.py:17 staff/forms.py:24
 msgid "Login name or email"
 msgstr "Tên đăng nhập hoặc email"
 
+#: staff/forms.py:24
 msgid "Not case-sensitive. Must be unique."
 msgstr "Không phân biệt chữ hoa/thường. Không được trùng."
 
+#: staff/forms.py:26 staff/forms.py:37
 msgid "Contact number (optional)"
 msgstr "Số điện thoại (không bắt buộc)"
 
+#: staff/forms.py:27 staff/forms.py:41 staff/templates/staff/detail.html:8
+#: staff/templates/staff/list.html:7 staff/templates/staff/list.html:20
 msgid "Role"
 msgstr "Vai trò"
 
+#: staff/models.py:10 staff/views.py:45
 msgid "Owner"
 msgstr "Chủ"
 
+#: staff/models.py:11 staff/views.py:46
 msgid "Manager"
 msgstr "Quản lý"
 
+#: staff/models.py:12 staff/views.py:47
 msgid "Employee"
 msgstr "Nhân viên"
 
+#: staff/models.py:49
 msgid "display name"
 msgstr "tên hiển thị"
 
+#: staff/models.py:51
 msgid "login name or email"
 msgstr "tên đăng nhập hoặc email"
 
+#: staff/models.py:54
 msgid "Used to sign in. Not case-sensitive."
 msgstr "Dùng để đăng nhập. Không phân biệt chữ hoa/thường."
 
+#: staff/models.py:56
 msgid "contact number"
 msgstr "số điện thoại"
 
+#: staff/services.py:46 staff/services.py:69
 msgid "This login name is already in use."
 msgstr "Tên đăng nhập này đã được dùng."
 
+#: staff/services.py:57
 msgid "Enter a login name."
 msgstr "Nhập tên đăng nhập."
 
+#: staff/services.py:106
 msgid "Choose a valid role."
 msgstr "Chọn vai trò hợp lệ."
 
+#: staff/services.py:112
 msgid ""
 "The last active owner cannot be demoted. Make someone else owner first."
 msgstr ""
 "Không thể hạ vai trò của chủ duy nhất còn hoạt động. Hãy chỉ định người khác"
 " làm chủ trước."
 
+#: staff/services.py:131
 msgid "You cannot deactivate your own account."
 msgstr "Bạn không thể khóa tài khoản của chính mình."
 
+#: staff/services.py:135
 msgid "The last active owner cannot be deactivated."
 msgstr "Không thể khóa chủ duy nhất còn hoạt động."
 
+#: staff/services.py:141
 #, python-format
 msgid ""
 "%(name)s has an open shift. Close it with a time correction (with a reason) "
@@ -1825,10 +2579,12 @@ msgstr ""
 "%(name)s đang có ca chưa kết thúc. Hãy đóng ca bằng một lần sửa giờ (kèm lý "
 "do) trước khi khóa tài khoản."
 
+#: staff/templates/staff/deactivate.html:3
 #, python-format
 msgid "Deactivate %(name)s?"
 msgstr "Khóa tài khoản %(name)s?"
 
+#: staff/templates/staff/deactivate.html:7
 #, python-format
 msgid ""
 "This person is still clocked in (since %(t)s). Close the shift with a time "
@@ -1837,9 +2593,12 @@ msgstr ""
 "Người này vẫn đang trong ca (từ %(t)s). Hãy đóng ca bằng một lần sửa giờ "
 "trước."
 
+#: staff/templates/staff/deactivate.html:8
+#: timeclock/templates/timeclock/shift.html:14
 msgid "Correct this shift"
 msgstr "Sửa ca này"
 
+#: staff/templates/staff/deactivate.html:10
 msgid ""
 "They will be signed out and will not be able to sign in. Their timesheets, "
 "checklists and stock records stay in the history under their name. You can "
@@ -1849,81 +2608,108 @@ msgstr ""
 "và ghi nhận kho vẫn được giữ trong lịch sử dưới tên của họ. Bạn có thể mở "
 "lại tài khoản sau."
 
+#: staff/templates/staff/deactivate.html:13
 msgid "Deactivate account"
 msgstr "Khóa tài khoản"
 
+#: staff/templates/staff/detail.html:4
 msgid "You"
 msgstr "Bạn"
 
+#: staff/templates/staff/detail.html:7 staff/templates/staff/list.html:20
 msgid "Login"
 msgstr "Tên đăng nhập"
 
+#: staff/templates/staff/detail.html:9
 msgid "Contact number"
 msgstr "Số điện thoại"
 
+#: staff/templates/staff/detail.html:11
 msgid "Password not set yet"
 msgstr "Chưa đặt mật khẩu"
 
+#: staff/templates/staff/detail.html:13 staff/templates/staff/list.html:24
+#: timeclock/templates/timeclock/clock.html:19
 msgid "On shift"
 msgstr "Trong ca"
 
+#: staff/templates/staff/detail.html:20 staff/views.py:235
 msgid "Change my password"
 msgstr "Đổi mật khẩu"
 
+#: staff/templates/staff/detail.html:23
 msgid "To change your name or contact number, ask a manager."
 msgstr "Muốn đổi tên hoặc số điện thoại, hãy nhờ quản lý."
 
+#: staff/templates/staff/detail.html:27
 msgid "Records"
 msgstr "Hồ sơ"
 
+#: staff/templates/staff/detail.html:29
 msgid "Timesheet"
 msgstr "Bảng chấm công"
 
+#: staff/templates/staff/detail.html:31
 msgid "Stock movements"
 msgstr "Biến động kho"
 
+#: staff/templates/staff/detail.html:36
 msgid "Manage"
 msgstr "Quản lý"
 
+#: staff/templates/staff/detail.html:38
 msgid "Edit details"
 msgstr "Sửa thông tin"
 
+#: staff/templates/staff/detail.html:40
 msgid "Change role"
 msgstr "Đổi vai trò"
 
+#: staff/templates/staff/detail.html:43
 msgid "Create password reset link"
 msgstr "Tạo liên kết đặt lại mật khẩu"
 
+#: staff/templates/staff/detail.html:43
 msgid "Create password setup link"
 msgstr "Tạo liên kết đặt mật khẩu"
 
+#: staff/templates/staff/detail.html:47
 msgid "Reactivate this account?"
 msgstr "Mở lại tài khoản này?"
 
+#: staff/templates/staff/detail.html:56
 msgid "Account history"
 msgstr "Lịch sử tài khoản"
 
+#: staff/templates/staff/detail.html:60
 msgid "System setup"
 msgstr "Thiết lập hệ thống"
 
+#: staff/templates/staff/list.html:4 staff/views.py:119
 msgid "Add staff member"
 msgstr "Thêm nhân viên"
 
+#: staff/templates/staff/list.html:8
 msgid "All roles"
 msgstr "Tất cả vai trò"
 
+#: staff/templates/staff/list.html:27
 msgid "Awaiting password"
 msgstr "Chờ đặt mật khẩu"
 
+#: staff/templates/staff/list.html:30
 msgid "No staff match these filters."
 msgstr "Không có nhân viên nào khớp với bộ lọc."
 
+#: staff/templates/staff/setup_link.html:3
 msgid "Staff member added"
 msgstr "Đã thêm nhân viên"
 
+#: staff/templates/staff/setup_link.html:3
 msgid "Password link"
 msgstr "Liên kết mật khẩu"
 
+#: staff/templates/staff/setup_link.html:5
 #, python-format
 msgid ""
 "Give this one-time link to <strong>%(name)s</strong>. They open it, choose "
@@ -1932,9 +2718,11 @@ msgstr ""
 "Gửi liên kết dùng một lần này cho <strong>%(name)s</strong>. Họ mở liên kết,"
 " tự chọn mật khẩu, rồi đăng nhập bằng <strong>%(login)s</strong>."
 
+#: staff/templates/staff/setup_link.html:6
 msgid "One-time link"
 msgstr "Liên kết dùng một lần"
 
+#: staff/templates/staff/setup_link.html:8
 msgid ""
 "The link stops working once it has been used or after it expires. It is not "
 "stored, so copy it now. You can create a new link from the staff member's "
@@ -1944,99 +2732,134 @@ msgstr ""
 " lưu lại, nên hãy sao chép ngay. Bạn có thể tạo liên kết mới từ trang của "
 "nhân viên bất cứ lúc nào."
 
+#: staff/views.py:48
 msgid "Employee · on a break"
 msgstr "Nhân viên · đang nghỉ"
 
+#: staff/views.py:56
 msgid "You have signed out."
 msgstr "Bạn đã đăng xuất."
 
+#: staff/views.py:73
 msgid "Your password is set. You can now sign in."
 msgstr "Đã đặt mật khẩu. Bây giờ bạn có thể đăng nhập."
 
+#: staff/views.py:164
 msgid "Details saved."
 msgstr "Đã lưu thông tin."
 
+#: staff/views.py:181
 msgid "Role updated."
 msgstr "Đã cập nhật vai trò."
 
+#: staff/views.py:184
 #, python-format
 msgid "Change role for %(name)s"
 msgstr "Đổi vai trò cho %(name)s"
 
+#: staff/views.py:200
 #, python-format
 msgid "%(name)s can no longer sign in."
 msgstr "%(name)s không thể đăng nhập nữa."
 
+#: staff/views.py:213
 #, python-format
 msgid "%(name)s is active again."
 msgstr "%(name)s đã hoạt động trở lại."
 
+#: staff/views.py:233
 msgid "Your password was changed."
 msgstr "Đã đổi mật khẩu."
 
+#: timeclock/models.py:14 timeclock/templates/timeclock/_shift_table.html:16
+#: website/templates/website/contact.html:29
+#: website/templates/website/contact.html:41
+#: website/templates/website/manage_hours.html:51
+#: website/templates/website/manage_hours.html:69
 msgid "Closed"
 msgstr "Đóng cửa"
 
+#: timeclock/models.py:67
 msgid "Break started"
 msgstr "Bắt đầu nghỉ"
 
+#: timeclock/models.py:68
 msgid "Break ended"
 msgstr "Kết thúc nghỉ"
 
+#: timeclock/models.py:69
 msgid "Clocked out"
 msgstr "Đã ra ca"
 
+#: timeclock/services.py:40 timeclock/services.py:46
 msgid "You are already clocked in."
 msgstr "Bạn đã vào ca rồi."
 
+#: timeclock/services.py:54
 msgid "You are not clocked in."
 msgstr "Bạn chưa vào ca."
 
+#: timeclock/services.py:77
 msgid "You are not on a break."
 msgstr "Bạn không đang nghỉ."
 
+#: timeclock/services.py:80
 msgid "The break has not lasted any time yet. Try again in a moment."
 msgstr "Giờ nghỉ chưa bắt đầu tính. Hãy thử lại sau giây lát."
 
+#: timeclock/services.py:92
 msgid "You are on a break. End your break first, then clock out."
 msgstr "Bạn đang nghỉ. Hãy kết thúc nghỉ trước, rồi ra ca."
 
+#: timeclock/services.py:95
 msgid "You clocked in just now. Try again in a moment."
 msgstr "Bạn vừa mới vào ca. Hãy thử lại sau giây lát."
 
+#: timeclock/services.py:173
 msgid "Clock-in cannot be in the future."
 msgstr "Giờ vào ca không được ở tương lai."
 
+#: timeclock/services.py:176
 msgid "Clock-out must be after clock-in."
 msgstr "Giờ ra ca phải sau giờ vào ca."
 
+#: timeclock/services.py:178
 msgid "Clock-out cannot be in the future."
 msgstr "Giờ ra ca không được ở tương lai."
 
+#: timeclock/services.py:183
 msgid "Every break needs an end time when the shift has a clock-out."
 msgstr "Mỗi lần nghỉ cần có giờ kết thúc khi ca đã có giờ ra ca."
 
+#: timeclock/services.py:185
 msgid "Only one break can be still running."
 msgstr "Chỉ được có một lần nghỉ đang diễn ra."
 
+#: timeclock/services.py:188
 msgid "Each break must start during the shift."
 msgstr "Mỗi lần nghỉ phải bắt đầu trong ca."
 
+#: timeclock/services.py:191
 msgid "A break must end after it starts."
 msgstr "Giờ kết thúc nghỉ phải sau giờ bắt đầu."
 
+#: timeclock/services.py:193
 msgid "Each break must end within the shift."
 msgstr "Mỗi lần nghỉ phải kết thúc trong ca."
 
+#: timeclock/services.py:197
 msgid "Breaks must not overlap."
 msgstr "Các lần nghỉ không được chồng lên nhau."
 
+#: timeclock/services.py:213
 msgid "Give a reason for the correction."
 msgstr "Hãy ghi lý do sửa."
 
+#: timeclock/services.py:218
 msgid "A closed shift cannot be reopened. Enter a clock-out time."
 msgstr "Không thể mở lại ca đã đóng. Hãy nhập giờ ra ca."
 
+#: timeclock/services.py:227
 #, python-format
 msgid ""
 "These times overlap another shift of this person (%(start)s). Correct that "
@@ -2045,88 +2868,130 @@ msgstr ""
 "Thời gian này trùng với một ca khác của người này (%(start)s). Hãy sửa ca đó"
 " trước."
 
+#: timeclock/services.py:240
 msgid "Nothing was changed."
 msgstr "Không có gì thay đổi."
 
+#: timeclock/templates/timeclock/_shift_table.html:5
+#: timeclock/templates/timeclock/correct.html:23
 msgid "End"
 msgstr "Kết thúc"
 
+#: timeclock/templates/timeclock/_shift_table.html:5
+#: timeclock/templates/timeclock/clock.html:52
+#: timeclock/templates/timeclock/correct.html:16
+#: timeclock/templates/timeclock/shift.html:10
+#: timeclock/templates/timeclock/shift.html:28
 msgid "Breaks"
 msgstr "Nghỉ"
 
+#: timeclock/templates/timeclock/_shift_table.html:5
+#: timeclock/templates/timeclock/clock.html:53
+#: timeclock/templates/timeclock/shift.html:11
 msgid "Worked"
 msgstr "Đã làm"
 
+#: timeclock/templates/timeclock/_shift_table.html:14
 msgid "Provisional, shift still open"
 msgstr "Tạm tính, ca vẫn đang mở"
 
+#: timeclock/templates/timeclock/_shift_table.html:16
 msgid "Open · on break"
 msgstr "Đang mở · đang nghỉ"
 
+#: timeclock/templates/timeclock/_shift_table.html:17
+#: timeclock/templates/timeclock/clock.html:53
 msgid "Corrected"
 msgstr "Đã sửa"
 
+#: timeclock/templates/timeclock/_shift_table.html:21
+#: timeclock/templates/timeclock/timesheets.html:23
 msgid "No shifts in this period."
 msgstr "Không có ca nào trong khoảng thời gian này."
 
+#: timeclock/templates/timeclock/clock.html:7
 #, python-format
 msgid "Now: %(now)s"
 msgstr "Bây giờ: %(now)s"
 
+#: timeclock/templates/timeclock/clock.html:12
 msgid "Clock in"
 msgstr "Vào ca"
 
+#: timeclock/templates/timeclock/clock.html:17
 #, python-format
 msgid "Break started at %(t)s"
 msgstr "Bắt đầu nghỉ lúc %(t)s"
 
+#: timeclock/templates/timeclock/clock.html:21
 #, python-format
 msgid "Clocked in %(t)s"
 msgstr "Vào ca lúc %(t)s"
 
+#: timeclock/templates/timeclock/clock.html:23
 msgid "Worked so far (provisional):"
 msgstr "Đã làm đến giờ (tạm tính):"
 
+#: timeclock/templates/timeclock/clock.html:25
 msgid "breaks"
 msgstr "nghỉ"
 
+#: timeclock/templates/timeclock/clock.html:30
 msgid "End break"
 msgstr "Kết thúc nghỉ"
 
+#: timeclock/templates/timeclock/clock.html:32
 msgid "End your break before clocking out."
 msgstr "Hãy kết thúc nghỉ trước khi ra ca."
 
+#: timeclock/templates/timeclock/clock.html:36
 msgid "Start break"
 msgstr "Bắt đầu nghỉ"
 
+#: timeclock/templates/timeclock/clock.html:38
 msgid "Clock out now?"
 msgstr "Ra ca bây giờ?"
 
+#: timeclock/templates/timeclock/clock.html:40
 msgid "Clock out"
 msgstr "Ra ca"
 
+#: timeclock/templates/timeclock/clock.html:47
 msgid "Last completed shift"
 msgstr "Ca hoàn thành gần nhất"
 
+#: timeclock/templates/timeclock/clock.html:50
+#: timeclock/templates/timeclock/correct.html:10
+#: timeclock/templates/timeclock/shift.html:8
+#: timeclock/templates/timeclock/shift.html:26
 msgid "Clock-in"
 msgstr "Vào ca"
 
+#: timeclock/templates/timeclock/clock.html:51
+#: timeclock/templates/timeclock/correct.html:12
+#: timeclock/templates/timeclock/shift.html:9
+#: timeclock/templates/timeclock/shift.html:27
 msgid "Clock-out"
 msgstr "Ra ca"
 
+#: timeclock/templates/timeclock/clock.html:57
 msgid "See all my hours"
 msgstr "Xem tất cả giờ làm của tôi"
 
+#: timeclock/templates/timeclock/correct.html:2
 msgid "Correct shift"
 msgstr "Sửa ca"
 
+#: timeclock/templates/timeclock/correct.html:4
 msgid "Back to shift"
 msgstr "Quay lại ca"
 
+#: timeclock/templates/timeclock/correct.html:5
 #, python-format
 msgid "Correct shift for %(name)s"
 msgstr "Sửa ca của %(name)s"
 
+#: timeclock/templates/timeclock/correct.html:6
 #, python-format
 msgid ""
 "Times are local restaurant time (%(tz)s). The original times, your changes, "
@@ -2135,33 +3000,42 @@ msgstr ""
 "Thời gian theo giờ địa phương của nhà hàng (%(tz)s). Giờ gốc, thay đổi của "
 "bạn, tên bạn và lý do sẽ được lưu lại và hiển thị cho nhân viên."
 
+#: timeclock/templates/timeclock/correct.html:14
 msgid "Leave empty to keep the shift open, or enter a time to close it."
 msgstr "Để trống nếu ca vẫn mở, hoặc nhập giờ để đóng ca."
 
+#: timeclock/templates/timeclock/correct.html:14
 msgid "Required for a closed shift."
 msgstr "Bắt buộc với ca đã đóng."
 
+#: timeclock/templates/timeclock/correct.html:20
 #, python-format
 msgid "Break %(n)s"
 msgstr "Nghỉ lần %(n)s"
 
+#: timeclock/templates/timeclock/correct.html:25
 msgid "Remove this break"
 msgstr "Xóa lần nghỉ này"
 
+#: timeclock/templates/timeclock/correct.html:29
 msgid "Reason for the correction"
 msgstr "Lý do sửa"
 
+#: timeclock/templates/timeclock/correct.html:32
 msgid "Save correction"
 msgstr "Lưu thay đổi"
 
+#: timeclock/templates/timeclock/mine.html:11
 msgid "Total of closed shifts"
 msgstr "Tổng các ca đã kết thúc"
 
+#: timeclock/templates/timeclock/mine.html:13
 #, python-format
 msgid "%(n)s open shift not included"
 msgid_plural "%(n)s open shifts not included"
 msgstr[0] "chưa tính %(n)s ca đang mở"
 
+#: timeclock/templates/timeclock/mine.html:15
 msgid ""
 "A shift is counted on the date it started (restaurant local time), even if "
 "it ends after midnight. Hours are rounded only for display."
@@ -2169,37 +3043,48 @@ msgstr ""
 "Ca được tính vào ngày bắt đầu (giờ địa phương của nhà hàng), kể cả khi kết "
 "thúc sau nửa đêm. Số giờ chỉ được làm tròn khi hiển thị."
 
+#: timeclock/templates/timeclock/shift.html:2
 msgid "Shift"
 msgstr "Ca"
 
+#: timeclock/templates/timeclock/shift.html:5
 #, python-format
 msgid "%(name)s · shift %(d)s"
 msgstr "%(name)s · ca %(d)s"
 
+#: timeclock/templates/timeclock/shift.html:11
 msgid "provisional, shift still open"
 msgstr "tạm tính, ca vẫn đang mở"
 
+#: timeclock/templates/timeclock/shift.html:13
 msgid "This shift has been corrected"
 msgstr "Ca này đã được sửa"
 
+#: timeclock/templates/timeclock/shift.html:18
 msgid "Correction history"
 msgstr "Lịch sử sửa"
 
+#: timeclock/templates/timeclock/shift.html:22
 msgid "Reason"
 msgstr "Lý do"
 
+#: timeclock/templates/timeclock/shift.html:24
 msgid "Before"
 msgstr "Trước"
 
+#: timeclock/templates/timeclock/shift.html:24
 msgid "After"
 msgstr "Sau"
 
+#: timeclock/templates/timeclock/shift.html:37
 msgid "Original clock actions"
 msgstr "Các lần chấm công gốc"
 
+#: timeclock/templates/timeclock/shift.html:39
 msgid "Action"
 msgstr "Thao tác"
 
+#: timeclock/templates/timeclock/timesheets.html:14
 msgid ""
 "Shifts are included by the local date they started, even if they end after "
 "midnight. Totals include closed shifts only; open shifts are shown "
@@ -2209,59 +3094,78 @@ msgstr ""
 "đêm. Tổng chỉ gồm các ca đã kết thúc; ca đang mở được hiển thị riêng ở dạng "
 "tạm tính. Chưa được duyệt để tính lương."
 
+#: timeclock/templates/timeclock/timesheets.html:16
 msgid "Totals"
 msgstr "Tổng"
 
+#: timeclock/templates/timeclock/timesheets.html:18
+#: timeclock/templates/timeclock/timesheets.html:29
 msgid "Shifts"
 msgstr "Số ca"
 
+#: timeclock/templates/timeclock/timesheets.html:18
 msgid "Closed-shift hours"
 msgstr "Giờ của các ca đã kết thúc"
 
+#: timeclock/templates/timeclock/timesheets.html:21
 #, python-format
 msgid "%(n)s open"
 msgid_plural "%(n)s open"
 msgstr[0] "%(n)s đang mở"
 
+#: timeclock/templates/timeclock/timesheets.html:26
 msgid "open"
 msgstr "đang mở"
 
+#: timeclock/views.py:40
 msgid "Clocked in."
 msgstr "Đã vào ca."
 
+#: timeclock/views.py:41
 msgid "Break started."
 msgstr "Đã bắt đầu nghỉ."
 
+#: timeclock/views.py:42
 msgid "Break ended."
 msgstr "Đã kết thúc nghỉ."
 
+#: timeclock/views.py:43
 msgid "Clocked out. Have a good rest of your day."
 msgstr "Đã ra ca. Chúc bạn một ngày tốt lành!"
 
+#: timeclock/views.py:59
 msgid "Your break was already running."
 msgstr "Bạn đã đang nghỉ rồi."
 
+#: timeclock/views.py:180
 msgid "Enter the clock-in time."
 msgstr "Nhập giờ vào ca."
 
+#: timeclock/views.py:188
 msgid "Each break needs a start time."
 msgstr "Mỗi lần nghỉ cần có giờ bắt đầu."
 
+#: timeclock/views.py:199
 msgid "Shift corrected. The previous times are kept in the history."
 msgstr "Đã sửa ca. Giờ cũ vẫn được giữ trong lịch sử."
 
+#: website/forms.py:6
 msgid "For example: Lunch deal – soup and bánh mì 12 €"
 msgstr "Ví dụ: Ưu đãi trưa – súp và bánh mì 12 €"
 
+#: website/forms.py:7
 msgid "Text"
 msgstr "Nội dung"
 
+#: website/forms.py:8
 msgid "First day"
 msgstr "Ngày bắt đầu"
 
+#: website/forms.py:10
 msgid "Last day"
 msgstr "Ngày kết thúc"
 
+#: website/forms.py:11
 msgid ""
 "The promotion disappears from the website after this day. Leave empty to "
 "keep it running."
@@ -2269,187 +3173,623 @@ msgstr ""
 "Khuyến mãi sẽ biến mất khỏi trang web sau ngày này. Để trống để giữ khuyến "
 "mãi mãi."
 
+#: website/forms.py:13
 msgid "Show on the website"
 msgstr "Hiển thị trên trang web"
 
+#: website/forms.py:23
+msgid "Restaurant name"
+msgstr "Tên nhà hàng"
+
+#: website/forms.py:24
+msgid "Tagline"
+msgstr "Khẩu hiệu"
+
+#: website/forms.py:25
+msgid "One short line under the name, for example “Vietnamese street food”."
+msgstr "Một dòng ngắn dưới tên, ví dụ “Món ăn đường phố Việt Nam”."
+
+#: website/forms.py:26
+msgid "Introduction"
+msgstr "Giới thiệu"
+
+#: website/forms.py:28
+msgid "Shown under “About us” on the homepage."
+msgstr "Hiển thị ở mục “Về chúng tôi” trên trang chủ."
+
+#: website/forms.py:29
+msgid "Street address"
+msgstr "Địa chỉ"
+
+#: website/forms.py:30
+msgid "Postal code"
+msgstr "Mã bưu điện"
+
+#: website/forms.py:31
+msgid "City"
+msgstr "Thành phố"
+
+#: website/forms.py:32
+msgid "Country"
+msgstr "Quốc gia"
+
+#: website/forms.py:33 website/templates/website/contact.html:16
+msgid "Phone"
+msgstr "Điện thoại"
+
+#: website/forms.py:35 website/templates/website/contact.html:17
+msgid "Email"
+msgstr "Email"
+
+#: website/forms.py:72
+msgid "Note (optional)"
+msgstr "Ghi chú (không bắt buộc)"
+
+#: website/forms.py:73
+msgid "Shown to customers, for example “Christmas Eve”."
+msgstr "Hiển thị cho khách, ví dụ “Đêm Giáng sinh”."
+
+#: website/forms.py:74
+msgid "Closed all day"
+msgstr "Đóng cửa cả ngày"
+
+#: website/forms.py:75
+msgid "Opens"
+msgstr "Mở cửa"
+
+#: website/forms.py:76 website/forms.py:78
+msgid "Closes"
+msgstr "Đóng cửa"
+
+#: website/forms.py:77
+msgid "Opens again (optional)"
+msgstr "Mở lại (không bắt buộc)"
+
+#: website/forms.py:92
+msgid ""
+"Describe the photo in a few words, for example “Dining room with window "
+"seats”. Screen readers read this aloud."
+msgstr ""
+"Mô tả ảnh bằng vài từ, ví dụ “Phòng ăn với chỗ ngồi cạnh cửa sổ”. Trình đọc "
+"màn hình sẽ đọc to nội dung này."
+
+#: website/models.py:16
 msgid "tagline"
 msgstr "khẩu hiệu"
 
+#: website/models.py:17
 msgid "introduction"
 msgstr "giới thiệu"
 
+#: website/models.py:18
 msgid "street address"
 msgstr "địa chỉ"
 
+#: website/models.py:19
 msgid "postal code"
 msgstr "mã bưu điện"
 
+#: website/models.py:20
 msgid "city"
 msgstr "thành phố"
 
+#: website/models.py:21
 msgid "country"
 msgstr "quốc gia"
 
+#: website/models.py:22
 msgid "phone"
 msgstr "điện thoại"
 
+#: website/models.py:23
 msgid "email"
 msgstr "email"
 
+#: website/models.py:26
 msgid "hero image description"
 msgstr "mô tả ảnh bìa"
 
+#: website/models.py:49
 msgid "Monday"
 msgstr "Thứ Hai"
 
+#: website/models.py:49
 msgid "Tuesday"
 msgstr "Thứ Ba"
 
+#: website/models.py:49
 msgid "Wednesday"
 msgstr "Thứ Tư"
 
+#: website/models.py:49
 msgid "Thursday"
 msgstr "Thứ Năm"
 
+#: website/models.py:50
 msgid "Friday"
 msgstr "Thứ Sáu"
 
+#: website/models.py:50
 msgid "Saturday"
 msgstr "Thứ Bảy"
 
+#: website/models.py:50
 msgid "Sunday"
 msgstr "Chủ Nhật"
 
+#: website/models.py:95
+msgid "date"
+msgstr "ngày"
+
+#: website/models.py:96
+msgid "closed all day"
+msgstr "đóng cửa cả ngày"
+
+#: website/models.py:101
+msgid "note"
+msgstr "ghi chú"
+
+#: website/models.py:157
 msgid "text"
 msgstr "nội dung"
 
+#: website/models.py:158
 msgid "first day"
 msgstr "ngày bắt đầu"
 
+#: website/models.py:159
 msgid "last day"
 msgstr "ngày kết thúc"
 
+#: website/models.py:159
 msgid "Leave empty to keep it running."
 msgstr "Để trống để giữ mãi."
 
+#: website/models.py:160
 msgid "published"
 msgstr "đã đăng"
 
+#: website/services.py:130
 msgid "Choose the first day."
 msgstr "Chọn ngày bắt đầu."
 
+#: website/services.py:132
 msgid "The last day cannot be before the first day."
 msgstr "Ngày kết thúc không được trước ngày bắt đầu."
 
+#: website/services.py:200
+msgid "Enter the restaurant name."
+msgstr "Nhập tên nhà hàng."
+
+#: website/services.py:202
+msgid ""
+"Enter a phone number with digits, spaces and an optional + at the start."
+msgstr "Nhập số điện thoại gồm chữ số, dấu cách và có thể có dấu + ở đầu."
+
+#: website/services.py:207
+msgid "Enter a valid email address."
+msgstr "Nhập địa chỉ email hợp lệ."
+
+#: website/services.py:210
+msgid "Enter both the street address and the city, or leave both empty."
+msgstr "Nhập cả địa chỉ và thành phố, hoặc để trống cả hai."
+
+#: website/services.py:236
+#, python-format
+msgid "%(day)s: enter both the opening and the closing time."
+msgstr "%(day)s: nhập cả giờ mở cửa và giờ đóng cửa."
+
+#: website/services.py:238
+#, python-format
+msgid "%(day)s: the closing time must differ from the opening time."
+msgstr "%(day)s: giờ đóng cửa phải khác giờ mở cửa."
+
+#: website/services.py:241
+#, python-format
+msgid "%(day)s: at most two opening periods per day."
+msgstr "%(day)s: tối đa hai khung giờ mở cửa mỗi ngày."
+
+#: website/services.py:245
+#, python-format
+msgid "%(day)s: the two opening periods overlap."
+msgstr "%(day)s: hai khung giờ mở cửa bị chồng lên nhau."
+
+#: website/services.py:273
+#, python-format
+msgid "%(day)s: the evening period runs past the opening time on %(next)s."
+msgstr "%(day)s: khung giờ buổi tối kéo dài quá giờ mở cửa của %(next)s."
+
+#: website/services.py:300
+msgid "Choose the date."
+msgstr "Chọn ngày."
+
+#: website/services.py:302
+msgid "Choose today or a later date."
+msgstr "Chọn hôm nay hoặc một ngày sau đó."
+
+#: website/services.py:311
+msgid "Enter the opening hours, or tick “Closed all day”."
+msgstr "Nhập giờ mở cửa, hoặc chọn “Đóng cửa cả ngày”."
+
+#: website/services.py:324
+msgid "This date already has special hours. Edit that entry instead."
+msgstr "Ngày này đã có giờ đặc biệt. Hãy sửa mục đó."
+
+#: website/services.py:364
+msgid "Describe the photo in a few words for people who cannot see it."
+msgstr "Mô tả ảnh bằng vài từ cho người không nhìn thấy được."
+
+#: website/services.py:433 website/services.py:441
+#, python-format
+msgid "The gallery holds at most %(n)s photos. Remove one first."
+msgstr "Thư viện ảnh chứa tối đa %(n)s ảnh. Hãy xóa bớt một ảnh trước."
+
+#: website/templates/website/_open_status.html:1
 msgid "Open now"
 msgstr "Đang mở cửa"
 
+#: website/templates/website/_open_status.html:1
 #, python-format
 msgid "until %(t)s"
 msgstr "đến %(t)s"
 
+#: website/templates/website/_open_status.html:1
 msgid "Closed now"
 msgstr "Đang đóng cửa"
 
+#: website/templates/website/_open_status.html:1
 #, python-format
 msgid "opens at %(t)s"
 msgstr "mở cửa lúc %(t)s"
 
+#: website/templates/website/_open_status.html:1
 #, python-format
 msgid "opens %(d)s at %(t)s"
 msgstr "mở cửa %(d)s lúc %(t)s"
 
+#: website/templates/website/_promotion_group.html:5
 msgid "no end date"
 msgstr "không có ngày kết thúc"
 
+#: website/templates/website/base.html:16
 msgid "Demo restaurant with example content."
 msgstr "Nhà hàng demo với nội dung mẫu."
 
+#: website/templates/website/base.html:16
 msgid "Try the staff app"
 msgstr "Dùng thử ứng dụng nhân viên"
 
+#: website/templates/website/base.html:25
 msgid "Home"
 msgstr "Trang chủ"
 
+#: website/templates/website/base.html:27
+#: website/templates/website/contact.html:2
 msgid "Contact"
 msgstr "Liên hệ"
 
-msgid "Opening hours"
-msgstr "Giờ mở cửa"
-
+#: website/templates/website/base.html:49
+#: website/templates/website/coming_soon.html:5
 msgid "Staff sign-in"
 msgstr "Nhân viên đăng nhập"
 
+#: website/templates/website/coming_soon.html:3
 msgid "Coming soon"
 msgstr "Sắp ra mắt"
 
+#: website/templates/website/coming_soon.html:4
 msgid "Our website is coming soon"
 msgstr "Trang web của chúng tôi sắp ra mắt"
 
+#: website/templates/website/contact.html:4
 msgid "Contact and opening hours"
 msgstr "Liên hệ và giờ mở cửa"
 
+#: website/templates/website/contact.html:7
 msgid "Where to find us"
 msgstr "Địa chỉ của chúng tôi"
 
+#: website/templates/website/contact.html:10
 msgid "Open in maps"
 msgstr "Mở trên bản đồ"
 
+#: website/templates/website/contact.html:12
 msgid "Address coming soon."
 msgstr "Địa chỉ sẽ sớm được cập nhật."
 
+#: website/templates/website/contact.html:14
 msgid "Get in touch"
 msgstr "Liên hệ với chúng tôi"
 
-msgid "Phone"
-msgstr "Điện thoại"
-
-msgid "Email"
-msgstr "Email"
-
+#: website/templates/website/contact.html:19
 msgid "Contact details coming soon."
 msgstr "Thông tin liên hệ sẽ sớm được cập nhật."
 
+#: website/templates/website/contact.html:35
+msgid "Special opening hours"
+msgstr "Giờ mở cửa đặc biệt"
+
+#: website/templates/website/home.html:10
 msgid "See the menu"
 msgstr "Xem thực đơn"
 
+#: website/templates/website/home.html:11
 msgid "Find us"
 msgstr "Tìm chúng tôi"
 
+#: website/templates/website/home.html:22
 msgid "Right now"
 msgstr "Hiện đang có"
 
+#: website/templates/website/home.html:28
 #, python-format
 msgid "Until %(d)s"
 msgstr "Đến %(d)s"
 
+#: website/templates/website/home.html:37
 msgid "About us"
 msgstr "Về chúng tôi"
 
+#: website/templates/website/home.html:44
+msgid "Our restaurant"
+msgstr "Nhà hàng của chúng tôi"
+
+#: website/templates/website/home.html:55
 msgid "From the menu"
 msgstr "Từ thực đơn"
 
+#: website/templates/website/home.html:55
 msgid "Full menu"
 msgstr "Xem toàn bộ thực đơn"
 
+#: website/templates/website/home.html:69
 msgid "Visit us"
 msgstr "Ghé thăm chúng tôi"
 
+#: website/templates/website/home.html:74
 msgid "Opening hours and contact"
 msgstr "Giờ mở cửa và liên hệ"
 
+#: website/templates/website/manage_hours.html:6
+msgid "View on the website"
+msgstr "Xem trên trang web"
+
+#: website/templates/website/manage_hours.html:9
+msgid "Regular hours"
+msgstr "Giờ mở cửa thường lệ"
+
+#: website/templates/website/manage_hours.html:10
+msgid ""
+"Leave a day empty if the restaurant is closed. Add a second period for a "
+"break in the day, for example lunch 11:00–14:00 and dinner 17:00–22:00. A "
+"closing time earlier than the opening time means after midnight."
+msgstr ""
+"Để trống ngày nếu nhà hàng đóng cửa. Thêm khung giờ thứ hai nếu nghỉ giữa "
+"ngày, ví dụ trưa 11:00–14:00 và tối 17:00–22:00. Giờ đóng cửa sớm hơn giờ mở"
+" cửa nghĩa là sau nửa đêm."
+
+#: website/templates/website/manage_hours.html:11
+msgid "Some hours need fixing. See the highlighted days."
+msgstr "Một số giờ cần sửa. Xem các ngày được đánh dấu."
+
+#: website/templates/website/manage_hours.html:15
+msgid "Day"
+msgstr "Ngày"
+
+#: website/templates/website/manage_hours.html:15
+msgid "Opening period"
+msgstr "Khung giờ mở cửa"
+
+#: website/templates/website/manage_hours.html:15
+msgid "Second period (optional)"
+msgstr "Khung giờ thứ hai (không bắt buộc)"
+
+#: website/templates/website/manage_hours.html:22
+#, python-format
+msgid "%(d)s opens"
+msgstr "%(d)s mở cửa"
+
+#: website/templates/website/manage_hours.html:24
+#, python-format
+msgid "%(d)s closes"
+msgstr "%(d)s đóng cửa"
+
+#: website/templates/website/manage_hours.html:35
+msgid "Save opening hours"
+msgstr "Lưu giờ mở cửa"
+
+#: website/templates/website/manage_hours.html:39
+#: website/templates/website/manage_special_day.html:2
+msgid "Special hours"
+msgstr "Giờ đặc biệt"
+
+#: website/templates/website/manage_hours.html:40
+#: website/templates/website/manage_special_day.html:5
+msgid "Add special hours"
+msgstr "Thêm giờ đặc biệt"
+
+#: website/templates/website/manage_hours.html:42
+msgid ""
+"For holidays and other exceptions. On these dates the special hours replace "
+"the regular hours, on the website and in the “open now” status."
+msgstr ""
+"Dành cho ngày lễ và các trường hợp ngoại lệ. Vào những ngày này, giờ đặc "
+"biệt thay thế giờ thường lệ trên trang web và trong trạng thái “đang mở "
+"cửa”."
+
+#: website/templates/website/manage_hours.html:46
+msgid "Actions"
+msgstr "Thao tác"
+
+#: website/templates/website/manage_hours.html:54
+msgid "Edit"
+msgstr "Sửa"
+
+#: website/templates/website/manage_hours.html:55
+msgid "Remove these special hours? The regular hours will apply on that date."
+msgstr "Xóa giờ đặc biệt này? Ngày đó sẽ áp dụng giờ thường lệ."
+
+#: website/templates/website/manage_hours.html:56
+#: website/templates/website/manage_images.html:72
+msgid "Remove"
+msgstr "Xóa"
+
+#: website/templates/website/manage_hours.html:65
+msgid "No special hours coming up."
+msgstr "Không có giờ đặc biệt sắp tới."
+
+#: website/templates/website/manage_hours.html:68
+msgid "Recent past special hours"
+msgstr "Giờ đặc biệt gần đây đã qua"
+
+#: website/templates/website/manage_images.html:6
+msgid "View the website"
+msgstr "Xem trang web"
+
+#: website/templates/website/manage_images.html:8
+msgid ""
+"Photos are checked and re-saved when uploaded; hidden camera details such as"
+" location are removed."
+msgstr ""
+"Ảnh được kiểm tra và lưu lại khi tải lên; thông tin ẩn của máy ảnh như vị "
+"trí sẽ bị xóa."
+
+#: website/templates/website/manage_images.html:11
+msgid "Logo"
+msgstr "Logo"
+
+#: website/templates/website/manage_images.html:12
+msgid ""
+"Shown next to the restaurant name at the top of every page. A square image "
+"works best."
+msgstr ""
+"Hiển thị cạnh tên nhà hàng ở đầu mỗi trang. Ảnh vuông là phù hợp nhất."
+
+#: website/templates/website/manage_images.html:15
+msgid "Current logo"
+msgstr "Logo hiện tại"
+
+#: website/templates/website/manage_images.html:16
+msgid "Remove the logo from the website?"
+msgstr "Xóa logo khỏi trang web?"
+
+#: website/templates/website/manage_images.html:17
+msgid "Remove logo"
+msgstr "Xóa logo"
+
+#: website/templates/website/manage_images.html:23
+msgid "Replace logo"
+msgstr "Thay logo"
+
+#: website/templates/website/manage_images.html:23
+msgid "Upload logo"
+msgstr "Tải logo lên"
+
+#: website/templates/website/manage_images.html:28
+msgid "Homepage photo"
+msgstr "Ảnh trang chủ"
+
+#: website/templates/website/manage_images.html:29
+msgid ""
+"The large photo at the top of the homepage. It is also used when the website"
+" is shared on social media."
+msgstr ""
+"Ảnh lớn ở đầu trang chủ. Ảnh này cũng được dùng khi chia sẻ trang web lên "
+"mạng xã hội."
+
+#: website/templates/website/manage_images.html:35
+#: website/templates/website/manage_images.html:62
+msgid "Save description"
+msgstr "Lưu mô tả"
+
+#: website/templates/website/manage_images.html:38
+msgid "Remove the homepage photo from the website?"
+msgstr "Xóa ảnh trang chủ khỏi trang web?"
+
+#: website/templates/website/manage_images.html:39
+msgid "Remove photo"
+msgstr "Xóa ảnh"
+
+#: website/templates/website/manage_images.html:45
+msgid "Replace photo"
+msgstr "Thay ảnh"
+
+#: website/templates/website/manage_images.html:50
+msgid "Gallery"
+msgstr "Thư viện ảnh"
+
+#: website/templates/website/manage_images.html:51
+#, python-format
+msgid ""
+"Up to %(n)s photos of the restaurant, shown on the homepage under “Our "
+"restaurant”."
+msgstr ""
+"Tối đa %(n)s ảnh về nhà hàng, hiển thị trên trang chủ ở mục “Nhà hàng của "
+"chúng tôi”."
+
+#: website/templates/website/manage_images.html:67
+#, python-format
+msgid "Move %(d)s earlier"
+msgstr "Đưa %(d)s lên trước"
+
+#: website/templates/website/manage_images.html:68
+#, python-format
+msgid "Move %(d)s later"
+msgstr "Đưa %(d)s ra sau"
+
+#: website/templates/website/manage_images.html:70
+msgid "Remove this photo from the website?"
+msgstr "Xóa ảnh này khỏi trang web?"
+
+#: website/templates/website/manage_images.html:78
+msgid "No gallery photos yet."
+msgstr "Chưa có ảnh nào trong thư viện."
+
+#: website/templates/website/manage_images.html:81
+msgid "The gallery is full. Remove a photo to add another."
+msgstr "Thư viện ảnh đã đầy. Hãy xóa một ảnh để thêm ảnh khác."
+
+#: website/templates/website/manage_images.html:86
+msgid "Add to gallery"
+msgstr "Thêm vào thư viện ảnh"
+
+#: website/templates/website/manage_info.html:6
+msgid "View contact page"
+msgstr "Xem trang liên hệ"
+
+#: website/templates/website/manage_info.html:8
+msgid ""
+"These details appear on the public website: the homepage, the contact page "
+"and the footer of every page. Changes show immediately."
+msgstr ""
+"Các thông tin này hiển thị trên trang web công khai: trang chủ, trang liên "
+"hệ và cuối mỗi trang. Thay đổi được hiển thị ngay."
+
+#: website/templates/website/manage_special_day.html:5
+msgid "Edit special hours"
+msgstr "Sửa giờ đặc biệt"
+
+#: website/templates/website/manage_special_day.html:6
+msgid "On this date these hours replace the regular hours."
+msgstr "Vào ngày này, các giờ này thay thế giờ thường lệ."
+
+#: website/templates/website/menu.html:7
 msgid "Menu sections"
 msgstr "Các phần thực đơn"
 
+#: website/templates/website/menu.html:25
 msgid "Not available today"
 msgstr "Hôm nay tạm hết"
 
+#: website/templates/website/menu.html:27
 msgid "Allergens:"
 msgstr "Chất gây dị ứng:"
 
+#: website/templates/website/menu.html:34
 msgid "The menu is being updated. Please check back soon."
 msgstr "Thực đơn đang được cập nhật. Vui lòng quay lại sau."
 
+#: website/templates/website/menu.html:40
 msgid ""
 "Allergen information is provided by our kitchen. If you have an allergy, "
 "please tell your server when you order."
@@ -2457,10 +3797,12 @@ msgstr ""
 "Thông tin chất gây dị ứng do bếp của chúng tôi cung cấp. Nếu bạn bị dị ứng, "
 "vui lòng báo cho nhân viên khi gọi món."
 
+#: website/templates/website/promotion_delete.html:3
 #, python-format
 msgid "Delete “%(t)s”?"
 msgstr "Xóa “%(t)s”?"
 
+#: website/templates/website/promotion_delete.html:5
 msgid ""
 "It disappears from the website and from this list. To hide it for now, edit "
 "it and untick “Show on the website” instead."
@@ -2468,18 +3810,25 @@ msgstr ""
 "Khuyến mãi sẽ biến mất khỏi trang web và khỏi danh sách này. Nếu chỉ muốn "
 "tạm ẩn, hãy sửa và bỏ chọn “Hiển thị trên trang web”."
 
+#: website/templates/website/promotion_delete.html:8
 msgid "Delete promotion"
 msgstr "Xóa khuyến mãi"
 
+#: website/templates/website/promotion_form.html:2
+#: website/templates/website/promotion_form.html:5
+#: website/templates/website/promotion_list.html:6
 msgid "New promotion"
 msgstr "Khuyến mãi mới"
 
+#: website/templates/website/promotion_form.html:5
 msgid "Edit promotion"
 msgstr "Sửa khuyến mãi"
 
+#: website/templates/website/promotion_form.html:12
 msgid "Delete"
 msgstr "Xóa"
 
+#: website/templates/website/promotion_list.html:8
 msgid ""
 "Promotions appear on the public homepage from their first day to their last "
 "day, then disappear by themselves."
@@ -2487,23 +3836,72 @@ msgstr ""
 "Khuyến mãi hiển thị trên trang chủ từ ngày bắt đầu đến ngày kết thúc, sau đó"
 " tự biến mất."
 
+#: website/templates/website/promotion_list.html:10
 msgid "On the website now"
 msgstr "Đang hiện trên trang web"
 
+#: website/templates/website/promotion_list.html:11
 msgid "Starting later"
 msgstr "Sẽ bắt đầu sau"
 
+#: website/templates/website/promotion_list.html:12
 msgid "Not shown (unpublished)"
 msgstr "Không hiển thị (chưa đăng)"
 
+#: website/templates/website/promotion_list.html:13
 msgid "Ended"
 msgstr "Đã kết thúc"
 
+#: website/templates/website/promotion_list.html:15
 msgid "No promotions yet."
 msgstr "Chưa có khuyến mãi nào."
 
+#: website/views.py:164
 msgid "Promotion saved."
 msgstr "Đã lưu khuyến mãi."
 
+#: website/views.py:174
 msgid "Promotion deleted."
 msgstr "Đã xóa khuyến mãi."
+
+#: website/views.py:199
+msgid "Restaurant details saved. The public website shows them now."
+msgstr ""
+"Đã lưu thông tin nhà hàng. Trang web công khai đã hiển thị thông tin mới."
+
+#: website/views.py:216
+msgid "Opening hours saved."
+msgstr "Đã lưu giờ mở cửa."
+
+#: website/views.py:249
+#, python-format
+msgid "Special hours saved for %(d)s."
+msgstr "Đã lưu giờ đặc biệt cho ngày %(d)s."
+
+#: website/views.py:259
+msgid "Special hours removed. The regular hours apply on that date again."
+msgstr "Đã xóa giờ đặc biệt. Ngày đó áp dụng lại giờ thường lệ."
+
+#: website/views.py:302
+msgid "Logo saved."
+msgstr "Đã lưu logo."
+
+#: website/views.py:307
+msgid "Homepage photo saved."
+msgstr "Đã lưu ảnh trang chủ."
+
+#: website/views.py:312 website/views.py:326
+msgid "Description saved."
+msgstr "Đã lưu mô tả."
+
+#: website/views.py:315 website/views.py:332
+msgid "Photo removed from the website."
+msgstr "Đã xóa ảnh khỏi trang web."
+
+#: website/views.py:320
+msgid "Photo added to the gallery."
+msgstr "Đã thêm ảnh vào thư viện."
+
+#: website/views.py:329
+msgid "Order saved."
+msgstr "Đã lưu thứ tự."

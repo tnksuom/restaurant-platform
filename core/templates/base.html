@@ -34,6 +34,11 @@
         <li><a href="{% url 'staff:list' %}">{% translate "Staff" %}</a></li>
         <li><a href="{% url 'menu:overview' %}">{% translate "Menu" %}</a></li>
         <li><a href="{% url 'website:promotions' %}">{% translate "Promotions" %}</a></li>
+        {% if is_owner %}
+        <li><a href="{% url 'website:info' %}">{% translate "Restaurant details" %}</a></li>
+        <li><a href="{% url 'website:hours' %}">{% translate "Opening hours" %}</a></li>
+        <li><a href="{% url 'website:images' %}">{% translate "Website images" %}</a></li>
+        {% endif %}
         <li><a href="{% url 'website:home' %}">{% translate "Public website" %}</a></li>
         {% else %}
         <li><a href="{% url 'checklists:history' %}">{% translate "My submitted checklists" %}</a></li>

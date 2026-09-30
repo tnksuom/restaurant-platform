@@ -271,7 +271,7 @@ class Command(BaseCommand):
 
         from menu import services as ms
         from website import services as ws
-        from website.models import OpeningHours, PublicProfile
+        from website.models import GalleryImage, OpeningHours, PublicProfile, SpecialDay
 
         store = ms.public_store()
         profile = PublicProfile.objects.create(
@@ -291,6 +291,23 @@ class Command(BaseCommand):
             OpeningHours.objects.create(restaurant=r, weekday=weekday, opens=dtime(10, 30), closes=dtime(21, 0))
         OpeningHours.objects.create(restaurant=r, weekday=5, opens=dtime(12, 0), closes=dtime(2, 0))
         OpeningHours.objects.create(restaurant=r, weekday=6, opens=dtime(12, 0), closes=dtime(18, 0))
+
+        # Special hours: one soon, so the demo shows it, and the next Finnish holidays.
+        SpecialDay.objects.create(restaurant=r, date=today + timedelta(days=9), opens=dtime(10, 30),
+                                  closes=dtime(16, 0), note="Private event in the evening (example)")
+        year = today.year if (today.month, today.day) <= (12, 6) else today.year + 1
+        SpecialDay.objects.create(restaurant=r, date=today.replace(year=year, month=12, day=6), is_closed=True,
+                                  note="Independence Day")
+        SpecialDay.objects.create(restaurant=r, date=today.replace(year=year, month=12, day=24), opens=dtime(10, 30),
+                                  closes=dtime(15, 0), note="Christmas Eve")
+        for i, (colour, alt) in enumerate([
+            ((122, 86, 60), "Example photo: dining room"),
+            ((52, 84, 110), "Example photo: the counter"),
+            ((96, 110, 64), "Example photo: terrace"),
+        ]):
+            photo = placeholder_photo("Bistro Demo", (1200, 900), colour, bowls=1 + i % 3)
+            GalleryImage.objects.create(restaurant=r, key=store.write(photo, "jpg"), width=1200, height=900,
+                                        alt=alt, position=i)
 
         ws.save_promotion(manager, None, title="Lunch deal: phở + iced coffee 15 €",
                           body="Weekdays 10:30–14:00. Example promotion.", starts_on=today - timedelta(days=5),

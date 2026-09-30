@@ -29,3 +29,13 @@ def manager_required(view):
         return view(request, *args, **kwargs)
 
     return wrapper
+
+
+def owner_required(view):
+    @wraps(view)
+    def wrapper(request, *args, **kwargs):
+        if not is_owner(request.user):
+            raise PermissionDenied
+        return view(request, *args, **kwargs)
+
+    return wrapper

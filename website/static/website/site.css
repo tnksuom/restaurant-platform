@@ -112,3 +112,10 @@ address { font-style: normal; font-size: 1.1rem; margin-bottom: 14px; }
 .lang-switch button { min-height: 40px; min-width: 40px; padding: 0 8px; border: 1px solid transparent; background: none; color: var(--muted); font: 600 .85rem/1 var(--text); border-radius: 8px; cursor: pointer; }
 .lang-switch button[aria-current="true"] { color: var(--ink); border-color: var(--line); background: var(--paper); }
 @media (max-width: 520px) { .site-header .lang-switch { margin-left: auto; } .brand { flex: 1; } }
+
+/* EP08: gallery and special hours */
+.gallery { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+.gallery figure { margin: 0; }
+.gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; border-radius: var(--radius); }
+.special-title { margin: 24px 0 8px; }
+.special-hours .small { font-weight: 400; color: var(--muted, #666); }

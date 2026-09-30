@@ -1,0 +1,91 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% translate "Website images" %}{% endblock %}
+{% block content %}
+<div class="spread">
+  <h1>{% translate "Website images" %}</h1>
+  <a class="btn btn-secondary" href="{% url 'website:home' %}" target="_blank" rel="noopener">{% translate "View the website" %}</a>
+</div>
+<p class="small muted">{% translate "Photos are checked and re-saved when uploaded; hidden camera details such as location are removed." %}</p>
+
+<section class="card" aria-labelledby="logo-title">
+  <h2 id="logo-title">{% translate "Logo" %}</h2>
+  <p class="small muted">{% translate "Shown next to the restaurant name at the top of every page. A square image works best." %}</p>
+  {% if profile.logo_key %}
+  <div class="row">
+    <img class="logo-preview" src="{% url 'website:image' profile.logo_key %}" alt="{% translate 'Current logo' %}" width="72" height="72">
+    <form method="post" data-confirm="{% translate 'Remove the logo from the website?' %}">{% csrf_token %}
+      <button class="btn btn-secondary" type="submit" name="action" value="logo_remove">{% translate "Remove logo" %}</button>
+    </form>
+  </div>
+  {% endif %}
+  <form method="post" enctype="multipart/form-data" class="stacked upload" novalidate>{% csrf_token %}
+    {% with form=forms.logo %}{% include "core/form_fields.html" %}{% endwith %}
+    <button class="btn" type="submit" name="action" value="logo_upload">{% if profile.logo_key %}{% translate "Replace logo" %}{% else %}{% translate "Upload logo" %}{% endif %}</button>
+  </form>
+</section>
+
+<section class="card" aria-labelledby="hero-title">
+  <h2 id="hero-title">{% translate "Homepage photo" %}</h2>
+  <p class="small muted">{% translate "The large photo at the top of the homepage. It is also used when the website is shared on social media." %}</p>
+  {% if profile.hero_key %}
+  <img class="photo" src="{% url 'website:image' profile.hero_key %}" alt="{{ profile.hero_alt }}" style="max-width:360px">
+  <form method="post" class="stacked" novalidate>{% csrf_token %}
+    {% with form=forms.hero_alt %}{% include "core/form_fields.html" %}{% endwith %}
+    <div class="row">
+      <button class="btn btn-secondary" type="submit" name="action" value="hero_alt">{% translate "Save description" %}</button>
+    </div>
+  </form>
+  <form method="post" data-confirm="{% translate 'Remove the homepage photo from the website?' %}">{% csrf_token %}
+    <button class="btn btn-secondary" type="submit" name="action" value="hero_remove">{% translate "Remove photo" %}</button>
+  </form>
+  <h3>{% translate "Replace with a new photo" %}</h3>
+  {% endif %}
+  <form method="post" enctype="multipart/form-data" class="stacked upload" novalidate>{% csrf_token %}
+    {% with form=forms.hero %}{% include "core/form_fields.html" %}{% endwith %}
+    <button class="btn" type="submit" name="action" value="hero_upload">{% if profile.hero_key %}{% translate "Replace photo" %}{% else %}{% translate "Upload photo" %}{% endif %}</button>
+  </form>
+</section>
+
+<section class="card" aria-labelledby="gallery-title">
+  <h2 id="gallery-title">{% translate "Gallery" %}</h2>
+  <p class="small muted">{% blocktranslate with n=gallery_max %}Up to {{ n }} photos of the restaurant, shown on the homepage under “Our restaurant”.{% endblocktranslate %}</p>
+  {% if gallery %}
+  <ul class="gallery-admin">
+    {% for img in gallery %}
+    <li>
+      <img src="{% url 'website:image' img.key %}" alt="{{ img.alt }}" width="{{ img.width }}" height="{{ img.height }}">
+      <form method="post" class="stacked" novalidate>{% csrf_token %}
+        <input type="hidden" name="image" value="{{ img.pk }}">
+        <label for="alt-{{ img.pk }}">{% translate "Description" %}</label>
+        <input type="text" id="alt-{{ img.pk }}" name="alt" value="{{ img.alt }}" maxlength="200" required>
+        <div class="row">
+          <button class="btn btn-secondary" type="submit" name="action" value="gallery_alt">{% translate "Save description" %}</button>
+        </div>
+      </form>
+      <form method="post" class="row">{% csrf_token %}
+        <input type="hidden" name="image" value="{{ img.pk }}">
+        {% if not forloop.first %}<button class="btn btn-secondary" type="submit" name="action" value="gallery_up" aria-label="{% blocktranslate with d=img.alt %}Move {{ d }} earlier{% endblocktranslate %}">↑</button>{% endif %}
+        {% if not forloop.last %}<button class="btn btn-secondary" type="submit" name="action" value="gallery_down" aria-label="{% blocktranslate with d=img.alt %}Move {{ d }} later{% endblocktranslate %}">↓</button>{% endif %}
+      </form>
+      <form method="post" data-confirm="{% translate 'Remove this photo from the website?' %}">{% csrf_token %}
+        <input type="hidden" name="image" value="{{ img.pk }}">
+        <button class="btn btn-secondary" type="submit" name="action" value="gallery_delete">{% translate "Remove" %}</button>
+      </form>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="muted">{% translate "No gallery photos yet." %}</p>
+  {% endif %}
+  {% if gallery_full %}
+  <p class="muted">{% translate "The gallery is full. Remove a photo to add another." %}</p>
+  {% else %}
+  <h3>{% translate "Add a photo" %}</h3>
+  <form method="post" enctype="multipart/form-data" class="stacked upload" novalidate>{% csrf_token %}
+    {% with form=forms.gallery %}{% include "core/form_fields.html" %}{% endwith %}
+    <button class="btn" type="submit" name="action" value="gallery_add">{% translate "Add to gallery" %}</button>
+  </form>
+  {% endif %}
+</section>
+<p class="small muted"><a href="{% url 'website:info' %}">{% translate "Restaurant details" %}</a> · <a href="{% url 'website:hours' %}">{% translate "Opening hours" %}</a></p>
+{% endblock %}
