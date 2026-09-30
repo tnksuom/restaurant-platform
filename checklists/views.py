@@ -35,6 +35,7 @@ ANSWER_CHOICES = {
     ResponseType.PASS_FAIL: lambda: [("PASS", _("Pass")), ("FAIL", _("Fail")), ("NOT_APPLICABLE", _("N/A"))],
     ResponseType.CONFIRMATION: lambda: [("PASS", _("Done")), ("FAIL", _("Not done")), ("NOT_APPLICABLE", _("N/A"))],
     ResponseType.TEMPERATURE: lambda: [("PASS", _("Record reading")), ("NOT_APPLICABLE", _("N/A"))],
+    ResponseType.STOCK_LEVEL: lambda: [("PASS", _("Enough")), ("FAIL", _("Low")), ("NOT_APPLICABLE", _("N/A"))],
 }
 
 
@@ -100,38 +101,64 @@ def run_detail(request, pk):
     issues = {}
     for issue in run.issues.select_related("reported_by").prefetch_related("attachments"):
         issues.setdefault(issue.response_id, []).append(issue)
-    for task in run.tasks.select_related("response", "response__answered_by"):
-        tasks.append({
-            "task": task, "response": task.response, "issues": issues.get(task.response.pk, []),
+    feedback = request.session.pop(f"checklist-feedback-{run.pk}", None)
+    groups = []
+    for number, task in enumerate(run.tasks.select_related("response", "response__answered_by"), start=1):
+        if not groups or groups[-1]["name"] != task.section:
+            groups.append({"name": task.section, "tasks": [], "answered": 0})
+        group = groups[-1]
+        response = task.response
+        group["tasks"].append({
+            "number": number, "task": task, "response": response, "issues": issues.get(response.pk, []),
             "choices": ANSWER_CHOICES[task.response_type](),
-            "answer_label": answer_label(task.response_type, task.response.status),
+            "answer_label": answer_label(task.response_type, response.status),
+            "feedback": feedback if feedback and feedback["id"] == response.pk else None,
         })
+        if response.status != ResponseStatus.PENDING:
+            group["answered"] += 1
     return render(
         request,
         "checklists/run.html",
-        {"run": run, "tasks": tasks, "counts": services.run_counts(run), "editable": not run.is_submitted},
+        {"run": run, "groups": groups, "counts": services.run_counts(run), "editable": not run.is_submitted,
+         "has_groups": any(g["name"] for g in groups),
+         "finish_feedback": feedback if feedback and feedback["id"] == "finish" else None},
     )
 
 
 @require_POST
 def save_response(request, pk, response_id):
+    """One tap saves the answer and moves on to the next task.
+
+    Feedback is shown inside the task's own card (the page scrolls there), not at the top.
+    """
     run = _get_run(request, pk)
-    anchor = f"#task-{response_id}"
+    note = request.POST.get("note", "")
+    key = f"checklist-feedback-{run.pk}"
     try:
         services.save_response(
             request.user, response_id, request.POST.get("status", ""),
-            temperature=request.POST.get("temperature"), note=request.POST.get("note", ""),
+            temperature=request.POST.get("temperature"), note=note,
         )
     except ValidationError as exc:
-        messages.error(request, _error_text(exc))
+        request.session[key] = {"id": int(response_id), "level": "error", "text": _error_text(exc), "note": note}
+        return redirect(reverse("checklists:run", args=[run.pk]) + f"#task-{response_id}")
+    response = ChecklistResponse.objects.select_related("task").get(pk=response_id)
+    saved = _("Saved “%(task)s”: %(answer)s.") % {
+        "task": response.task.text, "answer": answer_label(response.task.response_type, response.status)}
+    if response.temperature_out_of_range:
+        feedback = ("warning", saved + " " + _("The reading is outside the configured range, so an issue was opened for a manager."))
+    elif response.status == ResponseStatus.FAIL:
+        feedback = ("warning", saved + " " + _("A manager can see it in the issue list."))
     else:
-        response = ChecklistResponse.objects.get(pk=response_id)
-        if response.temperature_out_of_range:
-            messages.warning(request, _("Saved. The reading is outside the configured range, so an issue was opened for a manager."))
-        elif response.status == ResponseStatus.FAIL:
-            messages.warning(request, _("Saved. An issue was opened for a manager to follow up."))
-        else:
-            messages.success(request, _("Saved."))
+        feedback = ("success", saved)
+    ids = list(run.tasks.order_by("position", "id").values_list("response__pk", flat=True))
+    position = ids.index(response.pk)
+    if position + 1 < len(ids):
+        # Show the confirmation on the next task, which is where the page lands.
+        target, anchor = ids[position + 1], f"#task-{ids[position + 1]}"
+    else:
+        target, anchor = "finish", "#finish"
+    request.session[key] = {"id": target, "level": feedback[0], "text": str(feedback[1])}
     return redirect(reverse("checklists:run", args=[run.pk]) + anchor)
 
 
@@ -337,7 +364,8 @@ def template_edit(request, pk=None):
         template = get_object_or_404(ChecklistTemplate, pk=pk, restaurant=request.user.restaurant)
         initial_tasks = [
             {
-                "id": t.pk, "position": t.position, "text": t.text, "response_type": t.response_type,
+                "id": t.pk, "position": t.position, "section": t.section, "text": t.text,
+                "response_type": t.response_type,
                 "required": t.required, "equipment_or_location": t.equipment_or_location,
                 "min_temperature": t.min_temperature, "max_temperature": t.max_temperature,
             }
@@ -351,11 +379,19 @@ def template_edit(request, pk=None):
     error = None
     if request.method == "POST" and form.is_valid() and formset.is_valid():
         tasks = [f.cleaned_data for f in formset.forms if f.cleaned_data]
+        pasted = services.parse_task_lines(form.cleaned_data.pop("paste_tasks", ""))
+        paste_type = form.cleaned_data.pop("paste_response_type")
+        start = max([t.get("position") or 0 for t in tasks] + [len(tasks)])
+        for offset, (group, text) in enumerate(pasted, start=1):
+            tasks.append({"position": start + offset, "section": group, "text": text,
+                          "response_type": paste_type, "required": True})
         try:
             template = services.save_template(request.user, template, tasks=tasks, **form.cleaned_data)
         except ValidationError as exc:
             error = _error_text(exc)
         else:
+            if pasted:
+                messages.success(request, _("%(n)s task(s) added from the pasted list.") % {"n": len(pasted)})
             messages.success(request, _("Checklist saved (version %(v)s). Runs already started keep their original tasks.") % {"v": template.version})
             return redirect("checklists:templates")
     return render(

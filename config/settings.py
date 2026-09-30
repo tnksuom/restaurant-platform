@@ -219,3 +219,4 @@ if len(sys.argv) > 1 and sys.argv[1] == "test":
     PUBLIC_UPLOAD_ROOT = BASE_DIR / ".test_public_uploads"
     STORAGES["staticfiles"]["BACKEND"] = "django.contrib.staticfiles.storage.StaticFilesStorage"
     SECURE_SSL_REDIRECT = False
+    MIDDLEWARE = [m for m in MIDDLEWARE if m != "whitenoise.middleware.WhiteNoiseMiddleware"]

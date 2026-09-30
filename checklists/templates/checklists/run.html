@@ -12,62 +12,65 @@
   <p class="small">
     {% blocktranslate with a=counts.answered t=counts.total %}{{ a }} of {{ t }} answered{% endblocktranslate %}
     {% if counts.pending_required %} · <strong>{% blocktranslate count n=counts.pending_required %}{{ n }} required task left{% plural %}{{ n }} required tasks left{% endblocktranslate %}</strong>{% endif %}
-    {% if counts.failed %} · <span class="neg">{% blocktranslate count n=counts.failed %}{{ n }} failed{% plural %}{{ n }} failed{% endblocktranslate %}</span>{% endif %}
+    {% if counts.failed %} · <span class="neg">{% blocktranslate count n=counts.failed %}{{ n }} failed or low{% plural %}{{ n }} failed or low{% endblocktranslate %}</span>{% endif %}
     {% if counts.warnings %} · <span class="neg">{% blocktranslate count n=counts.warnings %}{{ n }} temperature warning{% plural %}{{ n }} temperature warnings{% endblocktranslate %}</span>{% endif %}
   </p>
   <p class="small muted">{% blocktranslate with who=run.started_by.display_name when=run.started_at|date:"H:i" %}Started by {{ who }} at {{ when }}{% endblocktranslate %}{% if run.is_submitted %} · {% blocktranslate with who=run.submitted_by.display_name when=run.submitted_at|date:"j.n. H:i" %}submitted by {{ who }} at {{ when }}{% endblocktranslate %}{% endif %} · {% blocktranslate with v=run.template_version %}checklist version {{ v }}{% endblocktranslate %}</p>
+  {% if has_groups %}
+  <nav class="group-nav" aria-label="{% translate 'Groups' %}">
+    {% for g in groups %}<a href="#group-{{ forloop.counter }}"{% if g.answered == g.tasks|length %} class="complete"{% endif %}>{{ g.name|default:_("Other") }} <span>{{ g.answered }}/{{ g.tasks|length }}</span></a>{% endfor %}
+  </nav>
+  {% endif %}
+  {% if editable %}<p class="small muted" style="margin-bottom:0">{% translate "Tap an answer to save it. The page moves on to the next task." %}</p>{% endif %}
 </div>
 
-{% for t in tasks %}
+{% for g in groups %}
+{% if has_groups %}
+<h2 class="group-title" id="group-{{ forloop.counter }}">{{ g.name|default:_("Other") }} <span class="small muted">{{ g.answered }}/{{ g.tasks|length }}</span></h2>
+{% endif %}
+{% for t in g.tasks %}
 {% with task=t.task r=t.response %}
-<section id="task-{{ r.pk }}" class="card task {% if r.status == 'PENDING' %}pending{% elif r.status == 'FAIL' or r.temperature_out_of_range %}failed{% elif r.status == 'NOT_APPLICABLE' %}na{% else %}done{% endif %}">
+<section id="task-{{ r.pk }}" class="card task compact {% if r.status == 'PENDING' %}pending{% elif r.status == 'FAIL' or r.temperature_out_of_range %}failed{% elif r.status == 'NOT_APPLICABLE' %}na{% else %}done{% endif %}">
   <div class="spread">
-    <h3>{{ forloop.counter }}. {{ task.text }}</h3>
-    <span>{% if task.required %}<span class="badge">{% translate "Required" %}</span>{% else %}<span class="badge badge-muted">{% translate "Optional" %}</span>{% endif %}</span>
+    <h3>{{ t.number }}. {{ task.text }}</h3>
+    {% if r.status != "PENDING" %}
+      <span class="badge {% if r.status == 'FAIL' or r.temperature_out_of_range %}badge-bad{% elif r.status == 'NOT_APPLICABLE' %}badge-muted{% else %}badge-ok{% endif %}">{{ t.answer_label }}{% if r.temperature_c is not None %} · {{ r.temperature_c|qty }} °C{% endif %}</span>
+    {% elif not task.required %}<span class="badge badge-muted">{% translate "Optional" %}</span>{% endif %}
   </div>
   {% if task.equipment_or_location %}<p class="small muted">{{ task.equipment_or_location }}</p>{% endif %}
   {% if task.response_type == "TEMPERATURE" %}
     <p class="small muted">{% if task.has_thresholds %}{% translate "Acceptable range set by manager:" %} {% if task.min_temperature is not None %}{{ task.min_temperature|qty }} °C{% else %}—{% endif %} … {% if task.max_temperature is not None %}{{ task.max_temperature|qty }} °C{% else %}—{% endif %}{% else %}{% translate "No acceptable range is configured. The reading is recorded only." %}{% endif %}</p>
   {% endif %}
-
   {% if r.status != "PENDING" %}
-  <p>
-    <strong>{{ t.answer_label }}</strong>
-    {% if r.temperature_c is not None %} · <strong>{{ r.temperature_c|qty }} °C</strong>
-      {% if r.temperature_out_of_range %} <span class="badge badge-bad">{% translate "Outside range" %}</span>{% elif r.temperature_out_of_range is False %} <span class="badge badge-ok">{% translate "Within range" %}</span>{% endif %}
-    {% endif %}
-    <br><span class="small muted">{{ r.answered_by.display_name }} · {{ r.answered_at|date:"j.n. H:i" }}</span>
-  </p>
-  {% if r.note %}<p class="small"><strong>{% translate "Note" %}:</strong> {{ r.note|linebreaksbr }}</p>{% endif %}
+    <p class="small muted answered-by">{% if r.note %}<strong class="note-text">{{ r.note }}</strong> · {% endif %}{{ r.answered_by.display_name }} · {{ r.answered_at|date:"j.n. H:i" }}{% if r.temperature_out_of_range %} · <span class="neg">{% translate "Outside range" %}</span>{% endif %}</p>
   {% elif not editable %}
-  <p class="neg"><strong>{% translate "Not answered" %}</strong></p>
+    <p class="neg small"><strong>{% translate "Not answered" %}</strong></p>
   {% endif %}
 
+  {% if t.feedback %}<p class="msg msg-{{ t.feedback.level }} inline-msg" role="status">{{ t.feedback.text }}</p>{% endif %}
+
   {% if editable %}
-  <form method="post" action="{% url 'checklists:save_response' run.pk r.pk %}">{% csrf_token %}
-    <fieldset class="choices">
-      <legend class="sr-only">{% translate "Answer" %}</legend>
-      {% for value, label in t.choices %}
-      <label class="choice"><input type="radio" name="status" value="{{ value }}"{% if r.status == value %} checked{% endif %} required><span>{{ label }}</span></label>
-      {% endfor %}
-    </fieldset>
+  <form method="post" action="{% url 'checklists:save_response' run.pk r.pk %}" class="answer-form">{% csrf_token %}
     {% if task.response_type == "TEMPERATURE" %}
-    <div class="field"><label for="temp-{{ r.pk }}">{% translate "Reading (°C)" %}</label>
-      <input id="temp-{{ r.pk }}" type="text" inputmode="decimal" name="temperature" value="{{ r.temperature_c|default_if_none:'' }}" autocomplete="off"></div>
+    <label class="sr-only" for="temp-{{ r.pk }}">{% translate "Reading (°C)" %}</label>
+    <input id="temp-{{ r.pk }}" type="text" inputmode="decimal" name="temperature" value="{{ r.temperature_c|default_if_none:'' }}" autocomplete="off" placeholder="{% translate 'Reading °C' %}">
     {% endif %}
-    <div class="field"><label for="note-{{ r.pk }}">{% translate "Note" %} <span class="muted small">({% translate "required for fail, not done and N/A" %})</span></label>
-      <textarea id="note-{{ r.pk }}" name="note" rows="2">{{ r.note }}</textarea></div>
-    <div class="row">
-      <button class="btn" type="submit">{% translate "Save answer" %}</button>
-      <a class="btn btn-secondary" href="{% url 'checklists:report_issue' run.pk r.pk %}">{% translate "Report a problem" %}</a>
+    <label class="sr-only" for="note-{{ r.pk }}">{% if task.response_type == "STOCK_LEVEL" %}{% translate "Quantity or note" %}{% else %}{% translate "Note" %}{% endif %}</label>
+    <input id="note-{{ r.pk }}" type="text" name="note" value="{% if t.feedback and t.feedback.note is not None %}{{ t.feedback.note }}{% else %}{{ r.note }}{% endif %}" autocomplete="off"
+      placeholder="{% if task.response_type == 'STOCK_LEVEL' %}{% translate 'Quantity / note (needed for Low)' %}{% else %}{% translate 'Note (needed for Fail, Not done, N/A)' %}{% endif %}">
+    <div class="answer-buttons" role="group" aria-label="{% blocktranslate with t=task.text %}Answer for {{ t }}{% endblocktranslate %}">
+      {% for value, label in t.choices %}
+      <button type="submit" name="status" value="{{ value }}" class="answer answer-{{ value|lower }}"{% if r.status == value %} aria-pressed="true"{% endif %}>{{ label }}</button>
+      {% endfor %}
     </div>
   </form>
+  <p class="small report-link"><a href="{% url 'checklists:report_issue' run.pk r.pk %}">{% translate "Report a problem with a photo" %}</a></p>
   {% elif is_manager %}
-  <p><a href="{% url 'checklists:report_issue' run.pk r.pk %}">{% translate "Flag an issue on this task" %}</a></p>
+  <p class="small report-link"><a href="{% url 'checklists:report_issue' run.pk r.pk %}">{% translate "Flag an issue on this task" %}</a></p>
   {% endif %}
 
   {% for issue in t.issues %}
-  <div class="msg {% if issue.status == 'OPEN' %}msg-warning{% else %}msg-success{% endif %}" style="margin-top:10px">
+  <div class="msg {% if issue.status == 'OPEN' %}msg-warning{% else %}msg-success{% endif %} inline-msg">
     <a href="{% url 'checklists:issue' issue.pk %}"><strong>{% if issue.status == 'OPEN' %}{% translate "Open issue" %}{% else %}{% translate "Resolved issue" %}{% endif %}</strong></a>:
     {{ issue.description|truncatechars:140 }}
     {% if issue.attachments.all %} · {% blocktranslate count n=issue.attachments.all|length %}{{ n }} photo{% plural %}{{ n }} photos{% endblocktranslate %}{% endif %}
@@ -76,8 +79,12 @@
 </section>
 {% endwith %}
 {% endfor %}
+{% endfor %}
 
+<div id="finish">
+{% if finish_feedback %}<p class="msg msg-{{ finish_feedback.level }} inline-msg" role="status">{{ finish_feedback.text }}</p>{% endif %}
 {% if editable %}
 <a class="btn btn-huge" href="{% url 'checklists:submit' run.pk %}">{% translate "Review and submit" %}</a>
 {% endif %}
+</div>
 {% endblock %}

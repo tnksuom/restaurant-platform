@@ -6,7 +6,11 @@
 {% if template %}<p class="muted small">{% translate "Saving creates a new version. Checklists already started or submitted keep the tasks and thresholds they started with." %}</p>{% endif %}
 <form method="post" novalidate>{% csrf_token %}
   {% if error %}<p class="msg msg-error">{{ error }}</p>{% endif %}
-  <div class="card">{% include "core/form_fields.html" %}</div>
+  <div class="card">
+    {% if form.non_field_errors %}<ul class="errorlist">{% for e in form.non_field_errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+    {% include "menu/_field.html" with field=form.title %}
+    {% include "menu/_field.html" with field=form.kind %}
+  </div>
   {{ formset.management_form }}
   {% if formset.non_form_errors %}<ul class="errorlist">{% for e in formset.non_form_errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
   <h2>{% translate "Tasks" %}</h2>
@@ -17,7 +21,12 @@
     {% with form=tf %}{% include "core/form_fields.html" %}{% endwith %}
   </fieldset>
   {% endfor %}
-  <p class="small muted">{% translate "Need more rows? Save, then edit again to get three more empty rows." %}</p>
+  <h2>{% translate "Add many tasks at once" %}</h2>
+  <div class="card">
+    {% include "menu/_field.html" with field=form.paste_tasks %}
+    {% include "menu/_field.html" with field=form.paste_response_type %}
+    <p class="small muted" style="margin:0">{% translate "Pasted tasks are added after the tasks above and are required. Rows with the same group are shown together on the checklist." %}</p>
+  </div>
   <div class="row">
     <button class="btn" type="submit">{% translate "Save checklist" %}</button>
     <a class="btn btn-secondary" href="{% url 'checklists:templates' %}">{% translate "Cancel" %}</a>

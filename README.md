@@ -80,7 +80,7 @@ For production, run behind HTTPS with a WSGI server (for example `gunicorn confi
 ## Tests
 
 ```bash
-python manage.py test                      # 124 tests, about 20 seconds; needs the database user to have CREATEDB
+python manage.py test                      # 131 tests, about 25 seconds; needs the database user to have CREATEDB
 python manage.py verify_stock_ledger       # checks cached balances against the movement ledger
 ```
 
@@ -134,8 +134,8 @@ All stories of the MVP release are implemented: EP01–EP07, 42 stories.
 | US-04.04 Record waste | Done | Reason required (Expired, Damaged, Spilled, or Other with a note). Shown separately from usage. |
 | US-04.05 Low-stock warning | Done | `current ≤ minimum`, active items only. The count is on the list and on Today. |
 | US-04.06 View stock history | Done | Filter by item, type, staff and date. Every row shows the resulting balance. Paginated. Employees see history on each item page. |
-| US-05.01 Create checklist template | Done | Ordered tasks, three answer types, required flag, optional limits. At least one task is required. Each save creates a new version. |
-| US-05.02 Complete daily checklist | Done | Start or resume, progress bar, per-task save with name and time. Submission is blocked while required tasks are unanswered. |
+| US-05.01 Create checklist template | Done | Ordered tasks with an optional group, four answer types (pass/fail, done/not done, temperature, stock level enough/low), a required flag and optional limits. At least one task is required. Each save creates a new version. Many tasks can be pasted at once from Google Sheets or Excel (Group and Task columns). |
+| US-05.02 Complete daily checklist | Done | Start or resume, grouped tasks with progress per group, one tap per answer (saves and moves to the next task), a quantity/note box on every task, name and time stored with each answer. "Low" stock needs the quantity left and opens an issue for a manager. Submission is blocked while required tasks are unanswered. |
 | US-05.03 Record temperature | Done | °C reading with location. A warning appears only when the manager set limits; the app never judges readings without them. |
 | US-05.04 Add checklist notes | Done | A note is required for Fail, Not done and N/A. Whitespace-only notes are rejected. |
 | US-05.05 Attach photo to report | Done | JPEG, PNG or WebP, up to 10 MB. Photos are re-encoded, which strips EXIF, GPS and embedded content. They get random storage keys and are served only after a permission check. An invalid photo means nothing is saved. |
@@ -193,7 +193,7 @@ All stories of the MVP release are implemented: EP01–EP07, 42 stories.
 - Dish names and descriptions are stored in one language; translated menus are not built yet.
 
 - There is no email, so password resets are manager-issued one-time links.
-- The template editor shows three empty task rows at a time; save and edit again to add more. Task order is a number field, not drag-and-drop.
+- The template editor shows every task as a full form, which gets long for big checklists (64 tasks in the demo). New tasks are best added with the paste box. Task order is a number field, not drag-and-drop.
 - No offline mode: an action needs a connection, and a failed save shows an error.
 - There are no exports, approvals, overtime or wage calculations (out of scope).
 - Photo storage is the local filesystem. Moving to object storage later only needs `checklists/photos.py` changed.
