@@ -21,8 +21,8 @@ COPY . .
 RUN DJANGO_SECRET_KEY=build-only DATABASE_URL=postgres://build@localhost/build \
     python manage.py collectstatic --noinput \
  && python -m compileall -q . \
- && chmod +x bin/docker-entrypoint.sh
+ && chmod +x bin/docker-entrypoint.sh bin/start.sh
 
 EXPOSE 8000
 ENTRYPOINT ["bin/docker-entrypoint.sh"]
-CMD ["sh", "-c", "exec gunicorn config.wsgi --bind 0.0.0.0:${PORT} --workers ${WEB_CONCURRENCY} --timeout 60 --max-requests 1000 --max-requests-jitter 100 --access-logfile - --forwarded-allow-ips='*'"]
+CMD ["bin/start.sh"]

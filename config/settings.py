@@ -166,6 +166,12 @@ USE_TZ = True
 TIME_ZONE = "UTC"  # storage and server time; display uses the restaurant's zone
 DEFAULT_RESTAURANT_TIME_ZONE = env("RESTAURANT_TIME_ZONE", "Europe/Helsinki")
 
+# Demo mode: for showing the app to people. On every start the database is wiped and refilled
+# with the example restaurant, the demo accounts are listed on the sign-in page, and every page
+# says it is a demo. Never enable it for a real restaurant.
+DEMO_MODE = env_bool("DEMO_MODE", False)
+DEMO_PASSWORD = env("DEMO_PASSWORD", "demo-bistro-2026")
+
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STORAGES = {

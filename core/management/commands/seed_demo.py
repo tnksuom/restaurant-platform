@@ -52,14 +52,14 @@ def fridge_photo():
 
 
 class Command(BaseCommand):
-    help = "Create demo staff, inventory, checklists and shifts in an empty development database."
+    help = "Create demo staff, inventory, checklists and shifts in an empty development or demo database."
 
     def add_arguments(self, parser):
         parser.add_argument("--password", required=True, help="Password for every demo account")
 
     def handle(self, *args, **opts):
-        if not settings.DEBUG:
-            raise CommandError("seed_demo only runs with DJANGO_DEBUG=true.")
+        if not (settings.DEBUG or settings.DEMO_MODE):
+            raise CommandError("seed_demo only runs with DJANGO_DEBUG=true or DEMO_MODE=true.")
         if Employee.objects.exists():
             raise CommandError("The database already has staff. Use an empty database for demo data.")
         with transaction.atomic():

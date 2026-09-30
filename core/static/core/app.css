@@ -144,3 +144,8 @@ fieldset.checks legend { font-weight: 600; margin-bottom: 4px; padding: 0; }
 .check-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0 12px; }
 .check-grid .checkbox, fieldset.checks .checkbox { min-height: 44px; }
 .check-grid ul, fieldset.checks ul { list-style: none; padding: 0; margin: 0; }
+.demo-banner { background: #FFF3C4; color: #4A3B00; text-align: center; padding: 8px 16px; font-size: .92rem; font-weight: 600; }
+.demo-banner a { color: inherit; }
+button.btn.demo-account { flex-direction: column; align-items: flex-start; justify-content: center; gap: 2px; padding: 10px 16px; text-align: left; min-height: 60px; }
+button.btn.demo-account .small { font-weight: 500; }
+@media (prefers-color-scheme: dark) { .demo-banner { background: #4A3B00; color: #FFF3C4; } }

@@ -9,6 +9,7 @@
 </head>
 <body>
 <a class="skip" href="#main">{% translate "Skip to content" %}</a>
+{% if demo_mode %}<div class="demo-banner" role="note">{% translate "Demo with example data. Anything you change is reset when the demo restarts." %}</div>{% endif %}
 {% if user.is_authenticated %}
 <header class="topbar">
   <a class="brand" href="{% url 'today' %}">{{ restaurant.name }}</a>

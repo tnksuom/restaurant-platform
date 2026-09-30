@@ -13,6 +13,7 @@
 </head>
 <body>
 <a class="skip" href="#main">{% translate "Skip to content" %}</a>
+{% if demo_mode %}<div class="demo-banner" role="note">{% translate "Demo restaurant with example content." %} <a href="{% url 'login' %}">{% translate "Try the staff app" %} →</a></div>{% endif %}
 <header class="site-header">
   <div class="wrap header-row">
     <a class="brand" href="{% url 'website:home' %}">

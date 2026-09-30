@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import logout, update_session_auth_hash, views as auth_views
 from django.contrib.auth.decorators import login_not_required
@@ -35,6 +36,18 @@ class LoginView(auth_views.LoginView):
     authentication_form = LoginForm
     template_name = "registration/login.html"
     redirect_authenticated_user = True
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if settings.DEMO_MODE:
+            context["demo_password"] = settings.DEMO_PASSWORD
+            context["demo_accounts"] = [
+                ("owner", "Olli Owner", _("Owner")),
+                ("mia", "Mia Virtanen", _("Manager")),
+                ("linh", "Linh Nguyen", _("Employee")),
+                ("eero", "Eero Korhonen", _("Employee · on a break")),
+            ]
+        return context
 
 
 @require_POST
