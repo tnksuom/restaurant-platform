@@ -7,11 +7,23 @@ from .models import ResponseType, TemplateKind
 class TemplateForm(forms.Form):
     title = forms.CharField(label=_("Title"), max_length=150)
     kind = forms.ChoiceField(label=_("Type"), choices=TemplateKind.choices)
+    paste_tasks = forms.CharField(
+        label=_("Add many tasks at once"), required=False, widget=forms.Textarea(attrs={"rows": 6}),
+        help_text=_(
+            "Paste from a spreadsheet: select the Group and Task columns in Google Sheets or Excel (without the "
+            "header row), copy, and paste here. Or type one task per line, and start a group with “# Group name”."
+        ),
+    )
+    paste_response_type = forms.ChoiceField(
+        label=_("Answer type for pasted tasks"), choices=ResponseType.choices, initial=ResponseType.STOCK_LEVEL,
+        help_text=_("You can change individual tasks afterwards."),
+    )
 
 
 class TaskForm(forms.Form):
     id = forms.IntegerField(required=False, widget=forms.HiddenInput)
     position = forms.IntegerField(label=_("Order"), required=False, min_value=0)
+    section = forms.CharField(label=_("Group"), max_length=100, required=False)
     text = forms.CharField(label=_("Task"), max_length=300, required=False)
     response_type = forms.ChoiceField(label=_("Answer type"), choices=ResponseType.choices, initial=ResponseType.CONFIRMATION)
     required = forms.BooleanField(label=_("Required"), required=False, initial=True)

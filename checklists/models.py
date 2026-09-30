@@ -22,6 +22,7 @@ class ResponseType(models.TextChoices):
     PASS_FAIL = "PASS_FAIL", _("Pass / fail")
     TEMPERATURE = "TEMPERATURE", _("Temperature reading (°C)")
     CONFIRMATION = "CONFIRMATION", _("Done / not done")
+    STOCK_LEVEL = "STOCK_LEVEL", _("Stock level (enough / low)")
 
 
 class ChecklistTemplate(models.Model):
@@ -47,6 +48,7 @@ class ChecklistTemplate(models.Model):
 class TemplateTask(models.Model):
     template = models.ForeignKey(ChecklistTemplate, on_delete=models.PROTECT, related_name="tasks")
     position = models.PositiveIntegerField(_("order"), default=0)
+    section = models.CharField(_("group"), max_length=100, blank=True, help_text=_("Tasks with the same group are shown together."))
     text = models.CharField(_("task"), max_length=300)
     response_type = models.CharField(_("answer type"), max_length=16, choices=ResponseType.choices)
     required = models.BooleanField(_("required"), default=True)
@@ -112,6 +114,7 @@ class RunTask(models.Model):
     run = models.ForeignKey(ChecklistRun, on_delete=models.PROTECT, related_name="tasks")
     source_task = models.ForeignKey(TemplateTask, on_delete=models.SET_NULL, null=True, blank=True, related_name="+")
     position = models.PositiveIntegerField()
+    section = models.CharField(max_length=100, blank=True)  # snapshot of the task's group
     text = models.CharField(max_length=300)
     response_type = models.CharField(max_length=16, choices=ResponseType.choices)
     required = models.BooleanField()

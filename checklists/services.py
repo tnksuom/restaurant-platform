@@ -38,7 +38,8 @@ def _require_active(actor):
 
 def _task_snapshot(t):
     return {
-        "position": t.position, "text": t.text, "response_type": t.response_type, "required": t.required,
+        "position": t.position, "section": t.section, "text": t.text, "response_type": t.response_type,
+        "required": t.required,
         "equipment_or_location": t.equipment_or_location,
         "min_temperature": None if t.min_temperature is None else str(t.min_temperature),
         "max_temperature": None if t.max_temperature is None else str(t.max_temperature),
@@ -88,6 +89,7 @@ def save_template(actor, template, *, title, kind, tasks):
             continue
         task = task or TemplateTask(template=template)
         task.position = data.get("position") or i
+        task.section = (data.get("section") or "").strip()[:100]
         task.text = text
         task.response_type = data["response_type"]
         task.required = bool(data.get("required"))
@@ -112,6 +114,37 @@ def save_template(actor, template, *, title, kind, tasks):
         {"version": template.version, "title": title, "tasks": [_task_snapshot(t) for t in template.active_tasks()]},
     )
     return template
+
+
+def parse_task_lines(text):
+    """Turn text copied from a spreadsheet (or typed) into (group, task) pairs.
+
+    Accepted per line:
+      "Group<TAB>Task"  – two columns copied from Google Sheets or Excel;
+      "<TAB>Task"       – a merged group cell pastes only on its first row, so the
+                           previous group carries on;
+      "# Group"         – starts a new group when typing by hand;
+      "Task"            – a task in the current group.
+    Extra columns (status, notes, dates) are ignored. Blank lines are skipped.
+    """
+    pairs, group = [], ""
+    for raw in (text or "").splitlines():
+        if not raw.strip():
+            continue
+        if "\t" in raw:
+            cols = [c.strip() for c in raw.split("\t")]
+            if cols[0]:
+                group = cols[0]
+            item = cols[1] if len(cols) > 1 else ""
+            if item:
+                pairs.append((group[:100], item[:300]))
+            continue
+        line = raw.strip()
+        if line.startswith("#"):
+            group = line.lstrip("#").strip()
+            continue
+        pairs.append((group[:100], line[:300]))
+    return pairs
 
 
 @transaction.atomic
@@ -157,7 +190,8 @@ def start_run(actor, template_id, run_label=""):
             )
             for t in tasks:
                 snap = RunTask.objects.create(
-                    run=run, source_task=t, position=t.position, text=t.text, response_type=t.response_type,
+                    run=run, source_task=t, position=t.position, section=t.section, text=t.text,
+                    response_type=t.response_type,
                     required=t.required, equipment_or_location=t.equipment_or_location,
                     min_temperature=t.min_temperature, max_temperature=t.max_temperature,
                 )
@@ -226,11 +260,14 @@ def save_response(actor, response_id, status, *, temperature=None, note=""):
     allowed = {
         ResponseType.PASS_FAIL: {ResponseStatus.PASS, ResponseStatus.FAIL, ResponseStatus.NOT_APPLICABLE},
         ResponseType.CONFIRMATION: {ResponseStatus.PASS, ResponseStatus.FAIL, ResponseStatus.NOT_APPLICABLE},
+        ResponseType.STOCK_LEVEL: {ResponseStatus.PASS, ResponseStatus.FAIL, ResponseStatus.NOT_APPLICABLE},
         ResponseType.TEMPERATURE: {ResponseStatus.PASS, ResponseStatus.NOT_APPLICABLE},
     }[task.response_type]
     if status not in allowed:
         raise ValidationError({"status": _("Choose an answer.")})
     if status in (ResponseStatus.FAIL, ResponseStatus.NOT_APPLICABLE) and not note:
+        if task.response_type == ResponseType.STOCK_LEVEL and status == ResponseStatus.FAIL:
+            raise ValidationError({"note": _("Write how much is left, for example “2 boxes”.")})
         raise ValidationError({"note": _("Add a note explaining this answer.")})
     reading = None
     if task.response_type == ResponseType.TEMPERATURE and status == ResponseStatus.PASS:
@@ -248,7 +285,10 @@ def save_response(actor, response_id, status, *, temperature=None, note=""):
 
     # Exceptions become (or link to) an open issue. Issues never auto-resolve.
     if status == ResponseStatus.FAIL:
-        _ensure_open_issue(actor, run, response, ChecklistIssue.Source.FAILED_TASK, note)
+        description = note
+        if task.response_type == ResponseType.STOCK_LEVEL:
+            description = _("Low: %(item)s. Left: %(note)s") % {"item": task.text, "note": note}
+        _ensure_open_issue(actor, run, response, ChecklistIssue.Source.FAILED_TASK, description)
     if response.temperature_out_of_range:
         where = f" ({task.equipment_or_location})" if task.equipment_or_location else ""
         desc = _("Reading %(reading)s °C%(where)s is outside the configured range %(range)s.") % {

@@ -22,6 +22,7 @@ from PIL import Image, ImageDraw
 from checklists import services as cs
 from checklists.models import ChecklistIssue, ResponseStatus
 from core import audit
+from core.demo_content import OPENING_CHECKLIST_TITLE, opening_tasks
 from core.models import Restaurant
 from inventory import services as inv
 from inventory.models import MovementType
@@ -142,15 +143,8 @@ class Command(BaseCommand):
         # ---------------- checklists
         C, T, P = "CONFIRMATION", "TEMPERATURE", "PASS_FAIL"
         with at(start + timedelta(hours=1)):
-            opening = cs.save_template(mia, None, title="Opening", kind="OPENING", tasks=[
-                {"text": "Unlock back door and switch on lights", "response_type": C, "required": True},
-                {"text": "Walk-in fridge temperature", "response_type": T, "required": True,
-                 "equipment_or_location": "Walk-in fridge", "min_temperature": Decimal("0"), "max_temperature": Decimal("5")},
-                {"text": "Freezer temperature", "response_type": T, "required": True,
-                 "equipment_or_location": "Chest freezer", "min_temperature": Decimal("-25"), "max_temperature": Decimal("-18")},
-                {"text": "Hand-wash station has soap and paper", "response_type": P, "required": True},
-                {"text": "Check morning delivery against order", "response_type": C, "required": False},
-            ])
+            # The restaurant's own opening checklist (64 items in 8 groups), from their Google Sheet.
+            opening = cs.save_template(mia, None, title=OPENING_CHECKLIST_TITLE, kind="OPENING", tasks=opening_tasks())
             closing = cs.save_template(mia, None, title="Closing", kind="CLOSING", tasks=[
                 {"text": "Grill and wok burners cleaned", "response_type": P, "required": True},
                 {"text": "Fryer oil checked", "response_type": P, "required": True},
@@ -164,26 +158,43 @@ class Command(BaseCommand):
                 {"text": "Descale dishwasher", "response_type": C, "required": True},
             ])
 
-        def fill(template, day, hour, who, answers, submit=True, base=None):
+        def fill(template, day, hour, who, answers, submit=True, base=None, limit=None):
+            """answers: a list by position, or a dict {task text: answer} where every other task is OK.
+
+            With a dict, `limit` answers only the first N tasks (a checklist still being filled in).
+            """
             base = base or local(day, hour)
             with at(base):
                 run, _ = cs.start_run(who, template.pk)
             tasks = list(run.tasks.select_related("response").order_by("position", "id"))
+            if isinstance(answers, dict):
+                answers = [answers.get(t.text, ok) for t in tasks[:limit]]
+            step = timedelta(seconds=20)
             for i, (task, ans) in enumerate(zip(tasks, answers)):
                 if ans is None:
                     continue
                 status, value, note = ans
-                with at(base + timedelta(minutes=2 + i)):
+                with at(base + step * (i + 1)):
                     cs.save_response(who, task.response.pk, status, temperature=value, note=note)
             if submit:
-                with at(base + timedelta(minutes=10)):
+                with at(base + step * (len(tasks) + 3)):
                     cs.submit_run(who, run.pk)
             return run
 
         ok = (ResponseStatus.PASS, None, "")
         for day in range(-7, 0):
             who = staff_cycle[day % 3]
-            fill(opening, day, 9, who, [ok, (ResponseStatus.PASS, "3.2", ""), (ResponseStatus.PASS, "-20.5", ""), ok, ok])
+            if day == -2:
+                run = fill(opening, day, 9, who, {"Tôm 16/20": (ResponseStatus.FAIL, None, "còn 1 hộp")})
+                with at(local(-2, 11, 30)):
+                    cs.resolve_issue(mia, ChecklistIssue.objects.get(run=run).pk, "Đã đặt thêm 3 hộp, giao chiều nay")
+            elif day == -1:
+                fill(opening, day, 9, who, {
+                    "Bơ (Avocado)": (ResponseStatus.FAIL, None, "còn 3 quả"),
+                    "Sữa (Milk / Oat milk)": (ResponseStatus.FAIL, None, "hết oat milk, còn 2 hộp sữa"),
+                })
+            else:
+                fill(opening, day, 9, who, {})
             closer = staff_cycle[(day + 1) % 3]
             if day == -3:
                 run = fill(closing, day, 22, closer, [ok, (ResponseStatus.FAIL, None, "Oil dark, needs changing"),
@@ -206,7 +217,8 @@ class Command(BaseCommand):
         now_local = real_now.astimezone(tz)
         begin = now_local - timedelta(minutes=12)
         if begin.date() == today:
-            fill(opening, 0, 0, linh, [ok, (ResponseStatus.PASS, "3.4", ""), None, None, None], submit=False, base=begin)
+            fill(opening, 0, 0, linh, {"Cà chua": (ResponseStatus.FAIL, None, "còn 1 kg")}, submit=False, base=begin,
+                 limit=20)
 
         # ---------------- shifts
         pattern = {linh: (9, 17), eero: (15, 23), sara: (11, 19), mia: (10, 18)}
