@@ -4,6 +4,7 @@ from core import views as core_views
 from staff import views as staff_views
 
 urlpatterns = [
+    path("healthz", core_views.healthz, name="healthz"),
     # Staff app
     path("app/", core_views.today, name="today"),
     path("login/", staff_views.LoginView.as_view(), name="login"),

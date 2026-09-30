@@ -1,0 +1,61 @@
+# Render Blueprint: creates the database and the web service in Frankfurt (EU).
+# In Render: New → Blueprint → pick this repository. See DEPLOY.md for the full walkthrough.
+
+databases:
+  - name: restaurant-db
+    plan: 0.5c-1g              # 1 GB RAM, daily backups and 7-day point-in-time recovery
+    region: frankfurt
+    postgresMajorVersion: "16"
+    databaseName: restaurant
+    user: restaurant
+    ipAllowList: []            # only the app inside Render can connect
+
+services:
+  - type: web
+    name: restaurant-ops
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    region: frankfurt
+    plan: 0.5c-512mb
+    branch: main
+    autoDeployTrigger: checksPass   # deploy a new version of main only after GitHub's tests pass
+    healthCheckPath: /healthz
+    # Runs before each new version starts: update the database, then create the first owner if needed.
+    preDeployCommand: python manage.py migrate --noinput && python manage.py ensure_owner
+    disk:
+      name: uploads
+      mountPath: /var/data     # issue photos, dish photos, logo; snapshotted daily by Render
+      sizeGB: 1
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: restaurant-db
+          property: connectionString
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: "false"
+      - key: DJANGO_BEHIND_PROXY
+        value: "true"
+      - key: DJANGO_SECURE_COOKIES
+        value: "true"
+      - key: DJANGO_SSL_REDIRECT
+        value: "true"
+      - key: RESTAURANT_TIME_ZONE
+        value: Europe/Helsinki
+      - key: PRIVATE_UPLOAD_ROOT
+        value: /var/data/private_uploads
+      - key: PUBLIC_UPLOAD_ROOT
+        value: /var/data/public_uploads
+      - key: WEB_CONCURRENCY
+        value: "2"
+      # Asked for when the Blueprint is created. Used once to create the first owner account;
+      # delete INITIAL_OWNER_PASSWORD afterwards.
+      - key: INITIAL_RESTAURANT_NAME
+        sync: false
+      - key: INITIAL_OWNER_NAME
+        sync: false
+      - key: INITIAL_OWNER_LOGIN
+        sync: false
+      - key: INITIAL_OWNER_PASSWORD
+        sync: false
