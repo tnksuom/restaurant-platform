@@ -20,6 +20,7 @@
       {% if profile.logo_key %}<img src="{% url 'website:image' profile.logo_key %}" alt="" width="44" height="44">{% endif %}
       <span>{{ site_restaurant.name }}</span>
     </a>
+    {% include "core/language_switcher.html" %}
     <nav class="site-nav" aria-label="{% translate 'Main' %}">
       <a href="{% url 'website:home' %}"{% if page == "home" %} aria-current="page"{% endif %}>{% translate "Home" %}</a>
       <a href="{% url 'website:menu' %}"{% if page == "menu" %} aria-current="page"{% endif %}>{% translate "Menu" %}</a>

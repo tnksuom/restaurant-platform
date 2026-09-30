@@ -92,6 +92,7 @@ TEMPLATES = [
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.request",
+                "django.template.context_processors.i18n",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "core.context_processors.navigation",
@@ -160,6 +161,8 @@ SILENCED_SYSTEM_CHECKS = ["security.W005", "security.W021"]
 
 LANGUAGE_CODE = "en"
 LANGUAGES = [("en", "English"), ("fi", "Suomi"), ("vi", "Tiếng Việt")]
+LANGUAGE_COOKIE_AGE = 365 * 24 * 3600  # remember the choice for a year on this device
+LANGUAGE_COOKIE_SECURE = env_bool("DJANGO_SECURE_COOKIES", not DEBUG)
 LOCALE_PATHS = [BASE_DIR / "locale"]
 USE_I18N = True
 USE_TZ = True
