@@ -1,0 +1,72 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% translate "Opening hours" %}{% endblock %}
+{% block content %}
+<div class="spread">
+  <h1>{% translate "Opening hours" %}</h1>
+  <a class="btn btn-secondary" href="{% url 'website:contact' %}#hours" target="_blank" rel="noopener">{% translate "View on the website" %}</a>
+</div>
+
+<h2>{% translate "Regular hours" %}</h2>
+<p class="small muted">{% translate "Leave a day empty if the restaurant is closed. Add a second period for a break in the day, for example lunch 11:00–14:00 and dinner 17:00–22:00. A closing time earlier than the opening time means after midnight." %}</p>
+{% if has_errors %}<ul class="errorlist" role="alert"><li>{% translate "Some hours need fixing. See the highlighted days." %}</li></ul>{% endif %}
+<form method="post" novalidate>{% csrf_token %}
+  <div class="table-wrap">
+    <table class="hours-form stack-sm">
+      <thead><tr><th scope="col">{% translate "Day" %}</th><th scope="col">{% translate "Opening period" %}</th><th scope="col">{% translate "Second period (optional)" %}</th></tr></thead>
+      <tbody>
+      {% for row in rows %}
+      <tr{% if row.errors or row.field_errors %} class="has-error"{% endif %}>
+        <th scope="row">{{ row.label }}</th>
+        {% for opens, closes in row.fields %}
+        <td class="period" data-label="{% if forloop.first %}{% translate 'Opening period' %}{% else %}{% translate 'Second period (optional)' %}{% endif %}">
+          <label class="visually-hidden" for="{{ opens.id_for_label }}">{% blocktranslate with d=row.label %}{{ d }} opens{% endblocktranslate %}</label>{{ opens }}
+          <span aria-hidden="true">–</span>
+          <label class="visually-hidden" for="{{ closes.id_for_label }}">{% blocktranslate with d=row.label %}{{ d }} closes{% endblocktranslate %}</label>{{ closes }}
+        </td>
+        {% endfor %}
+      </tr>
+      {% if row.errors or row.field_errors %}
+      <tr class="has-error error-row"><td colspan="3"><ul class="errorlist">{% for e in row.errors %}<li>{{ e }}</li>{% endfor %}{% for e in row.field_errors %}<li>{{ row.label }}: {{ e }}</li>{% endfor %}</ul></td></tr>
+      {% endif %}
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="row"><button class="btn" type="submit">{% translate "Save opening hours" %}</button></div>
+</form>
+
+<div class="spread" style="margin-top:28px">
+  <h2>{% translate "Special hours" %}</h2>
+  <a class="btn" href="{% url 'website:special_day_create' %}">{% translate "Add special hours" %}</a>
+</div>
+<p class="small muted">{% translate "For holidays and other exceptions. On these dates the special hours replace the regular hours, on the website and in the “open now” status." %}</p>
+{% if special_days %}
+<div class="table-wrap">
+  <table class="stack-sm">
+    <thead><tr><th scope="col">{% translate "Date" %}</th><th scope="col">{% translate "Hours" %}</th><th scope="col">{% translate "Note" %}</th><th scope="col"><span class="visually-hidden">{% translate "Actions" %}</span></th></tr></thead>
+    <tbody>
+    {% for day in special_days %}
+    <tr>
+      <td><strong>{{ day.date|date:"D j.n.Y" }}</strong></td>
+      <td data-label="{% translate 'Hours' %}">{% for p in day.periods %}{{ p.opens|time:"H:i" }}–{{ p.closes|time:"H:i" }}{% if not forloop.last %}, {% endif %}{% empty %}<span class="badge badge-warn">{% translate "Closed" %}</span>{% endfor %}</td>
+      <td data-label="{% translate 'Note' %}">{{ day.note }}</td>
+      <td><div class="row">
+        <a href="{% url 'website:special_day_edit' day.pk %}">{% translate "Edit" %}</a>
+        <form method="post" action="{% url 'website:special_day_delete' day.pk %}" data-confirm="{% translate 'Remove these special hours? The regular hours will apply on that date.' %}">{% csrf_token %}
+          <button class="linklike" type="submit">{% translate "Remove" %}</button>
+        </form>
+      </div></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<div class="card"><p class="muted">{% translate "No special hours coming up." %}</p></div>
+{% endif %}
+{% if past_special_days %}
+<details class="small muted"><summary>{% translate "Recent past special hours" %}</summary>
+  <ul>{% for day in past_special_days %}<li>{{ day.date|date:"j.n.Y" }}: {% for p in day.periods %}{{ p.opens|time:"H:i" }}–{{ p.closes|time:"H:i" }}{% if not forloop.last %}, {% endif %}{% empty %}{% translate "Closed" %}{% endfor %}{% if day.note %} ({{ day.note }}){% endif %}</li>{% endfor %}</ul>
+</details>
+{% endif %}
+{% endblock %}

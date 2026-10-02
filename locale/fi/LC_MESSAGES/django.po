@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-30 13:01+0000\n"
+"POT-Creation-Date: 2026-09-30 17:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Claude\n"
 "Language-Team: Finnish\n"
@@ -18,15 +18,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: checklists/forms.py:8 website/forms.py:6
 msgid "Title"
 msgstr "Otsikko"
 
+#: checklists/forms.py:9 inventory/templates/inventory/detail.html:70
+#: inventory/templates/inventory/history.html:10
+#: inventory/templates/inventory/history.html:23
 msgid "Type"
 msgstr "Tyyppi"
 
+#: checklists/forms.py:11
+#: checklists/templates/checklists/template_form.html:24
 msgid "Add many tasks at once"
 msgstr "Lisää monta tehtävää kerralla"
 
+#: checklists/forms.py:13
 msgid ""
 "Paste from a spreadsheet: select the Group and Task columns in Google Sheets"
 " or Excel (without the header row), copy, and paste here. Or type one task "
@@ -36,221 +43,316 @@ msgstr ""
 "sarakkeet (ilman otsikkoriviä), kopioi ja liitä tähän. Voit myös kirjoittaa "
 "yhden tehtävän riville ja aloittaa ryhmän rivillä “# Ryhmän nimi”."
 
+#: checklists/forms.py:18
 msgid "Answer type for pasted tasks"
 msgstr "Vastaustyyppi liitetyille tehtäville"
 
+#: checklists/forms.py:19
 msgid "You can change individual tasks afterwards."
 msgstr "Voit muuttaa yksittäisiä tehtäviä myöhemmin."
 
+#: checklists/forms.py:25
 msgid "Order"
 msgstr "Järjestys"
 
+#: checklists/forms.py:26
 msgid "Group"
 msgstr "Ryhmä"
 
+#: checklists/forms.py:27 checklists/templates/checklists/issue.html:11
+#: checklists/templates/checklists/review.html:43
+#: dashboard/templates/dashboard/dashboard.html:104
 msgid "Task"
 msgstr "Tehtävä"
 
+#: checklists/forms.py:28
 msgid "Answer type"
 msgstr "Vastaustyyppi"
 
+#: checklists/forms.py:29 dashboard/templates/dashboard/dashboard.html:108
 msgid "Required"
 msgstr "Pakollinen"
 
+#: checklists/forms.py:30
 msgid "Equipment or location"
 msgstr "Laite tai paikka"
 
+#: checklists/forms.py:32
 msgid "Lowest acceptable °C"
 msgstr "Alin sallittu °C"
 
+#: checklists/forms.py:36
 msgid "Highest acceptable °C"
 msgstr "Ylin sallittu °C"
 
+#: checklists/forms.py:39
 msgid "Remove task"
 msgstr "Poista tehtävä"
 
+#: checklists/forms.py:46
 msgid "What is the problem?"
 msgstr "Mikä on ongelma?"
 
+#: checklists/forms.py:48
 msgid "Photo (optional)"
 msgstr "Kuva (vapaaehtoinen)"
 
+#: checklists/forms.py:50 checklists/forms.py:64
 msgid "JPEG, PNG or WebP, up to 10 MB."
 msgstr "JPEG, PNG tai WebP, enintään 10 Mt."
 
+#: checklists/forms.py:56 checklists/services.py:320
 msgid "Describe the problem."
 msgstr "Kuvaile ongelma."
 
+#: checklists/forms.py:62 website/templates/website/manage_images.html:83
 msgid "Add a photo"
 msgstr "Lisää kuva"
 
+#: checklists/forms.py:69
 msgid "How was it resolved?"
 msgstr "Miten asia ratkaistiin?"
 
+#: checklists/models.py:13
 msgid "Opening"
 msgstr "Avaus"
 
+#: checklists/models.py:14
 msgid "Closing"
 msgstr "Sulkeminen"
 
+#: checklists/models.py:15
 msgid "Cleaning"
 msgstr "Siivous"
 
+#: checklists/models.py:16
 msgid "Food safety"
 msgstr "Elintarviketurvallisuus"
 
+#: checklists/models.py:17
 msgid "Stock check"
 msgstr "Varastotarkistus"
 
+#: checklists/models.py:18 checklists/templates/checklists/run.html:21
+#: checklists/templates/checklists/run.html:29 inventory/models.py:20
+#: inventory/models.py:69
 msgid "Other"
 msgstr "Muu"
 
+#: checklists/models.py:22
 msgid "Pass / fail"
 msgstr "Kunnossa / ei kunnossa"
 
+#: checklists/models.py:23
 msgid "Temperature reading (°C)"
 msgstr "Lämpötilalukema (°C)"
 
+#: checklists/models.py:24
 msgid "Done / not done"
 msgstr "Tehty / ei tehty"
 
+#: checklists/models.py:25
 msgid "Stock level (enough / low)"
 msgstr "Varastotaso (riittää / vähissä)"
 
+#: checklists/models.py:30 website/models.py:156
 msgid "title"
 msgstr "otsikko"
 
+#: checklists/models.py:31
 msgid "type"
 msgstr "tyyppi"
 
+#: checklists/models.py:32 inventory/models.py:32 staff/models.py:58
 msgid "active"
 msgstr "käytössä"
 
+#: checklists/models.py:50
 msgid "order"
 msgstr "järjestys"
 
+#: checklists/models.py:51
 msgid "group"
 msgstr "ryhmä"
 
+#: checklists/models.py:51
 msgid "Tasks with the same group are shown together."
 msgstr "Saman ryhmän tehtävät näytetään yhdessä."
 
+#: checklists/models.py:52
 msgid "task"
 msgstr "tehtävä"
 
+#: checklists/models.py:53
 msgid "answer type"
 msgstr "vastaustyyppi"
 
+#: checklists/models.py:54
 msgid "required"
 msgstr "pakollinen"
 
+#: checklists/models.py:55
 msgid "equipment or location"
 msgstr "laite tai paikka"
 
+#: checklists/models.py:56
 msgid "lowest acceptable °C"
 msgstr "alin sallittu °C"
 
+#: checklists/models.py:57
 msgid "highest acceptable °C"
 msgstr "ylin sallittu °C"
 
+#: checklists/models.py:74 checklists/templates/checklists/history.html:31
+#: checklists/templates/checklists/review.html:12
+#: checklists/templates/checklists/review.html:27
+#: checklists/templates/checklists/run.html:9
+#: checklists/templates/checklists/today.html:13
+#: dashboard/templates/dashboard/dashboard.html:89
 msgid "In progress"
 msgstr "Kesken"
 
+#: checklists/models.py:75 checklists/templates/checklists/history.html:31
+#: checklists/templates/checklists/review.html:11
+#: checklists/templates/checklists/review.html:27
+#: checklists/templates/checklists/run.html:9
+#: checklists/templates/checklists/today.html:12
+#: dashboard/templates/dashboard/dashboard.html:89
 msgid "Submitted"
 msgstr "Lähetetty"
 
+#: checklists/models.py:83
 msgid "run label"
 msgstr "kierroksen nimi"
 
+#: checklists/models.py:134 checklists/templates/checklists/run.html:47
+#: checklists/views.py:44
 msgid "Not answered"
 msgstr "Ei vastattu"
 
+#: checklists/models.py:135 checklists/views.py:35
 msgid "Pass"
 msgstr "Kunnossa"
 
+#: checklists/models.py:136 checklists/views.py:35
 msgid "Fail"
 msgstr "Ei kunnossa"
 
+#: checklists/models.py:137
 msgid "Not applicable"
 msgstr "Ei koske"
 
+#: checklists/models.py:172 checklists/templates/checklists/issue.html:6
+#: checklists/templates/checklists/issues.html:6
+#: checklists/templates/checklists/issues.html:14
+#: dashboard/templates/dashboard/dashboard.html:148 timeclock/models.py:13
+#: timeclock/templates/timeclock/_shift_table.html:16
+#: timeclock/templates/timeclock/timesheets.html:18
 msgid "Open"
 msgstr "Avoin"
 
+#: checklists/models.py:173 checklists/templates/checklists/issue.html:6
+#: checklists/templates/checklists/issue.html:17
+#: checklists/templates/checklists/issues.html:7
+#: checklists/templates/checklists/issues.html:14
+#: dashboard/templates/dashboard/dashboard.html:159
 msgid "Resolved"
 msgstr "Ratkaistu"
 
+#: checklists/models.py:176
 msgid "Reported by staff"
 msgstr "Henkilökunnan ilmoittama"
 
+#: checklists/models.py:177
 msgid "Failed task"
 msgstr "Ei kunnossa oleva tehtävä"
 
+#: checklists/models.py:178
 msgid "Temperature outside range"
 msgstr "Lämpötila rajojen ulkopuolella"
 
+#: checklists/services.py:61 website/services.py:128
 msgid "Enter a title."
 msgstr "Anna otsikko."
 
+#: checklists/services.py:78
 msgid "A task does not belong to this checklist. Reload and try again."
 msgstr ""
 "Tehtävä ei kuulu tähän tarkistuslistaan. Lataa sivu uudelleen ja yritä "
 "uudestaan."
 
+#: checklists/services.py:88
 #, python-format
 msgid "Task %(n)s needs a description."
 msgstr "Tehtävä %(n)s tarvitsee kuvauksen."
 
+#: checklists/services.py:101
 #, python-format
 msgid "Task %(n)s: the lowest temperature must not be above the highest."
 msgstr "Tehtävä %(n)s: alin lämpötila ei voi olla ylintä korkeampi."
 
+#: checklists/services.py:109
 msgid "A checklist needs at least one task."
 msgstr "Tarkistuslistassa on oltava vähintään yksi tehtävä."
 
+#: checklists/services.py:172 checklists/services.py:208
 msgid "Checklist not found."
 msgstr "Tarkistuslistaa ei löytynyt."
 
+#: checklists/services.py:177
 msgid "A run with this label already exists today."
 msgstr "Tällä nimellä on jo kierros tänään."
 
+#: checklists/services.py:180
 msgid "This checklist is deactivated."
 msgstr "Tämä tarkistuslista on poistettu käytöstä."
 
+#: checklists/services.py:183
 msgid "This checklist has no tasks."
 msgstr "Tässä tarkistuslistassa ei ole tehtäviä."
 
+#: checklists/services.py:210
 msgid "This checklist was already submitted and can no longer be changed."
 msgstr "Tämä tarkistuslista on jo lähetetty, eikä sitä voi enää muuttaa."
 
+#: checklists/services.py:221
 msgid "Enter the reading as a number, for example 3.5 or -18"
 msgstr "Anna lukema numerona, esimerkiksi 3,5 tai -18"
 
+#: checklists/services.py:223
 msgid "That reading looks wrong. Enter degrees Celsius."
 msgstr "Lukema näyttää väärältä. Anna asteina (°C)."
 
+#: checklists/services.py:225
 msgid "Use at most two decimal places."
 msgstr "Käytä enintään kahta desimaalia."
 
+#: checklists/services.py:255 checklists/services.py:327
 msgid "Task not found."
 msgstr "Tehtävää ei löytynyt."
 
+#: checklists/services.py:267
 msgid "Choose an answer."
 msgstr "Valitse vastaus."
 
+#: checklists/services.py:270
 msgid "Write how much is left, for example “2 boxes”."
 msgstr "Kirjoita, paljonko on jäljellä, esimerkiksi “2 laatikkoa”."
 
+#: checklists/services.py:271
 msgid "Add a note explaining this answer."
 msgstr "Lisää vastaukselle selittävä huomautus."
 
+#: checklists/services.py:276
 msgid "Enter the temperature reading."
 msgstr "Anna lämpötilalukema."
 
+#: checklists/services.py:290
 #, python-format
 msgid "Low: %(item)s. Left: %(note)s"
 msgstr "Vähissä: %(item)s. Jäljellä: %(note)s"
 
+#: checklists/services.py:294
 #, python-format
 msgid ""
 "Reading %(reading)s °C%(where)s is outside the configured range %(range)s."
@@ -258,132 +360,229 @@ msgstr ""
 "Lukema %(reading)s °C%(where)s on asetettujen rajojen %(range)s "
 "ulkopuolella."
 
+#: checklists/services.py:330
 msgid "This checklist was already submitted. Ask a manager to follow up."
 msgstr ""
 "Tämä tarkistuslista on jo lähetetty. Pyydä esihenkilöä hoitamaan asia."
 
+#: checklists/services.py:386
 msgid "Describe how the issue was resolved."
 msgstr "Kuvaile, miten poikkeama ratkaistiin."
 
+#: checklists/services.py:389
 msgid "Issue not found."
 msgstr "Poikkeamaa ei löytynyt."
 
+#: checklists/services.py:391
 msgid "This issue is already resolved."
 msgstr "Tämä poikkeama on jo ratkaistu."
 
+#: checklists/services.py:414
 #, python-format
 msgid "%(n)s required task(s) still need an answer."
 msgstr "%(n)s pakollista tehtävää odottaa vielä vastausta."
 
+#: checklists/templates/checklists/history.html:2
+#: checklists/templates/checklists/history.html:4
 msgid "Checklist history"
 msgstr "Tarkistuslistojen historia"
 
+#: checklists/templates/checklists/history.html:4 core/templates/base.html:44
 msgid "My submitted checklists"
 msgstr "Lähettämäni tarkistuslistat"
 
+#: checklists/templates/checklists/history.html:6
+#: inventory/templates/inventory/history.html:18
+#: timeclock/templates/timeclock/mine.html:6
+#: timeclock/templates/timeclock/timesheets.html:10
 msgid "From"
 msgstr "Alkaen"
 
+#: checklists/templates/checklists/history.html:7
+#: inventory/templates/inventory/history.html:19
+#: timeclock/templates/timeclock/mine.html:7
+#: timeclock/templates/timeclock/timesheets.html:11
 msgid "To"
 msgstr "Asti"
 
+#: checklists/templates/checklists/history.html:8
+#: checklists/templates/checklists/history.html:25
+#: checklists/templates/checklists/issue.html:10
+#: checklists/templates/checklists/review.html:22
+#: checklists/templates/checklists/today.html:36
+#: dashboard/templates/dashboard/dashboard.html:84
+#: dashboard/templates/dashboard/dashboard.html:104
 msgid "Checklist"
 msgstr "Tarkistuslista"
 
+#: checklists/templates/checklists/history.html:9
+#: checklists/templates/checklists/history.html:14
+#: checklists/templates/checklists/issues.html:8
+#: inventory/templates/inventory/list.html:18
+#: inventory/templates/inventory/list.html:26
+#: staff/templates/staff/list.html:15
+#: timeclock/templates/timeclock/timesheets.html:26
 msgid "All"
 msgstr "Kaikki"
 
+#: checklists/templates/checklists/history.html:10
+#: inventory/templates/inventory/detail.html:78
+#: timeclock/templates/timeclock/_shift_table.html:10
+#: timeclock/templates/timeclock/timesheets.html:8
 msgid "deactivated"
 msgstr "poistettu käytöstä"
 
+#: checklists/templates/checklists/history.html:13
+#: checklists/templates/checklists/history.html:25
+#: checklists/templates/checklists/review.html:22
+#: dashboard/templates/dashboard/dashboard.html:53
+#: dashboard/templates/dashboard/dashboard.html:84
+#: inventory/templates/inventory/list.html:22
+#: inventory/templates/inventory/list.html:33
+#: staff/templates/staff/detail.html:10 staff/templates/staff/list.html:11
+#: staff/templates/staff/list.html:20
+#: timeclock/templates/timeclock/_shift_table.html:5
 msgid "Status"
 msgstr "Tila"
 
+#: checklists/templates/checklists/history.html:17
+#: checklists/templates/checklists/review.html:22 core/templates/base.html:34
+#: dashboard/templates/dashboard/dashboard.html:53
+#: inventory/templates/inventory/history.html:14
+#: staff/templates/staff/list.html:2 staff/templates/staff/list.html:4
+#: timeclock/templates/timeclock/_shift_table.html:4
+#: timeclock/templates/timeclock/timesheets.html:6
+#: timeclock/templates/timeclock/timesheets.html:18
 msgid "Staff"
 msgstr "Henkilökunta"
 
+#: checklists/templates/checklists/history.html:18
+#: inventory/templates/inventory/history.html:15
+#: timeclock/templates/timeclock/timesheets.html:7
 msgid "Everyone"
 msgstr "Kaikki"
 
+#: checklists/templates/checklists/history.html:22
+#: inventory/templates/inventory/history.html:20
+#: inventory/templates/inventory/list.html:30
+#: staff/templates/staff/list.html:17
 msgid "Filter"
 msgstr "Suodata"
 
+#: checklists/templates/checklists/history.html:25 website/forms.py:71
+#: website/templates/website/manage_hours.html:46
 msgid "Date"
 msgstr "Päivä"
 
+#: checklists/templates/checklists/history.html:25
+#: checklists/templates/checklists/review.html:22
+#: dashboard/templates/dashboard/dashboard.html:84
 msgid "Answered"
 msgstr "Vastattu"
 
+#: checklists/templates/checklists/history.html:25
+#: checklists/templates/checklists/review.html:22
 msgid "Failed"
 msgstr "Ei kunnossa"
 
+#: checklists/templates/checklists/history.html:25
 msgid "Submitted by"
 msgstr "Lähettäjä"
 
+#: checklists/templates/checklists/history.html:37
 msgid "No checklists match these filters."
 msgstr "Yksikään tarkistuslista ei vastaa näitä suodattimia."
 
+#: checklists/templates/checklists/issue.html:2
 msgid "Issue"
 msgstr "Poikkeama"
 
+#: checklists/templates/checklists/issue.html:4
+#: checklists/templates/checklists/run.html:4
+#: timeclock/templates/timeclock/shift.html:4
 msgid "Back"
 msgstr "Takaisin"
 
+#: checklists/templates/checklists/issue.html:5
 msgid "Checklist issue"
 msgstr "Tarkistuslistan poikkeama"
 
+#: checklists/templates/checklists/issue.html:12
+#: checklists/templates/checklists/review.html:43
+#: dashboard/templates/dashboard/dashboard.html:127
 msgid "Reading"
 msgstr "Lukema"
 
+#: checklists/templates/checklists/issue.html:13
 msgid "Source"
 msgstr "Lähde"
 
+#: checklists/templates/checklists/issue.html:14
 msgid "Reported"
 msgstr "Ilmoitettu"
 
+#: checklists/templates/checklists/issue.html:15 menu/forms.py:15
+#: website/forms.py:91 website/forms.py:96
+#: website/templates/website/manage_images.html:59
 msgid "Description"
 msgstr "Kuvaus"
 
+#: checklists/templates/checklists/issue.html:18
 msgid "Resolution"
 msgstr "Ratkaisu"
 
+#: checklists/templates/checklists/issue.html:23
 msgid "Photos"
 msgstr "Kuvat"
 
+#: checklists/templates/checklists/issue.html:26
 #, python-format
 msgid "Photo %(name)s"
 msgstr "Kuva %(name)s"
 
+#: checklists/templates/checklists/issue.html:30
 msgid "No photos."
 msgstr "Ei kuvia."
 
+#: checklists/templates/checklists/issue.html:38
+#: website/templates/website/manage_images.html:45
 msgid "Upload photo"
 msgstr "Lähetä kuva"
 
+#: checklists/templates/checklists/issue.html:44
 msgid "Resolve"
 msgstr "Ratkaise"
 
+#: checklists/templates/checklists/issue.html:49
 msgid "Mark resolved"
 msgstr "Merkitse ratkaistuksi"
 
+#: checklists/templates/checklists/issues.html:2 core/templates/base.html:30
 msgid "Issues"
 msgstr "Poikkeamat"
 
+#: checklists/templates/checklists/issues.html:4
 msgid "Checklist issues"
 msgstr "Tarkistuslistojen poikkeamat"
 
+#: checklists/templates/checklists/issues.html:5
 msgid "Filter issues"
 msgstr "Suodata poikkeamia"
 
+#: checklists/templates/checklists/issues.html:20
 msgid "No issues here."
 msgstr "Ei poikkeamia."
 
+#: checklists/templates/checklists/report_issue.html:3
+#: checklists/templates/checklists/submit.html:3
 msgid "Back to checklist"
 msgstr "Takaisin tarkistuslistaan"
 
+#: checklists/templates/checklists/report_issue.html:4
 msgid "Report a problem"
 msgstr "Ilmoita ongelmasta"
 
+#: checklists/templates/checklists/report_issue.html:9
 msgid ""
 "If the photo cannot be accepted, nothing is saved and you will see why, so "
 "you can try again."
@@ -391,183 +590,262 @@ msgstr ""
 "Jos kuvaa ei voida hyväksyä, mitään ei tallenneta ja näet syyn, joten voit "
 "yrittää uudelleen."
 
+#: checklists/templates/checklists/report_issue.html:10
 msgid "Send report"
 msgstr "Lähetä ilmoitus"
 
+#: checklists/templates/checklists/review.html:2
+#: checklists/templates/checklists/review.html:4 core/templates/base.html:29
 msgid "Checklist review"
 msgstr "Tarkistuslistojen seuranta"
 
+#: checklists/templates/checklists/review.html:6
+#: dashboard/templates/dashboard/dashboard.html:9
 msgid "Business date"
 msgstr "Päivä"
 
+#: checklists/templates/checklists/review.html:7
+#: dashboard/templates/dashboard/dashboard.html:10
+#: timeclock/templates/timeclock/mine.html:8
+#: timeclock/templates/timeclock/timesheets.html:12
 msgid "Show"
 msgstr "Näytä"
 
+#: checklists/templates/checklists/review.html:13
+#: checklists/templates/checklists/review.html:35
+#: checklists/templates/checklists/today.html:11
+#: dashboard/templates/dashboard/dashboard.html:96
 msgid "Not started"
 msgstr "Ei aloitettu"
 
+#: checklists/templates/checklists/review.html:14
 msgid "Failed tasks"
 msgstr "Ei kunnossa -tehtävät"
 
+#: checklists/templates/checklists/review.html:15
 msgid "Temperature warnings"
 msgstr "Lämpötilavaroitukset"
 
+#: checklists/templates/checklists/review.html:17
+#: dashboard/templates/dashboard/dashboard.html:120
 msgid "No checklists were expected or started on this date."
 msgstr "Tälle päivälle ei ollut tarkistuslistoja, eikä yhtään aloitettu."
 
+#: checklists/templates/checklists/review.html:20
+#: checklists/templates/checklists/today.html:2 core/templates/base.html:24
+#: core/templates/core/today.html:18
+#: dashboard/templates/dashboard/dashboard.html:81
+#: staff/templates/staff/detail.html:30
 msgid "Checklists"
 msgstr "Tarkistuslistat"
 
+#: checklists/templates/checklists/review.html:22
+#: dashboard/templates/dashboard/dashboard.html:84
 msgid "Required left"
 msgstr "Pakollisia jäljellä"
 
+#: checklists/templates/checklists/review.html:41
 msgid "Temperature readings"
 msgstr "Lämpötilalukemat"
 
+#: checklists/templates/checklists/review.html:43
+#: dashboard/templates/dashboard/dashboard.html:127
 msgid "Time"
 msgstr "Aika"
 
+#: checklists/templates/checklists/review.html:43
 msgid "Range"
 msgstr "Rajat"
 
+#: checklists/templates/checklists/review.html:43
+#: dashboard/templates/dashboard/dashboard.html:127
+#: inventory/templates/inventory/detail.html:70
+#: inventory/templates/inventory/history.html:23
+#: staff/templates/staff/detail.html:58
+#: timeclock/templates/timeclock/shift.html:39
 msgid "By"
 msgstr "Tekijä"
 
+#: checklists/templates/checklists/review.html:49 checklists/views.py:35
+#: checklists/views.py:36 checklists/views.py:37 checklists/views.py:38
 msgid "N/A"
 msgstr "Ei koske"
 
+#: checklists/templates/checklists/review.html:50
+#: checklists/templates/checklists/run.html:45
 msgid "Outside range"
 msgstr "Rajojen ulkopuolella"
 
+#: checklists/templates/checklists/review.html:51
 msgid "Not configured"
 msgstr "Ei asetettu"
 
+#: checklists/templates/checklists/review.html:55
 msgid "No readings recorded."
 msgstr "Ei kirjattuja lukemia."
 
+#: checklists/templates/checklists/review.html:60
+#: core/templates/core/today.html:37
+#: dashboard/templates/dashboard/dashboard.html:33
 msgid "Open issues"
 msgstr "Avoimet poikkeamat"
 
+#: checklists/templates/checklists/review.html:67
 msgid "No open issues for this date."
 msgstr "Tälle päivälle ei ole avoimia poikkeamia."
 
+#: checklists/templates/checklists/run.html:11
+#: checklists/templates/checklists/today.html:17
 msgid "Progress"
 msgstr "Edistyminen"
 
+#: checklists/templates/checklists/run.html:13
 #, python-format
 msgid "%(a)s of %(t)s answered"
 msgstr "%(a)s / %(t)s vastattu"
 
+#: checklists/templates/checklists/run.html:14
 #, python-format
 msgid "%(n)s required task left"
 msgid_plural "%(n)s required tasks left"
 msgstr[0] "%(n)s pakollinen tehtävä jäljellä"
 msgstr[1] "%(n)s pakollista tehtävää jäljellä"
 
+#: checklists/templates/checklists/run.html:15
 #, python-format
 msgid "%(n)s failed or low"
 msgid_plural "%(n)s failed or low"
 msgstr[0] "%(n)s ei kunnossa tai vähissä"
 msgstr[1] "%(n)s ei kunnossa tai vähissä"
 
+#: checklists/templates/checklists/run.html:16
 #, python-format
 msgid "%(n)s temperature warning"
 msgid_plural "%(n)s temperature warnings"
 msgstr[0] "%(n)s lämpötilavaroitus"
 msgstr[1] "%(n)s lämpötilavaroitusta"
 
+#: checklists/templates/checklists/run.html:18
 #, python-format
 msgid "Started by %(who)s at %(when)s"
 msgstr "Aloittanut %(who)s klo %(when)s"
 
+#: checklists/templates/checklists/run.html:18
 #, python-format
 msgid "submitted by %(who)s at %(when)s"
 msgstr "lähettänyt %(who)s klo %(when)s"
 
+#: checklists/templates/checklists/run.html:18
 #, python-format
 msgid "checklist version %(v)s"
 msgstr "tarkistuslistan versio %(v)s"
 
+#: checklists/templates/checklists/run.html:20
 msgid "Groups"
 msgstr "Ryhmät"
 
+#: checklists/templates/checklists/run.html:24
 msgid "Tap an answer to save it. The page moves on to the next task."
 msgstr "Tallenna vastaus napauttamalla. Sivu siirtyy seuraavaan tehtävään."
 
+#: checklists/templates/checklists/run.html:38
+#: dashboard/templates/dashboard/dashboard.html:108
 msgid "Optional"
 msgstr "Vapaaehtoinen"
 
+#: checklists/templates/checklists/run.html:42
 msgid "Acceptable range set by manager:"
 msgstr "Esihenkilön asettamat rajat:"
 
+#: checklists/templates/checklists/run.html:42
 msgid "No acceptable range is configured. The reading is recorded only."
 msgstr "Rajoja ei ole asetettu. Lukema vain kirjataan."
 
+#: checklists/templates/checklists/run.html:55
 msgid "Reading (°C)"
 msgstr "Lukema (°C)"
 
+#: checklists/templates/checklists/run.html:56
 msgid "Reading °C"
 msgstr "Lukema °C"
 
+#: checklists/templates/checklists/run.html:58
 msgid "Quantity or note"
 msgstr "Määrä tai huomautus"
 
+#: checklists/templates/checklists/run.html:58 inventory/forms.py:39
+#: website/templates/website/manage_hours.html:46
 msgid "Note"
 msgstr "Huomautus"
 
+#: checklists/templates/checklists/run.html:60
 msgid "Quantity / note (needed for Low)"
 msgstr "Määrä / huomautus (pakollinen, jos vähissä)"
 
+#: checklists/templates/checklists/run.html:60
 msgid "Note (needed for Fail, Not done, N/A)"
 msgstr "Huomautus (pakollinen, jos ei kunnossa, ei tehty tai ei koske)"
 
+#: checklists/templates/checklists/run.html:61
 #, python-format
 msgid "Answer for %(t)s"
 msgstr "Vastaus: %(t)s"
 
+#: checklists/templates/checklists/run.html:67
 msgid "Report a problem with a photo"
 msgstr "Ilmoita ongelmasta ja lisää kuva"
 
+#: checklists/templates/checklists/run.html:69
 msgid "Flag an issue on this task"
 msgstr "Merkitse tähän tehtävään poikkeama"
 
+#: checklists/templates/checklists/run.html:74
 msgid "Open issue"
 msgstr "Avoin poikkeama"
 
+#: checklists/templates/checklists/run.html:74
 msgid "Resolved issue"
 msgstr "Ratkaistu poikkeama"
 
+#: checklists/templates/checklists/run.html:76
 #, python-format
 msgid "%(n)s photo"
 msgid_plural "%(n)s photos"
 msgstr[0] "%(n)s kuva"
 msgstr[1] "%(n)s kuvaa"
 
+#: checklists/templates/checklists/run.html:87
 msgid "Review and submit"
 msgstr "Tarkista ja lähetä"
 
+#: checklists/templates/checklists/submit.html:4
 msgid "Submit checklist?"
 msgstr "Lähetetäänkö tarkistuslista?"
 
+#: checklists/templates/checklists/submit.html:8
 #, python-format
 msgid "%(n)s required task still needs an answer:"
 msgid_plural "%(n)s required tasks still need an answer:"
 msgstr[0] "%(n)s pakollinen tehtävä odottaa vielä vastausta:"
 msgstr[1] "%(n)s pakollista tehtävää odottaa vielä vastausta:"
 
+#: checklists/templates/checklists/submit.html:10
 msgid "Go back and finish"
 msgstr "Palaa viimeistelemään"
 
+#: checklists/templates/checklists/submit.html:12
 #, python-format
 msgid "%(a)s of %(t)s tasks answered."
 msgstr "%(a)s / %(t)s tehtävää vastattu."
 
+#: checklists/templates/checklists/submit.html:13
 #, python-format
 msgid "%(n)s optional task is unanswered."
 msgid_plural "%(n)s optional tasks are unanswered."
 msgstr[0] "%(n)s vapaaehtoinen tehtävä on vastaamatta."
 msgstr[1] "%(n)s vapaaehtoista tehtävää on vastaamatta."
 
+#: checklists/templates/checklists/submit.html:14
 #, python-format
 msgid "%(n)s open issue stays open for a manager after you submit."
 msgid_plural "%(n)s open issues stay open for a manager after you submit."
@@ -576,22 +854,33 @@ msgstr[0] ""
 msgstr[1] ""
 "%(n)s avointa poikkeamaa jää esihenkilön hoidettavaksi lähettämisen jälkeen."
 
+#: checklists/templates/checklists/submit.html:15
 msgid "After submitting, answers can no longer be changed."
 msgstr "Lähettämisen jälkeen vastauksia ei voi enää muuttaa."
 
+#: checklists/templates/checklists/submit.html:17
 msgid "Submit checklist"
 msgstr "Lähetä tarkistuslista"
 
+#: checklists/templates/checklists/template_form.html:2
+#: checklists/templates/checklists/template_form.html:5
+#: checklists/templates/checklists/templates.html:4
 msgid "New checklist"
 msgstr "Uusi tarkistuslista"
 
+#: checklists/templates/checklists/template_form.html:4
+#: checklists/templates/checklists/templates.html:2
+#: checklists/templates/checklists/templates.html:4
+#: core/templates/base.html:31
 msgid "Checklist templates"
 msgstr "Tarkistuslistapohjat"
 
+#: checklists/templates/checklists/template_form.html:5
 #, python-format
 msgid "Edit %(t)s"
 msgstr "Muokkaa: %(t)s"
 
+#: checklists/templates/checklists/template_form.html:6
 msgid ""
 "Saving creates a new version. Checklists already started or submitted keep "
 "the tasks and thresholds they started with."
@@ -599,9 +888,11 @@ msgstr ""
 "Tallentaminen luo uuden version. Jo aloitetut tai lähetetyt tarkistuslistat "
 "säilyttävät alkuperäiset tehtävänsä ja rajansa."
 
+#: checklists/templates/checklists/template_form.html:16
 msgid "Tasks"
 msgstr "Tehtävät"
 
+#: checklists/templates/checklists/template_form.html:17
 msgid ""
 "Empty rows are ignored. Temperature limits are optional: set them only if "
 "you want a warning, and only for temperature tasks."
@@ -609,13 +900,16 @@ msgstr ""
 "Tyhjät rivit ohitetaan. Lämpötilarajat ovat vapaaehtoisia: aseta ne vain, "
 "jos haluat varoituksen, ja vain lämpötilatehtäville."
 
+#: checklists/templates/checklists/template_form.html:20
 #, python-format
 msgid "Task %(n)s"
 msgstr "Tehtävä %(n)s"
 
+#: checklists/templates/checklists/template_form.html:20
 msgid "New task"
 msgstr "Uusi tehtävä"
 
+#: checklists/templates/checklists/template_form.html:28
 msgid ""
 "Pasted tasks are added after the tasks above and are required. Rows with the"
 " same group are shown together on the checklist."
@@ -623,136 +917,196 @@ msgstr ""
 "Liitetyt tehtävät lisätään yllä olevien jälkeen, ja ne ovat pakollisia. "
 "Saman ryhmän rivit näytetään tarkistuslistalla yhdessä."
 
+#: checklists/templates/checklists/template_form.html:31
 msgid "Save checklist"
 msgstr "Tallenna tarkistuslista"
 
+#: checklists/templates/checklists/template_form.html:32
+#: inventory/templates/inventory/item_form.html:9
+#: menu/templates/menu/category_form.html:10
+#: menu/templates/menu/item_delete.html:9
+#: menu/templates/menu/item_form.html:49
+#: staff/templates/staff/deactivate.html:14 staff/templates/staff/form.html:10
+#: timeclock/templates/timeclock/correct.html:33
+#: website/templates/website/manage_special_day.html:27
+#: website/templates/website/promotion_delete.html:9
+#: website/templates/website/promotion_form.html:11
 msgid "Cancel"
 msgstr "Peruuta"
 
+#: checklists/templates/checklists/templates.html:10
 #, python-format
 msgid "%(n)s task"
 msgid_plural "%(n)s tasks"
 msgstr[0] "%(n)s tehtävä"
 msgstr[1] "%(n)s tehtävää"
 
+#: checklists/templates/checklists/templates.html:10
 #, python-format
 msgid "version %(v)s"
 msgstr "versio %(v)s"
 
+#: checklists/templates/checklists/templates.html:13
+#: inventory/templates/inventory/list.html:24
+#: staff/templates/staff/detail.html:11 staff/templates/staff/list.html:13
+#: staff/templates/staff/list.html:27
 msgid "Active"
 msgstr "Käytössä"
 
+#: checklists/templates/checklists/templates.html:13
+#: inventory/templates/inventory/detail.html:13
+#: inventory/templates/inventory/list.html:25
+#: inventory/templates/inventory/list.html:40
+#: staff/templates/staff/detail.html:12 staff/templates/staff/list.html:14
+#: staff/templates/staff/list.html:27
 msgid "Deactivated"
 msgstr "Poistettu käytöstä"
 
+#: checklists/templates/checklists/templates.html:14
 msgid ""
 "Deactivate this checklist? No new runs can be started. History is kept."
 msgstr ""
 "Poistetaanko tarkistuslista käytöstä? Uusia kierroksia ei voi aloittaa. "
 "Historia säilyy."
 
+#: checklists/templates/checklists/templates.html:16
+#: inventory/templates/inventory/detail.html:28
+#: staff/templates/staff/detail.html:45
 msgid "Deactivate"
 msgstr "Poista käytöstä"
 
+#: checklists/templates/checklists/templates.html:16
 msgid "Activate"
 msgstr "Ota käyttöön"
 
+#: checklists/templates/checklists/templates.html:22
 msgid "No checklists yet."
 msgstr "Ei vielä tarkistuslistoja."
 
+#: checklists/templates/checklists/today.html:4
 msgid "Today's checklists"
 msgstr "Päivän tarkistuslistat"
 
+#: checklists/templates/checklists/today.html:18
 #, python-format
 msgid "%(a)s of %(t)s tasks answered"
 msgstr "%(a)s / %(t)s tehtävää vastattu"
 
+#: checklists/templates/checklists/today.html:18
 #, python-format
 msgid "%(n)s failed"
 msgid_plural "%(n)s failed"
 msgstr[0] "%(n)s ei kunnossa"
 msgstr[1] "%(n)s ei kunnossa"
 
+#: checklists/templates/checklists/today.html:19
 msgid "View"
 msgstr "Näytä"
 
+#: checklists/templates/checklists/today.html:19
 msgid "Continue"
 msgstr "Jatka"
 
+#: checklists/templates/checklists/today.html:23
+#: timeclock/templates/timeclock/_shift_table.html:5
+#: timeclock/templates/timeclock/correct.html:21
 msgid "Start"
 msgstr "Aloita"
 
+#: checklists/templates/checklists/today.html:28
 msgid "There are no checklists set up yet."
 msgstr "Tarkistuslistoja ei ole vielä luotu."
 
+#: checklists/templates/checklists/today.html:28
 msgid "Create one"
 msgstr "Luo sellainen"
 
+#: checklists/templates/checklists/today.html:34
 msgid "Start an extra run (for example a second shift)"
 msgstr "Aloita ylimääräinen kierros (esimerkiksi toinen vuoro)"
 
+#: checklists/templates/checklists/today.html:38
 msgid "Run label"
 msgstr "Kierroksen nimi"
 
+#: checklists/templates/checklists/today.html:39
 msgid "e.g. Evening shift"
 msgstr "esim. Iltavuoro"
 
+#: checklists/templates/checklists/today.html:40
 msgid "Start extra run"
 msgstr "Aloita ylimääräinen kierros"
 
+#: checklists/views.py:36 staff/templates/staff/setup_link.html:9
 msgid "Done"
 msgstr "Tehty"
 
+#: checklists/views.py:36
 msgid "Not done"
 msgstr "Ei tehty"
 
+#: checklists/views.py:37
 msgid "Record reading"
 msgstr "Kirjaa lukema"
 
+#: checklists/views.py:38
 msgid "Enough"
 msgstr "Riittää"
 
+#: checklists/views.py:38
 msgid "Low"
 msgstr "Vähissä"
 
+#: checklists/views.py:46
 msgid "Reading recorded"
 msgstr "Lukema kirjattu"
 
+#: checklists/views.py:87
 msgid "This checklist was already started today. Continue below."
 msgstr "Tämä tarkistuslista on jo aloitettu tänään. Jatka alla."
 
+#: checklists/views.py:146
 #, python-format
 msgid "Saved “%(task)s”: %(answer)s."
 msgstr "Tallennettu “%(task)s”: %(answer)s."
 
+#: checklists/views.py:149
 msgid ""
 "The reading is outside the configured range, so an issue was opened for a "
 "manager."
 msgstr ""
 "Lukema on rajojen ulkopuolella, joten esihenkilölle avattiin poikkeama."
 
+#: checklists/views.py:151
 msgid "A manager can see it in the issue list."
 msgstr "Esihenkilö näkee sen poikkeamalistassa."
 
+#: checklists/views.py:175
 msgid "Checklist submitted. Thank you."
 msgstr "Tarkistuslista lähetetty. Kiitos!"
 
+#: checklists/views.py:199
 msgid "Issue reported with photo."
 msgstr "Poikkeama ilmoitettu kuvan kanssa."
 
+#: checklists/views.py:201
 msgid "Issue reported."
 msgstr "Poikkeama ilmoitettu."
 
+#: checklists/views.py:228
 msgid "Photo uploaded."
 msgstr "Kuva lähetetty."
 
+#: checklists/views.py:236
 msgid "Issue marked resolved."
 msgstr "Poikkeama merkitty ratkaistuksi."
 
+#: checklists/views.py:394
 #, python-format
 msgid "%(n)s task(s) added from the pasted list."
 msgstr "Liitetystä listasta lisättiin %(n)s tehtävää."
 
+#: checklists/views.py:395
 #, python-format
 msgid ""
 "Checklist saved (version %(v)s). Runs already started keep their original "
@@ -761,35 +1115,45 @@ msgstr ""
 "Tarkistuslista tallennettu (versio %(v)s). Jo aloitetut kierrokset "
 "säilyttävät alkuperäiset tehtävänsä."
 
+#: checklists/views.py:409
 msgid "Checklist activated."
 msgstr "Tarkistuslista otettu käyttöön."
 
+#: checklists/views.py:409
 msgid "Checklist deactivated. Its history is kept."
 msgstr "Tarkistuslista poistettu käytöstä. Sen historia säilyy."
 
+#: core/images.py:38
 #, python-format
 msgid "The photo is too large. The limit is %(mb)s MB."
 msgstr "Kuva on liian suuri. Enimmäiskoko on %(mb)s Mt."
 
+#: core/images.py:42
 msgid "The photo is too large."
 msgstr "Kuva on liian suuri."
 
+#: core/images.py:48
 msgid "Use a JPEG, PNG or WebP image."
 msgstr "Käytä JPEG-, PNG- tai WebP-kuvaa."
 
+#: core/images.py:63
 msgid "That file is not a readable JPEG, PNG or WebP image."
 msgstr "Tiedosto ei ole luettava JPEG-, PNG- tai WebP-kuva."
 
+#: core/models.py:13
 #, python-format
 msgid "Unknown time zone: %(tz)s"
 msgstr "Tuntematon aikavyöhyke: %(tz)s"
 
+#: core/templates/403.html:2
 msgid "Not allowed"
 msgstr "Ei sallittu"
 
+#: core/templates/403.html:5
 msgid "You don't have access to this page"
 msgstr "Sinulla ei ole pääsyä tälle sivulle"
 
+#: core/templates/403.html:6
 msgid ""
 "This page is for managers or owners. If you think you should have access, "
 "ask your manager."
@@ -797,156 +1161,243 @@ msgstr ""
 "Tämä sivu on esihenkilöille ja omistajille. Jos sinun pitäisi mielestäsi "
 "päästä sille, kysy esihenkilöltäsi."
 
+#: core/templates/403.html:7 core/templates/404.html:7
 msgid "Go to Today"
 msgstr "Siirry Tänään-sivulle"
 
+#: core/templates/404.html:2
 msgid "Not found"
 msgstr "Ei löytynyt"
 
+#: core/templates/404.html:5
 msgid "Page not found"
 msgstr "Sivua ei löytynyt"
 
+#: core/templates/404.html:6
 msgid "This page doesn't exist, or it isn't available to your account."
 msgstr "Sivua ei ole olemassa, tai se ei ole käytettävissä tunnuksellasi."
 
+#: core/templates/404.html:7
+#: core/templates/registration/set_password_invalid.html:6
 msgid "Go to sign in"
 msgstr "Siirry kirjautumaan"
 
+#: core/templates/base.html:6
 msgid "Restaurant operations"
 msgstr "Ravintolan arki"
 
+#: core/templates/base.html:11 website/templates/website/base.html:15
 msgid "Skip to content"
 msgstr "Siirry sisältöön"
 
+#: core/templates/base.html:12
 msgid ""
 "Demo with example data. Anything you change is reset when the demo restarts."
 msgstr ""
 "Esittelyversio esimerkkitiedoilla. Kaikki muutokset nollautuvat, kun "
 "esittely käynnistyy uudelleen."
 
+#: core/templates/base.html:18
 msgctxt "navigation"
 msgid "Menu"
 msgstr "Valikko"
 
+#: core/templates/base.html:19 website/templates/website/base.html:24
 msgid "Main"
 msgstr "Päävalikko"
 
+#: core/templates/base.html:21 core/templates/core/today.html:2
 msgid "Today"
 msgstr "Tänään"
 
+#: core/templates/base.html:22 timeclock/templates/timeclock/clock.html:2
+#: timeclock/templates/timeclock/clock.html:4
 msgid "Clock in/out"
 msgstr "Leimaus"
 
+#: core/templates/base.html:23 staff/templates/staff/detail.html:21
+#: timeclock/templates/timeclock/mine.html:2
+#: timeclock/templates/timeclock/mine.html:4
 msgid "My hours"
 msgstr "Omat tunnit"
 
+#: core/templates/base.html:25 core/templates/core/today.html:27
+#: inventory/templates/inventory/detail.html:4
+#: inventory/templates/inventory/list.html:2
+#: inventory/templates/inventory/list.html:5
 msgid "Inventory"
 msgstr "Varasto"
 
+#: core/templates/base.html:28 core/templates/core/today.html:33
+#: dashboard/templates/dashboard/dashboard.html:2
 msgid "Dashboard"
 msgstr "Yleisnäkymä"
 
+#: core/templates/base.html:32 inventory/templates/inventory/history.html:2
+#: inventory/templates/inventory/history.html:4
 msgid "Stock history"
 msgstr "Varastotapahtumat"
 
+#: core/templates/base.html:33 timeclock/templates/timeclock/timesheets.html:2
+#: timeclock/templates/timeclock/timesheets.html:4
 msgid "Timesheets"
 msgstr "Tuntilistat"
 
+#: core/templates/base.html:35 menu/templates/menu/category_form.html:3
+#: menu/templates/menu/item_form.html:4 menu/templates/menu/overview.html:2
+#: menu/templates/menu/overview.html:5 website/templates/website/base.html:26
+#: website/templates/website/menu.html:2 website/templates/website/menu.html:5
 msgid "Menu"
 msgstr "Ruokalista"
 
+#: core/templates/base.html:36 website/templates/website/promotion_form.html:4
+#: website/templates/website/promotion_list.html:2
+#: website/templates/website/promotion_list.html:5
 msgid "Promotions"
 msgstr "Tarjoukset"
 
+#: core/templates/base.html:38 website/templates/website/manage_images.html:90
+#: website/templates/website/manage_info.html:2
+#: website/templates/website/manage_info.html:5
+msgid "Restaurant details"
+msgstr "Ravintolan tiedot"
+
+#: core/templates/base.html:39 website/templates/website/base.html:46
+#: website/templates/website/contact.html:22
+#: website/templates/website/manage_hours.html:2
+#: website/templates/website/manage_hours.html:5
+#: website/templates/website/manage_images.html:90
+#: website/templates/website/manage_info.html:17
+#: website/templates/website/manage_special_day.html:4
+msgid "Opening hours"
+msgstr "Aukioloajat"
+
+#: core/templates/base.html:40 website/templates/website/manage_images.html:2
+#: website/templates/website/manage_images.html:5
+#: website/templates/website/manage_info.html:17
+msgid "Website images"
+msgstr "Verkkosivun kuvat"
+
+#: core/templates/base.html:42
 msgid "Public website"
 msgstr "Julkinen verkkosivu"
 
+#: core/templates/base.html:47
 msgid "My profile"
 msgstr "Oma profiili"
 
+#: core/templates/base.html:50
 msgid "Sign out"
 msgstr "Kirjaudu ulos"
 
+#: core/templates/core/language_switcher.html:2
 msgid "Language"
 msgstr "Kieli"
 
+#: core/templates/core/pagination.html:2
 msgid "Pages"
 msgstr "Sivut"
 
+#: core/templates/core/pagination.html:3
 msgid "Previous"
 msgstr "Edellinen"
 
+#: core/templates/core/pagination.html:4
 #, python-format
 msgid "Page %(n)s of %(total)s"
 msgstr "Sivu %(n)s / %(total)s"
 
+#: core/templates/core/pagination.html:5
 msgid "Next"
 msgstr "Seuraava"
 
+#: core/templates/core/today.html:4
 #, python-format
 msgid "Hello, %(name)s"
 msgstr "Hei, %(name)s"
 
+#: core/templates/core/today.html:8
 msgid "My shift"
 msgstr "Oma vuoro"
 
+#: core/templates/core/today.html:10
+#: timeclock/templates/timeclock/clock.html:16
 msgid "On break"
 msgstr "Tauolla"
 
+#: core/templates/core/today.html:10 timeclock/models.py:66
 msgid "Clocked in"
 msgstr "Leimattu sisään"
 
+#: core/templates/core/today.html:11
 #, python-format
 msgid "Since %(t)s"
 msgstr "Klo %(t)s alkaen"
 
+#: core/templates/core/today.html:13
+#: timeclock/templates/timeclock/clock.html:9
 msgid "Not clocked in"
 msgstr "Ei leimattu sisään"
 
+#: core/templates/core/today.html:14
 msgid "Tap to clock in"
 msgstr "Leimaa sisään napauttamalla"
 
+#: core/templates/core/today.html:21
 msgid "submitted today"
 msgstr "lähetetty tänään"
 
+#: core/templates/core/today.html:21
 #, python-format
 msgid "%(n)s in progress"
 msgid_plural "%(n)s in progress"
 msgstr[0] "%(n)s kesken"
 msgstr[1] "%(n)s kesken"
 
+#: core/templates/core/today.html:23
 msgid "No checklists set up."
 msgstr "Tarkistuslistoja ei ole luotu."
 
+#: core/templates/core/today.html:28
 #, python-format
 msgid "%(n)s item low"
 msgid_plural "%(n)s items low"
 msgstr[0] "%(n)s tuote vähissä"
 msgstr[1] "%(n)s tuotetta vähissä"
 
+#: core/templates/core/today.html:28
 msgid "Nothing low"
 msgstr "Mikään ei ole vähissä"
 
+#: core/templates/core/today.html:29
 msgid "Record deliveries, use and waste"
 msgstr "Kirjaa toimitukset, käyttö ja hävikki"
 
+#: core/templates/core/today.html:34
 msgid "Staff, hours, checklists, issues, stock and temperatures in one place"
 msgstr ""
 "Henkilökunta, tunnit, tarkistuslistat, poikkeamat, varasto ja lämpötilat "
 "yhdessä paikassa"
 
+#: core/templates/core/today.html:41
 msgid "Staff on shift"
 msgstr "Vuorossa"
 
+#: core/templates/registration/login.html:2
+#: core/templates/registration/login.html:5
+#: core/templates/registration/login.html:10
 msgid "Sign in"
 msgstr "Kirjaudu sisään"
 
+#: core/templates/registration/login.html:12
 msgid "Forgot your password? Ask your manager for a new password link."
 msgstr "Unohditko salasanasi? Pyydä esihenkilöltäsi uusi salasanalinkki."
 
+#: core/templates/registration/login.html:16
 msgid "Demo accounts"
 msgstr "Esittelytunnukset"
 
+#: core/templates/registration/login.html:17
 #, python-format
 msgid ""
 "Tap a person to sign in as them. Every demo account uses the password "
@@ -955,29 +1406,37 @@ msgstr ""
 "Napauta henkilöä kirjautuaksesi hänenä. Kaikkien esittelytunnusten salasana "
 "on <strong>%(pw)s</strong>."
 
+#: core/templates/registration/set_password.html:2
+#: core/templates/registration/set_password.html:5
 msgid "Set your password"
 msgstr "Aseta salasanasi"
 
+#: core/templates/registration/set_password.html:6
 #, python-format
 msgid "Hi %(name)s. You will sign in as <strong>%(login)s</strong>."
 msgstr ""
 "Hei %(name)s. Kirjaudut sisään tunnuksella <strong>%(login)s</strong>."
 
+#: core/templates/registration/set_password.html:10
 msgid "Save password"
 msgstr "Tallenna salasana"
 
+#: core/templates/registration/set_password_invalid.html:4
 msgid "This link does not work"
 msgstr "Tämä linkki ei toimi"
 
+#: core/templates/registration/set_password_invalid.html:5
 msgid ""
 "The password link has expired or has already been used. Ask your manager for"
 " a new one."
 msgstr ""
 "Salasanalinkki on vanhentunut tai jo käytetty. Pyydä esihenkilöltäsi uusi."
 
+#: core/timeutils.py:47
 msgid "Enter a valid date and time."
 msgstr "Anna kelvollinen päivämäärä ja kellonaika."
 
+#: core/timeutils.py:52
 #, python-format
 msgid ""
 "%(value)s does not exist in the restaurant's time zone (daylight-saving "
@@ -985,96 +1444,127 @@ msgid ""
 msgstr ""
 "%(value)s ei ole olemassa ravintolan aikavyöhykkeellä (kesäajan vaihdos)."
 
+#: dashboard/templates/dashboard/dashboard.html:6
 msgid "Today's operation"
 msgstr "Päivän toiminta"
 
+#: dashboard/templates/dashboard/dashboard.html:6
 #, python-format
 msgid "Operation on %(d)s"
 msgstr "Toiminta %(d)s"
 
+#: dashboard/templates/dashboard/dashboard.html:8
 msgid "Choose a date"
 msgstr "Valitse päivä"
 
+#: dashboard/templates/dashboard/dashboard.html:11
 msgid "Back to today"
 msgstr "Takaisin tähän päivään"
 
+#: dashboard/templates/dashboard/dashboard.html:13
 #, python-format
 msgid "Updated %(t)s"
 msgstr "Päivitetty %(t)s"
 
+#: dashboard/templates/dashboard/dashboard.html:13
 msgid "Refresh"
 msgstr "Päivitä"
 
+#: dashboard/templates/dashboard/dashboard.html:18
 msgid "On shift now"
 msgstr "Vuorossa nyt"
 
+#: dashboard/templates/dashboard/dashboard.html:20
 #, python-format
 msgid "%(n)s on break"
 msgid_plural "%(n)s on break"
 msgstr[0] "%(n)s tauolla"
 msgstr[1] "%(n)s tauolla"
 
+#: dashboard/templates/dashboard/dashboard.html:20
 msgid "clocked in"
 msgstr "leimattu sisään"
 
+#: dashboard/templates/dashboard/dashboard.html:23
 msgid "Hours worked"
 msgstr "Tehdyt tunnit"
 
+#: dashboard/templates/dashboard/dashboard.html:25
 msgid "in progress"
 msgstr "kesken"
 
+#: dashboard/templates/dashboard/dashboard.html:25
 msgid "closed shifts"
 msgstr "päättyneet vuorot"
 
+#: dashboard/templates/dashboard/dashboard.html:28
 msgid "Checklists submitted"
 msgstr "Lähetetyt tarkistuslistat"
 
+#: dashboard/templates/dashboard/dashboard.html:30
 #, python-format
 msgid "%(n)s required task open"
 msgid_plural "%(n)s required tasks open"
 msgstr[0] "%(n)s pakollinen tehtävä auki"
 msgstr[1] "%(n)s pakollista tehtävää auki"
 
+#: dashboard/templates/dashboard/dashboard.html:30
 msgid "no required tasks open"
 msgstr "ei avoimia pakollisia tehtäviä"
 
+#: dashboard/templates/dashboard/dashboard.html:30
 msgid "none expected"
 msgstr "ei odotettuja"
 
+#: dashboard/templates/dashboard/dashboard.html:35
 #, python-format
 msgid "%(n)s resolved this day"
 msgid_plural "%(n)s resolved this day"
 msgstr[0] "%(n)s ratkaistu tänä päivänä"
 msgstr[1] "%(n)s ratkaistu tänä päivänä"
 
+#: dashboard/templates/dashboard/dashboard.html:38
+#: dashboard/templates/dashboard/dashboard.html:168
+#: inventory/templates/inventory/detail.html:14
+#: inventory/templates/inventory/list.html:40
 msgid "Low stock"
 msgstr "Vähissä"
 
+#: dashboard/templates/dashboard/dashboard.html:40
 msgid "items at or below minimum"
 msgstr "tuotetta minimissä tai alle"
 
+#: dashboard/templates/dashboard/dashboard.html:43
+#: dashboard/templates/dashboard/dashboard.html:124
 msgid "Flagged temperatures"
 msgstr "Poikkeavat lämpötilat"
 
+#: dashboard/templates/dashboard/dashboard.html:45
 msgid "outside the set range"
 msgstr "rajojen ulkopuolella"
 
+#: dashboard/templates/dashboard/dashboard.html:50
 msgid "Staff on shift now"
 msgstr "Vuorossa nyt"
 
+#: dashboard/templates/dashboard/dashboard.html:53
 msgid "Since"
 msgstr "Alkaen"
 
+#: dashboard/templates/dashboard/dashboard.html:53
 msgid "Worked so far"
 msgstr "Tehty tähän mennessä"
 
+#: dashboard/templates/dashboard/dashboard.html:58
 #, python-format
 msgid "On break since %(t)s"
 msgstr "Tauolla klo %(t)s alkaen"
 
+#: dashboard/templates/dashboard/dashboard.html:58
 msgid "Working"
 msgstr "Töissä"
 
+#: dashboard/templates/dashboard/dashboard.html:65
 msgid ""
 "Worked so far is provisional until the person clocks out. Breaks are not "
 "counted."
@@ -1082,43 +1572,59 @@ msgstr ""
 "Tähän mennessä tehty aika on alustava, kunnes henkilö leimaa ulos. Taukoja "
 "ei lasketa."
 
+#: dashboard/templates/dashboard/dashboard.html:67
 msgid "Nobody is clocked in right now."
 msgstr "Kukaan ei ole juuri nyt leimannut sisään."
 
+#: dashboard/templates/dashboard/dashboard.html:70 website/services.py:306
+#: website/templates/website/manage_hours.html:46
+#: website/templates/website/manage_special_day.html:14
 msgid "Hours"
 msgstr "Tunnit"
 
+#: dashboard/templates/dashboard/dashboard.html:73
 msgid "Closed shifts"
 msgstr "Päättyneet vuorot"
 
+#: dashboard/templates/dashboard/dashboard.html:74
+#: timeclock/templates/timeclock/shift.html:9
 msgid "Still open"
 msgstr "Vielä auki"
 
+#: dashboard/templates/dashboard/dashboard.html:74
 msgid "so far (provisional)"
 msgstr "tähän mennessä (alustava)"
 
+#: dashboard/templates/dashboard/dashboard.html:75
 msgid "People"
 msgstr "Henkilöitä"
 
+#: dashboard/templates/dashboard/dashboard.html:77
 msgid "Counts shifts that started on this date, restaurant local time."
 msgstr ""
 "Laskee vuorot, jotka alkoivat tänä päivänä ravintolan paikallista aikaa."
 
+#: dashboard/templates/dashboard/dashboard.html:77
 msgid "Open timesheets"
 msgstr "Avaa tuntilistat"
 
+#: dashboard/templates/dashboard/dashboard.html:84
 msgid "Started by"
 msgstr "Aloittaja"
 
+#: dashboard/templates/dashboard/dashboard.html:101
 msgid "Incomplete tasks"
 msgstr "Keskeneräiset tehtävät"
 
+#: dashboard/templates/dashboard/dashboard.html:104
 msgid "Responsible"
 msgstr "Vastuuhenkilö"
 
+#: dashboard/templates/dashboard/dashboard.html:109
 msgid "submitted"
 msgstr "lähetetty"
 
+#: dashboard/templates/dashboard/dashboard.html:115
 msgid ""
 "Tasks are not assigned to people yet, so the person who started the "
 "checklist is shown as responsible."
@@ -1126,34 +1632,44 @@ msgstr ""
 "Tehtäviä ei vielä osoiteta henkilöille, joten tarkistuslistan aloittaja "
 "näytetään vastuuhenkilönä."
 
+#: dashboard/templates/dashboard/dashboard.html:117
 msgid "Every task in the started checklists has an answer."
 msgstr "Kaikkiin aloitettujen tarkistuslistojen tehtäviin on vastattu."
 
+#: dashboard/templates/dashboard/dashboard.html:117
 msgid "No checklist has been started yet."
 msgstr "Yhtään tarkistuslistaa ei ole vielä aloitettu."
 
+#: dashboard/templates/dashboard/dashboard.html:127
 msgid "Equipment"
 msgstr "Laite"
 
+#: dashboard/templates/dashboard/dashboard.html:127
 msgid "Set range"
 msgstr "Asetetut rajat"
 
+#: dashboard/templates/dashboard/dashboard.html:141
 msgid "No readings outside a set range on this date."
 msgstr "Tänä päivänä ei ole lukemia rajojen ulkopuolella."
 
+#: dashboard/templates/dashboard/dashboard.html:145
 msgid "Reported issues"
 msgstr "Ilmoitetut poikkeamat"
 
+#: dashboard/templates/dashboard/dashboard.html:153
 msgid "No open issues."
 msgstr "Ei avoimia poikkeamia."
 
+#: dashboard/templates/dashboard/dashboard.html:156
 msgid "Resolved on this date"
 msgstr "Ratkaistu tänä päivänä"
 
+#: dashboard/templates/dashboard/dashboard.html:160
 #, python-format
 msgid "Resolved by %(who)s at %(t)s"
 msgstr "Ratkaissut %(who)s klo %(t)s"
 
+#: dashboard/templates/dashboard/dashboard.html:165
 msgid ""
 "Open issues are listed whatever day they were reported, until someone "
 "resolves them."
@@ -1161,151 +1677,210 @@ msgstr ""
 "Avoimet poikkeamat näytetään ilmoituspäivästä riippumatta, kunnes joku "
 "ratkaisee ne."
 
+#: dashboard/templates/dashboard/dashboard.html:171
+#: inventory/templates/inventory/history.html:6
+#: inventory/templates/inventory/history.html:23
+#: inventory/templates/inventory/list.html:33
 msgid "Item"
 msgstr "Tuote"
 
+#: dashboard/templates/dashboard/dashboard.html:171
+#: inventory/templates/inventory/detail.html:9
+#: inventory/templates/inventory/list.html:33
 msgid "In stock"
 msgstr "Varastossa"
 
+#: dashboard/templates/dashboard/dashboard.html:171
+#: inventory/templates/inventory/detail.html:19
+#: inventory/templates/inventory/list.html:33
 msgid "Minimum"
 msgstr "Minimi"
 
+#: dashboard/templates/dashboard/dashboard.html:171
+#: inventory/templates/inventory/detail.html:21
 msgid "Supplier"
 msgstr "Toimittaja"
 
+#: dashboard/templates/dashboard/dashboard.html:183
 msgid "Current stock, whatever date is selected."
 msgstr "Nykyinen varasto valitusta päivästä riippumatta."
 
+#: dashboard/templates/dashboard/dashboard.html:185
 msgid "No items are at or below their minimum."
 msgstr "Mikään tuote ei ole minimissä tai sen alle."
 
+#: inventory/forms.py:12 staff/forms.py:22 staff/forms.py:36
+#: staff/templates/staff/list.html:20
 msgid "Name"
 msgstr "Nimi"
 
+#: inventory/forms.py:13 inventory/templates/inventory/detail.html:20
+#: inventory/templates/inventory/list.html:17 menu/forms.py:13
 msgid "Category"
 msgstr "Luokka"
 
+#: inventory/forms.py:14
 msgid "Unit"
 msgstr "Yksikkö"
 
+#: inventory/forms.py:14
 msgid "For example kg, L or pcs. Cannot change after stock is recorded."
 msgstr "Esimerkiksi kg, l tai kpl. Ei voi muuttaa, kun varastoa on kirjattu."
 
+#: inventory/forms.py:15
 msgid "Opening quantity"
 msgstr "Alkusaldo"
 
+#: inventory/forms.py:17
 msgid "Minimum quantity"
 msgstr "Minimimäärä"
 
+#: inventory/forms.py:18
 msgid "The item shows as low stock at or below this amount."
 msgstr "Tuote näytetään vähissä olevana, kun määrä on tämä tai vähemmän."
 
+#: inventory/forms.py:20
 msgid "Supplier (optional)"
 msgstr "Toimittaja (vapaaehtoinen)"
 
+#: inventory/forms.py:28
 msgid "Locked because stock has been recorded for this item."
 msgstr "Lukittu, koska tälle tuotteelle on kirjattu varastotapahtumia."
 
+#: inventory/forms.py:32
 msgid "What happened?"
 msgstr "Mitä tapahtui?"
 
+#: inventory/forms.py:33
 msgid "Quantity"
 msgstr "Määrä"
 
+#: inventory/forms.py:35
 msgid "Waste reason"
 msgstr "Hävikin syy"
 
+#: inventory/forms.py:35
 msgid "Choose a reason"
 msgstr "Valitse syy"
 
+#: inventory/forms.py:36
 msgid "Required for waste."
 msgstr "Pakollinen hävikille."
 
+#: inventory/forms.py:40
 msgid ""
 "Optional, for example a delivery note number. Required for adjustments."
 msgstr "Vapaaehtoinen, esimerkiksi lähetteen numero. Pakollinen korjauksille."
 
+#: inventory/forms.py:49
 msgid "For an adjustment, use a minus sign to reduce stock, e.g. -1.5"
 msgstr "Korjauksessa vähennä varastoa miinusmerkillä, esim. -1,5"
 
+#: inventory/models.py:16
 msgid "Ingredient"
 msgstr "Raaka-aine"
 
+#: inventory/models.py:17
 msgid "Drink"
 msgstr "Juoma"
 
+#: inventory/models.py:18
 msgid "Packaging"
 msgstr "Pakkaus"
 
+#: inventory/models.py:19
 msgid "Cleaning supply"
 msgstr "Puhdistustarvike"
 
+#: inventory/models.py:25 menu/models.py:44 menu/models.py:71
 msgid "name"
 msgstr "nimi"
 
+#: inventory/models.py:26
 msgid "category"
 msgstr "luokka"
 
+#: inventory/models.py:27
 msgid "unit"
 msgstr "yksikkö"
 
+#: inventory/models.py:27
 msgid "For example kg, L or pcs. Fixed once stock is recorded."
 msgstr "Esimerkiksi kg, l tai kpl. Lukittuu, kun varastoa on kirjattu."
 
+#: inventory/models.py:29
 msgid "minimum quantity"
 msgstr "minimimäärä"
 
+#: inventory/models.py:31
 msgid "supplier"
 msgstr "toimittaja"
 
+#: inventory/models.py:58 inventory/services.py:66
 msgid "Opening balance"
 msgstr "Alkusaldo"
 
+#: inventory/models.py:59
 msgid "Received"
 msgstr "Vastaanotettu"
 
+#: inventory/models.py:60
 msgid "Used"
 msgstr "Käytetty"
 
+#: inventory/models.py:61
 msgid "Waste"
 msgstr "Hävikki"
 
+#: inventory/models.py:62
 msgid "Adjustment"
 msgstr "Korjaus"
 
+#: inventory/models.py:66
 msgid "Expired"
 msgstr "Vanhentunut"
 
+#: inventory/models.py:67
 msgid "Damaged"
 msgstr "Vaurioitunut"
 
+#: inventory/models.py:68
 msgid "Spilled"
 msgstr "Läikkynyt"
 
+#: inventory/services.py:31 inventory/services.py:33
 msgid "Enter a number, for example 2.5"
 msgstr "Anna numero, esimerkiksi 2,5"
 
+#: inventory/services.py:35
 msgid "Use at most three decimal places."
 msgstr "Käytä enintään kolmea desimaalia."
 
+#: inventory/services.py:37
 msgid "That quantity is too large."
 msgstr "Määrä on liian suuri."
 
+#: inventory/services.py:39
 msgid "Quantity cannot be negative."
 msgstr "Määrä ei voi olla negatiivinen."
 
+#: inventory/services.py:41
 msgid "Quantity must be more than zero."
 msgstr "Määrän on oltava suurempi kuin nolla."
 
+#: inventory/services.py:73 staff/services.py:55 staff/services.py:79
 msgid "Enter a name."
 msgstr "Anna nimi."
 
+#: inventory/services.py:75
 msgid "Enter a unit, for example kg."
 msgstr "Anna yksikkö, esimerkiksi kg."
 
+#: inventory/services.py:83
 msgid "An item with this name already exists in this category."
 msgstr "Tässä luokassa on jo tämänniminen tuote."
 
+#: inventory/services.py:107
 msgid ""
 "The unit cannot change after stock has been recorded. Create a new item "
 "instead."
@@ -1313,21 +1888,27 @@ msgstr ""
 "Yksikköä ei voi muuttaa, kun varastoa on kirjattu. Luo sen sijaan uusi "
 "tuote."
 
+#: inventory/services.py:153
 msgid "An adjustment needs a reason."
 msgstr "Korjaukselle tarvitaan syy."
 
+#: inventory/services.py:160
 msgid "Choose why the stock was wasted."
 msgstr "Valitse hävikin syy."
 
+#: inventory/services.py:162
 msgid "Describe the reason when choosing Other."
 msgstr "Kuvaile syy, kun valitset Muu."
 
+#: inventory/services.py:171
 msgid "Choose an item."
 msgstr "Valitse tuote."
 
+#: inventory/services.py:180
 msgid "This item is deactivated."
 msgstr "Tämä tuote on poistettu käytöstä."
 
+#: inventory/services.py:197
 msgid ""
 "This form was already used for a different entry. Reload the page and try "
 "again."
@@ -1335,16 +1916,21 @@ msgstr ""
 "Tätä lomaketta on jo käytetty toiseen kirjaukseen. Lataa sivu uudelleen ja "
 "yritä uudestaan."
 
+#: inventory/services.py:206
 #, python-format
 msgid "Not enough stock: %(have)s %(unit)s available."
 msgstr "Varasto ei riitä: saatavilla %(have)s %(unit)s."
 
+#: inventory/templates/inventory/detail.html:15
+#: inventory/templates/inventory/list.html:40
 msgid "OK"
 msgstr "OK"
 
+#: inventory/templates/inventory/detail.html:25
 msgid "Edit item"
 msgstr "Muokkaa tuotetta"
 
+#: inventory/templates/inventory/detail.html:26
 msgid ""
 "Deactivate this item? It will be hidden from stock entry but its history is "
 "kept."
@@ -1352,46 +1938,73 @@ msgstr ""
 "Poistetaanko tuote käytöstä? Se piilotetaan varastokirjauksista, mutta sen "
 "historia säilyy."
 
+#: inventory/templates/inventory/detail.html:28
+#: staff/templates/staff/detail.html:48
 msgid "Reactivate"
 msgstr "Ota uudelleen käyttöön"
 
+#: inventory/templates/inventory/detail.html:35
 msgid "Record stock"
 msgstr "Kirjaa varasto"
 
+#: inventory/templates/inventory/detail.html:61
+#: inventory/templates/inventory/item_form.html:8
+#: staff/templates/staff/form.html:9
+#: website/templates/website/manage_info.html:13
+#: website/templates/website/manage_special_day.html:26
+#: website/templates/website/promotion_form.html:10
 msgid "Save"
 msgstr "Tallenna"
 
+#: inventory/templates/inventory/detail.html:65
 msgid "This item is deactivated, so no new stock can be recorded."
 msgstr ""
 "Tuote on poistettu käytöstä, joten uusia varastotapahtumia ei voi kirjata."
 
+#: inventory/templates/inventory/detail.html:68
 msgid "History"
 msgstr "Historia"
 
+#: inventory/templates/inventory/detail.html:70
+#: inventory/templates/inventory/history.html:23
+#: staff/templates/staff/detail.html:58
+#: timeclock/templates/timeclock/shift.html:39
 msgid "When"
 msgstr "Milloin"
 
+#: inventory/templates/inventory/detail.html:70
+#: inventory/templates/inventory/history.html:23
+#: staff/templates/staff/detail.html:58
 msgid "Change"
 msgstr "Muutos"
 
+#: inventory/templates/inventory/detail.html:70
+#: inventory/templates/inventory/history.html:23
 msgid "Balance after"
 msgstr "Saldo jälkeen"
 
+#: inventory/templates/inventory/detail.html:70
+#: inventory/templates/inventory/history.html:23
 msgid "Reason / note"
 msgstr "Syy / huomautus"
 
+#: inventory/templates/inventory/detail.html:82
 msgid "No stock has been recorded for this item yet."
 msgstr "Tälle tuotteelle ei ole vielä kirjattu varastotapahtumia."
 
+#: inventory/templates/inventory/history.html:7
 msgid "All items"
 msgstr "Kaikki tuotteet"
 
+#: inventory/templates/inventory/history.html:11
 msgid "All types"
 msgstr "Kaikki tyypit"
 
+#: inventory/templates/inventory/history.html:36
 msgid "No stock movements match these filters."
 msgstr "Yksikään varastotapahtuma ei vastaa näitä suodattimia."
 
+#: inventory/templates/inventory/history.html:40
 msgid ""
 "Dates use the restaurant's local time. Each row shows the item's balance "
 "right after that movement."
@@ -1399,233 +2012,308 @@ msgstr ""
 "Ajat ovat ravintolan paikallista aikaa. Jokainen rivi näyttää tuotteen "
 "saldon heti tapahtuman jälkeen."
 
+#: inventory/templates/inventory/list.html:6
 msgid "Add item"
 msgstr "Lisää tuote"
 
+#: inventory/templates/inventory/list.html:10
 #, python-format
 msgid "%(n)s item low on stock"
 msgid_plural "%(n)s items low on stock"
 msgstr[0] "%(n)s tuote vähissä"
 msgstr[1] "%(n)s tuotetta vähissä"
 
+#: inventory/templates/inventory/list.html:12
 msgid "No items low on stock"
 msgstr "Mikään tuote ei ole vähissä"
 
+#: inventory/templates/inventory/list.html:16
+#: staff/templates/staff/list.html:6
 msgid "Search"
 msgstr "Hae"
 
+#: inventory/templates/inventory/list.html:29
 msgid "Low stock only"
 msgstr "Vain vähissä olevat"
 
+#: inventory/templates/inventory/list.html:43
 msgid "No items yet. Add your first inventory item."
 msgstr "Ei vielä tuotteita. Lisää ensimmäinen varastotuote."
 
+#: inventory/templates/inventory/list.html:43
 msgid "No items match."
 msgstr "Ei osumia."
 
+#: inventory/views.py:66 staff/views.py:117
 #, python-format
 msgid "%(name)s was added."
 msgstr "%(name)s lisättiin."
 
+#: inventory/views.py:68
 msgid "Add inventory item"
 msgstr "Lisää varastotuote"
 
+#: inventory/views.py:86
 msgid "Item saved. Past stock records are unchanged."
 msgstr "Tuote tallennettu. Aiemmat varastotapahtumat eivät muuttuneet."
 
+#: inventory/views.py:88 staff/views.py:166
 #, python-format
 msgid "Edit %(name)s"
 msgstr "Muokkaa: %(name)s"
 
+#: inventory/views.py:97
 msgid "Item reactivated."
 msgstr "Tuote otettu uudelleen käyttöön."
 
+#: inventory/views.py:97
 msgid "Item deactivated. Its history is kept."
 msgstr "Tuote poistettu käytöstä. Sen historia säilyy."
 
+#: inventory/views.py:120
 #, python-format
 msgid "Saved: %(type)s %(qty)s %(unit)s. Stock is now %(bal)s %(unit)s."
 msgstr ""
 "Tallennettu: %(type)s %(qty)s %(unit)s. Varastossa nyt %(bal)s %(unit)s."
 
+#: inventory/views.py:127
 msgid "This entry was already saved. It was not recorded twice."
 msgstr "Tämä kirjaus oli jo tallennettu. Sitä ei kirjattu kahdesti."
 
+#: menu/forms.py:8
 msgid "Category name"
 msgstr "Luokan nimi"
 
+#: menu/forms.py:12
 msgid "Dish name"
 msgstr "Annoksen nimi"
 
+#: menu/forms.py:12 menu/services.py:135
 msgid "Enter the dish name."
 msgstr "Anna annoksen nimi."
 
+#: menu/forms.py:13 menu/services.py:140
 msgid "Choose a category."
 msgstr "Valitse luokka."
 
+#: menu/forms.py:16
 msgid "Shown on the public menu. Up to 600 characters."
 msgstr "Näytetään julkisella ruokalistalla. Enintään 600 merkkiä."
 
+#: menu/forms.py:19
 msgid "Price (€)"
 msgstr "Hinta (€)"
 
+#: menu/forms.py:20
 msgid "For example 14.50"
 msgstr "Esimerkiksi 14,50"
 
+#: menu/forms.py:20 menu/services.py:32
 msgid "Enter a price."
 msgstr "Anna hinta."
 
+#: menu/forms.py:23
 msgid "Allergens"
 msgstr "Allergeenit"
 
+#: menu/forms.py:24
 msgid "Tick every allergen the dish contains."
 msgstr "Rastita kaikki annoksen sisältämät allergeenit."
 
+#: menu/forms.py:27
 msgid "Diet labels"
 msgstr "Ruokavaliomerkinnät"
 
+#: menu/forms.py:31
 msgid "Menu status"
 msgstr "Tila ruokalistalla"
 
+#: menu/forms.py:32
 msgid ""
 "Drafts are only visible here. Published dishes appear on the public menu."
 msgstr ""
 "Luonnokset näkyvät vain täällä. Julkaistut annokset näkyvät julkisella "
 "ruokalistalla."
 
+#: menu/forms.py:34
 msgid "Available now"
 msgstr "Saatavilla nyt"
 
+#: menu/forms.py:36
 msgid "When it is unavailable"
 msgstr "Kun annos ei ole saatavilla"
 
+#: menu/forms.py:39 menu/templates/menu/item_form.html:34 website/forms.py:86
+#: website/forms.py:90
 msgid "Photo"
 msgstr "Kuva"
 
+#: menu/forms.py:41 website/forms.py:19
 msgid "JPEG, PNG or WebP, up to 10 MB. Large photos are scaled down."
 msgstr "JPEG, PNG tai WebP, enintään 10 Mt. Suuret kuvat pienennetään."
 
+#: menu/forms.py:43
 msgid "Remove the current photo"
 msgstr "Poista nykyinen kuva"
 
+#: menu/forms.py:47
 msgid "Choose a category"
 msgstr "Valitse luokka"
 
+#: menu/models.py:16
 msgid "Cereals containing gluten"
 msgstr "Gluteenia sisältävät viljat"
 
+#: menu/models.py:17
 msgid "Crustaceans"
 msgstr "Äyriäiset"
 
+#: menu/models.py:18
 msgid "Eggs"
 msgstr "Kananmuna"
 
+#: menu/models.py:19
 msgid "Fish"
 msgstr "Kala"
 
+#: menu/models.py:20
 msgid "Peanuts"
 msgstr "Maapähkinä"
 
+#: menu/models.py:21
 msgid "Soy"
 msgstr "Soija"
 
+#: menu/models.py:22
 msgid "Milk"
 msgstr "Maito"
 
+#: menu/models.py:23
 msgid "Tree nuts"
 msgstr "Pähkinät"
 
+#: menu/models.py:24
 msgid "Celery"
 msgstr "Selleri"
 
+#: menu/models.py:25
 msgid "Mustard"
 msgstr "Sinappi"
 
+#: menu/models.py:26
 msgid "Sesame"
 msgstr "Seesami"
 
+#: menu/models.py:27
 msgid "Sulphites"
 msgstr "Sulfiitit"
 
+#: menu/models.py:28
 msgid "Lupin"
 msgstr "Lupiini"
 
+#: menu/models.py:29
 msgid "Molluscs"
 msgstr "Nilviäiset"
 
+#: menu/models.py:35
 msgid "Vegan"
 msgstr "Vegaaninen"
 
+#: menu/models.py:36
 msgid "Vegetarian"
 msgstr "Kasvis"
 
+#: menu/models.py:37
 msgid "Gluten-free"
 msgstr "Gluteeniton"
 
+#: menu/models.py:38
 msgid "Milk-free"
 msgstr "Maidoton"
 
+#: menu/models.py:39
 msgid "Lactose-free"
 msgstr "Laktoositon"
 
+#: menu/models.py:62 menu/templates/menu/overview.html:37
 msgid "Draft"
 msgstr "Luonnos"
 
+#: menu/models.py:63 menu/templates/menu/overview.html:37
 msgid "Published"
 msgstr "Julkaistu"
 
+#: menu/models.py:66
 msgid "Show it marked as unavailable"
 msgstr "Näytä merkittynä loppuneeksi"
 
+#: menu/models.py:67
 msgid "Hide it from the menu"
 msgstr "Piilota ruokalistalta"
 
+#: menu/models.py:72 website/models.py:141
 msgid "description"
 msgstr "kuvaus"
 
+#: menu/models.py:74
 msgid "price (€)"
 msgstr "hinta (€)"
 
+#: menu/models.py:79
 msgid "available now"
 msgstr "saatavilla nyt"
 
+#: menu/models.py:81
 msgid "when unavailable"
 msgstr "kun ei saatavilla"
 
+#: menu/services.py:36
 msgid "Enter the price as a number, for example 12.50"
 msgstr "Anna hinta numerona, esimerkiksi 12,50"
 
+#: menu/services.py:38
 msgid "The price cannot be negative."
 msgstr "Hinta ei voi olla negatiivinen."
 
+#: menu/services.py:40
 msgid "Use at most two decimals (cents)."
 msgstr "Käytä enintään kahta desimaalia (sentit)."
 
+#: menu/services.py:42
 msgid "That price is too large."
 msgstr "Hinta on liian suuri."
 
+#: menu/services.py:52 menu/views.py:59
 msgid "Enter a category name."
 msgstr "Anna luokan nimi."
 
+#: menu/services.py:61 menu/services.py:69 menu/services.py:80
 msgid "A category with this name already exists."
 msgstr "Tämänniminen luokka on jo olemassa."
 
+#: menu/services.py:94
 msgid "Move or delete the dishes in this category first."
 msgstr "Siirrä tai poista luokan annokset ensin."
 
+#: menu/services.py:150 menu/services.py:235
 msgid "Choose draft or published."
 msgstr "Valitse luonnos tai julkaistu."
 
+#: menu/services.py:153
 msgid "Choose what to show when the dish is unavailable."
 msgstr "Valitse, mitä näytetään, kun annos ei ole saatavilla."
 
+#: menu/templates/menu/category_form.html:4
 #, python-format
 msgid "Category: %(n)s"
 msgstr "Luokka: %(n)s"
 
+#: menu/templates/menu/category_form.html:9
 msgid "Save name"
 msgstr "Tallenna nimi"
 
+#: menu/templates/menu/category_form.html:16
 #, python-format
 msgid ""
 "This category has %(n)s dish. Move or delete it before deleting the "
@@ -1638,16 +2326,20 @@ msgstr[0] ""
 msgstr[1] ""
 "Luokassa on %(n)s annosta. Siirrä tai poista ne ennen luokan poistamista."
 
+#: menu/templates/menu/category_form.html:18
 msgid "Delete this empty category?"
 msgstr "Poistetaanko tämä tyhjä luokka?"
 
+#: menu/templates/menu/category_form.html:19
 msgid "Delete category"
 msgstr "Poista luokka"
 
+#: menu/templates/menu/item_delete.html:3
 #, python-format
 msgid "Delete %(n)s?"
 msgstr "Poistetaanko %(n)s?"
 
+#: menu/templates/menu/item_delete.html:5
 msgid ""
 "The dish and its photo are removed from the menu for good. To take it off "
 "the menu for now, unpublish it or mark it unavailable instead."
@@ -1655,205 +2347,267 @@ msgstr ""
 "Annos ja sen kuva poistetaan ruokalistalta pysyvästi. Jos haluat poistaa sen"
 " vain toistaiseksi, peru julkaisu tai merkitse se loppuneeksi."
 
+#: menu/templates/menu/item_delete.html:8
+#: menu/templates/menu/item_form.html:50
 msgid "Delete dish"
 msgstr "Poista annos"
 
+#: menu/templates/menu/item_form.html:2 menu/templates/menu/item_form.html:5
+#: menu/templates/menu/overview.html:8
 msgid "Add dish"
 msgstr "Lisää annos"
 
+#: menu/templates/menu/item_form.html:5
 #, python-format
 msgid "Edit %(n)s"
 msgstr "Muokkaa: %(n)s"
 
+#: menu/templates/menu/item_form.html:36
 #, python-format
 msgid "Current photo of %(n)s"
 msgstr "Nykyinen kuva: %(n)s"
 
+#: menu/templates/menu/item_form.html:38
+#: website/templates/website/manage_images.html:41
 msgid "Replace with a new photo"
 msgstr "Vaihda uuteen kuvaan"
 
+#: menu/templates/menu/item_form.html:40
 msgid "Add a photo (optional)"
 msgstr "Lisää kuva (vapaaehtoinen)"
 
+#: menu/templates/menu/item_form.html:45
 msgid "Preview of the new photo"
 msgstr "Uuden kuvan esikatselu"
 
+#: menu/templates/menu/item_form.html:48
 msgid "Save dish"
 msgstr "Tallenna annos"
 
+#: menu/templates/menu/overview.html:7
 msgid "View public menu"
 msgstr "Näytä julkinen ruokalista"
 
+#: menu/templates/menu/overview.html:12
 #, python-format
 msgid "%(n)s published dish"
 msgid_plural "%(n)s published dishes"
 msgstr[0] "%(n)s julkaistu annos"
 msgstr[1] "%(n)s julkaistua annosta"
 
+#: menu/templates/menu/overview.html:13
 #, python-format
 msgid "%(n)s draft"
 msgid_plural "%(n)s drafts"
 msgstr[0] "%(n)s luonnos"
 msgstr[1] "%(n)s luonnosta"
 
+#: menu/templates/menu/overview.html:14
 #, python-format
 msgid "%(n)s unavailable"
 msgid_plural "%(n)s unavailable"
 msgstr[0] "%(n)s ei saatavilla"
 msgstr[1] "%(n)s ei saatavilla"
 
+#: menu/templates/menu/overview.html:22
 #, python-format
 msgid "Move %(c)s up"
 msgstr "Siirrä ylös: %(c)s"
 
+#: menu/templates/menu/overview.html:23
 #, python-format
 msgid "Move %(c)s down"
 msgstr "Siirrä alas: %(c)s"
 
+#: menu/templates/menu/overview.html:24
 msgid "Rename"
 msgstr "Nimeä uudelleen"
 
+#: menu/templates/menu/overview.html:38
 msgid "Unavailable · hidden"
 msgstr "Ei saatavilla · piilotettu"
 
+#: menu/templates/menu/overview.html:38
 msgid "Unavailable · shown as sold out"
 msgstr "Ei saatavilla · näytetään loppuneena"
 
+#: menu/templates/menu/overview.html:44
 msgid "Mark unavailable"
 msgstr "Merkitse loppuneeksi"
 
+#: menu/templates/menu/overview.html:44
 msgid "Mark available"
 msgstr "Merkitse saatavilla olevaksi"
 
+#: menu/templates/menu/overview.html:48
 msgid "Unpublish"
 msgstr "Peru julkaisu"
 
+#: menu/templates/menu/overview.html:48
 msgid "Publish"
 msgstr "Julkaise"
 
+#: menu/templates/menu/overview.html:50
 #, python-format
 msgid "Move %(d)s up"
 msgstr "Siirrä ylös: %(d)s"
 
+#: menu/templates/menu/overview.html:51
 #, python-format
 msgid "Move %(d)s down"
 msgstr "Siirrä alas: %(d)s"
 
+#: menu/templates/menu/overview.html:56
 msgid "No dishes in this category yet."
 msgstr "Tässä luokassa ei ole vielä annoksia."
 
+#: menu/templates/menu/overview.html:56
 msgid "Add one"
 msgstr "Lisää annos"
 
+#: menu/templates/menu/overview.html:60
 msgid ""
 "The menu is empty. Start by adding a category, such as Starters or Drinks."
 msgstr ""
 "Ruokalista on tyhjä. Aloita lisäämällä luokka, kuten Alkuruoat tai Juomat."
 
+#: menu/templates/menu/overview.html:65
 msgid "New category"
 msgstr "Uusi luokka"
 
+#: menu/templates/menu/overview.html:66
 msgid "Add category"
 msgstr "Lisää luokka"
 
+#: menu/views.py:57
 #, python-format
 msgid "Category “%(name)s” added."
 msgstr "Luokka “%(name)s” lisätty."
 
+#: menu/views.py:73
 msgid "Category renamed."
 msgstr "Luokka nimetty uudelleen."
 
+#: menu/views.py:90
 msgid "Category deleted."
 msgstr "Luokka poistettu."
 
+#: menu/views.py:123
 msgid "Add a category first, then add dishes to it."
 msgstr "Lisää ensin luokka ja sitten siihen annoksia."
 
+#: menu/views.py:135
 #, python-format
 msgid "“%(name)s” is saved and on the public menu."
 msgstr "“%(name)s” on tallennettu ja näkyy julkisella ruokalistalla."
 
+#: menu/views.py:137
 #, python-format
 msgid "“%(name)s” is saved as a draft."
 msgstr "“%(name)s” on tallennettu luonnoksena."
 
+#: menu/views.py:161
 #, python-format
 msgid "“%(name)s” is available again."
 msgstr "“%(name)s” on taas saatavilla."
 
+#: menu/views.py:161
 #, python-format
 msgid "“%(name)s” is marked unavailable."
 msgstr "“%(name)s” on merkitty loppuneeksi."
 
+#: menu/views.py:179
 #, python-format
 msgid "“%(name)s” is published."
 msgstr "“%(name)s” on julkaistu."
 
+#: menu/views.py:179
 #, python-format
 msgid "“%(name)s” is back to draft."
 msgstr "“%(name)s” on palautettu luonnokseksi."
 
+#: menu/views.py:200
 #, python-format
 msgid "“%(name)s” was deleted."
 msgstr "“%(name)s” poistettiin."
 
+#: staff/forms.py:11 staff/forms.py:12
 msgid "Those login details did not work. Check them and try again."
 msgstr "Kirjautumistiedot eivät kelvanneet. Tarkista ne ja yritä uudelleen."
 
+#: staff/forms.py:17 staff/forms.py:24
 msgid "Login name or email"
 msgstr "Käyttäjätunnus tai sähköposti"
 
+#: staff/forms.py:24
 msgid "Not case-sensitive. Must be unique."
 msgstr "Kirjainkoolla ei ole väliä. Oltava yksilöllinen."
 
+#: staff/forms.py:26 staff/forms.py:37
 msgid "Contact number (optional)"
 msgstr "Puhelinnumero (vapaaehtoinen)"
 
+#: staff/forms.py:27 staff/forms.py:41 staff/templates/staff/detail.html:8
+#: staff/templates/staff/list.html:7 staff/templates/staff/list.html:20
 msgid "Role"
 msgstr "Rooli"
 
+#: staff/models.py:10 staff/views.py:45
 msgid "Owner"
 msgstr "Omistaja"
 
+#: staff/models.py:11 staff/views.py:46
 msgid "Manager"
 msgstr "Esihenkilö"
 
+#: staff/models.py:12 staff/views.py:47
 msgid "Employee"
 msgstr "Työntekijä"
 
+#: staff/models.py:49
 msgid "display name"
 msgstr "näyttönimi"
 
+#: staff/models.py:51
 msgid "login name or email"
 msgstr "käyttäjätunnus tai sähköposti"
 
+#: staff/models.py:54
 msgid "Used to sign in. Not case-sensitive."
 msgstr "Käytetään kirjautumiseen. Kirjainkoolla ei ole väliä."
 
+#: staff/models.py:56
 msgid "contact number"
 msgstr "puhelinnumero"
 
+#: staff/services.py:46 staff/services.py:69
 msgid "This login name is already in use."
 msgstr "Tämä käyttäjätunnus on jo käytössä."
 
+#: staff/services.py:57
 msgid "Enter a login name."
 msgstr "Anna käyttäjätunnus."
 
+#: staff/services.py:106
 msgid "Choose a valid role."
 msgstr "Valitse kelvollinen rooli."
 
+#: staff/services.py:112
 msgid ""
 "The last active owner cannot be demoted. Make someone else owner first."
 msgstr ""
 "Viimeisen aktiivisen omistajan roolia ei voi laskea. Tee ensin joku muu "
 "omistajaksi."
 
+#: staff/services.py:131
 msgid "You cannot deactivate your own account."
 msgstr "Et voi poistaa omaa tunnustasi käytöstä."
 
+#: staff/services.py:135
 msgid "The last active owner cannot be deactivated."
 msgstr "Viimeistä aktiivista omistajaa ei voi poistaa käytöstä."
 
+#: staff/services.py:141
 #, python-format
 msgid ""
 "%(name)s has an open shift. Close it with a time correction (with a reason) "
@@ -1862,10 +2616,12 @@ msgstr ""
 "Henkilöllä %(name)s on avoin vuoro. Sulje se aikakorjauksella (syyn kanssa) "
 "ennen tunnuksen poistamista käytöstä."
 
+#: staff/templates/staff/deactivate.html:3
 #, python-format
 msgid "Deactivate %(name)s?"
 msgstr "Poistetaanko %(name)s käytöstä?"
 
+#: staff/templates/staff/deactivate.html:7
 #, python-format
 msgid ""
 "This person is still clocked in (since %(t)s). Close the shift with a time "
@@ -1874,9 +2630,12 @@ msgstr ""
 "Henkilö on yhä leimattuna sisään (klo %(t)s alkaen). Sulje vuoro ensin "
 "aikakorjauksella."
 
+#: staff/templates/staff/deactivate.html:8
+#: timeclock/templates/timeclock/shift.html:14
 msgid "Correct this shift"
 msgstr "Korjaa tämä vuoro"
 
+#: staff/templates/staff/deactivate.html:10
 msgid ""
 "They will be signed out and will not be able to sign in. Their timesheets, "
 "checklists and stock records stay in the history under their name. You can "
@@ -1886,81 +2645,108 @@ msgstr ""
 "tuntilistansa, tarkistuslistansa ja varastokirjauksensa säilyvät historiassa"
 " hänen nimellään. Voit ottaa tunnuksen myöhemmin uudelleen käyttöön."
 
+#: staff/templates/staff/deactivate.html:13
 msgid "Deactivate account"
 msgstr "Poista tunnus käytöstä"
 
+#: staff/templates/staff/detail.html:4
 msgid "You"
 msgstr "Sinä"
 
+#: staff/templates/staff/detail.html:7 staff/templates/staff/list.html:20
 msgid "Login"
 msgstr "Käyttäjätunnus"
 
+#: staff/templates/staff/detail.html:9
 msgid "Contact number"
 msgstr "Puhelinnumero"
 
+#: staff/templates/staff/detail.html:11
 msgid "Password not set yet"
 msgstr "Salasanaa ei ole vielä asetettu"
 
+#: staff/templates/staff/detail.html:13 staff/templates/staff/list.html:24
+#: timeclock/templates/timeclock/clock.html:19
 msgid "On shift"
 msgstr "Vuorossa"
 
+#: staff/templates/staff/detail.html:20 staff/views.py:235
 msgid "Change my password"
 msgstr "Vaihda salasana"
 
+#: staff/templates/staff/detail.html:23
 msgid "To change your name or contact number, ask a manager."
 msgstr "Pyydä esihenkilöä muuttamaan nimesi tai puhelinnumerosi."
 
+#: staff/templates/staff/detail.html:27
 msgid "Records"
 msgstr "Kirjaukset"
 
+#: staff/templates/staff/detail.html:29
 msgid "Timesheet"
 msgstr "Tuntilista"
 
+#: staff/templates/staff/detail.html:31
 msgid "Stock movements"
 msgstr "Varastotapahtumat"
 
+#: staff/templates/staff/detail.html:36
 msgid "Manage"
 msgstr "Hallinta"
 
+#: staff/templates/staff/detail.html:38
 msgid "Edit details"
 msgstr "Muokkaa tietoja"
 
+#: staff/templates/staff/detail.html:40
 msgid "Change role"
 msgstr "Vaihda rooli"
 
+#: staff/templates/staff/detail.html:43
 msgid "Create password reset link"
 msgstr "Luo salasanan vaihtolinkki"
 
+#: staff/templates/staff/detail.html:43
 msgid "Create password setup link"
 msgstr "Luo salasanan asetuslinkki"
 
+#: staff/templates/staff/detail.html:47
 msgid "Reactivate this account?"
 msgstr "Otetaanko tunnus uudelleen käyttöön?"
 
+#: staff/templates/staff/detail.html:56
 msgid "Account history"
 msgstr "Tunnuksen historia"
 
+#: staff/templates/staff/detail.html:60
 msgid "System setup"
 msgstr "Järjestelmän käyttöönotto"
 
+#: staff/templates/staff/list.html:4 staff/views.py:119
 msgid "Add staff member"
 msgstr "Lisää työntekijä"
 
+#: staff/templates/staff/list.html:8
 msgid "All roles"
 msgstr "Kaikki roolit"
 
+#: staff/templates/staff/list.html:27
 msgid "Awaiting password"
 msgstr "Odottaa salasanaa"
 
+#: staff/templates/staff/list.html:30
 msgid "No staff match these filters."
 msgstr "Kukaan ei vastaa näitä suodattimia."
 
+#: staff/templates/staff/setup_link.html:3
 msgid "Staff member added"
 msgstr "Työntekijä lisätty"
 
+#: staff/templates/staff/setup_link.html:3
 msgid "Password link"
 msgstr "Salasanalinkki"
 
+#: staff/templates/staff/setup_link.html:5
 #, python-format
 msgid ""
 "Give this one-time link to <strong>%(name)s</strong>. They open it, choose "
@@ -1970,9 +2756,11 @@ msgstr ""
 "avaa sen, valitsee oman salasanan ja kirjautuu sitten tunnuksella "
 "<strong>%(login)s</strong>."
 
+#: staff/templates/staff/setup_link.html:6
 msgid "One-time link"
 msgstr "Kertakäyttöinen linkki"
 
+#: staff/templates/staff/setup_link.html:8
 msgid ""
 "The link stops working once it has been used or after it expires. It is not "
 "stored, so copy it now. You can create a new link from the staff member's "
@@ -1982,99 +2770,134 @@ msgstr ""
 "tallenneta, joten kopioi se nyt. Voit luoda uuden linkin työntekijän sivulta"
 " milloin tahansa."
 
+#: staff/views.py:48
 msgid "Employee · on a break"
 msgstr "Työntekijä · tauolla"
 
+#: staff/views.py:56
 msgid "You have signed out."
 msgstr "Olet kirjautunut ulos."
 
+#: staff/views.py:73
 msgid "Your password is set. You can now sign in."
 msgstr "Salasanasi on asetettu. Voit nyt kirjautua sisään."
 
+#: staff/views.py:164
 msgid "Details saved."
 msgstr "Tiedot tallennettu."
 
+#: staff/views.py:181
 msgid "Role updated."
 msgstr "Rooli päivitetty."
 
+#: staff/views.py:184
 #, python-format
 msgid "Change role for %(name)s"
 msgstr "Vaihda rooli: %(name)s"
 
+#: staff/views.py:200
 #, python-format
 msgid "%(name)s can no longer sign in."
 msgstr "%(name)s ei voi enää kirjautua sisään."
 
+#: staff/views.py:213
 #, python-format
 msgid "%(name)s is active again."
 msgstr "%(name)s on taas käytössä."
 
+#: staff/views.py:233
 msgid "Your password was changed."
 msgstr "Salasanasi vaihdettiin."
 
+#: timeclock/models.py:14 timeclock/templates/timeclock/_shift_table.html:16
+#: website/templates/website/contact.html:29
+#: website/templates/website/contact.html:41
+#: website/templates/website/manage_hours.html:51
+#: website/templates/website/manage_hours.html:69
 msgid "Closed"
 msgstr "Suljettu"
 
+#: timeclock/models.py:67
 msgid "Break started"
 msgstr "Tauko alkoi"
 
+#: timeclock/models.py:68
 msgid "Break ended"
 msgstr "Tauko päättyi"
 
+#: timeclock/models.py:69
 msgid "Clocked out"
 msgstr "Leimattu ulos"
 
+#: timeclock/services.py:40 timeclock/services.py:46
 msgid "You are already clocked in."
 msgstr "Olet jo leimannut sisään."
 
+#: timeclock/services.py:54
 msgid "You are not clocked in."
 msgstr "Et ole leimannut sisään."
 
+#: timeclock/services.py:77
 msgid "You are not on a break."
 msgstr "Et ole tauolla."
 
+#: timeclock/services.py:80
 msgid "The break has not lasted any time yet. Try again in a moment."
 msgstr "Tauko ei ole vielä kestänyt yhtään. Yritä hetken päästä uudelleen."
 
+#: timeclock/services.py:92
 msgid "You are on a break. End your break first, then clock out."
 msgstr "Olet tauolla. Lopeta tauko ensin ja leimaa sitten ulos."
 
+#: timeclock/services.py:95
 msgid "You clocked in just now. Try again in a moment."
 msgstr "Leimasit juuri sisään. Yritä hetken päästä uudelleen."
 
+#: timeclock/services.py:173
 msgid "Clock-in cannot be in the future."
 msgstr "Sisäänleimaus ei voi olla tulevaisuudessa."
 
+#: timeclock/services.py:176
 msgid "Clock-out must be after clock-in."
 msgstr "Ulosleimauksen on oltava sisäänleimauksen jälkeen."
 
+#: timeclock/services.py:178
 msgid "Clock-out cannot be in the future."
 msgstr "Ulosleimaus ei voi olla tulevaisuudessa."
 
+#: timeclock/services.py:183
 msgid "Every break needs an end time when the shift has a clock-out."
 msgstr "Jokaisella tauolla on oltava loppuaika, kun vuorolla on ulosleimaus."
 
+#: timeclock/services.py:185
 msgid "Only one break can be still running."
 msgstr "Vain yksi tauko voi olla käynnissä."
 
+#: timeclock/services.py:188
 msgid "Each break must start during the shift."
 msgstr "Jokaisen tauon on alettava vuoron aikana."
 
+#: timeclock/services.py:191
 msgid "A break must end after it starts."
 msgstr "Tauon on päätyttävä alkamisensa jälkeen."
 
+#: timeclock/services.py:193
 msgid "Each break must end within the shift."
 msgstr "Jokaisen tauon on päätyttävä vuoron aikana."
 
+#: timeclock/services.py:197
 msgid "Breaks must not overlap."
 msgstr "Tauot eivät saa mennä päällekkäin."
 
+#: timeclock/services.py:213
 msgid "Give a reason for the correction."
 msgstr "Anna korjaukselle syy."
 
+#: timeclock/services.py:218
 msgid "A closed shift cannot be reopened. Enter a clock-out time."
 msgstr "Suljettua vuoroa ei voi avata uudelleen. Anna ulosleimausaika."
 
+#: timeclock/services.py:227
 #, python-format
 msgid ""
 "These times overlap another shift of this person (%(start)s). Correct that "
@@ -2083,88 +2906,130 @@ msgstr ""
 "Ajat menevät päällekkäin henkilön toisen vuoron kanssa (%(start)s). Korjaa "
 "se vuoro ensin."
 
+#: timeclock/services.py:240
 msgid "Nothing was changed."
 msgstr "Mitään ei muutettu."
 
+#: timeclock/templates/timeclock/_shift_table.html:5
+#: timeclock/templates/timeclock/correct.html:23
 msgid "End"
 msgstr "Loppu"
 
+#: timeclock/templates/timeclock/_shift_table.html:5
+#: timeclock/templates/timeclock/clock.html:52
+#: timeclock/templates/timeclock/correct.html:16
+#: timeclock/templates/timeclock/shift.html:10
+#: timeclock/templates/timeclock/shift.html:28
 msgid "Breaks"
 msgstr "Tauot"
 
+#: timeclock/templates/timeclock/_shift_table.html:5
+#: timeclock/templates/timeclock/clock.html:53
+#: timeclock/templates/timeclock/shift.html:11
 msgid "Worked"
 msgstr "Työaika"
 
+#: timeclock/templates/timeclock/_shift_table.html:14
 msgid "Provisional, shift still open"
 msgstr "Alustava, vuoro yhä auki"
 
+#: timeclock/templates/timeclock/_shift_table.html:16
 msgid "Open · on break"
 msgstr "Auki · tauolla"
 
+#: timeclock/templates/timeclock/_shift_table.html:17
+#: timeclock/templates/timeclock/clock.html:53
 msgid "Corrected"
 msgstr "Korjattu"
 
+#: timeclock/templates/timeclock/_shift_table.html:21
+#: timeclock/templates/timeclock/timesheets.html:23
 msgid "No shifts in this period."
 msgstr "Tällä jaksolla ei ole vuoroja."
 
+#: timeclock/templates/timeclock/clock.html:7
 #, python-format
 msgid "Now: %(now)s"
 msgstr "Nyt: %(now)s"
 
+#: timeclock/templates/timeclock/clock.html:12
 msgid "Clock in"
 msgstr "Leimaa sisään"
 
+#: timeclock/templates/timeclock/clock.html:17
 #, python-format
 msgid "Break started at %(t)s"
 msgstr "Tauko alkoi klo %(t)s"
 
+#: timeclock/templates/timeclock/clock.html:21
 #, python-format
 msgid "Clocked in %(t)s"
 msgstr "Leimattu sisään klo %(t)s"
 
+#: timeclock/templates/timeclock/clock.html:23
 msgid "Worked so far (provisional):"
 msgstr "Tehty tähän mennessä (alustava):"
 
+#: timeclock/templates/timeclock/clock.html:25
 msgid "breaks"
 msgstr "tauot"
 
+#: timeclock/templates/timeclock/clock.html:30
 msgid "End break"
 msgstr "Lopeta tauko"
 
+#: timeclock/templates/timeclock/clock.html:32
 msgid "End your break before clocking out."
 msgstr "Lopeta tauko ennen ulosleimausta."
 
+#: timeclock/templates/timeclock/clock.html:36
 msgid "Start break"
 msgstr "Aloita tauko"
 
+#: timeclock/templates/timeclock/clock.html:38
 msgid "Clock out now?"
 msgstr "Leimataanko ulos nyt?"
 
+#: timeclock/templates/timeclock/clock.html:40
 msgid "Clock out"
 msgstr "Leimaa ulos"
 
+#: timeclock/templates/timeclock/clock.html:47
 msgid "Last completed shift"
 msgstr "Viimeisin päättynyt vuoro"
 
+#: timeclock/templates/timeclock/clock.html:50
+#: timeclock/templates/timeclock/correct.html:10
+#: timeclock/templates/timeclock/shift.html:8
+#: timeclock/templates/timeclock/shift.html:26
 msgid "Clock-in"
 msgstr "Sisäänleimaus"
 
+#: timeclock/templates/timeclock/clock.html:51
+#: timeclock/templates/timeclock/correct.html:12
+#: timeclock/templates/timeclock/shift.html:9
+#: timeclock/templates/timeclock/shift.html:27
 msgid "Clock-out"
 msgstr "Ulosleimaus"
 
+#: timeclock/templates/timeclock/clock.html:57
 msgid "See all my hours"
 msgstr "Näytä kaikki tuntini"
 
+#: timeclock/templates/timeclock/correct.html:2
 msgid "Correct shift"
 msgstr "Korjaa vuoro"
 
+#: timeclock/templates/timeclock/correct.html:4
 msgid "Back to shift"
 msgstr "Takaisin vuoroon"
 
+#: timeclock/templates/timeclock/correct.html:5
 #, python-format
 msgid "Correct shift for %(name)s"
 msgstr "Korjaa vuoro: %(name)s"
 
+#: timeclock/templates/timeclock/correct.html:6
 #, python-format
 msgid ""
 "Times are local restaurant time (%(tz)s). The original times, your changes, "
@@ -2173,34 +3038,43 @@ msgstr ""
 "Ajat ovat ravintolan paikallista aikaa (%(tz)s). Alkuperäiset ajat, "
 "muutoksesi, nimesi ja syy tallennetaan ja näytetään työntekijälle."
 
+#: timeclock/templates/timeclock/correct.html:14
 msgid "Leave empty to keep the shift open, or enter a time to close it."
 msgstr "Jätä tyhjäksi, jos vuoro jää auki, tai anna aika sen sulkemiseksi."
 
+#: timeclock/templates/timeclock/correct.html:14
 msgid "Required for a closed shift."
 msgstr "Pakollinen suljetulle vuorolle."
 
+#: timeclock/templates/timeclock/correct.html:20
 #, python-format
 msgid "Break %(n)s"
 msgstr "Tauko %(n)s"
 
+#: timeclock/templates/timeclock/correct.html:25
 msgid "Remove this break"
 msgstr "Poista tämä tauko"
 
+#: timeclock/templates/timeclock/correct.html:29
 msgid "Reason for the correction"
 msgstr "Korjauksen syy"
 
+#: timeclock/templates/timeclock/correct.html:32
 msgid "Save correction"
 msgstr "Tallenna korjaus"
 
+#: timeclock/templates/timeclock/mine.html:11
 msgid "Total of closed shifts"
 msgstr "Päättyneet vuorot yhteensä"
 
+#: timeclock/templates/timeclock/mine.html:13
 #, python-format
 msgid "%(n)s open shift not included"
 msgid_plural "%(n)s open shifts not included"
 msgstr[0] "%(n)s avoin vuoro ei mukana"
 msgstr[1] "%(n)s avointa vuoroa ei mukana"
 
+#: timeclock/templates/timeclock/mine.html:15
 msgid ""
 "A shift is counted on the date it started (restaurant local time), even if "
 "it ends after midnight. Hours are rounded only for display."
@@ -2208,37 +3082,48 @@ msgstr ""
 "Vuoro lasketaan alkamispäivälleen (ravintolan paikallista aikaa), vaikka se "
 "päättyisi keskiyön jälkeen. Tunnit pyöristetään vain näyttöä varten."
 
+#: timeclock/templates/timeclock/shift.html:2
 msgid "Shift"
 msgstr "Vuoro"
 
+#: timeclock/templates/timeclock/shift.html:5
 #, python-format
 msgid "%(name)s · shift %(d)s"
 msgstr "%(name)s · vuoro %(d)s"
 
+#: timeclock/templates/timeclock/shift.html:11
 msgid "provisional, shift still open"
 msgstr "alustava, vuoro yhä auki"
 
+#: timeclock/templates/timeclock/shift.html:13
 msgid "This shift has been corrected"
 msgstr "Tätä vuoroa on korjattu"
 
+#: timeclock/templates/timeclock/shift.html:18
 msgid "Correction history"
 msgstr "Korjaushistoria"
 
+#: timeclock/templates/timeclock/shift.html:22
 msgid "Reason"
 msgstr "Syy"
 
+#: timeclock/templates/timeclock/shift.html:24
 msgid "Before"
 msgstr "Ennen"
 
+#: timeclock/templates/timeclock/shift.html:24
 msgid "After"
 msgstr "Jälkeen"
 
+#: timeclock/templates/timeclock/shift.html:37
 msgid "Original clock actions"
 msgstr "Alkuperäiset leimaukset"
 
+#: timeclock/templates/timeclock/shift.html:39
 msgid "Action"
 msgstr "Toiminto"
 
+#: timeclock/templates/timeclock/timesheets.html:14
 msgid ""
 "Shifts are included by the local date they started, even if they end after "
 "midnight. Totals include closed shifts only; open shifts are shown "
@@ -2248,60 +3133,79 @@ msgstr ""
 "keskiyön jälkeen. Yhteismäärissä ovat vain päättyneet vuorot; avoimet vuorot"
 " näytetään erikseen alustavina. Ei palkanlaskennan hyväksymä."
 
+#: timeclock/templates/timeclock/timesheets.html:16
 msgid "Totals"
 msgstr "Yhteensä"
 
+#: timeclock/templates/timeclock/timesheets.html:18
+#: timeclock/templates/timeclock/timesheets.html:29
 msgid "Shifts"
 msgstr "Vuorot"
 
+#: timeclock/templates/timeclock/timesheets.html:18
 msgid "Closed-shift hours"
 msgstr "Päättyneiden vuorojen tunnit"
 
+#: timeclock/templates/timeclock/timesheets.html:21
 #, python-format
 msgid "%(n)s open"
 msgid_plural "%(n)s open"
 msgstr[0] "%(n)s auki"
 msgstr[1] "%(n)s auki"
 
+#: timeclock/templates/timeclock/timesheets.html:26
 msgid "open"
 msgstr "auki"
 
+#: timeclock/views.py:40
 msgid "Clocked in."
 msgstr "Leimattu sisään."
 
+#: timeclock/views.py:41
 msgid "Break started."
 msgstr "Tauko alkoi."
 
+#: timeclock/views.py:42
 msgid "Break ended."
 msgstr "Tauko päättyi."
 
+#: timeclock/views.py:43
 msgid "Clocked out. Have a good rest of your day."
 msgstr "Leimattu ulos. Mukavaa päivän jatkoa!"
 
+#: timeclock/views.py:59
 msgid "Your break was already running."
 msgstr "Taukosi oli jo käynnissä."
 
+#: timeclock/views.py:180
 msgid "Enter the clock-in time."
 msgstr "Anna sisäänleimauksen aika."
 
+#: timeclock/views.py:188
 msgid "Each break needs a start time."
 msgstr "Jokaisella tauolla on oltava alkuaika."
 
+#: timeclock/views.py:199
 msgid "Shift corrected. The previous times are kept in the history."
 msgstr "Vuoro korjattu. Aiemmat ajat säilyvät historiassa."
 
+#: website/forms.py:6
 msgid "For example: Lunch deal – soup and bánh mì 12 €"
 msgstr "Esimerkiksi: Lounastarjous – keitto ja bánh mì 12 €"
 
+#: website/forms.py:7
 msgid "Text"
 msgstr "Teksti"
 
+#: website/forms.py:8
 msgid "First day"
 msgstr "Ensimmäinen päivä"
 
+#: website/forms.py:10
 msgid "Last day"
 msgstr "Viimeinen päivä"
 
+#: website/forms.py:11
 msgid ""
 "The promotion disappears from the website after this day. Leave empty to "
 "keep it running."
@@ -2309,187 +3213,627 @@ msgstr ""
 "Tarjous poistuu verkkosivulta tämän päivän jälkeen. Jätä tyhjäksi, jos "
 "tarjous on voimassa toistaiseksi."
 
+#: website/forms.py:13
 msgid "Show on the website"
 msgstr "Näytä verkkosivulla"
 
+#: website/forms.py:23
+msgid "Restaurant name"
+msgstr "Ravintolan nimi"
+
+#: website/forms.py:24
+msgid "Tagline"
+msgstr "Iskulause"
+
+#: website/forms.py:25
+msgid "One short line under the name, for example “Vietnamese street food”."
+msgstr "Lyhyt rivi nimen alla, esimerkiksi “Vietnamilaista katuruokaa”."
+
+#: website/forms.py:26
+msgid "Introduction"
+msgstr "Esittely"
+
+#: website/forms.py:28
+msgid "Shown under “About us” on the homepage."
+msgstr "Näytetään etusivulla kohdassa “Meistä”."
+
+#: website/forms.py:29
+msgid "Street address"
+msgstr "Katuosoite"
+
+#: website/forms.py:30
+msgid "Postal code"
+msgstr "Postinumero"
+
+#: website/forms.py:31
+msgid "City"
+msgstr "Kaupunki"
+
+#: website/forms.py:32
+msgid "Country"
+msgstr "Maa"
+
+#: website/forms.py:33 website/templates/website/contact.html:16
+msgid "Phone"
+msgstr "Puhelin"
+
+#: website/forms.py:35 website/templates/website/contact.html:17
+msgid "Email"
+msgstr "Sähköposti"
+
+#: website/forms.py:72
+msgid "Note (optional)"
+msgstr "Huomautus (vapaaehtoinen)"
+
+#: website/forms.py:73
+msgid "Shown to customers, for example “Christmas Eve”."
+msgstr "Näytetään asiakkaille, esimerkiksi “Jouluaatto”."
+
+#: website/forms.py:74
+msgid "Closed all day"
+msgstr "Suljettu koko päivän"
+
+#: website/forms.py:75
+msgid "Opens"
+msgstr "Avautuu"
+
+#: website/forms.py:76 website/forms.py:78
+msgid "Closes"
+msgstr "Sulkeutuu"
+
+#: website/forms.py:77
+msgid "Opens again (optional)"
+msgstr "Avautuu uudelleen (vapaaehtoinen)"
+
+#: website/forms.py:92
+msgid ""
+"Describe the photo in a few words, for example “Dining room with window "
+"seats”. Screen readers read this aloud."
+msgstr ""
+"Kuvaile kuvaa muutamalla sanalla, esimerkiksi “Ruokasali ja ikkunapöydät”. "
+"Ruudunlukijat lukevat tämän ääneen."
+
+#: website/models.py:16
 msgid "tagline"
 msgstr "iskulause"
 
+#: website/models.py:17
 msgid "introduction"
 msgstr "esittely"
 
+#: website/models.py:18
 msgid "street address"
 msgstr "katuosoite"
 
+#: website/models.py:19
 msgid "postal code"
 msgstr "postinumero"
 
+#: website/models.py:20
 msgid "city"
 msgstr "kaupunki"
 
+#: website/models.py:21
 msgid "country"
 msgstr "maa"
 
+#: website/models.py:22
 msgid "phone"
 msgstr "puhelin"
 
+#: website/models.py:23
 msgid "email"
 msgstr "sähköposti"
 
+#: website/models.py:26
 msgid "hero image description"
 msgstr "pääkuvan kuvaus"
 
+#: website/models.py:49
 msgid "Monday"
 msgstr "Maanantai"
 
+#: website/models.py:49
 msgid "Tuesday"
 msgstr "Tiistai"
 
+#: website/models.py:49
 msgid "Wednesday"
 msgstr "Keskiviikko"
 
+#: website/models.py:49
 msgid "Thursday"
 msgstr "Torstai"
 
+#: website/models.py:50
 msgid "Friday"
 msgstr "Perjantai"
 
+#: website/models.py:50
 msgid "Saturday"
 msgstr "Lauantai"
 
+#: website/models.py:50
 msgid "Sunday"
 msgstr "Sunnuntai"
 
+#: website/models.py:95
+msgid "date"
+msgstr "päivä"
+
+#: website/models.py:96
+msgid "closed all day"
+msgstr "suljettu koko päivän"
+
+#: website/models.py:101
+msgid "note"
+msgstr "huomautus"
+
+#: website/models.py:157
 msgid "text"
 msgstr "teksti"
 
+#: website/models.py:158
 msgid "first day"
 msgstr "ensimmäinen päivä"
 
+#: website/models.py:159
 msgid "last day"
 msgstr "viimeinen päivä"
 
+#: website/models.py:159
 msgid "Leave empty to keep it running."
 msgstr "Jätä tyhjäksi, jos voimassa toistaiseksi."
 
+#: website/models.py:160
 msgid "published"
 msgstr "julkaistu"
 
+#: website/services.py:130
 msgid "Choose the first day."
 msgstr "Valitse ensimmäinen päivä."
 
+#: website/services.py:132
 msgid "The last day cannot be before the first day."
 msgstr "Viimeinen päivä ei voi olla ennen ensimmäistä päivää."
 
+#: website/services.py:200
+msgid "Enter the restaurant name."
+msgstr "Anna ravintolan nimi."
+
+#: website/services.py:202
+msgid ""
+"Enter a phone number with digits, spaces and an optional + at the start."
+msgstr ""
+"Anna puhelinnumero numeroina; välilyönnit ja alussa oleva + sallitaan."
+
+#: website/services.py:207
+msgid "Enter a valid email address."
+msgstr "Anna kelvollinen sähköpostiosoite."
+
+#: website/services.py:210
+msgid "Enter both the street address and the city, or leave both empty."
+msgstr "Anna sekä katuosoite että kaupunki, tai jätä molemmat tyhjiksi."
+
+#: website/services.py:236
+#, python-format
+msgid "%(day)s: enter both the opening and the closing time."
+msgstr "%(day)s: anna sekä avaamis- että sulkemisaika."
+
+#: website/services.py:238
+#, python-format
+msgid "%(day)s: the closing time must differ from the opening time."
+msgstr "%(day)s: sulkemisajan on oltava eri kuin avaamisajan."
+
+#: website/services.py:241
+#, python-format
+msgid "%(day)s: at most two opening periods per day."
+msgstr "%(day)s: enintään kaksi aukioloaikaa päivässä."
+
+#: website/services.py:245
+#, python-format
+msgid "%(day)s: the two opening periods overlap."
+msgstr "%(day)s: aukioloajat menevät päällekkäin."
+
+#: website/services.py:273
+#, python-format
+msgid "%(day)s: the evening period runs past the opening time on %(next)s."
+msgstr ""
+"%(day)s: iltavuoro jatkuu seuraavan päivän (%(next)s) avaamisajan yli."
+
+#: website/services.py:300
+msgid "Choose the date."
+msgstr "Valitse päivä."
+
+#: website/services.py:302
+msgid "Choose today or a later date."
+msgstr "Valitse tämä päivä tai myöhempi päivä."
+
+#: website/services.py:311
+msgid "Enter the opening hours, or tick “Closed all day”."
+msgstr "Anna aukioloajat tai valitse “Suljettu koko päivän”."
+
+#: website/services.py:324
+msgid "This date already has special hours. Edit that entry instead."
+msgstr "Tälle päivälle on jo poikkeavat aukioloajat. Muokkaa niitä."
+
+#: website/services.py:364
+msgid "Describe the photo in a few words for people who cannot see it."
+msgstr "Kuvaile kuvaa muutamalla sanalla niille, jotka eivät näe sitä."
+
+#: website/services.py:433 website/services.py:441
+#, python-format
+msgid "The gallery holds at most %(n)s photos. Remove one first."
+msgstr "Galleriaan mahtuu enintään %(n)s kuvaa. Poista ensin jokin kuva."
+
+#: website/templates/website/_open_status.html:1
 msgid "Open now"
 msgstr "Avoinna nyt"
 
+#: website/templates/website/_open_status.html:1
 #, python-format
 msgid "until %(t)s"
 msgstr "klo %(t)s asti"
 
+#: website/templates/website/_open_status.html:1
 msgid "Closed now"
 msgstr "Suljettu nyt"
 
+#: website/templates/website/_open_status.html:1
 #, python-format
 msgid "opens at %(t)s"
 msgstr "avautuu klo %(t)s"
 
+#: website/templates/website/_open_status.html:1
 #, python-format
 msgid "opens %(d)s at %(t)s"
 msgstr "avautuu %(d)s klo %(t)s"
 
+#: website/templates/website/_promotion_group.html:5
 msgid "no end date"
 msgstr "ei päättymispäivää"
 
+#: website/templates/website/base.html:16
 msgid "Demo restaurant with example content."
 msgstr "Esittelyravintola esimerkkisisällöllä."
 
+#: website/templates/website/base.html:16
 msgid "Try the staff app"
 msgstr "Kokeile henkilökunnan sovellusta"
 
+#: website/templates/website/base.html:25
 msgid "Home"
 msgstr "Etusivu"
 
+#: website/templates/website/base.html:27
+#: website/templates/website/contact.html:2
 msgid "Contact"
 msgstr "Yhteystiedot"
 
-msgid "Opening hours"
-msgstr "Aukioloajat"
-
+#: website/templates/website/base.html:49
+#: website/templates/website/coming_soon.html:5
 msgid "Staff sign-in"
 msgstr "Henkilökunnan kirjautuminen"
 
+#: website/templates/website/coming_soon.html:3
 msgid "Coming soon"
 msgstr "Tulossa pian"
 
+#: website/templates/website/coming_soon.html:4
 msgid "Our website is coming soon"
 msgstr "Verkkosivumme avautuu pian"
 
+#: website/templates/website/contact.html:4
 msgid "Contact and opening hours"
 msgstr "Yhteystiedot ja aukioloajat"
 
+#: website/templates/website/contact.html:7
 msgid "Where to find us"
 msgstr "Mistä meidät löytää"
 
+#: website/templates/website/contact.html:10
 msgid "Open in maps"
 msgstr "Avaa kartalla"
 
+#: website/templates/website/contact.html:12
 msgid "Address coming soon."
 msgstr "Osoite tulossa pian."
 
+#: website/templates/website/contact.html:14
 msgid "Get in touch"
 msgstr "Ota yhteyttä"
 
-msgid "Phone"
-msgstr "Puhelin"
-
-msgid "Email"
-msgstr "Sähköposti"
-
+#: website/templates/website/contact.html:19
 msgid "Contact details coming soon."
 msgstr "Yhteystiedot tulossa pian."
 
+#: website/templates/website/contact.html:35
+msgid "Special opening hours"
+msgstr "Poikkeavat aukioloajat"
+
+#: website/templates/website/home.html:10
 msgid "See the menu"
 msgstr "Katso ruokalista"
 
+#: website/templates/website/home.html:11
 msgid "Find us"
 msgstr "Löydä meidät"
 
+#: website/templates/website/home.html:22
 msgid "Right now"
 msgstr "Juuri nyt"
 
+#: website/templates/website/home.html:28
 #, python-format
 msgid "Until %(d)s"
 msgstr "%(d)s asti"
 
+#: website/templates/website/home.html:37
 msgid "About us"
 msgstr "Meistä"
 
+#: website/templates/website/home.html:44
+msgid "Our restaurant"
+msgstr "Ravintolamme"
+
+#: website/templates/website/home.html:55
 msgid "From the menu"
 msgstr "Ruokalistalta"
 
+#: website/templates/website/home.html:55
 msgid "Full menu"
 msgstr "Koko ruokalista"
 
+#: website/templates/website/home.html:69
 msgid "Visit us"
 msgstr "Tervetuloa"
 
+#: website/templates/website/home.html:74
 msgid "Opening hours and contact"
 msgstr "Aukioloajat ja yhteystiedot"
 
+#: website/templates/website/manage_hours.html:6
+msgid "View on the website"
+msgstr "Näytä verkkosivulla"
+
+#: website/templates/website/manage_hours.html:9
+msgid "Regular hours"
+msgstr "Normaalit aukioloajat"
+
+#: website/templates/website/manage_hours.html:10
+msgid ""
+"Leave a day empty if the restaurant is closed. Add a second period for a "
+"break in the day, for example lunch 11:00–14:00 and dinner 17:00–22:00. A "
+"closing time earlier than the opening time means after midnight."
+msgstr ""
+"Jätä päivä tyhjäksi, jos ravintola on kiinni. Lisää toinen aika, jos "
+"päivässä on tauko, esimerkiksi lounas 11:00–14:00 ja illallinen 17:00–22:00."
+" Avaamisaikaa aikaisempi sulkemisaika tarkoittaa keskiyön jälkeen."
+
+#: website/templates/website/manage_hours.html:11
+msgid "Some hours need fixing. See the highlighted days."
+msgstr "Joitakin aikoja on korjattava. Katso korostetut päivät."
+
+#: website/templates/website/manage_hours.html:15
+msgid "Day"
+msgstr "Päivä"
+
+#: website/templates/website/manage_hours.html:15
+msgid "Opening period"
+msgstr "Aukioloaika"
+
+#: website/templates/website/manage_hours.html:15
+msgid "Second period (optional)"
+msgstr "Toinen aika (vapaaehtoinen)"
+
+#: website/templates/website/manage_hours.html:22
+#, python-format
+msgid "%(d)s opens"
+msgstr "%(d)s avautuu"
+
+#: website/templates/website/manage_hours.html:24
+#, python-format
+msgid "%(d)s closes"
+msgstr "%(d)s sulkeutuu"
+
+#: website/templates/website/manage_hours.html:35
+msgid "Save opening hours"
+msgstr "Tallenna aukioloajat"
+
+#: website/templates/website/manage_hours.html:39
+#: website/templates/website/manage_special_day.html:2
+msgid "Special hours"
+msgstr "Poikkeavat aukioloajat"
+
+#: website/templates/website/manage_hours.html:40
+#: website/templates/website/manage_special_day.html:5
+msgid "Add special hours"
+msgstr "Lisää poikkeava aukioloaika"
+
+#: website/templates/website/manage_hours.html:42
+msgid ""
+"For holidays and other exceptions. On these dates the special hours replace "
+"the regular hours, on the website and in the “open now” status."
+msgstr ""
+"Pyhäpäiviä ja muita poikkeuksia varten. Näinä päivinä poikkeavat ajat "
+"korvaavat normaalit aukioloajat verkkosivulla ja “avoinna nyt” -tiedossa."
+
+#: website/templates/website/manage_hours.html:46
+msgid "Actions"
+msgstr "Toiminnot"
+
+#: website/templates/website/manage_hours.html:54
+msgid "Edit"
+msgstr "Muokkaa"
+
+#: website/templates/website/manage_hours.html:55
+msgid "Remove these special hours? The regular hours will apply on that date."
+msgstr ""
+"Poistetaanko poikkeava aukioloaika? Tälle päivälle palautuvat normaalit "
+"ajat."
+
+#: website/templates/website/manage_hours.html:56
+#: website/templates/website/manage_images.html:72
+msgid "Remove"
+msgstr "Poista"
+
+#: website/templates/website/manage_hours.html:65
+msgid "No special hours coming up."
+msgstr "Ei tulevia poikkeavia aukioloaikoja."
+
+#: website/templates/website/manage_hours.html:68
+msgid "Recent past special hours"
+msgstr "Viimeaikaiset menneet poikkeukset"
+
+#: website/templates/website/manage_images.html:6
+msgid "View the website"
+msgstr "Näytä verkkosivu"
+
+#: website/templates/website/manage_images.html:8
+msgid ""
+"Photos are checked and re-saved when uploaded; hidden camera details such as"
+" location are removed."
+msgstr ""
+"Kuvat tarkistetaan ja tallennetaan uudelleen lähetettäessä; piilotetut "
+"kameratiedot, kuten sijainti, poistetaan."
+
+#: website/templates/website/manage_images.html:11
+msgid "Logo"
+msgstr "Logo"
+
+#: website/templates/website/manage_images.html:12
+msgid ""
+"Shown next to the restaurant name at the top of every page. A square image "
+"works best."
+msgstr ""
+"Näytetään ravintolan nimen vieressä jokaisen sivun yläosassa. "
+"Neliönmuotoinen kuva toimii parhaiten."
+
+#: website/templates/website/manage_images.html:15
+msgid "Current logo"
+msgstr "Nykyinen logo"
+
+#: website/templates/website/manage_images.html:16
+msgid "Remove the logo from the website?"
+msgstr "Poistetaanko logo verkkosivulta?"
+
+#: website/templates/website/manage_images.html:17
+msgid "Remove logo"
+msgstr "Poista logo"
+
+#: website/templates/website/manage_images.html:23
+msgid "Replace logo"
+msgstr "Vaihda logo"
+
+#: website/templates/website/manage_images.html:23
+msgid "Upload logo"
+msgstr "Lähetä logo"
+
+#: website/templates/website/manage_images.html:28
+msgid "Homepage photo"
+msgstr "Etusivun kuva"
+
+#: website/templates/website/manage_images.html:29
+msgid ""
+"The large photo at the top of the homepage. It is also used when the website"
+" is shared on social media."
+msgstr ""
+"Suuri kuva etusivun yläosassa. Sitä käytetään myös, kun sivu jaetaan "
+"sosiaalisessa mediassa."
+
+#: website/templates/website/manage_images.html:35
+#: website/templates/website/manage_images.html:62
+msgid "Save description"
+msgstr "Tallenna kuvaus"
+
+#: website/templates/website/manage_images.html:38
+msgid "Remove the homepage photo from the website?"
+msgstr "Poistetaanko etusivun kuva verkkosivulta?"
+
+#: website/templates/website/manage_images.html:39
+msgid "Remove photo"
+msgstr "Poista kuva"
+
+#: website/templates/website/manage_images.html:45
+msgid "Replace photo"
+msgstr "Vaihda kuva"
+
+#: website/templates/website/manage_images.html:50
+msgid "Gallery"
+msgstr "Galleria"
+
+#: website/templates/website/manage_images.html:51
+#, python-format
+msgid ""
+"Up to %(n)s photos of the restaurant, shown on the homepage under “Our "
+"restaurant”."
+msgstr ""
+"Enintään %(n)s kuvaa ravintolasta. Ne näytetään etusivulla kohdassa "
+"“Ravintolamme”."
+
+#: website/templates/website/manage_images.html:67
+#, python-format
+msgid "Move %(d)s earlier"
+msgstr "Siirrä aiemmaksi: %(d)s"
+
+#: website/templates/website/manage_images.html:68
+#, python-format
+msgid "Move %(d)s later"
+msgstr "Siirrä myöhemmäksi: %(d)s"
+
+#: website/templates/website/manage_images.html:70
+msgid "Remove this photo from the website?"
+msgstr "Poistetaanko kuva verkkosivulta?"
+
+#: website/templates/website/manage_images.html:78
+msgid "No gallery photos yet."
+msgstr "Galleriassa ei ole vielä kuvia."
+
+#: website/templates/website/manage_images.html:81
+msgid "The gallery is full. Remove a photo to add another."
+msgstr "Galleria on täynnä. Poista kuva lisätäksesi uuden."
+
+#: website/templates/website/manage_images.html:86
+msgid "Add to gallery"
+msgstr "Lisää galleriaan"
+
+#: website/templates/website/manage_info.html:6
+msgid "View contact page"
+msgstr "Näytä yhteystietosivu"
+
+#: website/templates/website/manage_info.html:8
+msgid ""
+"These details appear on the public website: the homepage, the contact page "
+"and the footer of every page. Changes show immediately."
+msgstr ""
+"Nämä tiedot näkyvät julkisella verkkosivulla: etusivulla, yhteystietosivulla"
+" ja jokaisen sivun alaosassa. Muutokset näkyvät heti."
+
+#: website/templates/website/manage_special_day.html:5
+msgid "Edit special hours"
+msgstr "Muokkaa poikkeavaa aukioloaikaa"
+
+#: website/templates/website/manage_special_day.html:6
+msgid "On this date these hours replace the regular hours."
+msgstr "Tänä päivänä nämä ajat korvaavat normaalit aukioloajat."
+
+#: website/templates/website/menu.html:7
 msgid "Menu sections"
 msgstr "Ruokalistan osiot"
 
+#: website/templates/website/menu.html:25
 msgid "Not available today"
 msgstr "Ei saatavilla tänään"
 
+#: website/templates/website/menu.html:27
 msgid "Allergens:"
 msgstr "Allergeenit:"
 
+#: website/templates/website/menu.html:34
 msgid "The menu is being updated. Please check back soon."
 msgstr "Ruokalistaa päivitetään. Käy katsomassa pian uudelleen."
 
+#: website/templates/website/menu.html:40
 msgid ""
 "Allergen information is provided by our kitchen. If you have an allergy, "
 "please tell your server when you order."
@@ -2497,10 +3841,12 @@ msgstr ""
 "Allergeenitiedot ovat keittiömme antamia. Jos sinulla on allergia, kerro "
 "siitä tilatessasi."
 
+#: website/templates/website/promotion_delete.html:3
 #, python-format
 msgid "Delete “%(t)s”?"
 msgstr "Poistetaanko “%(t)s”?"
 
+#: website/templates/website/promotion_delete.html:5
 msgid ""
 "It disappears from the website and from this list. To hide it for now, edit "
 "it and untick “Show on the website” instead."
@@ -2508,18 +3854,25 @@ msgstr ""
 "Se poistuu verkkosivulta ja tältä listalta. Jos haluat piilottaa sen vain "
 "toistaiseksi, muokkaa sitä ja poista rasti kohdasta “Näytä verkkosivulla”."
 
+#: website/templates/website/promotion_delete.html:8
 msgid "Delete promotion"
 msgstr "Poista tarjous"
 
+#: website/templates/website/promotion_form.html:2
+#: website/templates/website/promotion_form.html:5
+#: website/templates/website/promotion_list.html:6
 msgid "New promotion"
 msgstr "Uusi tarjous"
 
+#: website/templates/website/promotion_form.html:5
 msgid "Edit promotion"
 msgstr "Muokkaa tarjousta"
 
+#: website/templates/website/promotion_form.html:12
 msgid "Delete"
 msgstr "Poista"
 
+#: website/templates/website/promotion_list.html:8
 msgid ""
 "Promotions appear on the public homepage from their first day to their last "
 "day, then disappear by themselves."
@@ -2527,23 +3880,72 @@ msgstr ""
 "Tarjoukset näkyvät julkisella etusivulla ensimmäisestä viimeiseen päivään ja"
 " poistuvat sitten itsestään."
 
+#: website/templates/website/promotion_list.html:10
 msgid "On the website now"
 msgstr "Verkkosivulla nyt"
 
+#: website/templates/website/promotion_list.html:11
 msgid "Starting later"
 msgstr "Alkaa myöhemmin"
 
+#: website/templates/website/promotion_list.html:12
 msgid "Not shown (unpublished)"
 msgstr "Ei näytetä (julkaisematon)"
 
+#: website/templates/website/promotion_list.html:13
 msgid "Ended"
 msgstr "Päättynyt"
 
+#: website/templates/website/promotion_list.html:15
 msgid "No promotions yet."
 msgstr "Ei vielä tarjouksia."
 
+#: website/views.py:164
 msgid "Promotion saved."
 msgstr "Tarjous tallennettu."
 
+#: website/views.py:174
 msgid "Promotion deleted."
 msgstr "Tarjous poistettu."
+
+#: website/views.py:199
+msgid "Restaurant details saved. The public website shows them now."
+msgstr ""
+"Ravintolan tiedot tallennettu. Ne näkyvät nyt julkisella verkkosivulla."
+
+#: website/views.py:216
+msgid "Opening hours saved."
+msgstr "Aukioloajat tallennettu."
+
+#: website/views.py:249
+#, python-format
+msgid "Special hours saved for %(d)s."
+msgstr "Poikkeava aukioloaika tallennettu päivälle %(d)s."
+
+#: website/views.py:259
+msgid "Special hours removed. The regular hours apply on that date again."
+msgstr "Poikkeava aukioloaika poistettu. Päivälle palautuivat normaalit ajat."
+
+#: website/views.py:302
+msgid "Logo saved."
+msgstr "Logo tallennettu."
+
+#: website/views.py:307
+msgid "Homepage photo saved."
+msgstr "Etusivun kuva tallennettu."
+
+#: website/views.py:312 website/views.py:326
+msgid "Description saved."
+msgstr "Kuvaus tallennettu."
+
+#: website/views.py:315 website/views.py:332
+msgid "Photo removed from the website."
+msgstr "Kuva poistettu verkkosivulta."
+
+#: website/views.py:320
+msgid "Photo added to the gallery."
+msgstr "Kuva lisätty galleriaan."
+
+#: website/views.py:329
+msgid "Order saved."
+msgstr "Järjestys tallennettu."

@@ -31,6 +31,19 @@
       {% endfor %}
       </tbody>
     </table>
+    {% if special_days %}
+    <h3 class="special-title">{% translate "Special opening hours" %}</h3>
+    <table class="hours special-hours">
+      <tbody>
+      {% for day in special_days %}
+      <tr{% if day.date == status.today %} class="today" aria-current="date"{% endif %}>
+        <th scope="row">{{ day.date|date:"D j.n." }}{% if day.note %}<br><span class="small">{{ day.note }}</span>{% endif %}</th>
+        <td>{% for p in day.periods %}{{ p.opens|time:"H:i" }}–{{ p.closes|time:"H:i" }}{% if not forloop.last %}<br>{% endif %}{% empty %}{% translate "Closed" %}{% endfor %}</td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
   </section>
 </div>
 {% endblock %}

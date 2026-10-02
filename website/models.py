@@ -9,8 +9,7 @@ from core.models import Restaurant
 class PublicProfile(models.Model):
     """What customers see about the restaurant. The name comes from Restaurant.name.
 
-    Editing screens for these details are EP08; until then they are set by the
-    demo/setup command or by an administrator.
+    The owner edits these on the "Restaurant details" and "Website images" screens (EP08).
     """
 
     restaurant = models.OneToOneField(Restaurant, on_delete=models.CASCADE, related_name="public_profile")
@@ -65,6 +64,89 @@ class OpeningHours(models.Model):
     @property
     def crosses_midnight(self):
         return self.closes <= self.opens
+
+
+class Period:
+    """A (opens, closes) pair; closes at or before opens means it ends after midnight."""
+
+    __slots__ = ("opens", "closes")
+
+    def __init__(self, opens, closes):
+        self.opens, self.closes = opens, closes
+
+    @property
+    def crosses_midnight(self):
+        return self.closes <= self.opens
+
+    def __eq__(self, other):
+        return isinstance(other, Period) and (self.opens, self.closes) == (other.opens, other.closes)
+
+    def __repr__(self):
+        return f"Period({self.opens:%H:%M}-{self.closes:%H:%M})"
+
+
+class SpecialDay(models.Model):
+    """Opening hours for one date that replace the regular weekday hours (holidays, events).
+
+    Either closed all day, or open for one or two periods.
+    """
+
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name="special_days")
+    date = models.DateField(_("date"))
+    is_closed = models.BooleanField(_("closed all day"), default=False)
+    opens = models.TimeField(null=True, blank=True)
+    closes = models.TimeField(null=True, blank=True)
+    opens_2 = models.TimeField(null=True, blank=True)
+    closes_2 = models.TimeField(null=True, blank=True)
+    note = models.CharField(_("note"), max_length=80, blank=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["date"]
+        constraints = [
+            models.UniqueConstraint(fields=["restaurant", "date"], name="special_day_unique_date"),
+            models.CheckConstraint(
+                condition=Q(is_closed=True) | (Q(opens__isnull=False) & Q(closes__isnull=False)),
+                name="special_day_closed_or_hours",
+            ),
+            models.CheckConstraint(
+                condition=(Q(opens_2__isnull=True) & Q(closes_2__isnull=True))
+                | (Q(opens_2__isnull=False) & Q(closes_2__isnull=False)),
+                name="special_day_second_period_complete",
+            ),
+        ]
+
+    def __str__(self):
+        return f"{self.date} ({self.note or ('closed' if self.is_closed else 'special hours')})"
+
+    @property
+    def periods(self):
+        if self.is_closed:
+            return []
+        out = [Period(self.opens, self.closes)]
+        if self.opens_2 is not None:
+            out.append(Period(self.opens_2, self.closes_2))
+        return out
+
+
+class GalleryImage(models.Model):
+    """A photo of the restaurant shown on the public homepage."""
+
+    MAX_PER_RESTAURANT = 8
+
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name="gallery_images")
+    key = models.CharField(max_length=80, unique=True)
+    width = models.PositiveIntegerField()
+    height = models.PositiveIntegerField()
+    alt = models.CharField(_("description"), max_length=200)
+    position = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["position", "id"]
+
+    def __str__(self):
+        return self.alt
 
 
 class Promotion(models.Model):

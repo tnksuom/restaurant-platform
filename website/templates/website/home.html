@@ -39,6 +39,17 @@
 </section>
 {% endif %}
 
+{% if gallery %}
+<section class="wrap section" aria-labelledby="gallery-title">
+  <h2 id="gallery-title">{% translate "Our restaurant" %}</h2>
+  <div class="gallery">
+    {% for img in gallery %}
+    <figure><img src="{% url 'website:image' img.key %}" alt="{{ img.alt }}" loading="lazy" width="{{ img.width }}" height="{{ img.height }}"></figure>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
 {% if featured %}
 <section class="wrap section" aria-labelledby="feat-title">
   <div class="section-head"><h2 id="feat-title">{% translate "From the menu" %}</h2><a href="{% url 'website:menu' %}">{% translate "Full menu" %} →</a></div>
