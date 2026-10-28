@@ -82,7 +82,7 @@ class ModulesForm(forms.Form):
             allowed = organization.plan.allows_module(m)
             self.fields[m] = forms.BooleanField(
                 label=MODULE_LABELS[m], required=False, initial=organization.module_enabled(m), disabled=not allowed,
-                help_text="" if allowed else _("Not included in your plan."),
+                help_text="" if allowed else _("Not included in the plan."),
             )
 
     def enabled(self):

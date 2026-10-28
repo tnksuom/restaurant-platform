@@ -1,8 +1,9 @@
-# restaurant-ops
+# restaurant-platform
 
-Django 5.2 + PostgreSQL app for restaurant operations (EP01–EP08 done). Public site at `/`, staff app at `/app/`. See README.md for setup, story status and design decisions.
+Multi-restaurant platform (Django 5.2 + PostgreSQL), grown from restaurant-ops v1.0 (EP01–EP08). Organizations (customers) have locations (`core.Restaurant`) and staff; the platform layer lives in `tenants/`. Main domain: landing, sign-up, `/platform/` admin. Workspaces: `<slug>.<domain>` with the public site at `/` and the staff app at `/app/`. See README.md.
 
 ## Working rules
+- Tenant isolation: every query for operational data filters by the current location (`request.user.restaurant`) or organization (`request.tenant`). Never look records up by id alone. Staff of a location: `Employee.objects.working_at(location)`. Add an isolation test for every new page.
 - Business rules live in each app's `services.py`; views only parse input and call services. Every permission check happens on the server.
 - History tables are append-only (audit events, stock movements, clock events, time corrections) and are protected by DB triggers. Never add update/delete paths for them; add compensating rows instead.
 - Quantities are `Decimal` (3 dp), temperatures `Decimal` (2 dp). Never use floats for stock.

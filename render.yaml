@@ -1,4 +1,4 @@
-# Render Blueprint: creates the database and the web service in Frankfurt (EU).
+# Render Blueprint for the multi-restaurant platform: database + web service in Frankfurt (EU).
 # In Render: New → Blueprint → pick this repository. See DEPLOY.md for the full walkthrough.
 
 databases:
@@ -12,7 +12,7 @@ databases:
 
 services:
   - type: web
-    name: restaurant-ops
+    name: restaurant-platform
     runtime: docker
     dockerfilePath: ./Dockerfile
     region: frankfurt
@@ -20,8 +20,8 @@ services:
     branch: main
     autoDeployTrigger: checksPass   # deploy a new version of main only after GitHub's tests pass
     healthCheckPath: /healthz
-    # Runs before each new version starts: update the database, then create the first owner if needed.
-    preDeployCommand: python manage.py migrate --noinput && python manage.py ensure_owner
+    # Runs before each new version starts: update the database, then create the platform admin if needed.
+    preDeployCommand: python manage.py migrate --noinput && python manage.py ensure_platform_admin
     disk:
       name: uploads
       mountPath: /var/data     # issue photos, dish photos, logo; snapshotted daily by Render
@@ -49,13 +49,23 @@ services:
         value: /var/data/public_uploads
       - key: WEB_CONCURRENCY
         value: "2"
-      # Asked for when the Blueprint is created. Used once to create the first owner account;
-      # delete INITIAL_OWNER_PASSWORD afterwards.
-      - key: INITIAL_RESTAURANT_NAME
+      # Your domain, e.g. ravintola-app.fi. Each restaurant gets <name>.<domain>; add the domain AND
+      # *.<domain> as custom domains in Render (see DEPLOY.md).
+      - key: PLATFORM_DOMAIN
         sync: false
-      - key: INITIAL_OWNER_NAME
+      - key: TENANT_SUBDOMAINS
+        value: "true"
+      - key: PLATFORM_NAME
         sync: false
-      - key: INITIAL_OWNER_LOGIN
+      - key: PLATFORM_CONTACT_EMAIL
         sync: false
-      - key: INITIAL_OWNER_PASSWORD
+      - key: TRIAL_DAYS
+        value: "14"
+      # Asked for when the Blueprint is created. Used once to create the platform administrator;
+      # delete INITIAL_ADMIN_PASSWORD afterwards.
+      - key: INITIAL_ADMIN_NAME
+        sync: false
+      - key: INITIAL_ADMIN_LOGIN
+        sync: false
+      - key: INITIAL_ADMIN_PASSWORD
         sync: false

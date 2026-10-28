@@ -14,16 +14,6 @@
 {% if trial_days_left is not None %}<div class="trial-banner" role="note">{% blocktranslate count n=trial_days_left %}Free trial: {{ n }} day left.{% plural %}Free trial: {{ n }} days left.{% endblocktranslate %}{% if is_owner %} <a href="{% url 'tenants:account' %}">{% translate "Plan and billing" %}</a>{% endif %}</div>{% endif %}
 <header class="topbar">
   <a class="brand" href="{% url 'today' %}">{{ tenant.name }}</a>
-  {% if my_locations|length > 1 %}
-  <form class="location-switch" method="post" action="{% url 'tenants:switch_location' %}">{% csrf_token %}
-    <input type="hidden" name="next" value="{{ request.get_full_path }}">
-    <label class="visually-hidden" for="location-select">{% translate "Location" %}</label>
-    <select id="location-select" name="location" data-autosubmit>
-      {% for loc in my_locations %}<option value="{{ loc.pk }}"{% if loc.pk == restaurant.pk %} selected{% endif %}>{{ loc.name }}</option>{% endfor %}
-    </select>
-    <noscript><button type="submit" class="btn btn-secondary">{% translate "Switch" %}</button></noscript>
-  </form>
-  {% elif my_locations|length == 1 and restaurant.name != tenant.name %}<span class="location-name">{{ restaurant.name }}</span>{% endif %}
   {% include "core/language_switcher.html" %}
   <details class="menu">
     <summary aria-label="{% translate 'Menu' context 'navigation' %}">{% translate "Menu" context "navigation" %}</summary>
@@ -76,6 +66,18 @@
     </nav>
   </details>
 </header>
+{% if my_locations|length > 1 %}
+<div class="location-bar">
+  <form class="location-switch" method="post" action="{% url 'tenants:switch_location' %}">{% csrf_token %}
+    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+    <label for="location-select">{% translate "Location" %}</label>
+    <select id="location-select" name="location" data-autosubmit>
+      {% for loc in my_locations %}<option value="{{ loc.pk }}"{% if loc.pk == restaurant.pk %} selected{% endif %}>{{ loc.name }}</option>{% endfor %}
+    </select>
+    <noscript><button type="submit" class="btn btn-secondary">{% translate "Switch" %}</button></noscript>
+  </form>
+</div>
+{% endif %}
 {% endif %}
 {% if not user.is_authenticated %}<div class="topbar topbar-plain">{% if tenant %}<span class="brand">{{ tenant.name }}</span>{% endif %}{% include "core/language_switcher.html" %}</div>{% endif %}
 <main id="main" class="page">

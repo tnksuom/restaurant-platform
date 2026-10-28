@@ -202,8 +202,10 @@ form.upload { margin-top: 12px; }
 .card > form + form, .card > form + h3 { margin-top: 12px; }
 
 /* Platform: location switcher, trial banner */
-.location-switch select { min-height: 40px; max-width: 46vw; font: inherit; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); padding: 0 8px; }
-.location-name { color: var(--muted); font-size: .95rem; }
+.location-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 6px 16px; }
+.location-switch { display: flex; align-items: center; gap: 10px; max-width: 848px; margin: 0 auto; }
+.location-switch label { color: var(--muted); font-size: .9rem; }
+.location-switch select { min-height: 40px; flex: 1 1 auto; max-width: 360px; font: inherit; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); padding: 0 8px; }
 .trial-banner { background: var(--info-bg); padding: 8px 16px; text-align: center; font-size: .92rem; }
 .plans { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 .plan-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; background: var(--surface); display: grid; gap: 6px; align-content: start; }

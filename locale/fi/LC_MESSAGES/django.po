@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-30 17:49+0000\n"
+"POT-Creation-Date: 2026-10-28 20:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Claude\n"
 "Language-Team: Finnish\n"
@@ -163,7 +163,7 @@ msgstr "otsikko"
 msgid "type"
 msgstr "tyyppi"
 
-#: checklists/models.py:32 inventory/models.py:32 staff/models.py:58
+#: checklists/models.py:32 inventory/models.py:32 staff/models.py:86
 msgid "active"
 msgstr "käytössä"
 
@@ -271,7 +271,7 @@ msgstr "Ei kunnossa oleva tehtävä"
 msgid "Temperature outside range"
 msgstr "Lämpötila rajojen ulkopuolella"
 
-#: checklists/services.py:61 website/services.py:128
+#: checklists/services.py:61 website/services.py:129
 msgid "Enter a title."
 msgstr "Anna otsikko."
 
@@ -387,7 +387,7 @@ msgstr "%(n)s pakollista tehtävää odottaa vielä vastausta."
 msgid "Checklist history"
 msgstr "Tarkistuslistojen historia"
 
-#: checklists/templates/checklists/history.html:4 core/templates/base.html:44
+#: checklists/templates/checklists/history.html:4 core/templates/base.html:51
 msgid "My submitted checklists"
 msgstr "Lähettämäni tarkistuslistat"
 
@@ -440,16 +440,20 @@ msgstr "poistettu käytöstä"
 #: inventory/templates/inventory/list.html:22
 #: inventory/templates/inventory/list.html:33
 #: staff/templates/staff/detail.html:10 staff/templates/staff/list.html:11
-#: staff/templates/staff/list.html:20
+#: staff/templates/staff/list.html:20 tenants/forms.py:97
+#: tenants/templates/tenants/platform/home.html:20
+#: tenants/templates/tenants/platform/organization.html:16
 #: timeclock/templates/timeclock/_shift_table.html:5
 msgid "Status"
 msgstr "Tila"
 
 #: checklists/templates/checklists/history.html:17
-#: checklists/templates/checklists/review.html:22 core/templates/base.html:34
+#: checklists/templates/checklists/review.html:22 core/templates/base.html:39
 #: dashboard/templates/dashboard/dashboard.html:53
 #: inventory/templates/inventory/history.html:14
 #: staff/templates/staff/list.html:2 staff/templates/staff/list.html:4
+#: tenants/templates/tenants/locations.html:8
+#: tenants/templates/tenants/locations.html:13
 #: timeclock/templates/timeclock/_shift_table.html:4
 #: timeclock/templates/timeclock/timesheets.html:6
 #: timeclock/templates/timeclock/timesheets.html:18
@@ -557,7 +561,7 @@ msgstr "Ratkaise"
 msgid "Mark resolved"
 msgstr "Merkitse ratkaistuksi"
 
-#: checklists/templates/checklists/issues.html:2 core/templates/base.html:30
+#: checklists/templates/checklists/issues.html:2 core/templates/base.html:34
 msgid "Issues"
 msgstr "Poikkeamat"
 
@@ -595,7 +599,7 @@ msgid "Send report"
 msgstr "Lähetä ilmoitus"
 
 #: checklists/templates/checklists/review.html:2
-#: checklists/templates/checklists/review.html:4 core/templates/base.html:29
+#: checklists/templates/checklists/review.html:4 core/templates/base.html:33
 msgid "Checklist review"
 msgstr "Tarkistuslistojen seuranta"
 
@@ -632,10 +636,11 @@ msgid "No checklists were expected or started on this date."
 msgstr "Tälle päivälle ei ollut tarkistuslistoja, eikä yhtään aloitettu."
 
 #: checklists/templates/checklists/review.html:20
-#: checklists/templates/checklists/today.html:2 core/templates/base.html:24
-#: core/templates/core/today.html:18
+#: checklists/templates/checklists/today.html:2 core/templates/base.html:27
+#: core/templates/core/today.html:21
 #: dashboard/templates/dashboard/dashboard.html:81
-#: staff/templates/staff/detail.html:30
+#: staff/templates/staff/detail.html:30 tenants/forms.py:14
+#: tenants/models.py:74 tenants/templates/tenants/platform/landing.html:25
 msgid "Checklists"
 msgstr "Tarkistuslistat"
 
@@ -661,7 +666,7 @@ msgstr "Rajat"
 #: dashboard/templates/dashboard/dashboard.html:127
 #: inventory/templates/inventory/detail.html:70
 #: inventory/templates/inventory/history.html:23
-#: staff/templates/staff/detail.html:58
+#: staff/templates/staff/detail.html:73
 #: timeclock/templates/timeclock/shift.html:39
 msgid "By"
 msgstr "Tekijä"
@@ -685,7 +690,7 @@ msgid "No readings recorded."
 msgstr "Ei kirjattuja lukemia."
 
 #: checklists/templates/checklists/review.html:60
-#: core/templates/core/today.html:37
+#: core/templates/core/today.html:44
 #: dashboard/templates/dashboard/dashboard.html:33
 msgid "Open issues"
 msgstr "Avoimet poikkeamat"
@@ -775,6 +780,7 @@ msgstr "Määrä tai huomautus"
 
 #: checklists/templates/checklists/run.html:58 inventory/forms.py:39
 #: website/templates/website/manage_hours.html:46
+#: website/templates/website/manage_hours.html:52
 msgid "Note"
 msgstr "Huomautus"
 
@@ -871,7 +877,7 @@ msgstr "Uusi tarkistuslista"
 #: checklists/templates/checklists/template_form.html:4
 #: checklists/templates/checklists/templates.html:2
 #: checklists/templates/checklists/templates.html:4
-#: core/templates/base.html:31
+#: core/templates/base.html:35
 msgid "Checklist templates"
 msgstr "Tarkistuslistapohjat"
 
@@ -949,7 +955,9 @@ msgstr "versio %(v)s"
 #: checklists/templates/checklists/templates.html:13
 #: inventory/templates/inventory/list.html:24
 #: staff/templates/staff/detail.html:11 staff/templates/staff/list.html:13
-#: staff/templates/staff/list.html:27
+#: staff/templates/staff/list.html:27 tenants/models.py:62
+#: tenants/templates/tenants/account.html:9
+#: tenants/templates/tenants/platform/_status.html:1
 msgid "Active"
 msgstr "Käytössä"
 
@@ -1004,6 +1012,7 @@ msgid "View"
 msgstr "Näytä"
 
 #: checklists/templates/checklists/today.html:19
+#: tenants/templates/tenants/platform/find.html:9
 msgid "Continue"
 msgstr "Jatka"
 
@@ -1186,7 +1195,8 @@ msgstr "Siirry kirjautumaan"
 msgid "Restaurant operations"
 msgstr "Ravintolan arki"
 
-#: core/templates/base.html:11 website/templates/website/base.html:15
+#: core/templates/base.html:11 tenants/templates/tenants/platform/base.html:12
+#: website/templates/website/base.html:15
 msgid "Skip to content"
 msgstr "Siirry sisältöön"
 
@@ -1197,72 +1207,86 @@ msgstr ""
 "Esittelyversio esimerkkitiedoilla. Kaikki muutokset nollautuvat, kun "
 "esittely käynnistyy uudelleen."
 
-#: core/templates/base.html:18
+#: core/templates/base.html:14
+#, python-format
+msgid "Free trial: %(n)s day left."
+msgid_plural "Free trial: %(n)s days left."
+msgstr[0] "Ilmainen kokeilu: %(n)s päivä jäljellä."
+msgstr[1] "Ilmainen kokeilu: %(n)s päivää jäljellä."
+
+#: core/templates/base.html:14
+msgid "Plan and billing"
+msgstr "Paketti ja laskutus"
+
+#: core/templates/base.html:19
 msgctxt "navigation"
 msgid "Menu"
 msgstr "Valikko"
 
-#: core/templates/base.html:19 website/templates/website/base.html:24
+#: core/templates/base.html:20 tenants/templates/tenants/platform/base.html:17
+#: website/templates/website/base.html:24
 msgid "Main"
 msgstr "Päävalikko"
 
-#: core/templates/base.html:21 core/templates/core/today.html:2
+#: core/templates/base.html:22 core/templates/core/today.html:2
 msgid "Today"
 msgstr "Tänään"
 
-#: core/templates/base.html:22 timeclock/templates/timeclock/clock.html:2
+#: core/templates/base.html:24 timeclock/templates/timeclock/clock.html:2
 #: timeclock/templates/timeclock/clock.html:4
 msgid "Clock in/out"
 msgstr "Leimaus"
 
-#: core/templates/base.html:23 staff/templates/staff/detail.html:21
+#: core/templates/base.html:25 staff/templates/staff/detail.html:21
 #: timeclock/templates/timeclock/mine.html:2
 #: timeclock/templates/timeclock/mine.html:4
 msgid "My hours"
 msgstr "Omat tunnit"
 
-#: core/templates/base.html:25 core/templates/core/today.html:27
+#: core/templates/base.html:28 core/templates/core/today.html:32
 #: inventory/templates/inventory/detail.html:4
 #: inventory/templates/inventory/list.html:2
-#: inventory/templates/inventory/list.html:5
+#: inventory/templates/inventory/list.html:5 tenants/forms.py:14
+#: tenants/models.py:75 tenants/templates/tenants/platform/landing.html:26
 msgid "Inventory"
 msgstr "Varasto"
 
-#: core/templates/base.html:28 core/templates/core/today.html:33
+#: core/templates/base.html:31 core/templates/core/today.html:39
 #: dashboard/templates/dashboard/dashboard.html:2
 msgid "Dashboard"
 msgstr "Yleisnäkymä"
 
-#: core/templates/base.html:32 inventory/templates/inventory/history.html:2
+#: core/templates/base.html:37 inventory/templates/inventory/history.html:2
 #: inventory/templates/inventory/history.html:4
 msgid "Stock history"
 msgstr "Varastotapahtumat"
 
-#: core/templates/base.html:33 timeclock/templates/timeclock/timesheets.html:2
+#: core/templates/base.html:38 timeclock/templates/timeclock/timesheets.html:2
 #: timeclock/templates/timeclock/timesheets.html:4
 msgid "Timesheets"
 msgstr "Tuntilistat"
 
-#: core/templates/base.html:35 menu/templates/menu/category_form.html:3
+#: core/templates/base.html:40 menu/templates/menu/category_form.html:3
 #: menu/templates/menu/item_form.html:4 menu/templates/menu/overview.html:2
-#: menu/templates/menu/overview.html:5 website/templates/website/base.html:26
+#: menu/templates/menu/overview.html:5 tenants/forms.py:15
+#: tenants/models.py:76 website/templates/website/base.html:26
 #: website/templates/website/menu.html:2 website/templates/website/menu.html:5
 msgid "Menu"
 msgstr "Ruokalista"
 
-#: core/templates/base.html:36 website/templates/website/promotion_form.html:4
+#: core/templates/base.html:42 website/templates/website/promotion_form.html:4
 #: website/templates/website/promotion_list.html:2
 #: website/templates/website/promotion_list.html:5
 msgid "Promotions"
 msgstr "Tarjoukset"
 
-#: core/templates/base.html:38 website/templates/website/manage_images.html:90
+#: core/templates/base.html:44 website/templates/website/manage_images.html:90
 #: website/templates/website/manage_info.html:2
 #: website/templates/website/manage_info.html:5
 msgid "Restaurant details"
 msgstr "Ravintolan tiedot"
 
-#: core/templates/base.html:39 website/templates/website/base.html:46
+#: core/templates/base.html:45 website/templates/website/base.html:46
 #: website/templates/website/contact.html:22
 #: website/templates/website/manage_hours.html:2
 #: website/templates/website/manage_hours.html:5
@@ -1272,23 +1296,44 @@ msgstr "Ravintolan tiedot"
 msgid "Opening hours"
 msgstr "Aukioloajat"
 
-#: core/templates/base.html:40 website/templates/website/manage_images.html:2
+#: core/templates/base.html:46 website/templates/website/manage_images.html:2
 #: website/templates/website/manage_images.html:5
 #: website/templates/website/manage_info.html:17
 msgid "Website images"
 msgstr "Verkkosivun kuvat"
 
-#: core/templates/base.html:42
+#: core/templates/base.html:48 tenants/forms.py:15 tenants/models.py:77
 msgid "Public website"
 msgstr "Julkinen verkkosivu"
 
-#: core/templates/base.html:47
+#: core/templates/base.html:55 staff/templates/staff/detail.html:56
+#: tenants/templates/tenants/locations.html:2
+#: tenants/templates/tenants/locations.html:4
+#: tenants/templates/tenants/platform/home.html:20
+#: tenants/templates/tenants/platform/organization.html:9
+msgid "Locations"
+msgstr "Toimipisteet"
+
+#: core/templates/base.html:56 tenants/templates/tenants/account.html:2
+#: tenants/templates/tenants/account.html:4
+msgid "Plan and modules"
+msgstr "Paketti ja moduulit"
+
+#: core/templates/base.html:59
 msgid "My profile"
 msgstr "Oma profiili"
 
-#: core/templates/base.html:50
+#: core/templates/base.html:62 tenants/templates/tenants/platform/base.html:20
 msgid "Sign out"
 msgstr "Kirjaudu ulos"
+
+#: core/templates/base.html:73 tenants/templates/tenants/locations.html:8
+msgid "Location"
+msgstr "Toimipiste"
+
+#: core/templates/base.html:77
+msgid "Switch"
+msgstr "Vaihda"
 
 #: core/templates/core/language_switcher.html:2
 msgid "Language"
@@ -1316,88 +1361,98 @@ msgstr "Seuraava"
 msgid "Hello, %(name)s"
 msgstr "Hei, %(name)s"
 
-#: core/templates/core/today.html:8
+#: core/templates/core/today.html:9
 msgid "My shift"
 msgstr "Oma vuoro"
 
-#: core/templates/core/today.html:10
+#: core/templates/core/today.html:11
 #: timeclock/templates/timeclock/clock.html:16
 msgid "On break"
 msgstr "Tauolla"
 
-#: core/templates/core/today.html:10 timeclock/models.py:66
+#: core/templates/core/today.html:11 timeclock/models.py:66
 msgid "Clocked in"
 msgstr "Leimattu sisään"
 
-#: core/templates/core/today.html:11
+#: core/templates/core/today.html:12
 #, python-format
 msgid "Since %(t)s"
 msgstr "Klo %(t)s alkaen"
 
-#: core/templates/core/today.html:13
+#: core/templates/core/today.html:14
 #: timeclock/templates/timeclock/clock.html:9
 msgid "Not clocked in"
 msgstr "Ei leimattu sisään"
 
-#: core/templates/core/today.html:14
+#: core/templates/core/today.html:15
 msgid "Tap to clock in"
 msgstr "Leimaa sisään napauttamalla"
 
-#: core/templates/core/today.html:21
+#: core/templates/core/today.html:24
 msgid "submitted today"
 msgstr "lähetetty tänään"
 
-#: core/templates/core/today.html:21
+#: core/templates/core/today.html:24
 #, python-format
 msgid "%(n)s in progress"
 msgid_plural "%(n)s in progress"
 msgstr[0] "%(n)s kesken"
 msgstr[1] "%(n)s kesken"
 
-#: core/templates/core/today.html:23
+#: core/templates/core/today.html:26
 msgid "No checklists set up."
 msgstr "Tarkistuslistoja ei ole luotu."
 
-#: core/templates/core/today.html:28
+#: core/templates/core/today.html:33
 #, python-format
 msgid "%(n)s item low"
 msgid_plural "%(n)s items low"
 msgstr[0] "%(n)s tuote vähissä"
 msgstr[1] "%(n)s tuotetta vähissä"
 
-#: core/templates/core/today.html:28
+#: core/templates/core/today.html:33
 msgid "Nothing low"
 msgstr "Mikään ei ole vähissä"
 
-#: core/templates/core/today.html:29
+#: core/templates/core/today.html:34
 msgid "Record deliveries, use and waste"
 msgstr "Kirjaa toimitukset, käyttö ja hävikki"
 
-#: core/templates/core/today.html:34
+#: core/templates/core/today.html:40
 msgid "Staff, hours, checklists, issues, stock and temperatures in one place"
 msgstr ""
 "Henkilökunta, tunnit, tarkistuslistat, poikkeamat, varasto ja lämpötilat "
 "yhdessä paikassa"
 
-#: core/templates/core/today.html:41
+#: core/templates/core/today.html:50
 msgid "Staff on shift"
 msgstr "Vuorossa"
 
 #: core/templates/registration/login.html:2
 #: core/templates/registration/login.html:5
-#: core/templates/registration/login.html:10
+#: core/templates/registration/login.html:11
+#: tenants/templates/tenants/platform/login.html:10
 msgid "Sign in"
 msgstr "Kirjaudu sisään"
 
-#: core/templates/registration/login.html:12
+#: core/templates/registration/login.html:13
 msgid "Forgot your password? Ask your manager for a new password link."
 msgstr "Unohditko salasanasi? Pyydä esihenkilöltäsi uusi salasanalinkki."
 
 #: core/templates/registration/login.html:16
+#, python-format
+msgid "Not working at %(name)s?"
+msgstr "Etkö työskentele paikassa %(name)s?"
+
+#: core/templates/registration/login.html:16
+msgid "Choose another workspace"
+msgstr "Valitse toinen työtila"
+
+#: core/templates/registration/login.html:22
 msgid "Demo accounts"
 msgstr "Esittelytunnukset"
 
-#: core/templates/registration/login.html:17
+#: core/templates/registration/login.html:23
 #, python-format
 msgid ""
 "Tap a person to sign in as them. Every demo account uses the password "
@@ -1576,8 +1631,9 @@ msgstr ""
 msgid "Nobody is clocked in right now."
 msgstr "Kukaan ei ole juuri nyt leimannut sisään."
 
-#: dashboard/templates/dashboard/dashboard.html:70 website/services.py:306
+#: dashboard/templates/dashboard/dashboard.html:70 website/services.py:307
 #: website/templates/website/manage_hours.html:46
+#: website/templates/website/manage_hours.html:51
 #: website/templates/website/manage_special_day.html:14
 msgid "Hours"
 msgstr "Tunnit"
@@ -1793,6 +1849,7 @@ msgid "Cleaning supply"
 msgstr "Puhdistustarvike"
 
 #: inventory/models.py:25 menu/models.py:44 menu/models.py:71
+#: tenants/models.py:41
 msgid "name"
 msgstr "nimi"
 
@@ -1868,7 +1925,7 @@ msgstr "Määrä ei voi olla negatiivinen."
 msgid "Quantity must be more than zero."
 msgstr "Määrän on oltava suurempi kuin nolla."
 
-#: inventory/services.py:73 staff/services.py:55 staff/services.py:79
+#: inventory/services.py:73 staff/services.py:59 staff/services.py:86
 msgid "Enter a name."
 msgstr "Anna nimi."
 
@@ -1950,6 +2007,7 @@ msgstr "Kirjaa varasto"
 #: inventory/templates/inventory/detail.html:61
 #: inventory/templates/inventory/item_form.html:8
 #: staff/templates/staff/form.html:9
+#: tenants/templates/tenants/locations.html:19
 #: website/templates/website/manage_info.html:13
 #: website/templates/website/manage_special_day.html:26
 #: website/templates/website/promotion_form.html:10
@@ -1962,19 +2020,21 @@ msgstr ""
 "Tuote on poistettu käytöstä, joten uusia varastotapahtumia ei voi kirjata."
 
 #: inventory/templates/inventory/detail.html:68
+#: tenants/templates/tenants/platform/organization.html:23
 msgid "History"
 msgstr "Historia"
 
 #: inventory/templates/inventory/detail.html:70
 #: inventory/templates/inventory/history.html:23
-#: staff/templates/staff/detail.html:58
+#: staff/templates/staff/detail.html:73
+#: tenants/templates/tenants/platform/organization.html:24
 #: timeclock/templates/timeclock/shift.html:39
 msgid "When"
 msgstr "Milloin"
 
 #: inventory/templates/inventory/detail.html:70
 #: inventory/templates/inventory/history.html:23
-#: staff/templates/staff/detail.html:58
+#: staff/templates/staff/detail.html:73
 msgid "Change"
 msgstr "Muutos"
 
@@ -1984,7 +2044,7 @@ msgid "Balance after"
 msgstr "Saldo jälkeen"
 
 #: inventory/templates/inventory/detail.html:70
-#: inventory/templates/inventory/history.html:23
+#: inventory/templates/inventory/history.html:23 tenants/forms.py:98
 msgid "Reason / note"
 msgstr "Syy / huomautus"
 
@@ -2029,6 +2089,8 @@ msgstr "Mikään tuote ei ole vähissä"
 
 #: inventory/templates/inventory/list.html:16
 #: staff/templates/staff/list.html:6
+#: tenants/templates/tenants/platform/home.html:13
+#: tenants/templates/tenants/platform/home.html:15
 msgid "Search"
 msgstr "Hae"
 
@@ -2044,7 +2106,7 @@ msgstr "Ei vielä tuotteita. Lisää ensimmäinen varastotuote."
 msgid "No items match."
 msgstr "Ei osumia."
 
-#: inventory/views.py:66 staff/views.py:117
+#: inventory/views.py:66 staff/views.py:120
 #, python-format
 msgid "%(name)s was added."
 msgstr "%(name)s lisättiin."
@@ -2057,7 +2119,7 @@ msgstr "Lisää varastotuote"
 msgid "Item saved. Past stock records are unchanged."
 msgstr "Tuote tallennettu. Aiemmat varastotapahtumat eivät muuttuneet."
 
-#: inventory/views.py:88 staff/views.py:166
+#: inventory/views.py:88 staff/views.py:200
 #, python-format
 msgid "Edit %(name)s"
 msgstr "Muokkaa: %(name)s"
@@ -2420,6 +2482,8 @@ msgid "Move %(c)s down"
 msgstr "Siirrä alas: %(c)s"
 
 #: menu/templates/menu/overview.html:24
+#: tenants/templates/tenants/locations.html:8
+#: tenants/templates/tenants/locations.html:14
 msgid "Rename"
 msgstr "Nimeä uudelleen"
 
@@ -2552,7 +2616,7 @@ msgstr "Puhelinnumero (vapaaehtoinen)"
 msgid "Role"
 msgstr "Rooli"
 
-#: staff/models.py:10 staff/views.py:45
+#: staff/models.py:10 staff/views.py:46
 msgid "Owner"
 msgstr "Omistaja"
 
@@ -2560,54 +2624,54 @@ msgstr "Omistaja"
 msgid "Manager"
 msgstr "Esihenkilö"
 
-#: staff/models.py:12 staff/views.py:47
+#: staff/models.py:12 staff/views.py:46
 msgid "Employee"
 msgstr "Työntekijä"
 
-#: staff/models.py:49
+#: staff/models.py:78
 msgid "display name"
 msgstr "näyttönimi"
 
-#: staff/models.py:51
+#: staff/models.py:80
 msgid "login name or email"
 msgstr "käyttäjätunnus tai sähköposti"
 
-#: staff/models.py:54
+#: staff/models.py:82
 msgid "Used to sign in. Not case-sensitive."
 msgstr "Käytetään kirjautumiseen. Kirjainkoolla ei ole väliä."
 
-#: staff/models.py:56
+#: staff/models.py:84
 msgid "contact number"
 msgstr "puhelinnumero"
 
-#: staff/services.py:46 staff/services.py:69
+#: staff/services.py:50 staff/services.py:76
 msgid "This login name is already in use."
 msgstr "Tämä käyttäjätunnus on jo käytössä."
 
-#: staff/services.py:57
+#: staff/services.py:61 tenants/services.py:90
 msgid "Enter a login name."
 msgstr "Anna käyttäjätunnus."
 
-#: staff/services.py:106
+#: staff/services.py:113
 msgid "Choose a valid role."
 msgstr "Valitse kelvollinen rooli."
 
-#: staff/services.py:112
+#: staff/services.py:119
 msgid ""
 "The last active owner cannot be demoted. Make someone else owner first."
 msgstr ""
 "Viimeisen aktiivisen omistajan roolia ei voi laskea. Tee ensin joku muu "
 "omistajaksi."
 
-#: staff/services.py:131
+#: staff/services.py:138
 msgid "You cannot deactivate your own account."
 msgstr "Et voi poistaa omaa tunnustasi käytöstä."
 
-#: staff/services.py:135
+#: staff/services.py:142
 msgid "The last active owner cannot be deactivated."
 msgstr "Viimeistä aktiivista omistajaa ei voi poistaa käytöstä."
 
-#: staff/services.py:141
+#: staff/services.py:148
 #, python-format
 msgid ""
 "%(name)s has an open shift. Close it with a time correction (with a reason) "
@@ -2670,7 +2734,7 @@ msgstr "Salasanaa ei ole vielä asetettu"
 msgid "On shift"
 msgstr "Vuorossa"
 
-#: staff/templates/staff/detail.html:20 staff/views.py:235
+#: staff/templates/staff/detail.html:20 staff/views.py:269
 msgid "Change my password"
 msgstr "Vaihda salasana"
 
@@ -2714,15 +2778,32 @@ msgstr "Luo salasanan asetuslinkki"
 msgid "Reactivate this account?"
 msgstr "Otetaanko tunnus uudelleen käyttöön?"
 
-#: staff/templates/staff/detail.html:56
+#: staff/templates/staff/detail.html:59
+#, python-format
+msgid "Where %(name)s works"
+msgstr "Missä %(name)s työskentelee"
+
+#: staff/templates/staff/detail.html:64
+msgid ""
+"They see these locations in their location switcher and appear in each "
+"location's staff list."
+msgstr ""
+"Hän näkee nämä toimipisteet toimipisteen valinnassa ja näkyy niiden "
+"henkilökuntalistoilla."
+
+#: staff/templates/staff/detail.html:65
+msgid "Save locations"
+msgstr "Tallenna toimipisteet"
+
+#: staff/templates/staff/detail.html:71
 msgid "Account history"
 msgstr "Tunnuksen historia"
 
-#: staff/templates/staff/detail.html:60
+#: staff/templates/staff/detail.html:75
 msgid "System setup"
 msgstr "Järjestelmän käyttöönotto"
 
-#: staff/templates/staff/list.html:4 staff/views.py:119
+#: staff/templates/staff/list.html:4 staff/views.py:122
 msgid "Add staff member"
 msgstr "Lisää työntekijä"
 
@@ -2770,44 +2851,762 @@ msgstr ""
 "tallenneta, joten kopioi se nyt. Voit luoda uuden linkin työntekijän sivulta"
 " milloin tahansa."
 
+#: staff/views.py:47
+msgid "Manager · Lahti"
+msgstr "Esihenkilö · Lahti"
+
+#: staff/views.py:47
+msgid "Employee · two locations"
+msgstr "Työntekijä · kaksi toimipistettä"
+
 #: staff/views.py:48
 msgid "Employee · on a break"
 msgstr "Työntekijä · tauolla"
 
-#: staff/views.py:56
+#: staff/views.py:59
 msgid "You have signed out."
 msgstr "Olet kirjautunut ulos."
 
-#: staff/views.py:73
+#: staff/views.py:76
 msgid "Your password is set. You can now sign in."
 msgstr "Salasanasi on asetettu. Voit nyt kirjautua sisään."
 
-#: staff/views.py:164
+#: staff/views.py:176
+msgid "Locations saved."
+msgstr "Toimipisteet tallennettu."
+
+#: staff/views.py:198
 msgid "Details saved."
 msgstr "Tiedot tallennettu."
 
-#: staff/views.py:181
+#: staff/views.py:215
 msgid "Role updated."
 msgstr "Rooli päivitetty."
 
-#: staff/views.py:184
+#: staff/views.py:218
 #, python-format
 msgid "Change role for %(name)s"
 msgstr "Vaihda rooli: %(name)s"
 
-#: staff/views.py:200
+#: staff/views.py:234
 #, python-format
 msgid "%(name)s can no longer sign in."
 msgstr "%(name)s ei voi enää kirjautua sisään."
 
-#: staff/views.py:213
+#: staff/views.py:247
 #, python-format
 msgid "%(name)s is active again."
 msgstr "%(name)s on taas käytössä."
 
-#: staff/views.py:233
+#: staff/views.py:267
 msgid "Your password was changed."
 msgstr "Salasanasi vaihdettiin."
+
+#: tenants/forms.py:14 tenants/models.py:73
+#: tenants/templates/tenants/platform/landing.html:24
+msgid "Time clock"
+msgstr "Työajanseuranta"
+
+#: tenants/forms.py:25
+msgid "Business name"
+msgstr "Yrityksen nimi"
+
+#: tenants/forms.py:27
+msgid "Web address"
+msgstr "Verkko-osoite"
+
+#: tenants/forms.py:28
+msgid ""
+"Lowercase letters, numbers and hyphens. Your staff use it to find your "
+"workspace."
+msgstr ""
+"Pieniä kirjaimia, numeroita ja yhdysmerkkejä. Henkilökuntasi löytää työtilan"
+" tällä."
+
+#: tenants/forms.py:31
+msgid "First location name (optional)"
+msgstr "Ensimmäisen toimipisteen nimi (vapaaehtoinen)"
+
+#: tenants/forms.py:32
+msgid "For example “City centre”. Leave empty to use the business name."
+msgstr ""
+"Esimerkiksi “Keskusta”. Jätä tyhjäksi, niin käytetään yrityksen nimeä."
+
+#: tenants/forms.py:33
+msgid "Time zone"
+msgstr "Aikavyöhyke"
+
+#: tenants/forms.py:34 tenants/forms.py:93
+#: tenants/templates/tenants/platform/home.html:20
+#: tenants/templates/tenants/platform/organization.html:14
+msgid "Plan"
+msgstr "Paketti"
+
+#: tenants/forms.py:36
+msgid "Your name"
+msgstr "Nimesi"
+
+#: tenants/forms.py:37
+msgid "Your login name or email"
+msgstr "Käyttäjätunnuksesi tai sähköpostisi"
+
+#: tenants/forms.py:39
+msgid "Contact email"
+msgstr "Yhteyssähköposti"
+
+#: tenants/forms.py:40
+msgid "Where we can reach you about your account."
+msgstr "Mihin voimme ottaa yhteyttä tiliisi liittyen."
+
+#: tenants/forms.py:41
+msgid "Password"
+msgstr "Salasana"
+
+#: tenants/forms.py:42
+msgid "Password again"
+msgstr "Salasana uudelleen"
+
+#: tenants/forms.py:51
+msgid "The two passwords are different."
+msgstr "Salasanat eivät täsmää."
+
+#: tenants/forms.py:61
+msgid "Workspace address"
+msgstr "Työtilan osoite"
+
+#: tenants/forms.py:69
+msgid "No workspace has this address. Check the spelling or ask your manager."
+msgstr ""
+"Tällä osoitteella ei ole työtilaa. Tarkista kirjoitusasu tai kysy "
+"esihenkilöltäsi."
+
+#: tenants/forms.py:75 tenants/templates/tenants/locations.html:17
+msgid "Location name"
+msgstr "Toimipisteen nimi"
+
+#: tenants/forms.py:85
+msgid "Not included in the plan."
+msgstr "Ei sisälly pakettiin."
+
+#: tenants/forms.py:102
+msgid "Trial ends on"
+msgstr "Kokeilu päättyy"
+
+#: tenants/middleware.py:116
+msgid "Your account is not linked to any location. Ask your manager."
+msgstr ""
+"Tiliäsi ei ole liitetty yhteenkään toimipisteeseen. Kysy esihenkilöltäsi."
+
+#: tenants/models.py:33
+msgid ""
+"Use 3–40 lowercase letters, numbers and hyphens, starting and ending with a "
+"letter or number."
+msgstr ""
+"Käytä 3–40 pientä kirjainta, numeroa ja yhdysmerkkiä. Alussa ja lopussa on "
+"oltava kirjain tai numero."
+
+#: tenants/models.py:36
+msgid "This address is reserved. Choose another one."
+msgstr "Tämä osoite on varattu. Valitse toinen."
+
+#: tenants/models.py:42
+msgid "price per month (€)"
+msgstr "hinta kuukaudessa (€)"
+
+#: tenants/models.py:43
+msgid "locations"
+msgstr "toimipisteet"
+
+#: tenants/models.py:44
+msgid "active staff"
+msgstr "aktiiviset työntekijät"
+
+#: tenants/models.py:44
+msgid "Empty = no limit"
+msgstr "Tyhjä = ei rajaa"
+
+#: tenants/models.py:45
+msgid "public website and menu"
+msgstr "julkinen verkkosivu ja ruokalista"
+
+#: tenants/models.py:61 tenants/templates/tenants/platform/_status.html:1
+#: tenants/templates/tenants/platform/organization.html:18
+msgid "Trial"
+msgstr "Kokeilu"
+
+#: tenants/models.py:63 tenants/templates/tenants/account.html:10
+#: tenants/templates/tenants/platform/_status.html:1
+msgid "Suspended"
+msgstr "Keskeytetty"
+
+#: tenants/models.py:64 tenants/templates/tenants/account.html:11
+#: tenants/templates/tenants/platform/_status.html:1
+msgid "Cancelled"
+msgstr "Peruttu"
+
+#: tenants/models.py:66
+msgid "business name"
+msgstr "yrityksen nimi"
+
+#: tenants/models.py:67
+msgid "web address"
+msgstr "verkko-osoite"
+
+#: tenants/models.py:72
+msgid "contact email"
+msgstr "yhteyssähköposti"
+
+#: tenants/platform_views.py:134
+msgid "Plan changed."
+msgstr "Paketti vaihdettu."
+
+#: tenants/platform_views.py:138
+msgid "Status changed."
+msgstr "Tila muutettu."
+
+#: tenants/platform_views.py:142
+msgid "Trial extended."
+msgstr "Kokeilua jatkettu."
+
+#: tenants/platform_views.py:146 tenants/views.py:79
+msgid "Modules saved."
+msgstr "Moduulit tallennettu."
+
+#: tenants/platform_views.py:174
+#, python-format
+msgid "%(name)s was created."
+msgstr "%(name)s luotiin."
+
+#: tenants/services.py:47
+#, python-format
+msgid ""
+"Your %(plan)s plan allows %(n)s active staff. Upgrade the plan or deactivate"
+" someone first."
+msgstr ""
+"%(plan)s-pakettisi sallii %(n)s aktiivista työntekijää. Vaihda isompaan "
+"pakettiin tai poista ensin joku käytöstä."
+
+#: tenants/services.py:55
+#, python-format
+msgid ""
+"Your %(plan)s plan allows %(n)s location(s). Upgrade the plan to add more."
+msgstr ""
+"%(plan)s-pakettisi sallii %(n)s toimipistettä. Vaihda isompaan pakettiin "
+"lisätäksesi niitä."
+
+#: tenants/services.py:79
+msgid "Enter the business name."
+msgstr "Anna yrityksen nimi."
+
+#: tenants/services.py:86 tenants/services.py:108
+msgid "This address is already taken."
+msgstr "Tämä osoite on jo käytössä."
+
+#: tenants/services.py:88
+msgid "Enter your name."
+msgstr "Anna nimesi."
+
+#: tenants/services.py:96
+msgid "Choose a plan."
+msgstr "Valitse paketti."
+
+#: tenants/services.py:124 tenants/services.py:140
+msgid "Enter the location name."
+msgstr "Anna toimipisteen nimi."
+
+#: tenants/services.py:164
+msgid "Choose at least one location."
+msgstr "Valitse vähintään yksi toimipiste."
+
+#: tenants/services.py:206
+#, python-format
+msgid "This plan allows %(n)s location(s), but you have %(have)s."
+msgstr "Tämä paketti sallii %(n)s toimipistettä, mutta sinulla on %(have)s."
+
+#: tenants/services.py:209
+#, python-format
+msgid "This plan allows %(n)s active staff, but you have %(have)s."
+msgstr ""
+"Tämä paketti sallii %(n)s aktiivista työntekijää, mutta sinulla on %(have)s."
+
+#: tenants/services.py:227
+msgid "Choose a valid status."
+msgstr "Valitse kelvollinen tila."
+
+#: tenants/services.py:231
+msgid "Give a reason. The owner sees it."
+msgstr "Anna syy. Omistaja näkee sen."
+
+#: tenants/services.py:246 website/services.py:303
+msgid "Choose today or a later date."
+msgstr "Valitse tämä päivä tai myöhempi päivä."
+
+#: tenants/templates/tenants/account.html:8
+msgid "Free trial"
+msgstr "Ilmainen kokeilu"
+
+#: tenants/templates/tenants/account.html:8
+#, python-format
+msgid "until %(d)s"
+msgstr "%(d)s asti"
+
+#: tenants/templates/tenants/account.html:13
+#, python-format
+msgid "Locations: %(n)s of %(max)s"
+msgstr "Toimipisteet: %(n)s / %(max)s"
+
+#: tenants/templates/tenants/account.html:14
+#, python-format
+msgid "Active staff: %(n)s of %(max)s"
+msgstr "Aktiiviset työntekijät: %(n)s / %(max)s"
+
+#: tenants/templates/tenants/account.html:14
+#, python-format
+msgid "Active staff: %(n)s (no limit)"
+msgstr "Aktiiviset työntekijät: %(n)s (ei rajaa)"
+
+#: tenants/templates/tenants/account.html:15
+msgid ""
+"To start a paid subscription, or for an invoice, contact the platform team. "
+"Card payments in the app are coming later."
+msgstr ""
+"Ota yhteyttä palvelun tiimiin aloittaaksesi maksullisen tilauksen tai "
+"saadaksesi laskun. Korttimaksut sovelluksessa tulevat myöhemmin."
+
+#: tenants/templates/tenants/account.html:18
+#: tenants/templates/tenants/platform/landing.html:33
+msgid "Plans"
+msgstr "Paketit"
+
+#: tenants/templates/tenants/account.html:23
+#: tenants/templates/tenants/platform/landing.html:38
+msgid "per month"
+msgstr "kuukaudessa"
+
+#: tenants/templates/tenants/account.html:25
+#: tenants/templates/tenants/platform/landing.html:40
+#, python-format
+msgid "%(n)s location"
+msgid_plural "%(n)s locations"
+msgstr[0] "%(n)s toimipiste"
+msgstr[1] "%(n)s toimipistettä"
+
+#: tenants/templates/tenants/account.html:26
+#: tenants/templates/tenants/platform/landing.html:41
+#, python-format
+msgid "Up to %(n)s active staff"
+msgstr "Enintään %(n)s aktiivista työntekijää"
+
+#: tenants/templates/tenants/account.html:26
+#: tenants/templates/tenants/platform/landing.html:41
+msgid "Unlimited staff"
+msgstr "Rajattomasti työntekijöitä"
+
+#: tenants/templates/tenants/account.html:27
+#: tenants/templates/tenants/platform/landing.html:42
+msgid "Public website and menu"
+msgstr "Julkinen verkkosivu ja ruokalista"
+
+#: tenants/templates/tenants/account.html:27
+#: tenants/templates/tenants/platform/landing.html:42
+msgid "Internal operations only"
+msgstr "Vain sisäinen toiminta"
+
+#: tenants/templates/tenants/account.html:29
+msgid "Current plan"
+msgstr "Nykyinen paketti"
+
+#: tenants/templates/tenants/account.html:32
+#, python-format
+msgid "Switch to %(p)s"
+msgstr "Vaihda pakettiin %(p)s"
+
+#: tenants/templates/tenants/account.html:39
+#: tenants/templates/tenants/platform/organization.html:20
+msgid "Modules"
+msgstr "Moduulit"
+
+#: tenants/templates/tenants/account.html:40
+msgid ""
+"Switched-off modules disappear from the menu for everyone. Their data is "
+"kept and comes back when you switch them on again."
+msgstr ""
+"Pois kytketyt moduulit katoavat kaikkien valikosta. Niiden tiedot säilyvät "
+"ja palaavat, kun kytket ne taas päälle."
+
+#: tenants/templates/tenants/account.html:44
+#: tenants/templates/tenants/platform/organization.html:21
+msgid "Save modules"
+msgstr "Tallenna moduulit"
+
+#: tenants/templates/tenants/locations.html:5
+#, python-format
+msgid "%(n)s of %(max)s locations in your plan."
+msgstr "%(n)s / %(max)s toimipistettä paketissasi."
+
+#: tenants/templates/tenants/locations.html:5
+msgid ""
+"Each location has its own checklists, stock, shifts and public details. "
+"Staff work at the locations you assign them to."
+msgstr ""
+"Jokaisella toimipisteellä on omat tarkistuslistansa, varastonsa, vuoronsa ja"
+" julkiset tietonsa. Henkilökunta työskentelee niissä toimipisteissä, joihin "
+"heidät liität."
+
+#: tenants/templates/tenants/locations.html:12
+msgid "You are here"
+msgstr "Olet tässä"
+
+#: tenants/templates/tenants/locations.html:28
+msgid "Add a location"
+msgstr "Lisää toimipiste"
+
+#: tenants/templates/tenants/locations.html:33
+msgid "Add location"
+msgstr "Lisää toimipiste"
+
+#: tenants/templates/tenants/locations.html:36
+msgid "Your plan has no free locations left."
+msgstr "Paketissasi ei ole vapaita toimipisteitä."
+
+#: tenants/templates/tenants/locations.html:36
+msgid "See plans"
+msgstr "Katso paketit"
+
+#: tenants/templates/tenants/paused.html:2
+msgid "Account paused"
+msgstr "Tili keskeytetty"
+
+#: tenants/templates/tenants/paused.html:5
+msgid "This workspace is paused"
+msgstr "Tämä työtila on keskeytetty"
+
+#: tenants/templates/tenants/paused.html:7
+#, python-format
+msgid "The free trial ended on %(d)s. Your data is kept."
+msgstr "Ilmainen kokeilu päättyi %(d)s. Tietosi säilyvät."
+
+#: tenants/templates/tenants/paused.html:9
+msgid "The account has been suspended. Your data is kept."
+msgstr "Tili on keskeytetty. Tietosi säilyvät."
+
+#: tenants/templates/tenants/paused.html:12
+msgid "The account has been cancelled. Your data is kept for now."
+msgstr "Tili on peruttu. Tietosi säilyvät toistaiseksi."
+
+#: tenants/templates/tenants/paused.html:15
+msgid "See plan and billing"
+msgstr "Katso paketti ja laskutus"
+
+#: tenants/templates/tenants/paused.html:17
+msgid "Ask the owner of the restaurant to continue the subscription."
+msgstr "Pyydä ravintolan omistajaa jatkamaan tilausta."
+
+#: tenants/templates/tenants/platform/_status.html:1
+msgid "Trial ended"
+msgstr "Kokeilu päättynyt"
+
+#: tenants/templates/tenants/platform/base.html:13
+msgid ""
+"Demo platform with example restaurants. Changes are reset when the demo "
+"restarts."
+msgstr ""
+"Esittelyalusta esimerkkiravintoloilla. Muutokset nollautuvat, kun esittely "
+"käynnistyy uudelleen."
+
+#: tenants/templates/tenants/platform/base.html:19
+#: tenants/templates/tenants/platform/home.html:2
+#: tenants/templates/tenants/platform/home.html:5
+#: tenants/templates/tenants/platform/organization.html:5
+#: tenants/templates/tenants/platform/organization_form.html:4
+msgid "Organizations"
+msgstr "Organisaatiot"
+
+#: tenants/templates/tenants/platform/base.html:22
+#: tenants/templates/tenants/platform/find.html:2
+#: website/templates/website/base.html:49
+#: website/templates/website/coming_soon.html:5
+msgid "Staff sign-in"
+msgstr "Henkilökunnan kirjautuminen"
+
+#: tenants/templates/tenants/platform/base.html:23
+#: tenants/templates/tenants/platform/landing.html:44
+#: tenants/templates/tenants/platform/signup.html:2
+msgid "Start free trial"
+msgstr "Aloita ilmainen kokeilu"
+
+#: tenants/templates/tenants/platform/find.html:5
+#: tenants/templates/tenants/platform/login.html:6
+msgid "Find your workspace"
+msgstr "Etsi työtilasi"
+
+#: tenants/templates/tenants/platform/find.html:6
+msgid ""
+"Enter your restaurant's workspace address. Your manager can tell you what it"
+" is."
+msgstr "Anna ravintolasi työtilan osoite. Esihenkilösi kertoo sen sinulle."
+
+#: tenants/templates/tenants/platform/home.html:5
+#: tenants/templates/tenants/platform/organization_form.html:2
+#: tenants/templates/tenants/platform/organization_form.html:6
+msgid "New organization"
+msgstr "Uusi organisaatio"
+
+#: tenants/templates/tenants/platform/home.html:10
+msgid "Trials ended"
+msgstr "Päättyneet kokeilut"
+
+#: tenants/templates/tenants/platform/home.html:14
+msgid "Name or address"
+msgstr "Nimi tai osoite"
+
+#: tenants/templates/tenants/platform/home.html:16
+msgid "Clear"
+msgstr "Tyhjennä"
+
+#: tenants/templates/tenants/platform/home.html:20
+msgid "Organization"
+msgstr "Organisaatio"
+
+#: tenants/templates/tenants/platform/home.html:20
+#: tenants/templates/tenants/platform/organization.html:10
+msgid "Active staff"
+msgstr "Aktiiviset työntekijät"
+
+#: tenants/templates/tenants/platform/home.html:20
+msgid "Created"
+msgstr "Luotu"
+
+#: tenants/templates/tenants/platform/home.html:31
+msgid "No organizations match."
+msgstr "Ei osumia."
+
+#: tenants/templates/tenants/platform/landing.html:5
+msgid "Run every shift from one phone-friendly app"
+msgstr "Hoida jokainen vuoro yhdellä mobiilisovelluksella"
+
+#: tenants/templates/tenants/platform/landing.html:6
+msgid ""
+"Time clock, opening and closing checklists, food-safety temperatures, stock "
+"and a manager dashboard for restaurants. One location or many. In English, "
+"Finnish and Vietnamese."
+msgstr ""
+"Työajanseuranta, avaus- ja sulkemislistat, omavalvonnan lämpötilat, varasto "
+"ja esihenkilön yleisnäkymä ravintoloille. Yksi toimipiste tai monta. "
+"Englanniksi, suomeksi ja vietnamiksi."
+
+#: tenants/templates/tenants/platform/landing.html:8
+#, python-format
+msgid "Try it free for %(n)s days"
+msgstr "Kokeile ilmaiseksi %(n)s päivää"
+
+#: tenants/templates/tenants/platform/landing.html:9
+msgid "I work at a restaurant that uses it"
+msgstr "Työskentelen ravintolassa, joka käyttää tätä"
+
+#: tenants/templates/tenants/platform/landing.html:15
+msgid "Try a demo restaurant"
+msgstr "Kokeile esittelyravintolaa"
+
+#: tenants/templates/tenants/platform/landing.html:16
+msgid "Open an example workspace and sign in with one tap."
+msgstr "Avaa esimerkkityötila ja kirjaudu yhdellä napautuksella."
+
+#: tenants/templates/tenants/platform/landing.html:24
+msgid ""
+"Clock in, breaks and clock out on the staff's own phones. Corrections keep a"
+" reason and the original times."
+msgstr ""
+"Sisäänleimaus, tauot ja ulosleimaus henkilökunnan omilla puhelimilla. "
+"Korjauksiin tallentuu syy ja alkuperäiset ajat."
+
+#: tenants/templates/tenants/platform/landing.html:25
+msgid ""
+"Opening, closing and cleaning lists with one-tap answers, temperatures and "
+"photos of problems."
+msgstr ""
+"Avaus-, sulkemis- ja siivouslistat yhden napautuksen vastauksilla, "
+"lämpötiloilla ja kuvilla ongelmista."
+
+#: tenants/templates/tenants/platform/landing.html:26
+msgid "Deliveries, use and waste with a full history and a low-stock list."
+msgstr ""
+"Toimitukset, käyttö ja hävikki täydellä historialla ja vähissä olevien "
+"listalla."
+
+#: tenants/templates/tenants/platform/landing.html:27
+msgid "Manager dashboard"
+msgstr "Esihenkilön yleisnäkymä"
+
+#: tenants/templates/tenants/platform/landing.html:27
+msgid ""
+"Who is on shift, hours worked, open issues and flagged temperatures for each"
+" location."
+msgstr ""
+"Kuka on vuorossa, tehdyt tunnit, avoimet poikkeamat ja poikkeavat lämpötilat"
+" toimipisteittäin."
+
+#: tenants/templates/tenants/platform/landing.html:28
+msgid "Several locations"
+msgstr "Useita toimipisteitä"
+
+#: tenants/templates/tenants/platform/landing.html:28
+msgid ""
+"Each location keeps its own data. Owners and staff switch between the "
+"locations they work at."
+msgstr ""
+"Jokaisella toimipisteellä on omat tietonsa. Omistajat ja henkilökunta "
+"vaihtavat niiden toimipisteiden välillä, joissa he työskentelevät."
+
+#: tenants/templates/tenants/platform/landing.html:29
+msgid "Optional website"
+msgstr "Valinnainen verkkosivu"
+
+#: tenants/templates/tenants/platform/landing.html:29
+msgid ""
+"Add a public website with your menu, opening hours and promotions on larger "
+"plans."
+msgstr ""
+"Lisää isompiin paketteihin julkinen verkkosivu ruokalistalla, aukioloajoilla"
+" ja tarjouksilla."
+
+#: tenants/templates/tenants/platform/landing.html:49
+#: tenants/templates/tenants/platform/login.html:2
+#: tenants/templates/tenants/platform/login.html:5
+msgid "Platform administration"
+msgstr "Alustan ylläpito"
+
+#: tenants/templates/tenants/platform/login.html:6
+msgid ""
+"For the platform team only. Restaurant staff sign in at their workspace."
+msgstr ""
+"Vain alustan tiimille. Ravintoloiden henkilökunta kirjautuu omassa "
+"työtilassaan."
+
+#: tenants/templates/tenants/platform/organization.html:6
+msgid "Open workspace"
+msgstr "Avaa työtila"
+
+#: tenants/templates/tenants/platform/organization.html:11
+msgid "Owners"
+msgstr "Omistajat"
+
+#: tenants/templates/tenants/platform/organization.html:15
+msgid "Change plan"
+msgstr "Vaihda paketti"
+
+#: tenants/templates/tenants/platform/organization.html:17
+msgid ""
+"Suspended and cancelled workspaces are paused: staff see a notice, data is "
+"kept."
+msgstr ""
+"Keskeytetyt ja perutut työtilat ovat tauolla: henkilökunta näkee "
+"ilmoituksen, tiedot säilyvät."
+
+#: tenants/templates/tenants/platform/organization.html:17
+msgid "Save status"
+msgstr "Tallenna tila"
+
+#: tenants/templates/tenants/platform/organization.html:19
+msgid "Extend trial"
+msgstr "Jatka kokeilua"
+
+#: tenants/templates/tenants/platform/organization.html:24
+msgid "Who"
+msgstr "Kuka"
+
+#: tenants/templates/tenants/platform/organization.html:24
+msgid "What"
+msgstr "Mitä"
+
+#: tenants/templates/tenants/platform/organization.html:24
+msgid "Details"
+msgstr "Tiedot"
+
+#: tenants/templates/tenants/platform/organization_form.html:7
+msgid ""
+"Creates the organization, its first location and the owner's account. Give "
+"the owner their workspace address, login name and password."
+msgstr ""
+"Luo organisaation, sen ensimmäisen toimipisteen ja omistajan tunnuksen. Anna"
+" omistajalle työtilan osoite, käyttäjätunnus ja salasana."
+
+#: tenants/templates/tenants/platform/organization_form.html:10
+msgid "Create organization"
+msgstr "Luo organisaatio"
+
+#: tenants/templates/tenants/platform/signup.html:5
+msgid "Start your free trial"
+msgstr "Aloita ilmainen kokeilusi"
+
+#: tenants/templates/tenants/platform/signup.html:6
+#, python-format
+msgid ""
+"%(n)s days free. No card needed. You can add staff and more locations "
+"straight away."
+msgstr ""
+"%(n)s päivää ilmaiseksi. Korttia ei tarvita. Voit lisätä henkilökuntaa ja "
+"toimipisteitä heti."
+
+#: tenants/templates/tenants/platform/signup.html:9
+msgid "Create workspace"
+msgstr "Luo työtila"
+
+#: tenants/templates/tenants/platform/signup_done.html:4
+msgid "Your workspace is ready"
+msgstr "Työtilasi on valmis"
+
+#: tenants/templates/tenants/platform/signup_done.html:5
+#, python-format
+msgid ""
+"%(name)s has its own address. Bookmark it and share it with your staff:"
+msgstr ""
+"Työtilalla %(name)s on oma osoite. Tallenna se kirjanmerkiksi ja jaa "
+"henkilökunnallesi:"
+
+#: tenants/templates/tenants/platform/signup_done.html:7
+#, python-format
+msgid ""
+"Sign in there as <strong>%(login)s</strong> with the password you chose."
+msgstr ""
+"Kirjaudu siellä tunnuksella <strong>%(login)s</strong> valitsemallasi "
+"salasanalla."
+
+#: tenants/templates/tenants/platform/signup_done.html:8
+msgid "Go to my workspace"
+msgstr "Siirry työtilaani"
+
+#: tenants/templates/tenants/unknown_workspace.html:4
+#: tenants/templates/tenants/unknown_workspace.html:6
+msgid "Workspace not found"
+msgstr "Työtilaa ei löytynyt"
+
+#: tenants/templates/tenants/unknown_workspace.html:7
+msgid ""
+"No restaurant uses this address. Check the spelling, or ask your manager for"
+" the right link."
+msgstr ""
+"Mikään ravintola ei käytä tätä osoitetta. Tarkista kirjoitusasu tai pyydä "
+"esihenkilöltäsi oikea linkki."
+
+#: tenants/views.py:36
+#, python-format
+msgid "You are now working at %(name)s."
+msgstr "Työskentelet nyt toimipisteessä %(name)s."
+
+#: tenants/views.py:53
+#, python-format
+msgid "Location “%(name)s” added."
+msgstr "Toimipiste “%(name)s” lisätty."
+
+#: tenants/views.py:62
+msgid "Location renamed."
+msgstr "Toimipiste nimetty uudelleen."
+
+#: tenants/views.py:91
+#, python-format
+msgid "Your plan is now %(plan)s."
+msgstr "Pakettisi on nyt %(plan)s."
 
 #: timeclock/models.py:14 timeclock/templates/timeclock/_shift_table.html:16
 #: website/templates/website/contact.html:29
@@ -3389,79 +4188,75 @@ msgstr "Jätä tyhjäksi, jos voimassa toistaiseksi."
 msgid "published"
 msgstr "julkaistu"
 
-#: website/services.py:130
+#: website/services.py:131
 msgid "Choose the first day."
 msgstr "Valitse ensimmäinen päivä."
 
-#: website/services.py:132
+#: website/services.py:133
 msgid "The last day cannot be before the first day."
 msgstr "Viimeinen päivä ei voi olla ennen ensimmäistä päivää."
 
-#: website/services.py:200
+#: website/services.py:201
 msgid "Enter the restaurant name."
 msgstr "Anna ravintolan nimi."
 
-#: website/services.py:202
+#: website/services.py:203
 msgid ""
 "Enter a phone number with digits, spaces and an optional + at the start."
 msgstr ""
 "Anna puhelinnumero numeroina; välilyönnit ja alussa oleva + sallitaan."
 
-#: website/services.py:207
+#: website/services.py:208
 msgid "Enter a valid email address."
 msgstr "Anna kelvollinen sähköpostiosoite."
 
-#: website/services.py:210
+#: website/services.py:211
 msgid "Enter both the street address and the city, or leave both empty."
 msgstr "Anna sekä katuosoite että kaupunki, tai jätä molemmat tyhjiksi."
 
-#: website/services.py:236
+#: website/services.py:237
 #, python-format
 msgid "%(day)s: enter both the opening and the closing time."
 msgstr "%(day)s: anna sekä avaamis- että sulkemisaika."
 
-#: website/services.py:238
+#: website/services.py:239
 #, python-format
 msgid "%(day)s: the closing time must differ from the opening time."
 msgstr "%(day)s: sulkemisajan on oltava eri kuin avaamisajan."
 
-#: website/services.py:241
+#: website/services.py:242
 #, python-format
 msgid "%(day)s: at most two opening periods per day."
 msgstr "%(day)s: enintään kaksi aukioloaikaa päivässä."
 
-#: website/services.py:245
+#: website/services.py:246
 #, python-format
 msgid "%(day)s: the two opening periods overlap."
 msgstr "%(day)s: aukioloajat menevät päällekkäin."
 
-#: website/services.py:273
+#: website/services.py:274
 #, python-format
 msgid "%(day)s: the evening period runs past the opening time on %(next)s."
 msgstr ""
 "%(day)s: iltavuoro jatkuu seuraavan päivän (%(next)s) avaamisajan yli."
 
-#: website/services.py:300
+#: website/services.py:301
 msgid "Choose the date."
 msgstr "Valitse päivä."
 
-#: website/services.py:302
-msgid "Choose today or a later date."
-msgstr "Valitse tämä päivä tai myöhempi päivä."
-
-#: website/services.py:311
+#: website/services.py:312
 msgid "Enter the opening hours, or tick “Closed all day”."
 msgstr "Anna aukioloajat tai valitse “Suljettu koko päivän”."
 
-#: website/services.py:324
+#: website/services.py:325
 msgid "This date already has special hours. Edit that entry instead."
 msgstr "Tälle päivälle on jo poikkeavat aukioloajat. Muokkaa niitä."
 
-#: website/services.py:364
+#: website/services.py:365
 msgid "Describe the photo in a few words for people who cannot see it."
 msgstr "Kuvaile kuvaa muutamalla sanalla niille, jotka eivät näe sitä."
 
-#: website/services.py:433 website/services.py:441
+#: website/services.py:434 website/services.py:442
 #, python-format
 msgid "The gallery holds at most %(n)s photos. Remove one first."
 msgstr "Galleriaan mahtuu enintään %(n)s kuvaa. Poista ensin jokin kuva."
@@ -3509,11 +4304,6 @@ msgstr "Etusivu"
 #: website/templates/website/contact.html:2
 msgid "Contact"
 msgstr "Yhteystiedot"
-
-#: website/templates/website/base.html:49
-#: website/templates/website/coming_soon.html:5
-msgid "Staff sign-in"
-msgstr "Henkilökunnan kirjautuminen"
 
 #: website/templates/website/coming_soon.html:3
 msgid "Coming soon"
@@ -3619,10 +4409,12 @@ msgid "Day"
 msgstr "Päivä"
 
 #: website/templates/website/manage_hours.html:15
+#: website/templates/website/manage_hours.html:21
 msgid "Opening period"
 msgstr "Aukioloaika"
 
 #: website/templates/website/manage_hours.html:15
+#: website/templates/website/manage_hours.html:21
 msgid "Second period (optional)"
 msgstr "Toinen aika (vapaaehtoinen)"
 
