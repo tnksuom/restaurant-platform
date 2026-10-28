@@ -52,6 +52,21 @@
 </div>
 {% endif %}
 
+{% if locations %}
+<h2>{% translate "Locations" %}</h2>
+<div class="card">
+  <form method="post" action="{% url 'staff:locations' target.pk %}" class="stacked">{% csrf_token %}
+    <fieldset class="period-fields"><legend>{% blocktranslate with name=target.display_name %}Where {{ name }} works{% endblocktranslate %}</legend>
+      {% for loc, on in locations %}
+      <div class="field checkbox"><input type="checkbox" id="loc-{{ loc.pk }}" name="locations" value="{{ loc.pk }}"{% if on %} checked{% endif %}> <label for="loc-{{ loc.pk }}">{{ loc.name }}</label></div>
+      {% endfor %}
+    </fieldset>
+    <p class="small muted">{% translate "They see these locations in their location switcher and appear in each location's staff list." %}</p>
+    <div class="row"><button class="btn btn-secondary" type="submit">{% translate "Save locations" %}</button></div>
+  </form>
+</div>
+{% endif %}
+
 {% if history %}
 <h2>{% translate "Account history" %}</h2>
 <div class="table-wrap"><table>

@@ -40,3 +40,8 @@ document.addEventListener("submit", function (event) {
   tick();
   setInterval(tick, 30000);
 })();
+
+// Location switcher: choosing a location submits the form straight away.
+document.addEventListener("change", function (e) {
+  if (e.target.matches("select[data-autosubmit]")) { e.target.form.submit(); }
+});

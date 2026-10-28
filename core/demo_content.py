@@ -85,3 +85,14 @@ def opening_tasks():
          "response_type": "PASS_FAIL" if item in PASS_FAIL_ITEMS else "STOCK_LEVEL"}
         for group, item in parse_task_lines(OPENING_CHECKLIST)
     ]
+
+
+# Demo workspaces and their one-tap accounts (login, name, role label key), shown on each
+# workspace's sign-in page in demo mode. Every account uses settings.DEMO_PASSWORD.
+DEMO_ORGANIZATIONS = [
+    {"slug": "bistro-demo", "accounts": [
+        ("owner", "Olli Owner", "owner"), ("mia", "Mia Virtanen", "manager"), ("hoa", "Hoa Pham", "manager_lahti"),
+        ("linh", "Linh Nguyen", "employee_two"), ("eero", "Eero Korhonen", "employee_break"),
+    ]},
+    {"slug": "pho-corner", "accounts": [("minh", "Minh Tran", "owner"), ("an", "An Le", "employee")]},
+]

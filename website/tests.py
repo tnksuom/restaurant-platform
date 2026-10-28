@@ -143,10 +143,10 @@ class PromotionTests(TestCase):
 
 
 class EmptyInstallTests(TestCase):
-    def test_site_without_restaurant_shows_coming_soon(self):
+    def test_without_an_organization_the_platform_landing_page_is_shown(self):
         self.assertEqual(Restaurant.objects.count(), 0)
-        resp = self.client.get(reverse("website:home"))
-        self.assertContains(resp, "coming soon")
+        resp = self.client.get("/")
+        self.assertContains(resp, "Start free trial")
 
     def test_menu_without_dishes(self):
         make_staff()

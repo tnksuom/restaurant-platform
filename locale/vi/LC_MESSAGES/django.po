@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-30 17:49+0000\n"
+"POT-Creation-Date: 2026-10-28 20:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Claude\n"
 "Language-Team: Vietnamese\n"
@@ -163,7 +163,7 @@ msgstr "tiêu đề"
 msgid "type"
 msgstr "loại"
 
-#: checklists/models.py:32 inventory/models.py:32 staff/models.py:58
+#: checklists/models.py:32 inventory/models.py:32 staff/models.py:86
 msgid "active"
 msgstr "đang dùng"
 
@@ -271,7 +271,7 @@ msgstr "Mục không đạt"
 msgid "Temperature outside range"
 msgstr "Nhiệt độ ngoài giới hạn"
 
-#: checklists/services.py:61 website/services.py:128
+#: checklists/services.py:61 website/services.py:129
 msgid "Enter a title."
 msgstr "Nhập tiêu đề."
 
@@ -382,7 +382,7 @@ msgstr "Còn %(n)s mục bắt buộc chưa trả lời."
 msgid "Checklist history"
 msgstr "Lịch sử checklist"
 
-#: checklists/templates/checklists/history.html:4 core/templates/base.html:44
+#: checklists/templates/checklists/history.html:4 core/templates/base.html:51
 msgid "My submitted checklists"
 msgstr "Checklist tôi đã gửi"
 
@@ -435,16 +435,20 @@ msgstr "ngừng sử dụng"
 #: inventory/templates/inventory/list.html:22
 #: inventory/templates/inventory/list.html:33
 #: staff/templates/staff/detail.html:10 staff/templates/staff/list.html:11
-#: staff/templates/staff/list.html:20
+#: staff/templates/staff/list.html:20 tenants/forms.py:97
+#: tenants/templates/tenants/platform/home.html:20
+#: tenants/templates/tenants/platform/organization.html:16
 #: timeclock/templates/timeclock/_shift_table.html:5
 msgid "Status"
 msgstr "Trạng thái"
 
 #: checklists/templates/checklists/history.html:17
-#: checklists/templates/checklists/review.html:22 core/templates/base.html:34
+#: checklists/templates/checklists/review.html:22 core/templates/base.html:39
 #: dashboard/templates/dashboard/dashboard.html:53
 #: inventory/templates/inventory/history.html:14
 #: staff/templates/staff/list.html:2 staff/templates/staff/list.html:4
+#: tenants/templates/tenants/locations.html:8
+#: tenants/templates/tenants/locations.html:13
 #: timeclock/templates/timeclock/_shift_table.html:4
 #: timeclock/templates/timeclock/timesheets.html:6
 #: timeclock/templates/timeclock/timesheets.html:18
@@ -552,7 +556,7 @@ msgstr "Xử lý"
 msgid "Mark resolved"
 msgstr "Đánh dấu đã xử lý"
 
-#: checklists/templates/checklists/issues.html:2 core/templates/base.html:30
+#: checklists/templates/checklists/issues.html:2 core/templates/base.html:34
 msgid "Issues"
 msgstr "Sự cố"
 
@@ -590,7 +594,7 @@ msgid "Send report"
 msgstr "Gửi báo cáo"
 
 #: checklists/templates/checklists/review.html:2
-#: checklists/templates/checklists/review.html:4 core/templates/base.html:29
+#: checklists/templates/checklists/review.html:4 core/templates/base.html:33
 msgid "Checklist review"
 msgstr "Xem lại checklist"
 
@@ -627,10 +631,11 @@ msgid "No checklists were expected or started on this date."
 msgstr "Ngày này không có checklist nào cần làm hoặc đã bắt đầu."
 
 #: checklists/templates/checklists/review.html:20
-#: checklists/templates/checklists/today.html:2 core/templates/base.html:24
-#: core/templates/core/today.html:18
+#: checklists/templates/checklists/today.html:2 core/templates/base.html:27
+#: core/templates/core/today.html:21
 #: dashboard/templates/dashboard/dashboard.html:81
-#: staff/templates/staff/detail.html:30
+#: staff/templates/staff/detail.html:30 tenants/forms.py:14
+#: tenants/models.py:74 tenants/templates/tenants/platform/landing.html:25
 msgid "Checklists"
 msgstr "Checklist"
 
@@ -656,7 +661,7 @@ msgstr "Giới hạn"
 #: dashboard/templates/dashboard/dashboard.html:127
 #: inventory/templates/inventory/detail.html:70
 #: inventory/templates/inventory/history.html:23
-#: staff/templates/staff/detail.html:58
+#: staff/templates/staff/detail.html:73
 #: timeclock/templates/timeclock/shift.html:39
 msgid "By"
 msgstr "Người làm"
@@ -680,7 +685,7 @@ msgid "No readings recorded."
 msgstr "Chưa có số đo nào."
 
 #: checklists/templates/checklists/review.html:60
-#: core/templates/core/today.html:37
+#: core/templates/core/today.html:44
 #: dashboard/templates/dashboard/dashboard.html:33
 msgid "Open issues"
 msgstr "Sự cố chưa xử lý"
@@ -767,6 +772,7 @@ msgstr "Số lượng hoặc ghi chú"
 
 #: checklists/templates/checklists/run.html:58 inventory/forms.py:39
 #: website/templates/website/manage_hours.html:46
+#: website/templates/website/manage_hours.html:52
 msgid "Note"
 msgstr "Ghi chú"
 
@@ -857,7 +863,7 @@ msgstr "Checklist mới"
 #: checklists/templates/checklists/template_form.html:4
 #: checklists/templates/checklists/templates.html:2
 #: checklists/templates/checklists/templates.html:4
-#: core/templates/base.html:31
+#: core/templates/base.html:35
 msgid "Checklist templates"
 msgstr "Mẫu checklist"
 
@@ -934,7 +940,9 @@ msgstr "phiên bản %(v)s"
 #: checklists/templates/checklists/templates.html:13
 #: inventory/templates/inventory/list.html:24
 #: staff/templates/staff/detail.html:11 staff/templates/staff/list.html:13
-#: staff/templates/staff/list.html:27
+#: staff/templates/staff/list.html:27 tenants/models.py:62
+#: tenants/templates/tenants/account.html:9
+#: tenants/templates/tenants/platform/_status.html:1
 msgid "Active"
 msgstr "Đang dùng"
 
@@ -988,6 +996,7 @@ msgid "View"
 msgstr "Xem"
 
 #: checklists/templates/checklists/today.html:19
+#: tenants/templates/tenants/platform/find.html:9
 msgid "Continue"
 msgstr "Tiếp tục"
 
@@ -1169,7 +1178,8 @@ msgstr "Đến trang đăng nhập"
 msgid "Restaurant operations"
 msgstr "Vận hành nhà hàng"
 
-#: core/templates/base.html:11 website/templates/website/base.html:15
+#: core/templates/base.html:11 tenants/templates/tenants/platform/base.html:12
+#: website/templates/website/base.html:15
 msgid "Skip to content"
 msgstr "Bỏ qua đến nội dung"
 
@@ -1179,72 +1189,85 @@ msgid ""
 msgstr ""
 "Bản demo với dữ liệu mẫu. Mọi thay đổi sẽ bị đặt lại khi demo khởi động lại."
 
-#: core/templates/base.html:18
+#: core/templates/base.html:14
+#, python-format
+msgid "Free trial: %(n)s day left."
+msgid_plural "Free trial: %(n)s days left."
+msgstr[0] "Dùng thử miễn phí: còn %(n)s ngày."
+
+#: core/templates/base.html:14
+msgid "Plan and billing"
+msgstr "Gói cước và thanh toán"
+
+#: core/templates/base.html:19
 msgctxt "navigation"
 msgid "Menu"
 msgstr "Menu"
 
-#: core/templates/base.html:19 website/templates/website/base.html:24
+#: core/templates/base.html:20 tenants/templates/tenants/platform/base.html:17
+#: website/templates/website/base.html:24
 msgid "Main"
 msgstr "Chính"
 
-#: core/templates/base.html:21 core/templates/core/today.html:2
+#: core/templates/base.html:22 core/templates/core/today.html:2
 msgid "Today"
 msgstr "Hôm nay"
 
-#: core/templates/base.html:22 timeclock/templates/timeclock/clock.html:2
+#: core/templates/base.html:24 timeclock/templates/timeclock/clock.html:2
 #: timeclock/templates/timeclock/clock.html:4
 msgid "Clock in/out"
 msgstr "Chấm công"
 
-#: core/templates/base.html:23 staff/templates/staff/detail.html:21
+#: core/templates/base.html:25 staff/templates/staff/detail.html:21
 #: timeclock/templates/timeclock/mine.html:2
 #: timeclock/templates/timeclock/mine.html:4
 msgid "My hours"
 msgstr "Giờ làm của tôi"
 
-#: core/templates/base.html:25 core/templates/core/today.html:27
+#: core/templates/base.html:28 core/templates/core/today.html:32
 #: inventory/templates/inventory/detail.html:4
 #: inventory/templates/inventory/list.html:2
-#: inventory/templates/inventory/list.html:5
+#: inventory/templates/inventory/list.html:5 tenants/forms.py:14
+#: tenants/models.py:75 tenants/templates/tenants/platform/landing.html:26
 msgid "Inventory"
 msgstr "Kho"
 
-#: core/templates/base.html:28 core/templates/core/today.html:33
+#: core/templates/base.html:31 core/templates/core/today.html:39
 #: dashboard/templates/dashboard/dashboard.html:2
 msgid "Dashboard"
 msgstr "Tổng quan"
 
-#: core/templates/base.html:32 inventory/templates/inventory/history.html:2
+#: core/templates/base.html:37 inventory/templates/inventory/history.html:2
 #: inventory/templates/inventory/history.html:4
 msgid "Stock history"
 msgstr "Lịch sử kho"
 
-#: core/templates/base.html:33 timeclock/templates/timeclock/timesheets.html:2
+#: core/templates/base.html:38 timeclock/templates/timeclock/timesheets.html:2
 #: timeclock/templates/timeclock/timesheets.html:4
 msgid "Timesheets"
 msgstr "Bảng chấm công"
 
-#: core/templates/base.html:35 menu/templates/menu/category_form.html:3
+#: core/templates/base.html:40 menu/templates/menu/category_form.html:3
 #: menu/templates/menu/item_form.html:4 menu/templates/menu/overview.html:2
-#: menu/templates/menu/overview.html:5 website/templates/website/base.html:26
+#: menu/templates/menu/overview.html:5 tenants/forms.py:15
+#: tenants/models.py:76 website/templates/website/base.html:26
 #: website/templates/website/menu.html:2 website/templates/website/menu.html:5
 msgid "Menu"
 msgstr "Thực đơn"
 
-#: core/templates/base.html:36 website/templates/website/promotion_form.html:4
+#: core/templates/base.html:42 website/templates/website/promotion_form.html:4
 #: website/templates/website/promotion_list.html:2
 #: website/templates/website/promotion_list.html:5
 msgid "Promotions"
 msgstr "Khuyến mãi"
 
-#: core/templates/base.html:38 website/templates/website/manage_images.html:90
+#: core/templates/base.html:44 website/templates/website/manage_images.html:90
 #: website/templates/website/manage_info.html:2
 #: website/templates/website/manage_info.html:5
 msgid "Restaurant details"
 msgstr "Thông tin nhà hàng"
 
-#: core/templates/base.html:39 website/templates/website/base.html:46
+#: core/templates/base.html:45 website/templates/website/base.html:46
 #: website/templates/website/contact.html:22
 #: website/templates/website/manage_hours.html:2
 #: website/templates/website/manage_hours.html:5
@@ -1254,23 +1277,44 @@ msgstr "Thông tin nhà hàng"
 msgid "Opening hours"
 msgstr "Giờ mở cửa"
 
-#: core/templates/base.html:40 website/templates/website/manage_images.html:2
+#: core/templates/base.html:46 website/templates/website/manage_images.html:2
 #: website/templates/website/manage_images.html:5
 #: website/templates/website/manage_info.html:17
 msgid "Website images"
 msgstr "Hình ảnh trang web"
 
-#: core/templates/base.html:42
+#: core/templates/base.html:48 tenants/forms.py:15 tenants/models.py:77
 msgid "Public website"
 msgstr "Trang web công khai"
 
-#: core/templates/base.html:47
+#: core/templates/base.html:55 staff/templates/staff/detail.html:56
+#: tenants/templates/tenants/locations.html:2
+#: tenants/templates/tenants/locations.html:4
+#: tenants/templates/tenants/platform/home.html:20
+#: tenants/templates/tenants/platform/organization.html:9
+msgid "Locations"
+msgstr "Chi nhánh"
+
+#: core/templates/base.html:56 tenants/templates/tenants/account.html:2
+#: tenants/templates/tenants/account.html:4
+msgid "Plan and modules"
+msgstr "Gói cước và module"
+
+#: core/templates/base.html:59
 msgid "My profile"
 msgstr "Hồ sơ của tôi"
 
-#: core/templates/base.html:50
+#: core/templates/base.html:62 tenants/templates/tenants/platform/base.html:20
 msgid "Sign out"
 msgstr "Đăng xuất"
+
+#: core/templates/base.html:73 tenants/templates/tenants/locations.html:8
+msgid "Location"
+msgstr "Chi nhánh"
+
+#: core/templates/base.html:77
+msgid "Switch"
+msgstr "Chuyển"
 
 #: core/templates/core/language_switcher.html:2
 msgid "Language"
@@ -1298,84 +1342,94 @@ msgstr "Tiếp"
 msgid "Hello, %(name)s"
 msgstr "Xin chào, %(name)s"
 
-#: core/templates/core/today.html:8
+#: core/templates/core/today.html:9
 msgid "My shift"
 msgstr "Ca của tôi"
 
-#: core/templates/core/today.html:10
+#: core/templates/core/today.html:11
 #: timeclock/templates/timeclock/clock.html:16
 msgid "On break"
 msgstr "Đang nghỉ"
 
-#: core/templates/core/today.html:10 timeclock/models.py:66
+#: core/templates/core/today.html:11 timeclock/models.py:66
 msgid "Clocked in"
 msgstr "Đã vào ca"
 
-#: core/templates/core/today.html:11
+#: core/templates/core/today.html:12
 #, python-format
 msgid "Since %(t)s"
 msgstr "Từ %(t)s"
 
-#: core/templates/core/today.html:13
+#: core/templates/core/today.html:14
 #: timeclock/templates/timeclock/clock.html:9
 msgid "Not clocked in"
 msgstr "Chưa vào ca"
 
-#: core/templates/core/today.html:14
+#: core/templates/core/today.html:15
 msgid "Tap to clock in"
 msgstr "Chạm để vào ca"
 
-#: core/templates/core/today.html:21
+#: core/templates/core/today.html:24
 msgid "submitted today"
 msgstr "đã gửi hôm nay"
 
-#: core/templates/core/today.html:21
+#: core/templates/core/today.html:24
 #, python-format
 msgid "%(n)s in progress"
 msgid_plural "%(n)s in progress"
 msgstr[0] "%(n)s đang làm"
 
-#: core/templates/core/today.html:23
+#: core/templates/core/today.html:26
 msgid "No checklists set up."
 msgstr "Chưa có checklist nào."
 
-#: core/templates/core/today.html:28
+#: core/templates/core/today.html:33
 #, python-format
 msgid "%(n)s item low"
 msgid_plural "%(n)s items low"
 msgstr[0] "%(n)s mặt hàng sắp hết"
 
-#: core/templates/core/today.html:28
+#: core/templates/core/today.html:33
 msgid "Nothing low"
 msgstr "Không có gì sắp hết"
 
-#: core/templates/core/today.html:29
+#: core/templates/core/today.html:34
 msgid "Record deliveries, use and waste"
 msgstr "Ghi nhập hàng, sử dụng và hao hụt"
 
-#: core/templates/core/today.html:34
+#: core/templates/core/today.html:40
 msgid "Staff, hours, checklists, issues, stock and temperatures in one place"
 msgstr "Nhân viên, giờ làm, checklist, sự cố, kho và nhiệt độ ở một nơi"
 
-#: core/templates/core/today.html:41
+#: core/templates/core/today.html:50
 msgid "Staff on shift"
 msgstr "Nhân viên trong ca"
 
 #: core/templates/registration/login.html:2
 #: core/templates/registration/login.html:5
-#: core/templates/registration/login.html:10
+#: core/templates/registration/login.html:11
+#: tenants/templates/tenants/platform/login.html:10
 msgid "Sign in"
 msgstr "Đăng nhập"
 
-#: core/templates/registration/login.html:12
+#: core/templates/registration/login.html:13
 msgid "Forgot your password? Ask your manager for a new password link."
 msgstr "Quên mật khẩu? Hãy nhờ quản lý gửi liên kết đặt mật khẩu mới."
 
 #: core/templates/registration/login.html:16
+#, python-format
+msgid "Not working at %(name)s?"
+msgstr "Bạn không làm ở %(name)s?"
+
+#: core/templates/registration/login.html:16
+msgid "Choose another workspace"
+msgstr "Chọn không gian làm việc khác"
+
+#: core/templates/registration/login.html:22
 msgid "Demo accounts"
 msgstr "Tài khoản demo"
 
-#: core/templates/registration/login.html:17
+#: core/templates/registration/login.html:23
 #, python-format
 msgid ""
 "Tap a person to sign in as them. Every demo account uses the password "
@@ -1550,8 +1604,9 @@ msgstr ""
 msgid "Nobody is clocked in right now."
 msgstr "Hiện không có ai trong ca."
 
-#: dashboard/templates/dashboard/dashboard.html:70 website/services.py:306
+#: dashboard/templates/dashboard/dashboard.html:70 website/services.py:307
 #: website/templates/website/manage_hours.html:46
+#: website/templates/website/manage_hours.html:51
 #: website/templates/website/manage_special_day.html:14
 msgid "Hours"
 msgstr "Giờ làm"
@@ -1766,6 +1821,7 @@ msgid "Cleaning supply"
 msgstr "Đồ vệ sinh"
 
 #: inventory/models.py:25 menu/models.py:44 menu/models.py:71
+#: tenants/models.py:41
 msgid "name"
 msgstr "tên"
 
@@ -1841,7 +1897,7 @@ msgstr "Số lượng không được âm."
 msgid "Quantity must be more than zero."
 msgstr "Số lượng phải lớn hơn 0."
 
-#: inventory/services.py:73 staff/services.py:55 staff/services.py:79
+#: inventory/services.py:73 staff/services.py:59 staff/services.py:86
 msgid "Enter a name."
 msgstr "Nhập tên."
 
@@ -1921,6 +1977,7 @@ msgstr "Ghi kho"
 #: inventory/templates/inventory/detail.html:61
 #: inventory/templates/inventory/item_form.html:8
 #: staff/templates/staff/form.html:9
+#: tenants/templates/tenants/locations.html:19
 #: website/templates/website/manage_info.html:13
 #: website/templates/website/manage_special_day.html:26
 #: website/templates/website/promotion_form.html:10
@@ -1932,19 +1989,21 @@ msgid "This item is deactivated, so no new stock can be recorded."
 msgstr "Mặt hàng này đã ngừng sử dụng nên không thể ghi kho mới."
 
 #: inventory/templates/inventory/detail.html:68
+#: tenants/templates/tenants/platform/organization.html:23
 msgid "History"
 msgstr "Lịch sử"
 
 #: inventory/templates/inventory/detail.html:70
 #: inventory/templates/inventory/history.html:23
-#: staff/templates/staff/detail.html:58
+#: staff/templates/staff/detail.html:73
+#: tenants/templates/tenants/platform/organization.html:24
 #: timeclock/templates/timeclock/shift.html:39
 msgid "When"
 msgstr "Thời gian"
 
 #: inventory/templates/inventory/detail.html:70
 #: inventory/templates/inventory/history.html:23
-#: staff/templates/staff/detail.html:58
+#: staff/templates/staff/detail.html:73
 msgid "Change"
 msgstr "Thay đổi"
 
@@ -1954,7 +2013,7 @@ msgid "Balance after"
 msgstr "Tồn sau"
 
 #: inventory/templates/inventory/detail.html:70
-#: inventory/templates/inventory/history.html:23
+#: inventory/templates/inventory/history.html:23 tenants/forms.py:98
 msgid "Reason / note"
 msgstr "Lý do / ghi chú"
 
@@ -1998,6 +2057,8 @@ msgstr "Không có mặt hàng nào sắp hết"
 
 #: inventory/templates/inventory/list.html:16
 #: staff/templates/staff/list.html:6
+#: tenants/templates/tenants/platform/home.html:13
+#: tenants/templates/tenants/platform/home.html:15
 msgid "Search"
 msgstr "Tìm"
 
@@ -2013,7 +2074,7 @@ msgstr "Chưa có mặt hàng nào. Hãy thêm mặt hàng đầu tiên."
 msgid "No items match."
 msgstr "Không có mặt hàng nào khớp."
 
-#: inventory/views.py:66 staff/views.py:117
+#: inventory/views.py:66 staff/views.py:120
 #, python-format
 msgid "%(name)s was added."
 msgstr "Đã thêm %(name)s."
@@ -2026,7 +2087,7 @@ msgstr "Thêm mặt hàng kho"
 msgid "Item saved. Past stock records are unchanged."
 msgstr "Đã lưu mặt hàng. Các ghi nhận kho trước đó không thay đổi."
 
-#: inventory/views.py:88 staff/views.py:166
+#: inventory/views.py:88 staff/views.py:200
 #, python-format
 msgid "Edit %(name)s"
 msgstr "Sửa %(name)s"
@@ -2382,6 +2443,8 @@ msgid "Move %(c)s down"
 msgstr "Đưa %(c)s xuống"
 
 #: menu/templates/menu/overview.html:24
+#: tenants/templates/tenants/locations.html:8
+#: tenants/templates/tenants/locations.html:14
 msgid "Rename"
 msgstr "Đổi tên"
 
@@ -2515,7 +2578,7 @@ msgstr "Số điện thoại (không bắt buộc)"
 msgid "Role"
 msgstr "Vai trò"
 
-#: staff/models.py:10 staff/views.py:45
+#: staff/models.py:10 staff/views.py:46
 msgid "Owner"
 msgstr "Chủ"
 
@@ -2523,54 +2586,54 @@ msgstr "Chủ"
 msgid "Manager"
 msgstr "Quản lý"
 
-#: staff/models.py:12 staff/views.py:47
+#: staff/models.py:12 staff/views.py:46
 msgid "Employee"
 msgstr "Nhân viên"
 
-#: staff/models.py:49
+#: staff/models.py:78
 msgid "display name"
 msgstr "tên hiển thị"
 
-#: staff/models.py:51
+#: staff/models.py:80
 msgid "login name or email"
 msgstr "tên đăng nhập hoặc email"
 
-#: staff/models.py:54
+#: staff/models.py:82
 msgid "Used to sign in. Not case-sensitive."
 msgstr "Dùng để đăng nhập. Không phân biệt chữ hoa/thường."
 
-#: staff/models.py:56
+#: staff/models.py:84
 msgid "contact number"
 msgstr "số điện thoại"
 
-#: staff/services.py:46 staff/services.py:69
+#: staff/services.py:50 staff/services.py:76
 msgid "This login name is already in use."
 msgstr "Tên đăng nhập này đã được dùng."
 
-#: staff/services.py:57
+#: staff/services.py:61 tenants/services.py:90
 msgid "Enter a login name."
 msgstr "Nhập tên đăng nhập."
 
-#: staff/services.py:106
+#: staff/services.py:113
 msgid "Choose a valid role."
 msgstr "Chọn vai trò hợp lệ."
 
-#: staff/services.py:112
+#: staff/services.py:119
 msgid ""
 "The last active owner cannot be demoted. Make someone else owner first."
 msgstr ""
 "Không thể hạ vai trò của chủ duy nhất còn hoạt động. Hãy chỉ định người khác"
 " làm chủ trước."
 
-#: staff/services.py:131
+#: staff/services.py:138
 msgid "You cannot deactivate your own account."
 msgstr "Bạn không thể khóa tài khoản của chính mình."
 
-#: staff/services.py:135
+#: staff/services.py:142
 msgid "The last active owner cannot be deactivated."
 msgstr "Không thể khóa chủ duy nhất còn hoạt động."
 
-#: staff/services.py:141
+#: staff/services.py:148
 #, python-format
 msgid ""
 "%(name)s has an open shift. Close it with a time correction (with a reason) "
@@ -2633,7 +2696,7 @@ msgstr "Chưa đặt mật khẩu"
 msgid "On shift"
 msgstr "Trong ca"
 
-#: staff/templates/staff/detail.html:20 staff/views.py:235
+#: staff/templates/staff/detail.html:20 staff/views.py:269
 msgid "Change my password"
 msgstr "Đổi mật khẩu"
 
@@ -2677,15 +2740,32 @@ msgstr "Tạo liên kết đặt mật khẩu"
 msgid "Reactivate this account?"
 msgstr "Mở lại tài khoản này?"
 
-#: staff/templates/staff/detail.html:56
+#: staff/templates/staff/detail.html:59
+#, python-format
+msgid "Where %(name)s works"
+msgstr "Nơi %(name)s làm việc"
+
+#: staff/templates/staff/detail.html:64
+msgid ""
+"They see these locations in their location switcher and appear in each "
+"location's staff list."
+msgstr ""
+"Người này sẽ thấy các chi nhánh này khi chuyển chi nhánh và có tên trong "
+"danh sách nhân viên của từng chi nhánh."
+
+#: staff/templates/staff/detail.html:65
+msgid "Save locations"
+msgstr "Lưu chi nhánh"
+
+#: staff/templates/staff/detail.html:71
 msgid "Account history"
 msgstr "Lịch sử tài khoản"
 
-#: staff/templates/staff/detail.html:60
+#: staff/templates/staff/detail.html:75
 msgid "System setup"
 msgstr "Thiết lập hệ thống"
 
-#: staff/templates/staff/list.html:4 staff/views.py:119
+#: staff/templates/staff/list.html:4 staff/views.py:122
 msgid "Add staff member"
 msgstr "Thêm nhân viên"
 
@@ -2732,44 +2812,756 @@ msgstr ""
 " lưu lại, nên hãy sao chép ngay. Bạn có thể tạo liên kết mới từ trang của "
 "nhân viên bất cứ lúc nào."
 
+#: staff/views.py:47
+msgid "Manager · Lahti"
+msgstr "Quản lý · Lahti"
+
+#: staff/views.py:47
+msgid "Employee · two locations"
+msgstr "Nhân viên · hai chi nhánh"
+
 #: staff/views.py:48
 msgid "Employee · on a break"
 msgstr "Nhân viên · đang nghỉ"
 
-#: staff/views.py:56
+#: staff/views.py:59
 msgid "You have signed out."
 msgstr "Bạn đã đăng xuất."
 
-#: staff/views.py:73
+#: staff/views.py:76
 msgid "Your password is set. You can now sign in."
 msgstr "Đã đặt mật khẩu. Bây giờ bạn có thể đăng nhập."
 
-#: staff/views.py:164
+#: staff/views.py:176
+msgid "Locations saved."
+msgstr "Đã lưu chi nhánh."
+
+#: staff/views.py:198
 msgid "Details saved."
 msgstr "Đã lưu thông tin."
 
-#: staff/views.py:181
+#: staff/views.py:215
 msgid "Role updated."
 msgstr "Đã cập nhật vai trò."
 
-#: staff/views.py:184
+#: staff/views.py:218
 #, python-format
 msgid "Change role for %(name)s"
 msgstr "Đổi vai trò cho %(name)s"
 
-#: staff/views.py:200
+#: staff/views.py:234
 #, python-format
 msgid "%(name)s can no longer sign in."
 msgstr "%(name)s không thể đăng nhập nữa."
 
-#: staff/views.py:213
+#: staff/views.py:247
 #, python-format
 msgid "%(name)s is active again."
 msgstr "%(name)s đã hoạt động trở lại."
 
-#: staff/views.py:233
+#: staff/views.py:267
 msgid "Your password was changed."
 msgstr "Đã đổi mật khẩu."
+
+#: tenants/forms.py:14 tenants/models.py:73
+#: tenants/templates/tenants/platform/landing.html:24
+msgid "Time clock"
+msgstr "Chấm công"
+
+#: tenants/forms.py:25
+msgid "Business name"
+msgstr "Tên doanh nghiệp"
+
+#: tenants/forms.py:27
+msgid "Web address"
+msgstr "Địa chỉ web"
+
+#: tenants/forms.py:28
+msgid ""
+"Lowercase letters, numbers and hyphens. Your staff use it to find your "
+"workspace."
+msgstr ""
+"Chữ thường, số và dấu gạch nối. Nhân viên dùng địa chỉ này để tìm không gian"
+" làm việc của bạn."
+
+#: tenants/forms.py:31
+msgid "First location name (optional)"
+msgstr "Tên chi nhánh đầu tiên (không bắt buộc)"
+
+#: tenants/forms.py:32
+msgid "For example “City centre”. Leave empty to use the business name."
+msgstr "Ví dụ “Trung tâm”. Để trống để dùng tên doanh nghiệp."
+
+#: tenants/forms.py:33
+msgid "Time zone"
+msgstr "Múi giờ"
+
+#: tenants/forms.py:34 tenants/forms.py:93
+#: tenants/templates/tenants/platform/home.html:20
+#: tenants/templates/tenants/platform/organization.html:14
+msgid "Plan"
+msgstr "Gói cước"
+
+#: tenants/forms.py:36
+msgid "Your name"
+msgstr "Tên của bạn"
+
+#: tenants/forms.py:37
+msgid "Your login name or email"
+msgstr "Tên đăng nhập hoặc email của bạn"
+
+#: tenants/forms.py:39
+msgid "Contact email"
+msgstr "Email liên hệ"
+
+#: tenants/forms.py:40
+msgid "Where we can reach you about your account."
+msgstr "Địa chỉ chúng tôi liên hệ với bạn về tài khoản."
+
+#: tenants/forms.py:41
+msgid "Password"
+msgstr "Mật khẩu"
+
+#: tenants/forms.py:42
+msgid "Password again"
+msgstr "Nhập lại mật khẩu"
+
+#: tenants/forms.py:51
+msgid "The two passwords are different."
+msgstr "Hai mật khẩu không giống nhau."
+
+#: tenants/forms.py:61
+msgid "Workspace address"
+msgstr "Địa chỉ không gian làm việc"
+
+#: tenants/forms.py:69
+msgid "No workspace has this address. Check the spelling or ask your manager."
+msgstr ""
+"Không có không gian làm việc nào với địa chỉ này. Hãy kiểm tra chính tả hoặc"
+" hỏi quản lý."
+
+#: tenants/forms.py:75 tenants/templates/tenants/locations.html:17
+msgid "Location name"
+msgstr "Tên chi nhánh"
+
+#: tenants/forms.py:85
+msgid "Not included in the plan."
+msgstr "Không có trong gói cước."
+
+#: tenants/forms.py:102
+msgid "Trial ends on"
+msgstr "Ngày kết thúc dùng thử"
+
+#: tenants/middleware.py:116
+msgid "Your account is not linked to any location. Ask your manager."
+msgstr "Tài khoản của bạn chưa được gắn với chi nhánh nào. Hãy hỏi quản lý."
+
+#: tenants/models.py:33
+msgid ""
+"Use 3–40 lowercase letters, numbers and hyphens, starting and ending with a "
+"letter or number."
+msgstr ""
+"Dùng 3–40 chữ thường, số và dấu gạch nối, bắt đầu và kết thúc bằng chữ hoặc "
+"số."
+
+#: tenants/models.py:36
+msgid "This address is reserved. Choose another one."
+msgstr "Địa chỉ này đã được dành riêng. Hãy chọn địa chỉ khác."
+
+#: tenants/models.py:42
+msgid "price per month (€)"
+msgstr "giá mỗi tháng (€)"
+
+#: tenants/models.py:43
+msgid "locations"
+msgstr "chi nhánh"
+
+#: tenants/models.py:44
+msgid "active staff"
+msgstr "nhân viên đang hoạt động"
+
+#: tenants/models.py:44
+msgid "Empty = no limit"
+msgstr "Để trống = không giới hạn"
+
+#: tenants/models.py:45
+msgid "public website and menu"
+msgstr "trang web công khai và thực đơn"
+
+#: tenants/models.py:61 tenants/templates/tenants/platform/_status.html:1
+#: tenants/templates/tenants/platform/organization.html:18
+msgid "Trial"
+msgstr "Dùng thử"
+
+#: tenants/models.py:63 tenants/templates/tenants/account.html:10
+#: tenants/templates/tenants/platform/_status.html:1
+msgid "Suspended"
+msgstr "Tạm khóa"
+
+#: tenants/models.py:64 tenants/templates/tenants/account.html:11
+#: tenants/templates/tenants/platform/_status.html:1
+msgid "Cancelled"
+msgstr "Đã hủy"
+
+#: tenants/models.py:66
+msgid "business name"
+msgstr "tên doanh nghiệp"
+
+#: tenants/models.py:67
+msgid "web address"
+msgstr "địa chỉ web"
+
+#: tenants/models.py:72
+msgid "contact email"
+msgstr "email liên hệ"
+
+#: tenants/platform_views.py:134
+msgid "Plan changed."
+msgstr "Đã đổi gói cước."
+
+#: tenants/platform_views.py:138
+msgid "Status changed."
+msgstr "Đã đổi trạng thái."
+
+#: tenants/platform_views.py:142
+msgid "Trial extended."
+msgstr "Đã gia hạn dùng thử."
+
+#: tenants/platform_views.py:146 tenants/views.py:79
+msgid "Modules saved."
+msgstr "Đã lưu module."
+
+#: tenants/platform_views.py:174
+#, python-format
+msgid "%(name)s was created."
+msgstr "Đã tạo %(name)s."
+
+#: tenants/services.py:47
+#, python-format
+msgid ""
+"Your %(plan)s plan allows %(n)s active staff. Upgrade the plan or deactivate"
+" someone first."
+msgstr ""
+"Gói %(plan)s của bạn cho phép %(n)s nhân viên đang hoạt động. Hãy nâng cấp "
+"gói hoặc khóa bớt một tài khoản trước."
+
+#: tenants/services.py:55
+#, python-format
+msgid ""
+"Your %(plan)s plan allows %(n)s location(s). Upgrade the plan to add more."
+msgstr ""
+"Gói %(plan)s của bạn cho phép %(n)s chi nhánh. Hãy nâng cấp gói để thêm chi "
+"nhánh."
+
+#: tenants/services.py:79
+msgid "Enter the business name."
+msgstr "Nhập tên doanh nghiệp."
+
+#: tenants/services.py:86 tenants/services.py:108
+msgid "This address is already taken."
+msgstr "Địa chỉ này đã có người dùng."
+
+#: tenants/services.py:88
+msgid "Enter your name."
+msgstr "Nhập tên của bạn."
+
+#: tenants/services.py:96
+msgid "Choose a plan."
+msgstr "Chọn gói cước."
+
+#: tenants/services.py:124 tenants/services.py:140
+msgid "Enter the location name."
+msgstr "Nhập tên chi nhánh."
+
+#: tenants/services.py:164
+msgid "Choose at least one location."
+msgstr "Chọn ít nhất một chi nhánh."
+
+#: tenants/services.py:206
+#, python-format
+msgid "This plan allows %(n)s location(s), but you have %(have)s."
+msgstr "Gói này cho phép %(n)s chi nhánh, nhưng bạn đang có %(have)s."
+
+#: tenants/services.py:209
+#, python-format
+msgid "This plan allows %(n)s active staff, but you have %(have)s."
+msgstr ""
+"Gói này cho phép %(n)s nhân viên đang hoạt động, nhưng bạn đang có %(have)s."
+
+#: tenants/services.py:227
+msgid "Choose a valid status."
+msgstr "Chọn trạng thái hợp lệ."
+
+#: tenants/services.py:231
+msgid "Give a reason. The owner sees it."
+msgstr "Hãy ghi lý do. Chủ nhà hàng sẽ thấy."
+
+#: tenants/services.py:246 website/services.py:303
+msgid "Choose today or a later date."
+msgstr "Chọn hôm nay hoặc một ngày sau đó."
+
+#: tenants/templates/tenants/account.html:8
+msgid "Free trial"
+msgstr "Dùng thử miễn phí"
+
+#: tenants/templates/tenants/account.html:8
+#, python-format
+msgid "until %(d)s"
+msgstr "đến %(d)s"
+
+#: tenants/templates/tenants/account.html:13
+#, python-format
+msgid "Locations: %(n)s of %(max)s"
+msgstr "Chi nhánh: %(n)s/%(max)s"
+
+#: tenants/templates/tenants/account.html:14
+#, python-format
+msgid "Active staff: %(n)s of %(max)s"
+msgstr "Nhân viên đang hoạt động: %(n)s/%(max)s"
+
+#: tenants/templates/tenants/account.html:14
+#, python-format
+msgid "Active staff: %(n)s (no limit)"
+msgstr "Nhân viên đang hoạt động: %(n)s (không giới hạn)"
+
+#: tenants/templates/tenants/account.html:15
+msgid ""
+"To start a paid subscription, or for an invoice, contact the platform team. "
+"Card payments in the app are coming later."
+msgstr ""
+"Để bắt đầu gói trả phí hoặc nhận hóa đơn, hãy liên hệ đội ngũ nền tảng. "
+"Thanh toán bằng thẻ trong ứng dụng sẽ có sau."
+
+#: tenants/templates/tenants/account.html:18
+#: tenants/templates/tenants/platform/landing.html:33
+msgid "Plans"
+msgstr "Các gói cước"
+
+#: tenants/templates/tenants/account.html:23
+#: tenants/templates/tenants/platform/landing.html:38
+msgid "per month"
+msgstr "mỗi tháng"
+
+#: tenants/templates/tenants/account.html:25
+#: tenants/templates/tenants/platform/landing.html:40
+#, python-format
+msgid "%(n)s location"
+msgid_plural "%(n)s locations"
+msgstr[0] "%(n)s chi nhánh"
+
+#: tenants/templates/tenants/account.html:26
+#: tenants/templates/tenants/platform/landing.html:41
+#, python-format
+msgid "Up to %(n)s active staff"
+msgstr "Tối đa %(n)s nhân viên đang hoạt động"
+
+#: tenants/templates/tenants/account.html:26
+#: tenants/templates/tenants/platform/landing.html:41
+msgid "Unlimited staff"
+msgstr "Không giới hạn nhân viên"
+
+#: tenants/templates/tenants/account.html:27
+#: tenants/templates/tenants/platform/landing.html:42
+msgid "Public website and menu"
+msgstr "Trang web công khai và thực đơn"
+
+#: tenants/templates/tenants/account.html:27
+#: tenants/templates/tenants/platform/landing.html:42
+msgid "Internal operations only"
+msgstr "Chỉ vận hành nội bộ"
+
+#: tenants/templates/tenants/account.html:29
+msgid "Current plan"
+msgstr "Gói hiện tại"
+
+#: tenants/templates/tenants/account.html:32
+#, python-format
+msgid "Switch to %(p)s"
+msgstr "Chuyển sang gói %(p)s"
+
+#: tenants/templates/tenants/account.html:39
+#: tenants/templates/tenants/platform/organization.html:20
+msgid "Modules"
+msgstr "Module"
+
+#: tenants/templates/tenants/account.html:40
+msgid ""
+"Switched-off modules disappear from the menu for everyone. Their data is "
+"kept and comes back when you switch them on again."
+msgstr ""
+"Module bị tắt sẽ biến mất khỏi menu của mọi người. Dữ liệu vẫn được giữ và "
+"hiện lại khi bạn bật module."
+
+#: tenants/templates/tenants/account.html:44
+#: tenants/templates/tenants/platform/organization.html:21
+msgid "Save modules"
+msgstr "Lưu module"
+
+#: tenants/templates/tenants/locations.html:5
+#, python-format
+msgid "%(n)s of %(max)s locations in your plan."
+msgstr "%(n)s/%(max)s chi nhánh trong gói của bạn."
+
+#: tenants/templates/tenants/locations.html:5
+msgid ""
+"Each location has its own checklists, stock, shifts and public details. "
+"Staff work at the locations you assign them to."
+msgstr ""
+"Mỗi chi nhánh có checklist, kho, ca làm và thông tin công khai riêng. Nhân "
+"viên làm việc tại các chi nhánh bạn giao cho họ."
+
+#: tenants/templates/tenants/locations.html:12
+msgid "You are here"
+msgstr "Bạn đang ở đây"
+
+#: tenants/templates/tenants/locations.html:28
+msgid "Add a location"
+msgstr "Thêm chi nhánh"
+
+#: tenants/templates/tenants/locations.html:33
+msgid "Add location"
+msgstr "Thêm chi nhánh"
+
+#: tenants/templates/tenants/locations.html:36
+msgid "Your plan has no free locations left."
+msgstr "Gói của bạn đã hết số chi nhánh cho phép."
+
+#: tenants/templates/tenants/locations.html:36
+msgid "See plans"
+msgstr "Xem các gói"
+
+#: tenants/templates/tenants/paused.html:2
+msgid "Account paused"
+msgstr "Tài khoản tạm dừng"
+
+#: tenants/templates/tenants/paused.html:5
+msgid "This workspace is paused"
+msgstr "Không gian làm việc này đang tạm dừng"
+
+#: tenants/templates/tenants/paused.html:7
+#, python-format
+msgid "The free trial ended on %(d)s. Your data is kept."
+msgstr ""
+"Thời gian dùng thử đã kết thúc ngày %(d)s. Dữ liệu của bạn vẫn được giữ."
+
+#: tenants/templates/tenants/paused.html:9
+msgid "The account has been suspended. Your data is kept."
+msgstr "Tài khoản đã bị tạm khóa. Dữ liệu của bạn vẫn được giữ."
+
+#: tenants/templates/tenants/paused.html:12
+msgid "The account has been cancelled. Your data is kept for now."
+msgstr "Tài khoản đã bị hủy. Dữ liệu của bạn tạm thời vẫn được giữ."
+
+#: tenants/templates/tenants/paused.html:15
+msgid "See plan and billing"
+msgstr "Xem gói cước và thanh toán"
+
+#: tenants/templates/tenants/paused.html:17
+msgid "Ask the owner of the restaurant to continue the subscription."
+msgstr "Hãy nhờ chủ nhà hàng gia hạn gói cước."
+
+#: tenants/templates/tenants/platform/_status.html:1
+msgid "Trial ended"
+msgstr "Hết hạn dùng thử"
+
+#: tenants/templates/tenants/platform/base.html:13
+msgid ""
+"Demo platform with example restaurants. Changes are reset when the demo "
+"restarts."
+msgstr ""
+"Nền tảng demo với các nhà hàng mẫu. Mọi thay đổi sẽ bị đặt lại khi demo khởi"
+" động lại."
+
+#: tenants/templates/tenants/platform/base.html:19
+#: tenants/templates/tenants/platform/home.html:2
+#: tenants/templates/tenants/platform/home.html:5
+#: tenants/templates/tenants/platform/organization.html:5
+#: tenants/templates/tenants/platform/organization_form.html:4
+msgid "Organizations"
+msgstr "Tổ chức"
+
+#: tenants/templates/tenants/platform/base.html:22
+#: tenants/templates/tenants/platform/find.html:2
+#: website/templates/website/base.html:49
+#: website/templates/website/coming_soon.html:5
+msgid "Staff sign-in"
+msgstr "Nhân viên đăng nhập"
+
+#: tenants/templates/tenants/platform/base.html:23
+#: tenants/templates/tenants/platform/landing.html:44
+#: tenants/templates/tenants/platform/signup.html:2
+msgid "Start free trial"
+msgstr "Bắt đầu dùng thử miễn phí"
+
+#: tenants/templates/tenants/platform/find.html:5
+#: tenants/templates/tenants/platform/login.html:6
+msgid "Find your workspace"
+msgstr "Tìm không gian làm việc của bạn"
+
+#: tenants/templates/tenants/platform/find.html:6
+msgid ""
+"Enter your restaurant's workspace address. Your manager can tell you what it"
+" is."
+msgstr ""
+"Nhập địa chỉ không gian làm việc của nhà hàng. Quản lý có thể cho bạn biết."
+
+#: tenants/templates/tenants/platform/home.html:5
+#: tenants/templates/tenants/platform/organization_form.html:2
+#: tenants/templates/tenants/platform/organization_form.html:6
+msgid "New organization"
+msgstr "Tổ chức mới"
+
+#: tenants/templates/tenants/platform/home.html:10
+msgid "Trials ended"
+msgstr "Đã hết hạn dùng thử"
+
+#: tenants/templates/tenants/platform/home.html:14
+msgid "Name or address"
+msgstr "Tên hoặc địa chỉ"
+
+#: tenants/templates/tenants/platform/home.html:16
+msgid "Clear"
+msgstr "Xóa lọc"
+
+#: tenants/templates/tenants/platform/home.html:20
+msgid "Organization"
+msgstr "Tổ chức"
+
+#: tenants/templates/tenants/platform/home.html:20
+#: tenants/templates/tenants/platform/organization.html:10
+msgid "Active staff"
+msgstr "Nhân viên đang hoạt động"
+
+#: tenants/templates/tenants/platform/home.html:20
+msgid "Created"
+msgstr "Ngày tạo"
+
+#: tenants/templates/tenants/platform/home.html:31
+msgid "No organizations match."
+msgstr "Không có tổ chức nào khớp."
+
+#: tenants/templates/tenants/platform/landing.html:5
+msgid "Run every shift from one phone-friendly app"
+msgstr "Quản lý mọi ca làm từ một ứng dụng trên điện thoại"
+
+#: tenants/templates/tenants/platform/landing.html:6
+msgid ""
+"Time clock, opening and closing checklists, food-safety temperatures, stock "
+"and a manager dashboard for restaurants. One location or many. In English, "
+"Finnish and Vietnamese."
+msgstr ""
+"Chấm công, checklist mở và đóng cửa, nhiệt độ an toàn thực phẩm, kho và bảng"
+" tổng quan cho quản lý nhà hàng. Một hay nhiều chi nhánh. Bằng tiếng Anh, "
+"tiếng Phần Lan và tiếng Việt."
+
+#: tenants/templates/tenants/platform/landing.html:8
+#, python-format
+msgid "Try it free for %(n)s days"
+msgstr "Dùng thử miễn phí %(n)s ngày"
+
+#: tenants/templates/tenants/platform/landing.html:9
+msgid "I work at a restaurant that uses it"
+msgstr "Tôi làm ở nhà hàng đang dùng ứng dụng này"
+
+#: tenants/templates/tenants/platform/landing.html:15
+msgid "Try a demo restaurant"
+msgstr "Dùng thử nhà hàng demo"
+
+#: tenants/templates/tenants/platform/landing.html:16
+msgid "Open an example workspace and sign in with one tap."
+msgstr "Mở không gian làm việc mẫu và đăng nhập bằng một chạm."
+
+#: tenants/templates/tenants/platform/landing.html:24
+msgid ""
+"Clock in, breaks and clock out on the staff's own phones. Corrections keep a"
+" reason and the original times."
+msgstr ""
+"Vào ca, nghỉ và ra ca ngay trên điện thoại của nhân viên. Mỗi lần sửa giờ "
+"đều lưu lý do và giờ gốc."
+
+#: tenants/templates/tenants/platform/landing.html:25
+msgid ""
+"Opening, closing and cleaning lists with one-tap answers, temperatures and "
+"photos of problems."
+msgstr ""
+"Checklist mở cửa, đóng cửa và vệ sinh với trả lời một chạm, đo nhiệt độ và "
+"ảnh chụp sự cố."
+
+#: tenants/templates/tenants/platform/landing.html:26
+msgid "Deliveries, use and waste with a full history and a low-stock list."
+msgstr ""
+"Nhập hàng, sử dụng và hao hụt với đầy đủ lịch sử và danh sách hàng sắp hết."
+
+#: tenants/templates/tenants/platform/landing.html:27
+msgid "Manager dashboard"
+msgstr "Bảng tổng quan cho quản lý"
+
+#: tenants/templates/tenants/platform/landing.html:27
+msgid ""
+"Who is on shift, hours worked, open issues and flagged temperatures for each"
+" location."
+msgstr ""
+"Ai đang trong ca, giờ đã làm, sự cố chưa xử lý và nhiệt độ bất thường của "
+"từng chi nhánh."
+
+#: tenants/templates/tenants/platform/landing.html:28
+msgid "Several locations"
+msgstr "Nhiều chi nhánh"
+
+#: tenants/templates/tenants/platform/landing.html:28
+msgid ""
+"Each location keeps its own data. Owners and staff switch between the "
+"locations they work at."
+msgstr ""
+"Mỗi chi nhánh có dữ liệu riêng. Chủ và nhân viên chuyển qua lại giữa các chi"
+" nhánh họ làm việc."
+
+#: tenants/templates/tenants/platform/landing.html:29
+msgid "Optional website"
+msgstr "Trang web tùy chọn"
+
+#: tenants/templates/tenants/platform/landing.html:29
+msgid ""
+"Add a public website with your menu, opening hours and promotions on larger "
+"plans."
+msgstr ""
+"Thêm trang web công khai với thực đơn, giờ mở cửa và khuyến mãi ở các gói "
+"lớn hơn."
+
+#: tenants/templates/tenants/platform/landing.html:49
+#: tenants/templates/tenants/platform/login.html:2
+#: tenants/templates/tenants/platform/login.html:5
+msgid "Platform administration"
+msgstr "Quản trị nền tảng"
+
+#: tenants/templates/tenants/platform/login.html:6
+msgid ""
+"For the platform team only. Restaurant staff sign in at their workspace."
+msgstr ""
+"Chỉ dành cho đội ngũ nền tảng. Nhân viên nhà hàng đăng nhập tại không gian "
+"làm việc của họ."
+
+#: tenants/templates/tenants/platform/organization.html:6
+msgid "Open workspace"
+msgstr "Mở không gian làm việc"
+
+#: tenants/templates/tenants/platform/organization.html:11
+msgid "Owners"
+msgstr "Chủ"
+
+#: tenants/templates/tenants/platform/organization.html:15
+msgid "Change plan"
+msgstr "Đổi gói cước"
+
+#: tenants/templates/tenants/platform/organization.html:17
+msgid ""
+"Suspended and cancelled workspaces are paused: staff see a notice, data is "
+"kept."
+msgstr ""
+"Không gian bị tạm khóa hoặc hủy sẽ tạm dừng: nhân viên thấy thông báo, dữ "
+"liệu vẫn được giữ."
+
+#: tenants/templates/tenants/platform/organization.html:17
+msgid "Save status"
+msgstr "Lưu trạng thái"
+
+#: tenants/templates/tenants/platform/organization.html:19
+msgid "Extend trial"
+msgstr "Gia hạn dùng thử"
+
+#: tenants/templates/tenants/platform/organization.html:24
+msgid "Who"
+msgstr "Ai"
+
+#: tenants/templates/tenants/platform/organization.html:24
+msgid "What"
+msgstr "Việc gì"
+
+#: tenants/templates/tenants/platform/organization.html:24
+msgid "Details"
+msgstr "Chi tiết"
+
+#: tenants/templates/tenants/platform/organization_form.html:7
+msgid ""
+"Creates the organization, its first location and the owner's account. Give "
+"the owner their workspace address, login name and password."
+msgstr ""
+"Tạo tổ chức, chi nhánh đầu tiên và tài khoản chủ. Hãy gửi cho chủ địa chỉ "
+"không gian làm việc, tên đăng nhập và mật khẩu."
+
+#: tenants/templates/tenants/platform/organization_form.html:10
+msgid "Create organization"
+msgstr "Tạo tổ chức"
+
+#: tenants/templates/tenants/platform/signup.html:5
+msgid "Start your free trial"
+msgstr "Bắt đầu dùng thử miễn phí"
+
+#: tenants/templates/tenants/platform/signup.html:6
+#, python-format
+msgid ""
+"%(n)s days free. No card needed. You can add staff and more locations "
+"straight away."
+msgstr ""
+"Miễn phí %(n)s ngày. Không cần thẻ. Bạn có thể thêm nhân viên và chi nhánh "
+"ngay."
+
+#: tenants/templates/tenants/platform/signup.html:9
+msgid "Create workspace"
+msgstr "Tạo không gian làm việc"
+
+#: tenants/templates/tenants/platform/signup_done.html:4
+msgid "Your workspace is ready"
+msgstr "Không gian làm việc của bạn đã sẵn sàng"
+
+#: tenants/templates/tenants/platform/signup_done.html:5
+#, python-format
+msgid ""
+"%(name)s has its own address. Bookmark it and share it with your staff:"
+msgstr "%(name)s có địa chỉ riêng. Hãy lưu lại và gửi cho nhân viên của bạn:"
+
+#: tenants/templates/tenants/platform/signup_done.html:7
+#, python-format
+msgid ""
+"Sign in there as <strong>%(login)s</strong> with the password you chose."
+msgstr ""
+"Đăng nhập tại đó bằng <strong>%(login)s</strong> với mật khẩu bạn đã chọn."
+
+#: tenants/templates/tenants/platform/signup_done.html:8
+msgid "Go to my workspace"
+msgstr "Đến không gian làm việc của tôi"
+
+#: tenants/templates/tenants/unknown_workspace.html:4
+#: tenants/templates/tenants/unknown_workspace.html:6
+msgid "Workspace not found"
+msgstr "Không tìm thấy không gian làm việc"
+
+#: tenants/templates/tenants/unknown_workspace.html:7
+msgid ""
+"No restaurant uses this address. Check the spelling, or ask your manager for"
+" the right link."
+msgstr ""
+"Không có nhà hàng nào dùng địa chỉ này. Hãy kiểm tra chính tả hoặc hỏi quản "
+"lý đường dẫn đúng."
+
+#: tenants/views.py:36
+#, python-format
+msgid "You are now working at %(name)s."
+msgstr "Bạn đang làm việc tại %(name)s."
+
+#: tenants/views.py:53
+#, python-format
+msgid "Location “%(name)s” added."
+msgstr "Đã thêm chi nhánh “%(name)s”."
+
+#: tenants/views.py:62
+msgid "Location renamed."
+msgstr "Đã đổi tên chi nhánh."
+
+#: tenants/views.py:91
+#, python-format
+msgid "Your plan is now %(plan)s."
+msgstr "Gói cước của bạn giờ là %(plan)s."
 
 #: timeclock/models.py:14 timeclock/templates/timeclock/_shift_table.html:16
 #: website/templates/website/contact.html:29
@@ -3349,77 +4141,73 @@ msgstr "Để trống để giữ mãi."
 msgid "published"
 msgstr "đã đăng"
 
-#: website/services.py:130
+#: website/services.py:131
 msgid "Choose the first day."
 msgstr "Chọn ngày bắt đầu."
 
-#: website/services.py:132
+#: website/services.py:133
 msgid "The last day cannot be before the first day."
 msgstr "Ngày kết thúc không được trước ngày bắt đầu."
 
-#: website/services.py:200
+#: website/services.py:201
 msgid "Enter the restaurant name."
 msgstr "Nhập tên nhà hàng."
 
-#: website/services.py:202
+#: website/services.py:203
 msgid ""
 "Enter a phone number with digits, spaces and an optional + at the start."
 msgstr "Nhập số điện thoại gồm chữ số, dấu cách và có thể có dấu + ở đầu."
 
-#: website/services.py:207
+#: website/services.py:208
 msgid "Enter a valid email address."
 msgstr "Nhập địa chỉ email hợp lệ."
 
-#: website/services.py:210
+#: website/services.py:211
 msgid "Enter both the street address and the city, or leave both empty."
 msgstr "Nhập cả địa chỉ và thành phố, hoặc để trống cả hai."
 
-#: website/services.py:236
+#: website/services.py:237
 #, python-format
 msgid "%(day)s: enter both the opening and the closing time."
 msgstr "%(day)s: nhập cả giờ mở cửa và giờ đóng cửa."
 
-#: website/services.py:238
+#: website/services.py:239
 #, python-format
 msgid "%(day)s: the closing time must differ from the opening time."
 msgstr "%(day)s: giờ đóng cửa phải khác giờ mở cửa."
 
-#: website/services.py:241
+#: website/services.py:242
 #, python-format
 msgid "%(day)s: at most two opening periods per day."
 msgstr "%(day)s: tối đa hai khung giờ mở cửa mỗi ngày."
 
-#: website/services.py:245
+#: website/services.py:246
 #, python-format
 msgid "%(day)s: the two opening periods overlap."
 msgstr "%(day)s: hai khung giờ mở cửa bị chồng lên nhau."
 
-#: website/services.py:273
+#: website/services.py:274
 #, python-format
 msgid "%(day)s: the evening period runs past the opening time on %(next)s."
 msgstr "%(day)s: khung giờ buổi tối kéo dài quá giờ mở cửa của %(next)s."
 
-#: website/services.py:300
+#: website/services.py:301
 msgid "Choose the date."
 msgstr "Chọn ngày."
 
-#: website/services.py:302
-msgid "Choose today or a later date."
-msgstr "Chọn hôm nay hoặc một ngày sau đó."
-
-#: website/services.py:311
+#: website/services.py:312
 msgid "Enter the opening hours, or tick “Closed all day”."
 msgstr "Nhập giờ mở cửa, hoặc chọn “Đóng cửa cả ngày”."
 
-#: website/services.py:324
+#: website/services.py:325
 msgid "This date already has special hours. Edit that entry instead."
 msgstr "Ngày này đã có giờ đặc biệt. Hãy sửa mục đó."
 
-#: website/services.py:364
+#: website/services.py:365
 msgid "Describe the photo in a few words for people who cannot see it."
 msgstr "Mô tả ảnh bằng vài từ cho người không nhìn thấy được."
 
-#: website/services.py:433 website/services.py:441
+#: website/services.py:434 website/services.py:442
 #, python-format
 msgid "The gallery holds at most %(n)s photos. Remove one first."
 msgstr "Thư viện ảnh chứa tối đa %(n)s ảnh. Hãy xóa bớt một ảnh trước."
@@ -3467,11 +4255,6 @@ msgstr "Trang chủ"
 #: website/templates/website/contact.html:2
 msgid "Contact"
 msgstr "Liên hệ"
-
-#: website/templates/website/base.html:49
-#: website/templates/website/coming_soon.html:5
-msgid "Staff sign-in"
-msgstr "Nhân viên đăng nhập"
 
 #: website/templates/website/coming_soon.html:3
 msgid "Coming soon"
@@ -3577,10 +4360,12 @@ msgid "Day"
 msgstr "Ngày"
 
 #: website/templates/website/manage_hours.html:15
+#: website/templates/website/manage_hours.html:21
 msgid "Opening period"
 msgstr "Khung giờ mở cửa"
 
 #: website/templates/website/manage_hours.html:15
+#: website/templates/website/manage_hours.html:21
 msgid "Second period (optional)"
 msgstr "Khung giờ thứ hai (không bắt buộc)"
 

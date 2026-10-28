@@ -1,8 +1,26 @@
-# Restaurant operations — EP03–EP06
+# Restaurant Platform
 
-Staff access, inventory, daily checklists and time recording for one restaurant location. It is a mobile-first web app for employees and managers.
+A multi-restaurant platform for internal management and operations: time clock, daily checklists and food-safety temperatures, inventory, staff management and a manager dashboard, with an optional public website and menu. It is a mobile-first web app, offered to many restaurants from one installation.
 
-Implements the *Restaurant operations: implementation specification for EP03–EP06* (v1.0, 26 Sep 2026).
+It grew out of the single-restaurant app [restaurant-ops](https://github.com/tnksuom/restaurant-ops) (v1.0, EP01–EP08). Everything that app does still works, now inside each customer's own workspace.
+
+## The platform in one picture
+
+```
+Platform (one installation, one database)
+├── Platform admin            → /platform/ on the main domain: organizations, plans, status, trials
+├── Landing page + sign-up    → the main domain: 14-day free trial, no card
+└── Organization (a customer, e.g. "Bistro Demo")   → bistro-demo.<domain>
+    ├── Plan (Starter / Pro / Business) and status (trial, active, suspended, cancelled)
+    ├── Modules: time clock, checklists, inventory, menu, public website (on/off)
+    ├── Locations (branches), each with its own checklists, stock, shifts, dashboard
+    └── Staff: owner(s), managers and employees, each assigned to one or more locations
+```
+
+- **Data separation.** One shared PostgreSQL database. Every operational row already carried `restaurant_id` (a location); every location now belongs to an organization. Each request is tied to one organization by its host name (`<slug>.<domain>`) or, on hosts without wildcard sub-domains, by the workspace chosen on the "Staff sign-in" page. A signed-in person is only ever served inside their own organization; anything else signs them out. Login names are unique per organization, so "anna" can exist in many restaurants.
+- **Locations.** Owners add locations up to their plan's limit and choose where each person works. Everyone switches between their locations from the bar under the header; every screen shows the current location's data.
+- **Plans and limits.** Plans set the number of locations, active staff and whether the website and menu are included. Prices are placeholders (29 / 59 / 99 € a month) to change before launch. New sign-ups get a 14-day trial; when it ends, the workspace pauses (data kept) until the platform admin activates it. Card payments are not built in yet: the admin sets a workspace to *Active* after payment.
+- **Modules.** Owners switch modules on and off for their organization; switched-off modules disappear from the menu and their pages return 404, with data kept.
 
 ## Stack
 
@@ -21,7 +39,7 @@ Everything is stored in PostgreSQL. Uploaded photos go to a private directory on
 
 The app does **not** integrate with payroll, point of sale or purchasing.
 
-**Addresses.** The public website is at `/` (home), `/menu/` and `/contact/`. The staff app starts at `/app/` after signing in at `/login/`. The EP07 management dashboard is at `/dashboard/`, the menu editor at `/menu-admin/` and promotions at `/manage/promotions/`.
+**Addresses.** On the main domain: the landing page `/`, sign-up `/signup/`, the workspace finder `/find/` and platform administration `/platform/`. In a workspace (`<slug>.<domain>`): the public website at `/`, `/menu/`, `/contact/` (if switched on), sign-in at `/login/`, the staff app at `/app/`, the dashboard at `/dashboard/`, and owners' settings at `/org/locations/` and `/org/account/`.
 
 ## Setup from a clean machine
 
@@ -36,17 +54,25 @@ pip install -r requirements.txt
 cp .env.example .env                # then edit DATABASE_URL and DJANGO_SECRET_KEY
 python manage.py migrate
 
-# 3. First owner (the only account created outside the app; there is no sign-up page)
-python manage.py create_owner --login owner@example.com --name "Owner Name" --restaurant "Bistro Name"
-#   prompts for the password twice. For automated setup:
-#   OWNER_PASSWORD='…' python manage.py create_owner … --password-from-env
+# 3. Platform administrator (restaurants then sign up themselves at /signup/)
+INITIAL_ADMIN_LOGIN=admin INITIAL_ADMIN_PASSWORD='choose-a-long-password' python manage.py ensure_platform_admin
 
 # 4. Run (development)
-python manage.py runserver          # public site http://127.0.0.1:8000 · staff app http://127.0.0.1:8000/app/
+python manage.py runserver   # platform http://localhost:8000 · a workspace http://<slug>.localhost:8000
 ```
 
+Browsers send `*.localhost` to your own computer, so sub-domains work locally with `PLATFORM_DOMAIN=localhost` and `TENANT_SUBDOMAINS=true` (the defaults in `.env.example`).
+
 **Demo data instead of step 3.** On an *empty* development database (`DJANGO_DEBUG=true`), run
-`python manage.py seed_demo --password 'Choose-A-Password'`. It creates a demo restaurant with an owner (`owner`), a manager (`mia`), employees (`linh`, `eero`, `sara`), stock, a week of checklists and shifts, open issues with a photo, and a corrected shift. All accounts use the password you give. It refuses to run on a database that already has staff.
+`python manage.py seed_demo --password 'Choose-A-Password'`. It creates:
+
+| Workspace | Plan | Accounts |
+|---|---|---|
+| `bistro-demo` (Bistro Demo, 2 locations: Jyväskylä and Lahti) | Pro, active, website on | `owner`, `mia` (manager), `hoa` (manager, Lahti), `linh` (both locations), `eero`, `sara` |
+| `pho-corner` (Phở Corner) | Starter, trial ending in 9 days | `minh` (owner), `an` |
+| platform | — | `admin` at `/platform/login/` |
+
+Bistro Demo keeps the full single-restaurant demo: stock, a week of checklists and shifts, open issues with a photo, a corrected shift, menu, promotions and website images. All accounts use the password you give.
 
 **To put it online, follow [DEPLOY.md](DEPLOY.md)**: a free self-resetting demo (`render.demo.yaml`) or a real installation (`render.yaml`), both on Render in the EU, deploying automatically after the tests pass. In general:
 
@@ -75,12 +101,18 @@ For production, run behind HTTPS with a WSGI server (for example `gunicorn confi
 | `RENDER_EXTERNAL_HOSTNAME` | set by Render | — | Added to the allowed host names automatically |
 | `DEMO_MODE` | no | `false` | **Demo only.** Every start wipes the database and reloads the example restaurant; the sign-in page lists demo accounts. Never set it for a real restaurant. |
 | `DEMO_PASSWORD` | no | `demo-bistro-2026` | Shared password of the demo accounts in demo mode |
-| `INITIAL_OWNER_LOGIN`, `INITIAL_OWNER_PASSWORD`, `INITIAL_OWNER_NAME`, `INITIAL_RESTAURANT_NAME` | first deploy only | — | Used by `python manage.py ensure_owner` to create the first owner once; remove the password afterwards |
+| `PLATFORM_DOMAIN` | yes in production | `localhost` | Main domain; workspaces live at `<slug>.<PLATFORM_DOMAIN>` |
+| `TENANT_SUBDOMAINS` | no | `false` | `true` when `*.PLATFORM_DOMAIN` points to the app (wildcard DNS and certificate). With `false`, workspaces are chosen on `/find/` and kept in the session |
+| `TENANT_DEFAULT_SLUG` | no | — | Serve this workspace when the host names none (a single-restaurant installation) |
+| `PLATFORM_NAME` | no | `Restaurant Platform` | Product name on the landing page |
+| `PLATFORM_CONTACT_EMAIL` | no | — | Shown to owners for billing questions |
+| `TRIAL_DAYS` | no | `14` | Length of the free trial |
+| `INITIAL_ADMIN_LOGIN`, `INITIAL_ADMIN_PASSWORD`, `INITIAL_ADMIN_NAME` | first deploy only | — | Used by `python manage.py ensure_platform_admin` to create the platform administrator once; remove the password afterwards |
 
 ## Tests
 
 ```bash
-python manage.py test                      # 131 tests, about 25 seconds; needs the database user to have CREATEDB
+python manage.py test                      # 194 tests, about 40 seconds; needs the database user to have CREATEDB
 python manage.py verify_stock_ledger       # checks cached balances against the movement ledger
 ```
 
@@ -91,6 +123,7 @@ The tests cover the spec's minimum verification list:
 - **Checklists:** duplicate runs are prevented, including on simultaneous start. Missing required answers block submission, and template edits don't change past runs. Failed and out-of-range results open issues, and photo access is checked.
 - **Time:** duplicate and parallel clock-ins are prevented, break cycles and active-break blocking work, and overnight shifts and both daylight-saving changes give correct durations. Corrections need a reason and keep old values.
 - **Smoke test:** every screen renders for owner, manager and employee.
+- **Platform (`tenants/tests.py`):** the same login name in two organizations signs in to the right one; a session from one organization is signed out on another; staff, stock and public images of another organization return 404; location limits, switching and assignment; managers only manage their own location's staff; staff limits on new and reactivated staff; plan changes; ended trials and suspensions pause the workspace; switched-off modules disappear; sign-up on sub-domains and on a single domain; the workspace finder and password links on a single domain; platform admin sign-in, status, trial and plan changes; the append-only platform history; and migrating a database from the single-restaurant app.
 
 ## Manual test path
 
@@ -195,6 +228,11 @@ All 46 stories are implemented: the MVP release (EP01–EP07, 42 stories) and EP
 
 ## Known limitations
 
+- **Billing is manual.** There is no card payment yet: the platform admin sets a workspace to *Active* after payment and can extend trials. Stripe (or Paytrail/Checkout Finland) is the next step.
+- **The public website shows the organization's first location.** Owners with several locations get one website for now; per-location pages are a next step.
+- **Roles are per organization.** A manager is a manager at every location they work at. The current location is stored on the person, so two devices of the same person switch together.
+- **Sub-domains need a wildcard domain.** On a host without one (like the free `*.onrender.com`), staff choose their workspace once on "Staff sign-in".
+
 - Dish names, descriptions and other typed-in content are stored in one language; per-language versions of content are not built yet.
 
 - There is no email, so password resets are manager-issued one-time links.
@@ -207,9 +245,11 @@ All 46 stories are implemented: the MVP release (EP01–EP07, 42 stories) and EP
 ## Project layout
 
 ```
-config/       settings (env-driven), URLs
-core/         Restaurant, append-only AuditEvent, time helpers, role checks, base layout, Today page
-staff/        EP03 – Employee (auth user), login, one-time password links, staff admin, create_owner command
+config/       settings (env-driven), workspace URLs (urls.py) and platform URLs (urls_platform.py)
+tenants/      platform – Plan, Organization, append-only OrganizationEvent, host → organization middleware,
+              sign-up, workspace finder, locations, plan and modules, platform admin, ensure_platform_admin
+core/         Restaurant (a location of an organization), append-only AuditEvent, time helpers, role checks, base layout, Today page
+staff/        EP03 – Employee (auth user, per organization), login, one-time password links, staff admin
 inventory/    EP04 – items, immutable stock ledger, verify_stock_ledger command
 checklists/   EP05 – versioned templates, snapshotted runs, responses, issues, private photos
 timeclock/    EP06 – shifts, breaks, immutable clock events, corrections

@@ -108,7 +108,7 @@ def timesheets(request):
         {
             "rows": rows, "total": total, "open_count": open_count, "date_from": date_from, "date_to": date_to,
             "employee_id": employee_id, "per_employee": per_employee.values(),
-            "staff": Employee.objects.filter(restaurant=restaurant).order_by("display_name"),
+            "staff": Employee.objects.working_at(restaurant).order_by("display_name"),
         },
     )
 

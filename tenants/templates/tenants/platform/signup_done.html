@@ -1,0 +1,10 @@
+{% extends "tenants/platform/base.html" %}{% load i18n %}
+{% block content %}
+<div class="card" style="max-width:560px;margin:24px auto">
+  <h1>{% translate "Your workspace is ready" %}</h1>
+  <p>{% blocktranslate with name=org.name %}{{ name }} has its own address. Bookmark it and share it with your staff:{% endblocktranslate %}</p>
+  <p><strong>{{ login_url }}</strong></p>
+  <p>{% blocktranslate with login=owner.login_identifier %}Sign in there as <strong>{{ login }}</strong> with the password you chose.{% endblocktranslate %}</p>
+  <p><a class="btn" href="{{ login_url }}">{% translate "Go to my workspace" %}</a></p>
+</div>
+{% endblock %}

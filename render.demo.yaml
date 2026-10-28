@@ -2,7 +2,10 @@
 # In Render: New → Blueprint → pick this repository → set "Blueprint Path" to render.demo.yaml.
 #
 # - Costs nothing: free web service + free Postgres (Frankfurt, EU).
-# - Every start wipes the database and loads the example restaurant again, so each
+# - Two example restaurants (Bistro Demo with 2 locations, Phở Corner on a trial) and a platform
+#   admin (login "admin"). The free *.onrender.com address has no wildcard sub-domains, so
+#   visitors pick a restaurant on the front page and it is remembered in their browser session.
+# - Every start wipes the database and loads the example restaurants again, so each
 #   presentation begins from the same clean demo. Visitors' changes don't last.
 # - Free services sleep after 15 minutes without visitors; the first visit then takes
 #   about a minute. Open the link a minute before you present.
@@ -19,7 +22,7 @@ databases:
 
 services:
   - type: web
-    name: restaurant-ops-demo
+    name: restaurant-platform-demo
     runtime: docker
     dockerfilePath: ./Dockerfile
     region: frankfurt
@@ -50,3 +53,7 @@ services:
         value: Europe/Helsinki
       - key: WEB_CONCURRENCY
         value: "2"
+      - key: TENANT_SUBDOMAINS
+        value: "false"
+      - key: PLATFORM_NAME
+        value: Restaurant Platform (demo)

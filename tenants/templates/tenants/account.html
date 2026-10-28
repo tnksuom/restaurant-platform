@@ -1,0 +1,47 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% translate "Plan and modules" %}{% endblock %}
+{% block content %}
+<h1>{% translate "Plan and modules" %}</h1>
+<div class="card">
+  <h2>{{ org.name }} · {{ org.plan.name }}</h2>
+  <p>
+    {% if org.status == "TRIAL" %}<span class="badge badge-warn">{% translate "Free trial" %}</span> {% blocktranslate with d=org.trial_ends_on|date:"j.n.Y" %}until {{ d }}{% endblocktranslate %}
+    {% elif org.status == "ACTIVE" %}<span class="badge badge-ok">{% translate "Active" %}</span>
+    {% elif org.status == "SUSPENDED" %}<span class="badge badge-bad">{% translate "Suspended" %}</span>
+    {% else %}<span class="badge badge-muted">{% translate "Cancelled" %}</span>{% endif %}
+  </p>
+  <p class="small">{% blocktranslate with n=usage.locations max=usage.max_locations %}Locations: {{ n }} of {{ max }}{% endblocktranslate %}<br>
+  {% if usage.max_staff %}{% blocktranslate with n=usage.staff max=usage.max_staff %}Active staff: {{ n }} of {{ max }}{% endblocktranslate %}{% else %}{% blocktranslate with n=usage.staff %}Active staff: {{ n }} (no limit){% endblocktranslate %}{% endif %}</p>
+  <p class="small muted">{% translate "To start a paid subscription, or for an invoice, contact the platform team. Card payments in the app are coming later." %}</p>
+</div>
+
+<h2>{% translate "Plans" %}</h2>
+<div class="plans">
+  {% for plan in plans %}
+  <div class="plan-card{% if plan.pk == org.plan_id %} current{% endif %}">
+    <h3 style="margin:0">{{ plan.name }}</h3>
+    <span class="price">{{ plan.monthly_price }} €</span><span class="small muted">{% translate "per month" %}</span>
+    <ul class="small">
+      <li>{% blocktranslate count n=plan.max_locations %}{{ n }} location{% plural %}{{ n }} locations{% endblocktranslate %}</li>
+      <li>{% if plan.max_staff %}{% blocktranslate with n=plan.max_staff %}Up to {{ n }} active staff{% endblocktranslate %}{% else %}{% translate "Unlimited staff" %}{% endif %}</li>
+      <li>{% if plan.includes_website %}{% translate "Public website and menu" %}{% else %}{% translate "Internal operations only" %}{% endif %}</li>
+    </ul>
+    {% if plan.pk == org.plan_id %}<span class="badge badge-ok">{% translate "Current plan" %}</span>
+    {% elif can_change_plan %}
+    <form method="post">{% csrf_token %}<input type="hidden" name="action" value="plan"><input type="hidden" name="plan" value="{{ plan.pk }}">
+      <button class="btn btn-secondary" type="submit">{% blocktranslate with p=plan.name %}Switch to {{ p }}{% endblocktranslate %}</button></form>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+
+<div class="card" style="margin-top:16px">
+  <h2>{% translate "Modules" %}</h2>
+  <p class="small muted">{% translate "Switched-off modules disappear from the menu for everyone. Their data is kept and comes back when you switch them on again." %}</p>
+  <form method="post" class="stacked">{% csrf_token %}
+    <input type="hidden" name="action" value="modules">
+    {% with form=modules_form %}{% include "core/form_fields.html" %}{% endwith %}
+    <button class="btn" type="submit">{% translate "Save modules" %}</button>
+  </form>
+</div>
+{% endblock %}

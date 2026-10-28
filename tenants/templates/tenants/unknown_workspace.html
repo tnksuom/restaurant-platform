@@ -1,0 +1,8 @@
+{% load i18n static %}<!doctype html>
+<html lang="{{ LANGUAGE_CODE|default:'en' }}">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% translate "Workspace not found" %}</title><link rel="stylesheet" href="{% static 'core/app.css' %}"></head>
+<body><main class="page"><div class="card" style="max-width:520px;margin:60px auto">
+<h1>{% translate "Workspace not found" %}</h1>
+<p>{% translate "No restaurant uses this address. Check the spelling, or ask your manager for the right link." %}</p>
+</div></main></body></html>

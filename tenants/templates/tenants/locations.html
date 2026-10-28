@@ -1,0 +1,39 @@
+{% extends "base.html" %}{% load i18n %}
+{% block title %}{% translate "Locations" %}{% endblock %}
+{% block content %}
+<h1>{% translate "Locations" %}</h1>
+<p class="small muted">{% blocktranslate with n=usage.locations max=usage.max_locations %}{{ n }} of {{ max }} locations in your plan.{% endblocktranslate %} {% translate "Each location has its own checklists, stock, shifts and public details. Staff work at the locations you assign them to." %}</p>
+<div class="table-wrap">
+  <table class="stack-sm">
+    <thead><tr><th scope="col">{% translate "Location" %}</th><th scope="col">{% translate "Staff" %}</th><th scope="col">{% translate "Rename" %}</th></tr></thead>
+    <tbody>
+    {% for loc in rows %}
+    <tr>
+      <td><strong>{{ loc.name }}</strong>{% if loc.pk == restaurant.pk %} <span class="badge badge-ok">{% translate "You are here" %}</span>{% endif %}</td>
+      <td data-label="{% translate 'Staff' %}">{{ loc.staff }}</td>
+      <td data-label="{% translate 'Rename' %}">
+        <form method="post" class="row">{% csrf_token %}
+          <input type="hidden" name="action" value="rename"><input type="hidden" name="location" value="{{ loc.pk }}">
+          <label class="visually-hidden" for="name-{{ loc.pk }}">{% translate "Location name" %}</label>
+          <input type="text" id="name-{{ loc.pk }}" name="name" value="{{ loc.name }}" maxlength="200" required>
+          <button class="btn btn-secondary" type="submit">{% translate "Save" %}</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div class="card">
+  <h2>{% translate "Add a location" %}</h2>
+  {% if can_add %}
+  <form method="post" class="stacked" novalidate>{% csrf_token %}
+    <input type="hidden" name="action" value="add">
+    {% with form=add_form %}{% include "core/form_fields.html" %}{% endwith %}
+    <button class="btn" type="submit">{% translate "Add location" %}</button>
+  </form>
+  {% else %}
+  <p class="muted">{% translate "Your plan has no free locations left." %} <a href="{% url 'tenants:account' %}">{% translate "See plans" %}</a></p>
+  {% endif %}
+</div>
+{% endblock %}

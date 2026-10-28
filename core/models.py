@@ -18,8 +18,9 @@ def default_time_zone():
 
 
 class Restaurant(models.Model):
-    """One location. V1 has exactly one, but operational rows carry restaurant_id."""
+    """One location (branch) of an organization. Every operational row carries restaurant_id."""
 
+    organization = models.ForeignKey("tenants.Organization", on_delete=models.PROTECT, related_name="restaurants")
     name = models.CharField(max_length=200)
     time_zone = models.CharField(max_length=64, default=default_time_zone, validators=[validate_time_zone])
     created_at = models.DateTimeField(auto_now_add=True)

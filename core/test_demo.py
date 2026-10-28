@@ -63,11 +63,28 @@ class DemoResetTests(TransactionTestCase):
 
     def test_demo_pages_show_banner_and_one_tap_sign_in(self):
         call_command("demo_reset", stdout=io.StringIO())
-        resp = self.client.get(reverse("login"))
+        host = {"HTTP_HOST": "bistro-demo.testserver"}
+        resp = self.client.get(reverse("login"), **host)
         self.assertContains(resp, "Demo accounts")
         self.assertContains(resp, "demo-test-pass")
         self.assertContains(resp, "Mia Virtanen")
-        self.assertContains(self.client.get(reverse("website:home")), "Demo restaurant with example content")
-        resp = self.client.post(reverse("login"), {"username": "mia", "password": "demo-test-pass"}, follow=True)
+        self.assertNotContains(resp, "Minh Tran")  # the other demo workspace's accounts are not listed here
+        self.assertContains(self.client.get(reverse("website:home"), **host), "Demo restaurant with example content")
+        resp = self.client.post(reverse("login"), {"username": "mia", "password": "demo-test-pass"}, follow=True, **host)
         self.assertContains(resp, "Hello, Mia Virtanen")
         self.assertContains(resp, "Anything you change is reset")
+        # The platform's own front page offers both demo workspaces.
+        landing = self.client.get("/", HTTP_HOST="www.testserver")
+        self.assertContains(landing, "Phở Corner")
+        self.assertContains(landing, "Bistro Demo")
+
+    def test_demo_has_two_organizations_a_second_location_and_an_admin(self):
+        call_command("demo_reset", stdout=io.StringIO())
+        from tenants.models import Organization
+
+        bistro, pho = Organization.objects.get(slug="bistro-demo"), Organization.objects.get(slug="pho-corner")
+        self.assertEqual(bistro.restaurants.count(), 2)
+        self.assertEqual(pho.status, Organization.Status.TRIAL)
+        self.assertTrue(Employee.objects.get(is_platform_admin=True).check_password("demo-test-pass"))
+        linh = Employee.objects.get(organization=bistro, login_identifier="linh")
+        self.assertEqual(linh.allowed_locations().count(), 2)

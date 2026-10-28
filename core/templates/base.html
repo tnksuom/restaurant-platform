@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}{% translate "Restaurant operations" %}{% endblock %}</title>
+  <title>{% block title %}{% translate "Restaurant operations" %}{% endblock %}{% if tenant %} · {{ tenant.name }}{% endif %}</title>
   <link rel="stylesheet" href="{% static 'core/app.css' %}">
   <script src="{% static 'core/app.js' %}" defer></script>
 </head>
@@ -11,28 +11,34 @@
 <a class="skip" href="#main">{% translate "Skip to content" %}</a>
 {% if demo_mode %}<div class="demo-banner" role="note">{% translate "Demo with example data. Anything you change is reset when the demo restarts." %}</div>{% endif %}
 {% if user.is_authenticated %}
+{% if trial_days_left is not None %}<div class="trial-banner" role="note">{% blocktranslate count n=trial_days_left %}Free trial: {{ n }} day left.{% plural %}Free trial: {{ n }} days left.{% endblocktranslate %}{% if is_owner %} <a href="{% url 'tenants:account' %}">{% translate "Plan and billing" %}</a>{% endif %}</div>{% endif %}
 <header class="topbar">
-  <a class="brand" href="{% url 'today' %}">{{ restaurant.name }}</a>
+  <a class="brand" href="{% url 'today' %}">{{ tenant.name }}</a>
   {% include "core/language_switcher.html" %}
   <details class="menu">
     <summary aria-label="{% translate 'Menu' context 'navigation' %}">{% translate "Menu" context "navigation" %}</summary>
     <nav aria-label="{% translate 'Main' %}">
       <ul>
         <li><a href="{% url 'today' %}">{% translate "Today" %}</a></li>
+        {% if modules.timeclock %}
         <li><a href="{% url 'timeclock:clock' %}">{% translate "Clock in/out" %}</a></li>
         <li><a href="{% url 'timeclock:mine' %}">{% translate "My hours" %}</a></li>
-        <li><a href="{% url 'checklists:today' %}">{% translate "Checklists" %}</a></li>
-        <li><a href="{% url 'inventory:list' %}">{% translate "Inventory" %}</a></li>
+        {% endif %}
+        {% if modules.checklists %}<li><a href="{% url 'checklists:today' %}">{% translate "Checklists" %}</a></li>{% endif %}
+        {% if modules.inventory %}<li><a href="{% url 'inventory:list' %}">{% translate "Inventory" %}</a></li>{% endif %}
         {% if is_manager %}
         <li class="sep" aria-hidden="true"></li>
         <li><a href="{% url 'dashboard:home' %}">{% translate "Dashboard" %}</a></li>
+        {% if modules.checklists %}
         <li><a href="{% url 'checklists:review' %}">{% translate "Checklist review" %}</a></li>
         <li><a href="{% url 'checklists:issues' %}">{% translate "Issues" %}</a></li>
         <li><a href="{% url 'checklists:templates' %}">{% translate "Checklist templates" %}</a></li>
-        <li><a href="{% url 'inventory:history' %}">{% translate "Stock history" %}</a></li>
-        <li><a href="{% url 'timeclock:timesheets' %}">{% translate "Timesheets" %}</a></li>
+        {% endif %}
+        {% if modules.inventory %}<li><a href="{% url 'inventory:history' %}">{% translate "Stock history" %}</a></li>{% endif %}
+        {% if modules.timeclock %}<li><a href="{% url 'timeclock:timesheets' %}">{% translate "Timesheets" %}</a></li>{% endif %}
         <li><a href="{% url 'staff:list' %}">{% translate "Staff" %}</a></li>
-        <li><a href="{% url 'menu:overview' %}">{% translate "Menu" %}</a></li>
+        {% if modules.menu %}<li><a href="{% url 'menu:overview' %}">{% translate "Menu" %}</a></li>{% endif %}
+        {% if modules.website %}
         <li><a href="{% url 'website:promotions' %}">{% translate "Promotions" %}</a></li>
         {% if is_owner %}
         <li><a href="{% url 'website:info' %}">{% translate "Restaurant details" %}</a></li>
@@ -40,8 +46,14 @@
         <li><a href="{% url 'website:images' %}">{% translate "Website images" %}</a></li>
         {% endif %}
         <li><a href="{% url 'website:home' %}">{% translate "Public website" %}</a></li>
+        {% endif %}
         {% else %}
-        <li><a href="{% url 'checklists:history' %}">{% translate "My submitted checklists" %}</a></li>
+        {% if modules.checklists %}<li><a href="{% url 'checklists:history' %}">{% translate "My submitted checklists" %}</a></li>{% endif %}
+        {% endif %}
+        {% if is_owner %}
+        <li class="sep" aria-hidden="true"></li>
+        <li><a href="{% url 'tenants:locations' %}">{% translate "Locations" %}</a></li>
+        <li><a href="{% url 'tenants:account' %}">{% translate "Plan and modules" %}</a></li>
         {% endif %}
         <li class="sep" aria-hidden="true"></li>
         <li><a href="{% url 'staff:me' %}">{% translate "My profile" %} ({{ user.display_name }})</a></li>
@@ -54,8 +66,20 @@
     </nav>
   </details>
 </header>
+{% if my_locations|length > 1 %}
+<div class="location-bar">
+  <form class="location-switch" method="post" action="{% url 'tenants:switch_location' %}">{% csrf_token %}
+    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+    <label for="location-select">{% translate "Location" %}</label>
+    <select id="location-select" name="location" data-autosubmit>
+      {% for loc in my_locations %}<option value="{{ loc.pk }}"{% if loc.pk == restaurant.pk %} selected{% endif %}>{{ loc.name }}</option>{% endfor %}
+    </select>
+    <noscript><button type="submit" class="btn btn-secondary">{% translate "Switch" %}</button></noscript>
+  </form>
+</div>
 {% endif %}
-{% if not user.is_authenticated %}<div class="topbar topbar-plain">{% include "core/language_switcher.html" %}</div>{% endif %}
+{% endif %}
+{% if not user.is_authenticated %}<div class="topbar topbar-plain">{% if tenant %}<span class="brand">{{ tenant.name }}</span>{% endif %}{% include "core/language_switcher.html" %}</div>{% endif %}
 <main id="main" class="page">
   {% if messages %}
   <div class="messages" role="status" aria-live="polite">

@@ -1,0 +1,50 @@
+{% extends "tenants/platform/base.html" %}{% load i18n %}
+{% block page_class %} page-wide{% endblock %}
+{% block content %}
+<section class="pf-hero">
+  <h1>{% translate "Run every shift from one phone-friendly app" %}</h1>
+  <p class="pf-lead">{% translate "Time clock, opening and closing checklists, food-safety temperatures, stock and a manager dashboard for restaurants. One location or many. In English, Finnish and Vietnamese." %}</p>
+  <div class="row">
+    <a class="btn" href="{% url 'signup' %}">{% blocktranslate with n=trial_days %}Try it free for {{ n }} days{% endblocktranslate %}</a>
+    <a class="btn btn-secondary" href="{% url 'find_workspace' %}">{% translate "I work at a restaurant that uses it" %}</a>
+  </div>
+</section>
+
+{% if demo_orgs %}
+<section class="card">
+  <h2>{% translate "Try a demo restaurant" %}</h2>
+  <p class="small muted">{% translate "Open an example workspace and sign in with one tap." %}</p>
+  <div class="row">
+    {% for org in demo_orgs %}<a class="btn btn-secondary" href="{% url 'find_workspace' %}?slug={{ org.slug }}">{{ org.name }}</a>{% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<section class="pf-features">
+  <div><h3>{% translate "Time clock" %}</h3><p>{% translate "Clock in, breaks and clock out on the staff's own phones. Corrections keep a reason and the original times." %}</p></div>
+  <div><h3>{% translate "Checklists" %}</h3><p>{% translate "Opening, closing and cleaning lists with one-tap answers, temperatures and photos of problems." %}</p></div>
+  <div><h3>{% translate "Inventory" %}</h3><p>{% translate "Deliveries, use and waste with a full history and a low-stock list." %}</p></div>
+  <div><h3>{% translate "Manager dashboard" %}</h3><p>{% translate "Who is on shift, hours worked, open issues and flagged temperatures for each location." %}</p></div>
+  <div><h3>{% translate "Several locations" %}</h3><p>{% translate "Each location keeps its own data. Owners and staff switch between the locations they work at." %}</p></div>
+  <div><h3>{% translate "Optional website" %}</h3><p>{% translate "Add a public website with your menu, opening hours and promotions on larger plans." %}</p></div>
+</section>
+
+<section>
+  <h2>{% translate "Plans" %}</h2>
+  <div class="plans">
+    {% for plan in plans %}
+    <div class="plan-card">
+      <h3 style="margin:0">{{ plan.name }}</h3>
+      <span class="price">{{ plan.monthly_price }} €</span><span class="small muted">{% translate "per month" %}</span>
+      <ul class="small">
+        <li>{% blocktranslate count n=plan.max_locations %}{{ n }} location{% plural %}{{ n }} locations{% endblocktranslate %}</li>
+        <li>{% if plan.max_staff %}{% blocktranslate with n=plan.max_staff %}Up to {{ n }} active staff{% endblocktranslate %}{% else %}{% translate "Unlimited staff" %}{% endif %}</li>
+        <li>{% if plan.includes_website %}{% translate "Public website and menu" %}{% else %}{% translate "Internal operations only" %}{% endif %}</li>
+      </ul>
+      <a class="btn btn-secondary" href="{% url 'signup' %}?plan={{ plan.code }}">{% translate "Start free trial" %}</a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+<p class="small muted"><a href="{% url 'login' %}">{% translate "Platform administration" %}</a></p>
+{% endblock %}

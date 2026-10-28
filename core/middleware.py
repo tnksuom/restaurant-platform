@@ -9,7 +9,7 @@ class RestaurantTimezoneMiddleware:
 
     def __call__(self, request):
         user = getattr(request, "user", None)
-        if user is not None and user.is_authenticated:
+        if user is not None and user.is_authenticated and user.restaurant_id:
             timezone.activate(user.restaurant.tz)
         else:
             timezone.deactivate()

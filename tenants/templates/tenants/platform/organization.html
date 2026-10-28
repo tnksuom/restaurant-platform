@@ -1,0 +1,28 @@
+{% extends "tenants/platform/base.html" %}{% load i18n %}
+{% block title %}{{ org.name }}{% endblock %}
+{% block page_class %} page-wide{% endblock %}
+{% block content %}
+<p><a href="{% url 'platform:home' %}">← {% translate "Organizations" %}</a></p>
+<div class="spread"><h1>{{ org.name }}</h1>{% if open_url %}<a class="btn btn-secondary" href="{{ open_url }}" target="_blank" rel="noopener">{% translate "Open workspace" %}</a>{% endif %}</div>
+<p>{% include "tenants/platform/_status.html" %} · {{ org.plan.name }} · <span class="muted">{{ org.slug }}</span>{% if org.contact_email %} · {{ org.contact_email }}{% endif %}</p>
+<div class="cards">
+  <div class="card"><h3>{% translate "Locations" %}</h3><p class="big">{{ usage.locations }} / {{ usage.max_locations }}</p><p class="small">{% for l in locations %}{{ l.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p></div>
+  <div class="card"><h3>{% translate "Active staff" %}</h3><p class="big">{{ usage.staff }}{% if usage.max_staff %} / {{ usage.max_staff }}{% endif %}</p></div>
+  <div class="card"><h3>{% translate "Owners" %}</h3><p class="small">{% for o in owners %}{{ o.display_name }} ({{ o.login_identifier }}){% if not forloop.last %}<br>{% endif %}{% empty %}–{% endfor %}</p></div>
+</div>
+<div class="pf-admin-grid">
+  <form method="post" class="card stacked" novalidate>{% csrf_token %}<h2>{% translate "Plan" %}</h2><input type="hidden" name="action" value="plan">
+    {% with form=plan_form %}{% include "core/form_fields.html" %}{% endwith %}<button class="btn" type="submit">{% translate "Change plan" %}</button></form>
+  <form method="post" class="card stacked" novalidate>{% csrf_token %}<h2>{% translate "Status" %}</h2><input type="hidden" name="action" value="status">
+    {% with form=status_form %}{% include "core/form_fields.html" %}{% endwith %}<p class="small muted">{% translate "Suspended and cancelled workspaces are paused: staff see a notice, data is kept." %}</p><button class="btn" type="submit">{% translate "Save status" %}</button></form>
+  <form method="post" class="card stacked" novalidate>{% csrf_token %}<h2>{% translate "Trial" %}</h2><input type="hidden" name="action" value="trial">
+    {% with form=trial_form %}{% include "core/form_fields.html" %}{% endwith %}<button class="btn" type="submit">{% translate "Extend trial" %}</button></form>
+  <form method="post" class="card stacked">{% csrf_token %}<h2>{% translate "Modules" %}</h2><input type="hidden" name="action" value="modules">
+    {% with form=modules_form %}{% include "core/form_fields.html" %}{% endwith %}<button class="btn" type="submit">{% translate "Save modules" %}</button></form>
+</div>
+<h2>{% translate "History" %}</h2>
+<div class="table-wrap"><table><thead><tr><th scope="col">{% translate "When" %}</th><th scope="col">{% translate "Who" %}</th><th scope="col">{% translate "What" %}</th><th scope="col">{% translate "Details" %}</th></tr></thead><tbody>
+{% for e in events %}<tr><td>{{ e.created_at|date:"j.n.Y H:i" }}</td><td>{{ e.actor.display_name|default:"–" }}</td><td><code>{{ e.action }}</code></td><td class="small">{% for k, v in e.changes.items %}{{ k }}: {{ v }}{% if not forloop.last %}; {% endif %}{% endfor %}</td></tr>
+{% empty %}<tr><td colspan="4" class="muted">–</td></tr>{% endfor %}
+</tbody></table></div>
+{% endblock %}

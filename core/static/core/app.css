@@ -200,3 +200,16 @@ form.upload { margin-top: 12px; }
   .hours-form tr.error-row { padding-top: 0; }
 }
 .card > form + form, .card > form + h3 { margin-top: 12px; }
+
+/* Platform: location switcher, trial banner */
+.location-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 6px 16px; }
+.location-switch { display: flex; align-items: center; gap: 10px; max-width: 848px; margin: 0 auto; }
+.location-switch label { color: var(--muted); font-size: .9rem; }
+.location-switch select { min-height: 40px; flex: 1 1 auto; max-width: 360px; font: inherit; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); padding: 0 8px; }
+.trial-banner { background: var(--info-bg); padding: 8px 16px; text-align: center; font-size: .92rem; }
+.plans { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.plan-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; background: var(--surface); display: grid; gap: 6px; align-content: start; }
+.plan-card.current { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.plan-card .price { font-size: 1.5rem; font-weight: 700; }
+.meter { height: 8px; background: var(--info-bg); border-radius: 999px; overflow: hidden; }
+.meter i { display: block; height: 100%; background: var(--accent); }
