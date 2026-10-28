@@ -15,4 +15,5 @@ urlpatterns = [
     path("<int:pk>/deactivate/", views.staff_deactivate, name="deactivate"),
     path("<int:pk>/reactivate/", views.staff_reactivate, name="reactivate"),
     path("<int:pk>/setup-link/", views.staff_setup_link, name="setup_link"),
+    path("<int:pk>/locations/", views.staff_locations, name="locations"),
 ]

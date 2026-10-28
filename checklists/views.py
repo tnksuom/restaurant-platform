@@ -343,7 +343,7 @@ def history(request):
         {
             "page": page, "f": f, "statuses": ChecklistRun.Status.choices,
             "templates": ChecklistTemplate.objects.filter(restaurant=restaurant),
-            "staff": Employee.objects.filter(restaurant=restaurant) if manager else [],
+            "staff": Employee.objects.working_at(restaurant) if manager else [],
         },
     )
 

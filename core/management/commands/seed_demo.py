@@ -28,6 +28,8 @@ from inventory import services as inv
 from inventory.models import MovementType
 from staff import services as staff_services
 from staff.models import Employee, Role
+from tenants import services as tenant_services
+from tenants.models import Organization, Plan
 from timeclock import services as ts
 
 
@@ -64,12 +66,27 @@ class Command(BaseCommand):
         if Employee.objects.exists():
             raise CommandError("The database already has staff. Use an empty database for demo data.")
         with transaction.atomic():
+            from tenants.plans import ensure_default_plans
+
+            ensure_default_plans(Plan)  # demo_reset empties every table, plans included
             self.build(opts["password"])
-        self.stdout.write(self.style.SUCCESS("Demo data created. Sign in as owner, mia, linh, eero or sara."))
+            build_second_location(self.org, opts["password"])
+            build_trial_organization(opts["password"])
+            Employee.objects.create_platform_admin("admin", "Platform Admin", opts["password"])
+        self.stdout.write(self.style.SUCCESS(
+            "Demo data created: Bistro Demo (2 locations: owner, mia, hoa, linh, eero, sara), "
+            "Phở Corner (trial: minh, an) and the platform administrator (admin)."
+        ))
 
     def build(self, pw):
         tz_name = settings.DEFAULT_RESTAURANT_TIME_ZONE
-        r = Restaurant.objects.create(name="Bistro Demo", time_zone=tz_name)
+        org = Organization.objects.create(
+            name="Bistro Demo", slug="bistro-demo", plan=Plan.objects.get(code="pro"),
+            status=Organization.Status.ACTIVE, module_menu=True, module_website=True,
+            contact_email="hello@example.com",
+        )
+        self.org = org
+        r = Restaurant.objects.create(organization=org, name="Bistro Demo", time_zone=tz_name)
         tz = r.tz
         real_now = timezone.now()
         today = real_now.astimezone(tz).date()
@@ -397,3 +414,44 @@ def placeholder_logo():
     buf = io.BytesIO()
     img.save(buf, "PNG")
     return buf.getvalue()
+
+
+# ------------------------------------------------------------------ platform demo extras
+
+def build_second_location(org, pw):
+    """Bistro Demo's second location, with its own manager, stock and checklist."""
+    owner = Employee.objects.get(organization=org, login_identifier="owner")
+    lahti = tenant_services.add_location(owner, "Bistro Demo Lahti")
+    hoa = Employee.objects.create_user(lahti, "hoa", "Hoa Pham", Role.MANAGER, password=pw)
+    linh = Employee.objects.get(organization=org, login_identifier="linh")
+    linh.locations.add(lahti)  # works at both locations
+    for name, cat, unit, opening, minimum in [
+        ("Jasmine rice", "ingredient", "kg", "18", "8"), ("Rice noodles", "ingredient", "kg", "3", "4"),
+        ("Takeaway boxes", "packaging", "pcs", "260", "150"),
+    ]:
+        inv.create_item(hoa, name=name, category=cat, unit=unit, opening_quantity=opening,
+                        minimum_quantity=minimum, supplier_name="Kespro")
+    cs.save_template(hoa, None, title="Opening (Lahti)", kind="OPENING", tasks=[
+        {"text": "Unlock and switch off alarm", "response_type": "CONFIRMATION", "required": True},
+        {"text": "Fridge temperature", "response_type": "TEMPERATURE", "required": True,
+         "equipment_or_location": "Fridge", "min_temperature": Decimal("0"), "max_temperature": Decimal("5")},
+        {"text": "Tables and chairs clean", "response_type": "PASS_FAIL", "required": True},
+    ])
+
+def build_trial_organization(pw):
+    """A second, smaller customer on a trial of the Starter plan (internal operations only)."""
+    org, location, minh = tenant_services.create_organization(
+        name="Phở Corner", slug="pho-corner", plan=Plan.objects.get(code="starter"),
+        location_name="Phở Corner", owner_name="Minh Tran", owner_login="minh", owner_password=pw,
+        time_zone=settings.DEFAULT_RESTAURANT_TIME_ZONE, contact_email="minh@example.com",
+    )
+    org.trial_ends_on = timezone.now().date() + timedelta(days=9)
+    org.save(update_fields=["trial_ends_on"])
+    an = staff_services.create_employee(minh, "An Le", "an", Role.EMPLOYEE)
+    an.set_password(pw)
+    an.save()
+    cs.save_template(minh, None, title=OPENING_CHECKLIST_TITLE, kind="OPENING", tasks=opening_tasks())
+    for name, unit, opening, minimum in [("Bánh phở", "kg", "12", "5"), ("Beef bones", "kg", "6", "8"),
+                                         ("Star anise", "kg", "1", "0.2")]:
+        inv.create_item(minh, name=name, category="ingredient", unit=unit, opening_quantity=opening,
+                        minimum_quantity=minimum, supplier_name="Asia Market Oy")

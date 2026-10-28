@@ -1,0 +1,12 @@
+{% extends "tenants/platform/base.html" %}{% load i18n %}
+{% block title %}{% translate "Staff sign-in" %} · {{ platform_name }}{% endblock %}
+{% block content %}
+<div class="card" style="max-width:440px;margin:40px auto">
+  <h1>{% translate "Find your workspace" %}</h1>
+  <p class="small muted">{% translate "Enter your restaurant's workspace address. Your manager can tell you what it is." %}</p>
+  <form method="post" class="stacked" novalidate>{% csrf_token %}
+    {% include "core/form_fields.html" %}
+    <button class="btn btn-block" type="submit">{% translate "Continue" %}</button>
+  </form>
+</div>
+{% endblock %}

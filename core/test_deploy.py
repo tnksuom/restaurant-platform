@@ -1,4 +1,4 @@
-"""Deployment-related tests: owner bootstrap, health check, production settings helpers."""
+"""Deployment-related tests: platform admin bootstrap, health check, production settings helpers."""
 import io
 import os
 from unittest import mock
@@ -8,44 +8,43 @@ from django.test import TestCase, override_settings
 from django.urls import reverse
 
 from config.settings import database_from_url
-from core.models import AuditEvent, Restaurant
-from staff.models import Employee, Role
+from core.models import Restaurant
+from staff.models import Employee
 
 
-def run_ensure_owner(**env):
+def run_ensure_admin(**env):
     out = io.StringIO()
-    keys = ["INITIAL_OWNER_LOGIN", "INITIAL_OWNER_NAME", "INITIAL_OWNER_PASSWORD", "INITIAL_RESTAURANT_NAME"]
+    keys = ["INITIAL_ADMIN_LOGIN", "INITIAL_ADMIN_NAME", "INITIAL_ADMIN_PASSWORD"]
     clean = {k: v for k, v in os.environ.items() if k not in keys}
     with mock.patch.dict(os.environ, {**clean, **env}, clear=True):
-        call_command("ensure_owner", stdout=out)
+        call_command("ensure_platform_admin", stdout=out)
     return out.getvalue()
 
 
-class EnsureOwnerTests(TestCase):
-    def test_creates_owner_and_restaurant_once(self):
-        msg = run_ensure_owner(INITIAL_OWNER_LOGIN="Boss@Example.com", INITIAL_OWNER_NAME="Olli",
-                               INITIAL_OWNER_PASSWORD="Kitchen-Door-2026", INITIAL_RESTAURANT_NAME="Bistro Real")
-        owner = Employee.objects.get()
-        self.assertEqual((owner.login_identifier, owner.role, owner.restaurant.name),
-                         ("boss@example.com", Role.OWNER, "Bistro Real"))
-        self.assertTrue(owner.check_password("Kitchen-Door-2026"))
+class EnsurePlatformAdminTests(TestCase):
+    def test_creates_platform_admin_once(self):
+        msg = run_ensure_admin(INITIAL_ADMIN_LOGIN="Boss@Example.com", INITIAL_ADMIN_NAME="Olli",
+                               INITIAL_ADMIN_PASSWORD="Kitchen-Door-2026")
+        admin = Employee.objects.get()
+        self.assertEqual((admin.login_identifier, admin.is_platform_admin, admin.organization, admin.restaurant),
+                         ("boss@example.com", True, None, None))
+        self.assertTrue(admin.check_password("Kitchen-Door-2026"))
         self.assertNotIn("Kitchen-Door-2026", msg)
-        self.assertIn("remove INITIAL_OWNER_PASSWORD", msg)
-        self.assertTrue(AuditEvent.objects.filter(action="employee.owner_provisioned").exists())
+        self.assertIn("remove INITIAL_ADMIN_PASSWORD", msg)
         # Running again (every deploy) changes nothing, even with a different password set.
-        again = run_ensure_owner(INITIAL_OWNER_LOGIN="other", INITIAL_OWNER_PASSWORD="Another-Pass-2026")
+        again = run_ensure_admin(INITIAL_ADMIN_LOGIN="other", INITIAL_ADMIN_PASSWORD="Another-Pass-2026")
         self.assertEqual(Employee.objects.count(), 1)
         self.assertIn("already exists", again)
-        self.assertEqual(Restaurant.objects.count(), 1)
+        self.assertFalse(Restaurant.objects.exists())
 
     def test_does_nothing_without_variables(self):
-        msg = run_ensure_owner()
+        msg = run_ensure_admin()
         self.assertFalse(Employee.objects.exists())
-        self.assertIn("Set INITIAL_OWNER_LOGIN", msg)
+        self.assertIn("Set INITIAL_ADMIN_LOGIN", msg)
 
     def test_rejects_weak_password_without_printing_it(self):
         with self.assertRaises(CommandError) as ctx:
-            run_ensure_owner(INITIAL_OWNER_LOGIN="boss", INITIAL_OWNER_PASSWORD="password1")
+            run_ensure_admin(INITIAL_ADMIN_LOGIN="boss", INITIAL_ADMIN_PASSWORD="password1")
         self.assertNotIn("password1", str(ctx.exception))
         self.assertFalse(Employee.objects.exists())
 

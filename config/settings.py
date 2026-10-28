@@ -50,6 +50,27 @@ for _host in ALLOWED_HOSTS:
         if _origin not in CSRF_TRUSTED_ORIGINS:
             CSRF_TRUSTED_ORIGINS.append(_origin)
 
+# --- Platform / multi-tenancy -------------------------------------------------------------
+# The domain the platform runs on, e.g. "ravintola-app.fi". Each organization gets
+# <slug>.<PLATFORM_DOMAIN> when TENANT_SUBDOMAINS is on (needs a wildcard DNS record and
+# certificate). Without wildcard subdomains (local development, a free *.onrender.com host)
+# the organization is chosen once by its code and remembered in the session.
+PLATFORM_DOMAIN = env("PLATFORM_DOMAIN", "localhost").lower().strip(".")
+TENANT_SUBDOMAINS = env_bool("TENANT_SUBDOMAINS", False)
+# Optional: serve this organization when the host names none (a single-restaurant install).
+TENANT_DEFAULT_SLUG = env("TENANT_DEFAULT_SLUG", "") or None
+TRIAL_DAYS = int(env("TRIAL_DAYS", 14))
+PLATFORM_NAME = env("PLATFORM_NAME", "Restaurant Platform")
+PLATFORM_CONTACT_EMAIL = env("PLATFORM_CONTACT_EMAIL", "")
+if TENANT_SUBDOMAINS:
+    for _h in (PLATFORM_DOMAIN, "." + PLATFORM_DOMAIN):
+        if _h not in ALLOWED_HOSTS:
+            ALLOWED_HOSTS.append(_h)
+    _wild = f"https://*.{PLATFORM_DOMAIN}"
+    for _o in (f"https://{PLATFORM_DOMAIN}", _wild):
+        if _o not in CSRF_TRUSTED_ORIGINS:
+            CSRF_TRUSTED_ORIGINS.append(_o)
+
 INSTALLED_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -57,6 +78,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "core",
+    "tenants",
     "staff",
     "inventory",
     "checklists",
@@ -71,10 +93,12 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "tenants.middleware.TenantMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "tenants.middleware.TenantAccessMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.contrib.auth.middleware.LoginRequiredMiddleware",
@@ -96,6 +120,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "core.context_processors.navigation",
+                "tenants.context_processors.platform",
             ],
         },
     },
@@ -157,7 +182,11 @@ SECURE_HSTS_SECONDS = int(env("DJANGO_HSTS_SECONDS", 0 if DEBUG else 60 * 60 * 2
 SECURE_HSTS_INCLUDE_SUBDOMAINS = False  # a custom domain's other subdomains are not ours to decide
 SECURE_REFERRER_POLICY = "same-origin"
 # HSTS for subdomains/preload is left to the owner of a custom domain, who may run other sites on it.
-SILENCED_SYSTEM_CHECKS = ["security.W005", "security.W021"]
+SILENCED_SYSTEM_CHECKS = [
+    "security.W005", "security.W021",
+    # Login names are unique per organization; staff.backends.EmployeeBackend looks them up that way.
+    "auth.W004",
+]
 
 LANGUAGE_CODE = "en"
 LANGUAGES = [("en", "English"), ("fi", "Suomi"), ("vi", "Tiếng Việt")]
@@ -223,3 +252,9 @@ if len(sys.argv) > 1 and sys.argv[1] == "test":
     STORAGES["staticfiles"]["BACKEND"] = "django.contrib.staticfiles.storage.StaticFilesStorage"
     SECURE_SSL_REDIRECT = False
     MIDDLEWARE = [m for m in MIDDLEWARE if m != "whitenoise.middleware.WhiteNoiseMiddleware"]
+    # Existing feature tests run inside one organization (core.testing.make_restaurant creates it).
+    # Platform tests switch this off to exercise sub-domains and the workspace chooser.
+    PLATFORM_DOMAIN = "testserver"
+    TENANT_SUBDOMAINS = True
+    TENANT_DEFAULT_SLUG = "test-bistro"
+    ALLOWED_HOSTS = ["testserver", ".testserver", "localhost"]

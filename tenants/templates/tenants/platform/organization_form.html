@@ -1,0 +1,13 @@
+{% extends "tenants/platform/base.html" %}{% load i18n %}
+{% block title %}{% translate "New organization" %}{% endblock %}
+{% block content %}
+<p><a href="{% url 'platform:home' %}">← {% translate "Organizations" %}</a></p>
+<div class="card" style="max-width:560px">
+  <h1>{% translate "New organization" %}</h1>
+  <p class="small muted">{% translate "Creates the organization, its first location and the owner's account. Give the owner their workspace address, login name and password." %}</p>
+  <form method="post" class="stacked" novalidate>{% csrf_token %}
+    {% include "core/form_fields.html" %}
+    <button class="btn" type="submit">{% translate "Create organization" %}</button>
+  </form>
+</div>
+{% endblock %}

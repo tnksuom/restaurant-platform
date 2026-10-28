@@ -1,0 +1,32 @@
+{% load i18n static %}<!doctype html>
+<html lang="{{ LANGUAGE_CODE|default:'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ platform_name }}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'core/app.css' %}">
+  <link rel="stylesheet" href="{% static 'tenants/platform.css' %}">
+  <script src="{% static 'core/app.js' %}" defer></script>
+</head>
+<body class="platform">
+<a class="skip" href="#main">{% translate "Skip to content" %}</a>
+{% if demo_mode %}<div class="demo-banner" role="note">{% translate "Demo platform with example restaurants. Changes are reset when the demo restarts." %}</div>{% endif %}
+<header class="topbar">
+  <a class="brand" href="{% url 'landing' %}">{{ platform_name }}</a>
+  {% include "core/language_switcher.html" %}
+  <nav class="platform-nav" aria-label="{% translate 'Main' %}">
+    {% if user.is_authenticated and user.is_platform_admin %}
+      <a href="{% url 'platform:home' %}">{% translate "Organizations" %}</a>
+      <form method="post" action="{% url 'logout' %}">{% csrf_token %}<button type="submit" class="linklike">{% translate "Sign out" %}</button></form>
+    {% else %}
+      <a href="{% url 'find_workspace' %}">{% translate "Staff sign-in" %}</a>
+      <a class="btn" href="{% url 'signup' %}">{% translate "Start free trial" %}</a>
+    {% endif %}
+  </nav>
+</header>
+<main id="main" class="page{% block page_class %}{% endblock %}">
+  {% if messages %}<div class="messages" role="status" aria-live="polite">{% for message in messages %}<p class="msg msg-{{ message.tags }}">{{ message }}</p>{% endfor %}</div>{% endif %}
+  {% block content %}{% endblock %}
+</main>
+</body>
+</html>

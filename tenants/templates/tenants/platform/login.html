@@ -1,0 +1,13 @@
+{% extends "tenants/platform/base.html" %}{% load i18n %}
+{% block title %}{% translate "Platform administration" %}{% endblock %}
+{% block content %}
+<div class="card" style="max-width:420px;margin:40px auto">
+  <h1>{% translate "Platform administration" %}</h1>
+  <p class="small muted">{% translate "For the platform team only. Restaurant staff sign in at their workspace." %} <a href="{% url 'find_workspace' %}">{% translate "Find your workspace" %}</a></p>
+  <form method="post" class="stacked" novalidate>{% csrf_token %}
+    {% include "core/form_fields.html" %}
+    <input type="hidden" name="next" value="{{ next }}">
+    <button type="submit" class="btn btn-block">{% translate "Sign in" %}</button>
+  </form>
+</div>
+{% endblock %}

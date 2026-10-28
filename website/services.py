@@ -20,9 +20,10 @@ from core.timeutils import business_today, now
 from .models import GalleryImage, OpeningHours, Period, PublicProfile, Promotion, SpecialDay
 
 
-def public_restaurant():
-    """The single restaurant this installation serves (V1 has one location)."""
-    return Restaurant.objects.order_by("pk").first()
+def public_restaurant(request):
+    """The location whose public website this request shows: the organization's first location."""
+    tenant = getattr(request, "tenant", None)
+    return tenant.primary_location() if tenant is not None else None
 
 
 def profile_for(restaurant):
@@ -490,8 +491,8 @@ def delete_gallery_image(actor, image_id):
     transaction.on_commit(lambda: site_store().delete(key))
 
 
-def is_public_site_image(key):
+def is_public_site_image(key, organization):
     return (
-        PublicProfile.objects.filter(Q(logo_key=key) | Q(hero_key=key)).exists()
-        or GalleryImage.objects.filter(key=key).exists()
+        PublicProfile.objects.filter(Q(logo_key=key) | Q(hero_key=key), restaurant__organization=organization).exists()
+        or GalleryImage.objects.filter(key=key, restaurant__organization=organization).exists()
     )

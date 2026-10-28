@@ -157,6 +157,6 @@ def history(request):
         {
             "page": page, "filters": filters, "types": MovementType.choices,
             "items": InventoryItem.objects.filter(restaurant=restaurant).order_by("name"),
-            "staff": Employee.objects.filter(restaurant=restaurant).order_by("display_name"),
+            "staff": Employee.objects.working_at(restaurant).order_by("display_name"),
         },
     )

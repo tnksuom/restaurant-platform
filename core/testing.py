@@ -4,15 +4,34 @@ from datetime import datetime
 from unittest import mock
 from zoneinfo import ZoneInfo
 
+from django.utils.text import slugify
+
 from core.models import Restaurant
 from staff.models import Employee, Role
+from tenants.models import Organization, Plan
 
 HEL = ZoneInfo("Europe/Helsinki")
 PASSWORD = "Correct-Horse-42"
 
 
-def make_restaurant(name="Test Bistro"):
-    return Restaurant.objects.create(name=name, time_zone="Europe/Helsinki")
+def make_organization(name="Test Bistro", slug=None, plan="business", status=Organization.Status.ACTIVE, **extra):
+    """An organization with every module on (the Business plan includes the website)."""
+    from tenants.plans import ensure_default_plans
+
+    ensure_default_plans(Plan)  # TransactionTestCase empties the table between tests
+    defaults = {"module_menu": True, "module_website": True}
+    defaults.update(extra)
+    if status == Organization.Status.TRIAL:
+        defaults.setdefault("trial_ends_on", Organization.trial_end_from(datetime.now(HEL).date()))
+    return Organization.objects.create(
+        name=name, slug=slug or slugify(name), plan=Plan.objects.get(code=plan), status=status, **defaults
+    )
+
+
+def make_restaurant(name="Test Bistro", organization=None):
+    """A location. Without an organization it gets its own one, named and addressed after it."""
+    organization = organization or make_organization(name)
+    return Restaurant.objects.create(organization=organization, name=name, time_zone="Europe/Helsinki")
 
 
 def make_employee(restaurant, login, role=Role.EMPLOYEE, name=None, password=PASSWORD, active=True):

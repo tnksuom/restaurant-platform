@@ -15,13 +15,17 @@ from .models import Employee, Role, normalize_identifier
 
 
 def can_manage(actor, target):
-    """May `actor` edit/deactivate `target`?"""
-    if not actor.is_active or actor.restaurant_id != target.restaurant_id:
+    """May `actor` edit/deactivate `target`?
+
+    Same organization only. Owners manage everyone in it; managers manage the
+    non-owners who work at the location they are in.
+    """
+    if not actor.is_active or actor.is_platform_admin or actor.organization_id != target.organization_id:
         return False
     if actor.role == Role.OWNER:
         return True
     if actor.role == Role.MANAGER:
-        return target.role != Role.OWNER
+        return target.role != Role.OWNER and target.works_at(actor.restaurant)
     return False
 
 
@@ -38,8 +42,8 @@ def _require(condition):
         raise PermissionDenied
 
 
-def _check_identifier_free(restaurant, identifier, exclude_pk=None):
-    qs = Employee.objects.filter(login_identifier__iexact=identifier)
+def _check_identifier_free(organization, identifier, exclude_pk=None):
+    qs = Employee.objects.filter(organization=organization, login_identifier__iexact=identifier)
     if exclude_pk:
         qs = qs.exclude(pk=exclude_pk)
     if qs.exists():
@@ -55,7 +59,10 @@ def create_employee(actor, display_name, login_identifier, role, phone=""):
         raise ValidationError({"display_name": _("Enter a name.")})
     if not identifier:
         raise ValidationError({"login_identifier": _("Enter a login name.")})
-    _check_identifier_free(actor.restaurant, identifier)
+    _check_identifier_free(actor.organization, identifier)
+    from tenants.services import check_can_add_staff
+
+    check_can_add_staff(actor.organization)
     try:
         with transaction.atomic():
             employee = Employee.objects.create_user(
@@ -87,16 +94,16 @@ def update_details(actor, target, display_name, phone):
     return target
 
 
-def _lock_active_owners(restaurant):
+def _lock_active_owners(organization_id):
     return list(
         Employee.objects.select_for_update()
-        .filter(restaurant=restaurant, role=Role.OWNER, is_active=True)
+        .filter(organization_id=organization_id, role=Role.OWNER, is_active=True)
         .order_by("pk")
     )
 
 
 def _would_remove_last_owner(target):
-    owners = _lock_active_owners(target.restaurant)
+    owners = _lock_active_owners(target.organization_id)
     return target.role == Role.OWNER and target.is_active and len(owners) <= 1
 
 
@@ -157,6 +164,9 @@ def reactivate(actor, target):
     _require(can_manage(actor, target))
     if target.is_active:
         return target
+    from tenants.services import check_can_add_staff
+
+    check_can_add_staff(target.organization)
     target.is_active = True
     target.deactivated_at = None
     target.save(update_fields=["is_active", "deactivated_at", "updated_at"])
@@ -174,5 +184,9 @@ def issue_setup_link(actor, target, request=None):
     uid = urlsafe_base64_encode(force_bytes(target.pk))
     token = default_token_generator.make_token(target)
     path = reverse("set_password", args=[uid, token])
+    from django.conf import settings
+
+    if not settings.TENANT_SUBDOMAINS:  # single-domain hosts: the link has to say which workspace
+        path += f"?workspace={target.organization.slug}"
     audit.record(actor, "employee.setup_link_issued", target)
     return request.build_absolute_uri(path) if request else path

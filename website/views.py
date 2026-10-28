@@ -22,7 +22,7 @@ from .models import GalleryImage, OpeningHours, PublicProfile, Promotion, Specia
 
 def _site(request):
     """Context shared by every public page."""
-    restaurant = services.public_restaurant()
+    restaurant = services.public_restaurant(request)
     if restaurant is None:
         return None
     profile = services.profile_for(restaurant)
@@ -78,7 +78,7 @@ def _structured_data(request, site):
 
 @login_not_required
 def home(request):
-    restaurant = services.public_restaurant()
+    restaurant = services.public_restaurant(request)
     promotions = services.active_promotions(restaurant) if restaurant else []
     featured = []
     if restaurant:
@@ -93,7 +93,7 @@ def home(request):
 
 @login_not_required
 def menu(request):
-    restaurant = services.public_restaurant()
+    restaurant = services.public_restaurant(request)
     sections = menu_services.public_menu(restaurant) if restaurant else []
     used = {a for s in sections for i in s["items"] for a in i.diet_labels}
     legend = [(c, l) for c, l in DietLabel.choices if c in used]
@@ -105,7 +105,7 @@ def menu(request):
 
 @login_not_required
 def contact(request):
-    restaurant = services.public_restaurant()
+    restaurant = services.public_restaurant(request)
     week = services.weekly_hours(restaurant) if restaurant else []
     special_days = services.upcoming_special_days(restaurant) if restaurant else []
     return _render(request, "website/contact.html", {"week": week, "special_days": special_days, "page": "contact"})
@@ -114,11 +114,11 @@ def contact(request):
 @login_not_required
 def image(request, key):
     """Serve a public image by key. Photos of unpublished or hidden dishes are only shown to managers."""
-    item = MenuItem.objects.filter(photo_key=key).first()
+    item = MenuItem.objects.filter(photo_key=key, restaurant__organization=request.tenant).first()
     if item is not None:
         if not menu_services.can_view_photo(request.user, item):
             raise Http404
-    elif not services.is_public_site_image(key):
+    elif not services.is_public_site_image(key, request.tenant):
         raise Http404
     store = ImageStore(menu_services.public_store().root())
     try:

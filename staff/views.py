@@ -16,7 +16,7 @@ from django.views.decorators.http import require_POST
 
 from core import audit
 from core.models import AuditEvent
-from core.permissions import is_manager, manager_required
+from core.permissions import is_manager, is_owner, manager_required, owner_required
 from timeclock.models import Shift
 
 from . import services
@@ -39,14 +39,17 @@ class LoginView(auth_views.LoginView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        if settings.DEMO_MODE:
+        if settings.DEMO_MODE and self.request.tenant is not None:
+            from core.demo_content import DEMO_ORGANIZATIONS
+
+            roles = {
+                "owner": _("Owner"), "manager": _("Manager"), "employee": _("Employee"),
+                "manager_lahti": _("Manager · Lahti"), "employee_two": _("Employee · two locations"),
+                "employee_break": _("Employee · on a break"),
+            }
+            accounts = next((d["accounts"] for d in DEMO_ORGANIZATIONS if d["slug"] == self.request.tenant.slug), [])
             context["demo_password"] = settings.DEMO_PASSWORD
-            context["demo_accounts"] = [
-                ("owner", "Olli Owner", _("Owner")),
-                ("mia", "Mia Virtanen", _("Manager")),
-                ("linh", "Linh Nguyen", _("Employee")),
-                ("eero", "Eero Korhonen", _("Employee · on a break")),
-            ]
+            context["demo_accounts"] = [(login, name, roles[role]) for login, name, role in accounts]
         return context
 
 
@@ -61,7 +64,7 @@ def logout_view(request):
 def set_password(request, uidb64, token):
     try:
         pk = force_str(urlsafe_base64_decode(uidb64))
-        employee = Employee.objects.get(pk=pk, is_active=True)
+        employee = Employee.objects.get(pk=pk, is_active=True, organization=request.tenant)
     except (ValueError, TypeError, OverflowError, Employee.DoesNotExist):
         employee = None
     if employee is None or not default_token_generator.check_token(employee, token):
@@ -76,12 +79,12 @@ def set_password(request, uidb64, token):
 
 
 def _get_target(request, pk):
-    return get_object_or_404(Employee, pk=pk, restaurant=request.user.restaurant)
+    return get_object_or_404(Employee.objects.working_at(request.user.restaurant), pk=pk)
 
 
 @manager_required
 def staff_list(request):
-    qs = Employee.objects.filter(restaurant=request.user.restaurant).annotate(
+    qs = Employee.objects.working_at(request.user.restaurant).annotate(
         on_shift=Exists(Shift.objects.filter(employee=OuterRef("pk"), status=Shift.Status.OPEN))
     )
     q = request.GET.get("q", "").strip()
@@ -139,8 +142,39 @@ def staff_detail(request, pk):
             "open_shift": open_shift,
             "history": history,
             "is_self": target.pk == request.user.pk,
+            "locations": _location_choices(request.user, target),
         },
     )
+
+
+def _location_choices(actor, target):
+    """For owners (and only when the organization has several locations): every location, ticked or not."""
+    if not is_owner(actor) or target.role == Role.OWNER:
+        return None
+    all_locations = list(actor.organization.restaurants.order_by("name", "pk"))
+    if len(all_locations) < 2:
+        return None
+    mine = set(target.locations.values_list("pk", flat=True))
+    return [(loc, loc.pk in mine) for loc in all_locations]
+
+
+@owner_required
+@require_POST
+def staff_locations(request, pk):
+    target = get_object_or_404(Employee, pk=pk, organization=request.tenant)
+    from tenants.services import set_staff_locations
+
+    try:
+        ids = [int(v) for v in request.POST.getlist("locations")]
+        set_staff_locations(request.user, target, ids)
+    except ValueError:
+        raise Http404
+    except ValidationError as exc:
+        for m in exc.messages:
+            messages.error(request, m)
+    else:
+        messages.success(request, _("Locations saved."))
+    return redirect("staff:detail", pk=target.pk)
 
 
 def my_profile(request):

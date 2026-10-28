@@ -4,6 +4,7 @@ from django.views.i18n import set_language
 
 from core import views as core_views
 from staff import views as staff_views
+from tenants import views as tenant_views
 
 urlpatterns = [
     path("healthz", core_views.healthz, name="healthz"),
@@ -20,6 +21,9 @@ urlpatterns = [
     path("time/", include("timeclock.urls")),
     path("dashboard/", include("dashboard.urls")),
     path("menu-admin/", include("menu.urls")),
+    # Organization settings (owners): locations, plan and modules
+    path("org/", include("tenants.urls")),
+    path("leave/", tenant_views.leave_workspace, name="leave_workspace"),
     # Public website (EP01/EP02): home, menu, contact, images, promotions admin
     path("", include("website.urls")),
 ]
