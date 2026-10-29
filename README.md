@@ -20,7 +20,8 @@ Platform (one installation, one database)
 - **Data separation.** One shared PostgreSQL database. Every operational row already carried `restaurant_id` (a location); every location now belongs to an organization. Each request is tied to one organization by its host name (`<slug>.<domain>`) or, on hosts without wildcard sub-domains, by the workspace chosen on the "Staff sign-in" page. A signed-in person is only ever served inside their own organization; anything else signs them out. Login names are unique per organization, so "anna" can exist in many restaurants.
 - **Locations.** Owners add locations up to their plan's limit and choose where each person works. Everyone switches between their locations from the bar under the header; every screen shows the current location's data.
 - **Plans and limits.** Plans set the number of locations, active staff and whether the website and menu are included. Prices are placeholders (29 / 59 / 99 € a month) to change before launch. New sign-ups get a 14-day trial; when it ends, the workspace pauses (data kept) until the platform admin activates it. Card payments are not built in yet: the admin sets a workspace to *Active* after payment.
-- **Modules.** Owners switch modules on and off for their organization; switched-off modules disappear from the menu and their pages return 404, with data kept.
+- **Modules.** Owners switch modules on and off for their organization; switched-off modules disappear from the navigation and their pages return 404, with data kept.
+- **Navigation.** The staff app's **☰ Navigation** groups pages by area: Time tracking, Checklists, Inventory, Team, Food menu and website, Business (owners) and Account. Each person sees only the groups for their role and the switched-on modules. In the staff app the dish editor is called *Food menu*, so it isn't confused with the navigation; the public website keeps *Menu*. **Sign out** sits in the top bar on every staff page.
 
 ## Stack
 
@@ -125,12 +126,14 @@ The tests cover the spec's minimum verification list:
 - **Smoke test:** every screen renders for owner, manager and employee.
 - **Platform (`tenants/tests.py`):** the same login name in two organizations signs in to the right one; a session from one organization is signed out on another; staff, stock and public images of another organization return 404; location limits, switching and assignment; managers only manage their own location's staff; staff limits on new and reactivated staff; plan changes; ended trials and suspensions pause the workspace; switched-off modules disappear; sign-up on sub-domains and on a single domain; the workspace finder and password links on a single domain; platform admin sign-in, status, trial and plan changes; the append-only platform history; and migrating a database from the single-restaurant app.
 
+- **Navigation (`core/test_navigation.py`):** Sign out in the top bar and working; the groups each role sees; switched-off modules hide their whole group; the toggle is called *Navigation* and the dish editor *Food menu*.
+
 ## Manual test path
 
 This follows the spec's walkthrough.
 
 1. Sign in as the owner. Go to **Staff → Add staff member** and create a Manager and an Employee. Each gets a one-time link; open it in a private window to set that person's password.
-2. As the Employee, open **Menu**. There is no Staff entry, and `/staff/` returns *403 Forbidden*.
+2. As the Employee, open **☰ Navigation**. There is no *Team* group, and `/staff/` returns *403 Forbidden*. **Sign out** is always in the top bar.
 3. As the Manager, go to **Inventory → Add item** and create *Rice*, kg, opening 5, minimum 5. It shows **Low stock**.
 4. As the Employee, open *Rice* and record:
    - Received 2
@@ -198,10 +201,10 @@ All 46 stories are implemented: the MVP release (EP01–EP07, 42 stories) and EP
 | US-02.04 Disable menu item | Done | "Mark unavailable" / "Mark available" on each dish. Each dish chooses whether it is then shown as "Not available today" or hidden. |
 | US-02.05 Manage menu categories | Done | Add, rename, reorder (up/down) and delete when empty. Dishes appear under their category and can be reordered too. |
 | US-02.06 Upload dish photo | Done | JPEG, PNG or WebP up to 10 MB, with a preview before saving. Replace or remove later; the old file is deleted. Photos are re-encoded (metadata stripped) and scaled down. Photos of draft dishes are not public. |
-| US-08.01 Manage restaurant information | Done | Owner only: **Menu → Restaurant details** (`/manage/restaurant/`). Name, tagline, introduction, address, phone and email; they appear on the homepage, contact page and footer straight away. Address and city go together; phone and email are checked. Changes are audited field by field. |
-| US-08.02 Manage opening hours | Done | Owner only: **Menu → Opening hours** (`/manage/hours/`). Up to two periods per weekday (e.g. lunch and dinner); an empty day shows "Closed". Periods past midnight are allowed, but not into the next day's opening. Overlaps and half-filled times are explained per day and nothing is saved. |
+| US-08.01 Manage restaurant information | Done | Owner only: **Navigation → Food menu and website → Restaurant details** (`/manage/restaurant/`). Name, tagline, introduction, address, phone and email; they appear on the homepage, contact page and footer straight away. Address and city go together; phone and email are checked. Changes are audited field by field. |
+| US-08.02 Manage opening hours | Done | Owner only: **Navigation → Food menu and website → Opening hours** (`/manage/hours/`). Up to two periods per weekday (e.g. lunch and dinner); an empty day shows "Closed". Periods past midnight are allowed, but not into the next day's opening. Overlaps and half-filled times are explained per day and nothing is saved. |
 | US-08.03 Manage special opening hours | Done | Same page, **Add special hours**: a date that is closed all day or has one or two periods, with an optional note ("Christmas Eve"). It replaces the regular hours on that date in the "Open now" status, the contact page (next 60 days) and search-engine data. One entry per date; dates in the past are refused. |
-| US-08.04 Manage restaurant images | Done | Owner only: **Menu → Website images** (`/manage/images/`). Logo (scaled to 512 px), homepage photo and a gallery of up to 8 photos shown on the homepage; upload, replace, reorder and remove. The homepage and gallery photos need a short description for screen readers. Photos are re-encoded like dish photos, and a replaced or removed file is deleted and no longer served. |
+| US-08.04 Manage restaurant images | Done | Owner only: **Navigation → Food menu and website → Website images** (`/manage/images/`). Logo (scaled to 512 px), homepage photo and a gallery of up to 8 photos shown on the homepage; upload, replace, reorder and remove. The homepage and gallery photos need a short description for screen readers. Photos are re-encoded like dish photos, and a replaced or removed file is deleted and no longer served. |
 
 ## Design decisions and assumptions
 
