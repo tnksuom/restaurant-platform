@@ -1,6 +1,6 @@
 {% extends "base.html" %}{% load i18n %}
 {% block content %}
-<p><a href="{% url 'menu:overview' %}">← {% translate "Menu" %}</a></p>
+<p><a href="{% url 'menu:overview' %}">← {% translate "Food menu" %}</a></p>
 <h1>{% blocktranslate with n=category.name %}Category: {{ n }}{% endblocktranslate %}</h1>
 <div class="card">
   <form method="post" class="stacked" novalidate>{% csrf_token %}

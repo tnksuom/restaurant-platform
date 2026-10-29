@@ -1,8 +1,8 @@
 {% extends "base.html" %}{% load i18n ops %}
-{% block title %}{% translate "Menu" %}{% endblock %}
+{% block title %}{% translate "Food menu" %}{% endblock %}
 {% block content %}
 <div class="spread">
-  <h1>{% translate "Menu" %}</h1>
+  <h1>{% translate "Food menu" %}</h1>
   <div class="row">
     <a class="btn btn-secondary" href="{% url 'website:menu' %}" target="_blank" rel="noopener">{% translate "View public menu" %}</a>
     {% if sections %}<a class="btn" href="{% url 'menu:item_create' %}">{% translate "Add dish" %}</a>{% endif %}

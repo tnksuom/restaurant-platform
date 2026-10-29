@@ -12,7 +12,7 @@ TIME_ZONES = [
 ]
 MODULE_LABELS = {
     "timeclock": _("Time clock"), "checklists": _("Checklists"), "inventory": _("Inventory"),
-    "menu": _("Menu"), "website": _("Public website"),
+    "menu": _("Food menu"), "website": _("Public website"),
 }
 
 
