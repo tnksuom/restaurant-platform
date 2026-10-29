@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-28 20:02+0000\n"
+"POT-Creation-Date: 2026-10-29 21:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Claude\n"
 "Language-Team: Finnish\n"
@@ -28,15 +28,14 @@ msgstr "Otsikko"
 msgid "Type"
 msgstr "Tyyppi"
 
-#: checklists/forms.py:11
-#: checklists/templates/checklists/template_form.html:24
+#: checklists/forms.py:11 checklists/templates/checklists/template_form.html:24
 msgid "Add many tasks at once"
 msgstr "Lisää monta tehtävää kerralla"
 
 #: checklists/forms.py:13
 msgid ""
-"Paste from a spreadsheet: select the Group and Task columns in Google Sheets"
-" or Excel (without the header row), copy, and paste here. Or type one task "
+"Paste from a spreadsheet: select the Group and Task columns in Google Sheets "
+"or Excel (without the header row), copy, and paste here. Or type one task "
 "per line, and start a group with “# Group name”."
 msgstr ""
 "Liitä taulukosta: valitse Google Sheetsistä tai Excelistä Ryhmä- ja Tehtävä-"
@@ -357,13 +356,11 @@ msgstr "Vähissä: %(item)s. Jäljellä: %(note)s"
 msgid ""
 "Reading %(reading)s °C%(where)s is outside the configured range %(range)s."
 msgstr ""
-"Lukema %(reading)s °C%(where)s on asetettujen rajojen %(range)s "
-"ulkopuolella."
+"Lukema %(reading)s °C%(where)s on asetettujen rajojen %(range)s ulkopuolella."
 
 #: checklists/services.py:330
 msgid "This checklist was already submitted. Ask a manager to follow up."
-msgstr ""
-"Tämä tarkistuslista on jo lähetetty. Pyydä esihenkilöä hoitamaan asia."
+msgstr "Tämä tarkistuslista on jo lähetetty. Pyydä esihenkilöä hoitamaan asia."
 
 #: checklists/services.py:386
 msgid "Describe how the issue was resolved."
@@ -387,7 +384,7 @@ msgstr "%(n)s pakollista tehtävää odottaa vielä vastausta."
 msgid "Checklist history"
 msgstr "Tarkistuslistojen historia"
 
-#: checklists/templates/checklists/history.html:4 core/templates/base.html:51
+#: checklists/templates/checklists/history.html:4 core/templates/base.html:43
 msgid "My submitted checklists"
 msgstr "Lähettämäni tarkistuslistat"
 
@@ -448,7 +445,7 @@ msgid "Status"
 msgstr "Tila"
 
 #: checklists/templates/checklists/history.html:17
-#: checklists/templates/checklists/review.html:22 core/templates/base.html:39
+#: checklists/templates/checklists/review.html:22 core/templates/base.html:57
 #: dashboard/templates/dashboard/dashboard.html:53
 #: inventory/templates/inventory/history.html:14
 #: staff/templates/staff/list.html:2 staff/templates/staff/list.html:4
@@ -561,7 +558,7 @@ msgstr "Ratkaise"
 msgid "Mark resolved"
 msgstr "Merkitse ratkaistuksi"
 
-#: checklists/templates/checklists/issues.html:2 core/templates/base.html:34
+#: checklists/templates/checklists/issues.html:2 core/templates/base.html:40
 msgid "Issues"
 msgstr "Poikkeamat"
 
@@ -599,7 +596,7 @@ msgid "Send report"
 msgstr "Lähetä ilmoitus"
 
 #: checklists/templates/checklists/review.html:2
-#: checklists/templates/checklists/review.html:4 core/templates/base.html:33
+#: checklists/templates/checklists/review.html:4 core/templates/base.html:39
 msgid "Checklist review"
 msgstr "Tarkistuslistojen seuranta"
 
@@ -636,7 +633,7 @@ msgid "No checklists were expected or started on this date."
 msgstr "Tälle päivälle ei ollut tarkistuslistoja, eikä yhtään aloitettu."
 
 #: checklists/templates/checklists/review.html:20
-#: checklists/templates/checklists/today.html:2 core/templates/base.html:27
+#: checklists/templates/checklists/today.html:2 core/templates/base.html:35
 #: core/templates/core/today.html:21
 #: dashboard/templates/dashboard/dashboard.html:81
 #: staff/templates/staff/detail.html:30 tenants/forms.py:14
@@ -876,8 +873,7 @@ msgstr "Uusi tarkistuslista"
 
 #: checklists/templates/checklists/template_form.html:4
 #: checklists/templates/checklists/templates.html:2
-#: checklists/templates/checklists/templates.html:4
-#: core/templates/base.html:35
+#: checklists/templates/checklists/templates.html:4 core/templates/base.html:41
 msgid "Checklist templates"
 msgstr "Tarkistuslistapohjat"
 
@@ -917,8 +913,8 @@ msgstr "Uusi tehtävä"
 
 #: checklists/templates/checklists/template_form.html:28
 msgid ""
-"Pasted tasks are added after the tasks above and are required. Rows with the"
-" same group are shown together on the checklist."
+"Pasted tasks are added after the tasks above and are required. Rows with the "
+"same group are shown together on the checklist."
 msgstr ""
 "Liitetyt tehtävät lisätään yllä olevien jälkeen, ja ne ovat pakollisia. "
 "Saman ryhmän rivit näytetään tarkistuslistalla yhdessä."
@@ -930,8 +926,7 @@ msgstr "Tallenna tarkistuslista"
 #: checklists/templates/checklists/template_form.html:32
 #: inventory/templates/inventory/item_form.html:9
 #: menu/templates/menu/category_form.html:10
-#: menu/templates/menu/item_delete.html:9
-#: menu/templates/menu/item_form.html:49
+#: menu/templates/menu/item_delete.html:9 menu/templates/menu/item_form.html:49
 #: staff/templates/staff/deactivate.html:14 staff/templates/staff/form.html:10
 #: timeclock/templates/timeclock/correct.html:33
 #: website/templates/website/manage_special_day.html:27
@@ -971,8 +966,7 @@ msgid "Deactivated"
 msgstr "Poistettu käytöstä"
 
 #: checklists/templates/checklists/templates.html:14
-msgid ""
-"Deactivate this checklist? No new runs can be started. History is kept."
+msgid "Deactivate this checklist? No new runs can be started. History is kept."
 msgstr ""
 "Poistetaanko tarkistuslista käytöstä? Uusia kierroksia ei voi aloittaa. "
 "Historia säilyy."
@@ -991,7 +985,7 @@ msgstr "Ota käyttöön"
 msgid "No checklists yet."
 msgstr "Ei vielä tarkistuslistoja."
 
-#: checklists/templates/checklists/today.html:4
+#: checklists/templates/checklists/today.html:4 core/templates/base.html:37
 msgid "Today's checklists"
 msgstr "Päivän tarkistuslistat"
 
@@ -1218,32 +1212,45 @@ msgstr[1] "Ilmainen kokeilu: %(n)s päivää jäljellä."
 msgid "Plan and billing"
 msgstr "Paketti ja laskutus"
 
-#: core/templates/base.html:19
-msgctxt "navigation"
-msgid "Menu"
-msgstr "Valikko"
+#: core/templates/base.html:20
+msgid "Navigation"
+msgstr "Navigointi"
 
-#: core/templates/base.html:20 tenants/templates/tenants/platform/base.html:17
+#: core/templates/base.html:21 tenants/templates/tenants/platform/base.html:17
 #: website/templates/website/base.html:24
 msgid "Main"
 msgstr "Päävalikko"
 
-#: core/templates/base.html:22 core/templates/core/today.html:2
+#: core/templates/base.html:23 core/templates/core/today.html:2
 msgid "Today"
 msgstr "Tänään"
 
-#: core/templates/base.html:24 timeclock/templates/timeclock/clock.html:2
+#: core/templates/base.html:24 core/templates/core/today.html:39
+#: dashboard/templates/dashboard/dashboard.html:2
+msgid "Dashboard"
+msgstr "Yleisnäkymä"
+
+#: core/templates/base.html:27
+msgid "Time tracking"
+msgstr "Työaika"
+
+#: core/templates/base.html:29 timeclock/templates/timeclock/clock.html:2
 #: timeclock/templates/timeclock/clock.html:4
 msgid "Clock in/out"
 msgstr "Leimaus"
 
-#: core/templates/base.html:25 staff/templates/staff/detail.html:21
+#: core/templates/base.html:30 staff/templates/staff/detail.html:21
 #: timeclock/templates/timeclock/mine.html:2
 #: timeclock/templates/timeclock/mine.html:4
 msgid "My hours"
 msgstr "Omat tunnit"
 
-#: core/templates/base.html:28 core/templates/core/today.html:32
+#: core/templates/base.html:31 timeclock/templates/timeclock/timesheets.html:2
+#: timeclock/templates/timeclock/timesheets.html:4
+msgid "Timesheets"
+msgstr "Tuntilistat"
+
+#: core/templates/base.html:48 core/templates/core/today.html:32
 #: inventory/templates/inventory/detail.html:4
 #: inventory/templates/inventory/list.html:2
 #: inventory/templates/inventory/list.html:5 tenants/forms.py:14
@@ -1251,42 +1258,42 @@ msgstr "Omat tunnit"
 msgid "Inventory"
 msgstr "Varasto"
 
-#: core/templates/base.html:31 core/templates/core/today.html:39
-#: dashboard/templates/dashboard/dashboard.html:2
-msgid "Dashboard"
-msgstr "Yleisnäkymä"
+#: core/templates/base.html:50
+msgid "Stock levels"
+msgstr "Varastosaldot"
 
-#: core/templates/base.html:37 inventory/templates/inventory/history.html:2
+#: core/templates/base.html:51 inventory/templates/inventory/history.html:2
 #: inventory/templates/inventory/history.html:4
 msgid "Stock history"
 msgstr "Varastotapahtumat"
 
-#: core/templates/base.html:38 timeclock/templates/timeclock/timesheets.html:2
-#: timeclock/templates/timeclock/timesheets.html:4
-msgid "Timesheets"
-msgstr "Tuntilistat"
+#: core/templates/base.html:55
+msgid "Team"
+msgstr "Henkilöstö"
 
-#: core/templates/base.html:40 menu/templates/menu/category_form.html:3
+#: core/templates/base.html:60
+msgid "Food menu and website"
+msgstr "Ruokalista ja verkkosivut"
+
+#: core/templates/base.html:62 menu/templates/menu/category_form.html:3
 #: menu/templates/menu/item_form.html:4 menu/templates/menu/overview.html:2
 #: menu/templates/menu/overview.html:5 tenants/forms.py:15
-#: tenants/models.py:76 website/templates/website/base.html:26
-#: website/templates/website/menu.html:2 website/templates/website/menu.html:5
-msgid "Menu"
+msgid "Food menu"
 msgstr "Ruokalista"
 
-#: core/templates/base.html:42 website/templates/website/promotion_form.html:4
+#: core/templates/base.html:64 website/templates/website/promotion_form.html:4
 #: website/templates/website/promotion_list.html:2
 #: website/templates/website/promotion_list.html:5
 msgid "Promotions"
 msgstr "Tarjoukset"
 
-#: core/templates/base.html:44 website/templates/website/manage_images.html:90
+#: core/templates/base.html:66 website/templates/website/manage_images.html:90
 #: website/templates/website/manage_info.html:2
 #: website/templates/website/manage_info.html:5
 msgid "Restaurant details"
 msgstr "Ravintolan tiedot"
 
-#: core/templates/base.html:45 website/templates/website/base.html:46
+#: core/templates/base.html:67 website/templates/website/base.html:46
 #: website/templates/website/contact.html:22
 #: website/templates/website/manage_hours.html:2
 #: website/templates/website/manage_hours.html:5
@@ -1296,17 +1303,21 @@ msgstr "Ravintolan tiedot"
 msgid "Opening hours"
 msgstr "Aukioloajat"
 
-#: core/templates/base.html:46 website/templates/website/manage_images.html:2
+#: core/templates/base.html:68 website/templates/website/manage_images.html:2
 #: website/templates/website/manage_images.html:5
 #: website/templates/website/manage_info.html:17
 msgid "Website images"
 msgstr "Verkkosivun kuvat"
 
-#: core/templates/base.html:48 tenants/forms.py:15 tenants/models.py:77
+#: core/templates/base.html:70 tenants/forms.py:15 tenants/models.py:77
 msgid "Public website"
 msgstr "Julkinen verkkosivu"
 
-#: core/templates/base.html:55 staff/templates/staff/detail.html:56
+#: core/templates/base.html:76
+msgid "Business"
+msgstr "Yritys"
+
+#: core/templates/base.html:78 staff/templates/staff/detail.html:56
 #: tenants/templates/tenants/locations.html:2
 #: tenants/templates/tenants/locations.html:4
 #: tenants/templates/tenants/platform/home.html:20
@@ -1314,24 +1325,29 @@ msgstr "Julkinen verkkosivu"
 msgid "Locations"
 msgstr "Toimipisteet"
 
-#: core/templates/base.html:56 tenants/templates/tenants/account.html:2
+#: core/templates/base.html:79 tenants/templates/tenants/account.html:2
 #: tenants/templates/tenants/account.html:4
 msgid "Plan and modules"
 msgstr "Paketti ja moduulit"
 
-#: core/templates/base.html:59
+#: core/templates/base.html:82
+msgid "Account"
+msgstr "Oma tili"
+
+#: core/templates/base.html:84
 msgid "My profile"
 msgstr "Oma profiili"
 
-#: core/templates/base.html:62 tenants/templates/tenants/platform/base.html:20
+#: core/templates/base.html:87 core/templates/base.html:94
+#: tenants/templates/tenants/platform/base.html:20
 msgid "Sign out"
 msgstr "Kirjaudu ulos"
 
-#: core/templates/base.html:73 tenants/templates/tenants/locations.html:8
+#: core/templates/base.html:102 tenants/templates/tenants/locations.html:8
 msgid "Location"
 msgstr "Toimipiste"
 
-#: core/templates/base.html:77
+#: core/templates/base.html:106
 msgid "Switch"
 msgstr "Vaihda"
 
@@ -1379,8 +1395,7 @@ msgstr "Leimattu sisään"
 msgid "Since %(t)s"
 msgstr "Klo %(t)s alkaen"
 
-#: core/templates/core/today.html:14
-#: timeclock/templates/timeclock/clock.html:9
+#: core/templates/core/today.html:14 timeclock/templates/timeclock/clock.html:9
 msgid "Not clocked in"
 msgstr "Ei leimattu sisään"
 
@@ -1469,8 +1484,7 @@ msgstr "Aseta salasanasi"
 #: core/templates/registration/set_password.html:6
 #, python-format
 msgid "Hi %(name)s. You will sign in as <strong>%(login)s</strong>."
-msgstr ""
-"Hei %(name)s. Kirjaudut sisään tunnuksella <strong>%(login)s</strong>."
+msgstr "Hei %(name)s. Kirjaudut sisään tunnuksella <strong>%(login)s</strong>."
 
 #: core/templates/registration/set_password.html:10
 msgid "Save password"
@@ -1482,8 +1496,8 @@ msgstr "Tämä linkki ei toimi"
 
 #: core/templates/registration/set_password_invalid.html:5
 msgid ""
-"The password link has expired or has already been used. Ask your manager for"
-" a new one."
+"The password link has expired or has already been used. Ask your manager for "
+"a new one."
 msgstr ""
 "Salasanalinkki on vanhentunut tai jo käytetty. Pyydä esihenkilöltäsi uusi."
 
@@ -1824,8 +1838,7 @@ msgid "Required for waste."
 msgstr "Pakollinen hävikille."
 
 #: inventory/forms.py:40
-msgid ""
-"Optional, for example a delivery note number. Required for adjustments."
+msgid "Optional, for example a delivery note number. Required for adjustments."
 msgstr "Vapaaehtoinen, esimerkiksi lähetteen numero. Pakollinen korjauksille."
 
 #: inventory/forms.py:49
@@ -1942,8 +1955,7 @@ msgid ""
 "The unit cannot change after stock has been recorded. Create a new item "
 "instead."
 msgstr ""
-"Yksikköä ei voi muuttaa, kun varastoa on kirjattu. Luo sen sijaan uusi "
-"tuote."
+"Yksikköä ei voi muuttaa, kun varastoa on kirjattu. Luo sen sijaan uusi tuote."
 
 #: inventory/services.py:153
 msgid "An adjustment needs a reason."
@@ -2087,8 +2099,7 @@ msgstr[1] "%(n)s tuotetta vähissä"
 msgid "No items low on stock"
 msgstr "Mikään tuote ei ole vähissä"
 
-#: inventory/templates/inventory/list.html:16
-#: staff/templates/staff/list.html:6
+#: inventory/templates/inventory/list.html:16 staff/templates/staff/list.html:6
 #: tenants/templates/tenants/platform/home.html:13
 #: tenants/templates/tenants/platform/home.html:15
 msgid "Search"
@@ -2378,8 +2389,7 @@ msgstr "Tallenna nimi"
 #: menu/templates/menu/category_form.html:16
 #, python-format
 msgid ""
-"This category has %(n)s dish. Move or delete it before deleting the "
-"category."
+"This category has %(n)s dish. Move or delete it before deleting the category."
 msgid_plural ""
 "This category has %(n)s dishes. Move or delete them before deleting the "
 "category."
@@ -2406,11 +2416,10 @@ msgid ""
 "The dish and its photo are removed from the menu for good. To take it off "
 "the menu for now, unpublish it or mark it unavailable instead."
 msgstr ""
-"Annos ja sen kuva poistetaan ruokalistalta pysyvästi. Jos haluat poistaa sen"
-" vain toistaiseksi, peru julkaisu tai merkitse se loppuneeksi."
+"Annos ja sen kuva poistetaan ruokalistalta pysyvästi. Jos haluat poistaa sen "
+"vain toistaiseksi, peru julkaisu tai merkitse se loppuneeksi."
 
-#: menu/templates/menu/item_delete.html:8
-#: menu/templates/menu/item_form.html:50
+#: menu/templates/menu/item_delete.html:8 menu/templates/menu/item_form.html:50
 msgid "Delete dish"
 msgstr "Poista annos"
 
@@ -2657,8 +2666,7 @@ msgid "Choose a valid role."
 msgstr "Valitse kelvollinen rooli."
 
 #: staff/services.py:119
-msgid ""
-"The last active owner cannot be demoted. Make someone else owner first."
+msgid "The last active owner cannot be demoted. Make someone else owner first."
 msgstr ""
 "Viimeisen aktiivisen omistajan roolia ei voi laskea. Tee ensin joku muu "
 "omistajaksi."
@@ -2706,8 +2714,8 @@ msgid ""
 "reactivate the account later."
 msgstr ""
 "Hänet kirjataan ulos, eikä hän voi enää kirjautua sisään. Hänen "
-"tuntilistansa, tarkistuslistansa ja varastokirjauksensa säilyvät historiassa"
-" hänen nimellään. Voit ottaa tunnuksen myöhemmin uudelleen käyttöön."
+"tuntilistansa, tarkistuslistansa ja varastokirjauksensa säilyvät historiassa "
+"hänen nimellään. Voit ottaa tunnuksen myöhemmin uudelleen käyttöön."
 
 #: staff/templates/staff/deactivate.html:13
 msgid "Deactivate account"
@@ -2848,8 +2856,8 @@ msgid ""
 "page at any time."
 msgstr ""
 "Linkki lakkaa toimimasta, kun sitä on käytetty tai se vanhenee. Sitä ei "
-"tallenneta, joten kopioi se nyt. Voit luoda uuden linkin työntekijän sivulta"
-" milloin tahansa."
+"tallenneta, joten kopioi se nyt. Voit luoda uuden linkin työntekijän sivulta "
+"milloin tahansa."
 
 #: staff/views.py:47
 msgid "Manager · Lahti"
@@ -2920,8 +2928,8 @@ msgid ""
 "Lowercase letters, numbers and hyphens. Your staff use it to find your "
 "workspace."
 msgstr ""
-"Pieniä kirjaimia, numeroita ja yhdysmerkkejä. Henkilökuntasi löytää työtilan"
-" tällä."
+"Pieniä kirjaimia, numeroita ja yhdysmerkkejä. Henkilökuntasi löytää työtilan "
+"tällä."
 
 #: tenants/forms.py:31
 msgid "First location name (optional)"
@@ -2929,8 +2937,7 @@ msgstr "Ensimmäisen toimipisteen nimi (vapaaehtoinen)"
 
 #: tenants/forms.py:32
 msgid "For example “City centre”. Leave empty to use the business name."
-msgstr ""
-"Esimerkiksi “Keskusta”. Jätä tyhjäksi, niin käytetään yrityksen nimeä."
+msgstr "Esimerkiksi “Keskusta”. Jätä tyhjäksi, niin käytetään yrityksen nimeä."
 
 #: tenants/forms.py:33
 msgid "Time zone"
@@ -3056,6 +3063,11 @@ msgstr "verkko-osoite"
 msgid "contact email"
 msgstr "yhteyssähköposti"
 
+#: tenants/models.py:76 website/templates/website/base.html:26
+#: website/templates/website/menu.html:2 website/templates/website/menu.html:5
+msgid "Menu"
+msgstr "Ruokalista"
+
 #: tenants/platform_views.py:134
 msgid "Plan changed."
 msgstr "Paketti vaihdettu."
@@ -3080,8 +3092,8 @@ msgstr "%(name)s luotiin."
 #: tenants/services.py:47
 #, python-format
 msgid ""
-"Your %(plan)s plan allows %(n)s active staff. Upgrade the plan or deactivate"
-" someone first."
+"Your %(plan)s plan allows %(n)s active staff. Upgrade the plan or deactivate "
+"someone first."
 msgstr ""
 "%(plan)s-pakettisi sallii %(n)s aktiivista työntekijää. Vaihda isompaan "
 "pakettiin tai poista ensin joku käytöstä."
@@ -3249,8 +3261,8 @@ msgid ""
 "Each location has its own checklists, stock, shifts and public details. "
 "Staff work at the locations you assign them to."
 msgstr ""
-"Jokaisella toimipisteellä on omat tarkistuslistansa, varastonsa, vuoronsa ja"
-" julkiset tietonsa. Henkilökunta työskentelee niissä toimipisteissä, joihin "
+"Jokaisella toimipisteellä on omat tarkistuslistansa, varastonsa, vuoronsa ja "
+"julkiset tietonsa. Henkilökunta työskentelee niissä toimipisteissä, joihin "
 "heidät liität."
 
 #: tenants/templates/tenants/locations.html:12
@@ -3342,8 +3354,8 @@ msgstr "Etsi työtilasi"
 
 #: tenants/templates/tenants/platform/find.html:6
 msgid ""
-"Enter your restaurant's workspace address. Your manager can tell you what it"
-" is."
+"Enter your restaurant's workspace address. Your manager can tell you what it "
+"is."
 msgstr "Anna ravintolasi työtilan osoite. Esihenkilösi kertoo sen sinulle."
 
 #: tenants/templates/tenants/platform/home.html:5
@@ -3414,8 +3426,8 @@ msgstr "Avaa esimerkkityötila ja kirjaudu yhdellä napautuksella."
 
 #: tenants/templates/tenants/platform/landing.html:24
 msgid ""
-"Clock in, breaks and clock out on the staff's own phones. Corrections keep a"
-" reason and the original times."
+"Clock in, breaks and clock out on the staff's own phones. Corrections keep a "
+"reason and the original times."
 msgstr ""
 "Sisäänleimaus, tauot ja ulosleimaus henkilökunnan omilla puhelimilla. "
 "Korjauksiin tallentuu syy ja alkuperäiset ajat."
@@ -3440,11 +3452,11 @@ msgstr "Esihenkilön yleisnäkymä"
 
 #: tenants/templates/tenants/platform/landing.html:27
 msgid ""
-"Who is on shift, hours worked, open issues and flagged temperatures for each"
-" location."
+"Who is on shift, hours worked, open issues and flagged temperatures for each "
+"location."
 msgstr ""
-"Kuka on vuorossa, tehdyt tunnit, avoimet poikkeamat ja poikkeavat lämpötilat"
-" toimipisteittäin."
+"Kuka on vuorossa, tehdyt tunnit, avoimet poikkeamat ja poikkeavat lämpötilat "
+"toimipisteittäin."
 
 #: tenants/templates/tenants/platform/landing.html:28
 msgid "Several locations"
@@ -3467,8 +3479,8 @@ msgid ""
 "Add a public website with your menu, opening hours and promotions on larger "
 "plans."
 msgstr ""
-"Lisää isompiin paketteihin julkinen verkkosivu ruokalistalla, aukioloajoilla"
-" ja tarjouksilla."
+"Lisää isompiin paketteihin julkinen verkkosivu ruokalistalla, aukioloajoilla "
+"ja tarjouksilla."
 
 #: tenants/templates/tenants/platform/landing.html:49
 #: tenants/templates/tenants/platform/login.html:2
@@ -3528,8 +3540,8 @@ msgid ""
 "Creates the organization, its first location and the owner's account. Give "
 "the owner their workspace address, login name and password."
 msgstr ""
-"Luo organisaation, sen ensimmäisen toimipisteen ja omistajan tunnuksen. Anna"
-" omistajalle työtilan osoite, käyttäjätunnus ja salasana."
+"Luo organisaation, sen ensimmäisen toimipisteen ja omistajan tunnuksen. Anna "
+"omistajalle työtilan osoite, käyttäjätunnus ja salasana."
 
 #: tenants/templates/tenants/platform/organization_form.html:10
 msgid "Create organization"
@@ -3558,8 +3570,7 @@ msgstr "Työtilasi on valmis"
 
 #: tenants/templates/tenants/platform/signup_done.html:5
 #, python-format
-msgid ""
-"%(name)s has its own address. Bookmark it and share it with your staff:"
+msgid "%(name)s has its own address. Bookmark it and share it with your staff:"
 msgstr ""
 "Työtilalla %(name)s on oma osoite. Tallenna se kirjanmerkiksi ja jaa "
 "henkilökunnallesi:"
@@ -3583,8 +3594,8 @@ msgstr "Työtilaa ei löytynyt"
 
 #: tenants/templates/tenants/unknown_workspace.html:7
 msgid ""
-"No restaurant uses this address. Check the spelling, or ask your manager for"
-" the right link."
+"No restaurant uses this address. Check the spelling, or ask your manager for "
+"the right link."
 msgstr ""
 "Mikään ravintola ei käytä tätä osoitetta. Tarkista kirjoitusasu tai pyydä "
 "esihenkilöltäsi oikea linkki."
@@ -3929,8 +3940,8 @@ msgid ""
 "separately as provisional. Not payroll-approved."
 msgstr ""
 "Vuorot lasketaan paikallisen alkamispäivänsä mukaan, vaikka ne päättyisivät "
-"keskiyön jälkeen. Yhteismäärissä ovat vain päättyneet vuorot; avoimet vuorot"
-" näytetään erikseen alustavina. Ei palkanlaskennan hyväksymä."
+"keskiyön jälkeen. Yhteismäärissä ovat vain päättyneet vuorot; avoimet vuorot "
+"näytetään erikseen alustavina. Ei palkanlaskennan hyväksymä."
 
 #: timeclock/templates/timeclock/timesheets.html:16
 msgid "Totals"
@@ -4203,8 +4214,7 @@ msgstr "Anna ravintolan nimi."
 #: website/services.py:203
 msgid ""
 "Enter a phone number with digits, spaces and an optional + at the start."
-msgstr ""
-"Anna puhelinnumero numeroina; välilyönnit ja alussa oleva + sallitaan."
+msgstr "Anna puhelinnumero numeroina; välilyönnit ja alussa oleva + sallitaan."
 
 #: website/services.py:208
 msgid "Enter a valid email address."
@@ -4237,8 +4247,7 @@ msgstr "%(day)s: aukioloajat menevät päällekkäin."
 #: website/services.py:274
 #, python-format
 msgid "%(day)s: the evening period runs past the opening time on %(next)s."
-msgstr ""
-"%(day)s: iltavuoro jatkuu seuraavan päivän (%(next)s) avaamisajan yli."
+msgstr "%(day)s: iltavuoro jatkuu seuraavan päivän (%(next)s) avaamisajan yli."
 
 #: website/services.py:301
 msgid "Choose the date."
@@ -4397,8 +4406,8 @@ msgid ""
 "closing time earlier than the opening time means after midnight."
 msgstr ""
 "Jätä päivä tyhjäksi, jos ravintola on kiinni. Lisää toinen aika, jos "
-"päivässä on tauko, esimerkiksi lounas 11:00–14:00 ja illallinen 17:00–22:00."
-" Avaamisaikaa aikaisempi sulkemisaika tarkoittaa keskiyön jälkeen."
+"päivässä on tauko, esimerkiksi lounas 11:00–14:00 ja illallinen 17:00–22:00. "
+"Avaamisaikaa aikaisempi sulkemisaika tarkoittaa keskiyön jälkeen."
 
 #: website/templates/website/manage_hours.html:11
 msgid "Some hours need fixing. See the highlighted days."
@@ -4461,8 +4470,7 @@ msgstr "Muokkaa"
 #: website/templates/website/manage_hours.html:55
 msgid "Remove these special hours? The regular hours will apply on that date."
 msgstr ""
-"Poistetaanko poikkeava aukioloaika? Tälle päivälle palautuvat normaalit "
-"ajat."
+"Poistetaanko poikkeava aukioloaika? Tälle päivälle palautuvat normaalit ajat."
 
 #: website/templates/website/manage_hours.html:56
 #: website/templates/website/manage_images.html:72
@@ -4483,8 +4491,8 @@ msgstr "Näytä verkkosivu"
 
 #: website/templates/website/manage_images.html:8
 msgid ""
-"Photos are checked and re-saved when uploaded; hidden camera details such as"
-" location are removed."
+"Photos are checked and re-saved when uploaded; hidden camera details such as "
+"location are removed."
 msgstr ""
 "Kuvat tarkistetaan ja tallennetaan uudelleen lähetettäessä; piilotetut "
 "kameratiedot, kuten sijainti, poistetaan."
@@ -4527,8 +4535,8 @@ msgstr "Etusivun kuva"
 
 #: website/templates/website/manage_images.html:29
 msgid ""
-"The large photo at the top of the homepage. It is also used when the website"
-" is shared on social media."
+"The large photo at the top of the homepage. It is also used when the website "
+"is shared on social media."
 msgstr ""
 "Suuri kuva etusivun yläosassa. Sitä käytetään myös, kun sivu jaetaan "
 "sosiaalisessa mediassa."
@@ -4598,8 +4606,8 @@ msgid ""
 "These details appear on the public website: the homepage, the contact page "
 "and the footer of every page. Changes show immediately."
 msgstr ""
-"Nämä tiedot näkyvät julkisella verkkosivulla: etusivulla, yhteystietosivulla"
-" ja jokaisen sivun alaosassa. Muutokset näkyvät heti."
+"Nämä tiedot näkyvät julkisella verkkosivulla: etusivulla, yhteystietosivulla "
+"ja jokaisen sivun alaosassa. Muutokset näkyvät heti."
 
 #: website/templates/website/manage_special_day.html:5
 msgid "Edit special hours"
@@ -4669,8 +4677,8 @@ msgid ""
 "Promotions appear on the public homepage from their first day to their last "
 "day, then disappear by themselves."
 msgstr ""
-"Tarjoukset näkyvät julkisella etusivulla ensimmäisestä viimeiseen päivään ja"
-" poistuvat sitten itsestään."
+"Tarjoukset näkyvät julkisella etusivulla ensimmäisestä viimeiseen päivään ja "
+"poistuvat sitten itsestään."
 
 #: website/templates/website/promotion_list.html:10
 msgid "On the website now"

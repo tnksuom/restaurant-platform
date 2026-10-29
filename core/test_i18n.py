@@ -111,7 +111,7 @@ class LanguageSwitchTests(TestCase):
         self.client.post(reverse("set_language"), {"language": "fi", "next": "/app/"})
         page = self.client.get("/app/")
         self.assertContains(page, "Tänään")
-        self.assertContains(page, "Valikko")  # navigation menu, not the food menu
+        self.assertContains(page, "Navigointi")  # navigation toggle, not the food menu
         self.client.post(reverse("set_language"), {"language": "vi", "next": "/app/"})
         self.assertContains(self.client.get("/app/"), "Hôm nay")
 
